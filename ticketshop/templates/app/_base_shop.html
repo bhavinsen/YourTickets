@@ -1,0 +1,228 @@
+{% load static %}
+{% load index %}
+
+<!DOCTYPE html>
+<html>
+  <head>
+    
+    <meta charset='utf-8'>
+      <meta name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1'>
+      <title>{% block title %}Yourtickets{% endblock %}</title>
+      <link rel="apple-touch-icon" sizes="180x180" href="{% static 'images/favicon/apple-touch-icon.png' %}">
+      <link rel="icon" type="image/png" href="{% static 'images/favicon/favicon-32x32.png' %}" sizes="32x32">
+      <link rel="icon" type="image/png" href="{% static 'images/favicon/favicon-16x16.png' %}" sizes="16x16">
+      <link rel="manifest" href="{% static 'images/favicon/manifest.json' %}">
+      <link rel="mask-icon" href="{% static 'images/favicon/safari-pinned-tab.svg' %}" color="#dc3547">
+      <meta name="apple-mobile-web-app-title" content="Yourtickets">
+      <meta name="application-name" content="Yourtickets">
+      <meta name="theme-color" content="#232732">
+
+      <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700' rel='stylesheet' type='text/css'>
+      <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-XdYbMnZ/QjLh6iI4ogqCTaIjrFk87ip+ekIjefZch0Y+PvJ8CDYtEs1ipDmPorQ+" crossorigin="anonymous">
+      <link rel='stylesheet' href="{% static 'css/main.css' %}">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+    <script>
+        (function(h,o,t,j,a,r){
+            h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+            h._hjSettings={hjid:331348,hjsv:5};
+            a=o.getElementsByTagName('head')[0];
+            r=o.createElement('script');r.async=1;
+            r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+            a.appendChild(r);
+        })(window,document,'//static.hotjar.com/c/hotjar-','.js?sv=');
+    </script>
+
+  </head>
+  <body>
+    <div class="shop" style=" background: url({{cshop.bg_img.url}}) no-repeat center center fixed; background-size: cover;">
+      <div class="nav">
+        <a class="logo-container" href="../yourtickets/"><img class="logo" src="{% static 'images/beta_logo.svg' %}"></a>
+		<ul class="nav-leftwrapper medium">
+            <li class="language-selector">
+              <ul class="language-selector-dropdown">
+                <span class="u-noselect"><img src="{% static 'images/languageflags/flag.png' %}" class="flag flag-{{lc|lower}} m-right-12" alt="{{lc}}"/>{{lc}}</span>
+				{% for lg in langs %}
+				{% if lg.0 != lc %}
+                <li><a href="/ticketshop/changeLanguage/{{ lg.0 }}">
+                    <img src="{% static 'images/languageflags/flag.png' %}" class="flag flag-{{lg.0|lower}} m-right-12 m-top-18" alt="{{lg.1}}"/>{{ lg.0 }}</a></li>
+				{% endif %}
+				{% endfor %}				
+              </ul>
+            </li>
+          </ul>
+      </div>
+      <div class="shop-wrapper u-overflow-hidden">
+        <header class="a-center">
+            <h1 class="header white uppercase">{{cur_event.title}}</h1>
+            <!-- <h2 class="subtext gray uppercase">GLOW IN THE DARK BIRTHDAY BASH</h2> -->
+        </header>
+        <article class="ticketshop">
+          <div class="corners-outer corners-outer-bottom u-border-bottom-dash u-flex-column bg-gray">
+           <div class="corners-inner corners-inner-top bg-gray">
+              <div class="content u-flex-row-around">
+                <div class="infoNav bold uppercase"><i class="fa fa-calendar primary_color m-right-12"></i>{{event_date}}</div>
+                <div class="infoNav bold uppercase"><a href="https://www.google.nl/maps/place/{{cur_event.location}}" target="_blank"><span class="u-textDots"><i class="fa fa-map-marker secondary_color m-right-12"></i>{{cur_event.location}}</a></span></div> <!-- in de link moet de naam van de club ingevuld worden achter de palce/ -->
+              </div>
+              <img class="headerImg" src="{{cshop.header_img.url}}">
+              <div class="shop-description">
+                <div id="description" class="shop-text u-break">
+                  <p>
+                    {{cur_event.description}}
+                  </p>
+                </div>
+                <div class="sectionshadow js-readmore"></div>
+                <div class="readmore primary_color js-readmore">{% getWord lc "shop-base-readmore" %}</div>
+                <p class="uppercase u-overflow-hidden m-top-24 large bold lineheight-1-3 u-break">{% getWord lc "shop-base-lineup" %}
+                  {% for artist in lineup %}
+                  <span class="primary_color">{{artist.artist}}</span>
+                  {% if not forloop.last %}
+                  <span class="primary_color p-right-3 p-left-3">/</span>
+                  {% endif %}
+                  {% endfor %}
+
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="corners-outer corners-outer-top bg-white">
+            <div class="tickets corners-inner bg-white">
+              <form id="orderform" action="" method="post">
+                {% csrf_token %}
+                <fieldset class="p-bottom-12">
+                 <legend class="large bold m-bottom-36">{% getWord lc "shop-base-ticketsale" %}</legend>
+                 <div class="table u-border-box">
+                   <div class="u-flex-row u-border-bottom p-bottom-6">
+                     <span class="cell-70 u-flex small bold">{% getWord lc "shop-base-ticket" %}</span>
+                     <span class="cell-10 small bold">{% getWord lc "shop-base-price" %}</span>
+                     <span class="cell-20 small bold">{% getWord lc "shop-base-aantal" %}</span>
+                   </div>
+
+                   {% load humanize %}
+                     {% for ticket in tickets %}
+                   <div class="u-flex-row p-top-bottom-24 u-border-bottom">
+                     <span class="cell-70 u-flex u-break">{{ticket.name}}</span>
+                     <span class="cell-10">{% if ticket.price_or != 0 %}€{{ticket.price_new|floatformat:2|intcomma }}{% else %}{% getWord lc "shop-base-free" %}{% endif %}</span>
+                     <span class="cell-20">
+                        <div class="u-addNumber u-flex-row">
+						{% if ticket.max_sold == 0 %}
+                          <input type="hidden" name="quantity[]" value="0">
+						<span class="cell-20 uppercase small">{% getWord lc "shop-base-soldout" %}</span>
+						{% elif ticket.old == True %}
+                          <input type="hidden" name="quantity[]" value="0">
+						<span class="cell-20 uppercase small">{% getWord lc "shop-base-soldout" %}</span>						
+						 {% else %}
+                          <span class="u-flex u-addNumber-box js-addNumber u-noselect">-</span>
+                          <input max="{{ticket.max_sold}}" class="u-addNumber-input u-flex u-noselect" type="text" name="quantity[]" value="0">
+                          <span class="u-flex u-addNumber-box js-addNumber u-noselect">+</span>
+						  {% endif %}
+                       </div>
+                     </span>
+                   </div>
+                   {% endfor %}
+                 </div>
+                </fieldset>
+
+                <div class="terms m-top-36" style="margin-bottom:10px;">
+                  <div style="padding-bottom:20px;">
+                    <input type="checkbox" id="email_allowed" name="email_allowed" value="email_allowed">
+                    <label class="primary_color u-noselect u-inline-block" for="email_allowed">
+                      <span class="initial_color p-left-12">
+                        Houd mij op de hoogte van toekomstige evenementen
+                      </span>
+                    </label>
+                  </div>
+                  <div>
+                    <input type="checkbox" id="Terms" name="Terms" value="Terms">
+                    <label class="primary_color u-noselect u-inline-block" for="Terms">
+                      <span class="initial_color p-left-12">
+                      {% getWord lc "shop-base-akkoordalgvw" %}
+                        <span class="primary_color u-pointer u-underline-h js-popup-click">{% getWord lc "shop-base-algvw" %}</span>
+                      </span>
+                    </label>
+                  </div>
+                </div>
+
+                <button class="uppercase button button-bottom-right white bg-primary_color bold" type="submit">{% getWord lc "shop-base-buttonbuy" %} <i class="m-left-36 fa fa-angle-right bold"></i><div class="u-overlay"></button>
+                <!-- <input id="bg" type="color" /> -->
+              </form>
+            </div>
+          </div>
+        </article>
+        <div class="w-100 a-center">
+          <a class="base uppercase p-around-24 medium-small" href="{% url 'contact' %}">Contact</a>
+        </div>
+      </div>
+      <div class="popup-overlay js-overlay js-popup xxl-large">
+          <i class="fa fa-times white m-top-12 m-right-12 u-float-right u-pointer" aria-hidden="true"></i>
+      </div>
+      <div class="popup-container js-popup">
+        <h2 class="uppercase m-bottom-24 m-top-12 l-large">Algemene voorwaarden</h2>
+        <span class="light-gray lineheight-1-3">
+          <h3 class="large">Definities</h3>
+          <p><span class="underline">Algemene voorwaarden:</span> de voorwaarden die van toepassing zijn voor Yourtickets.<br/><span class="underline">Evenement:</span> de publieke of besloten gebeurtenis waarbij &ndash; bij wijze van voorbeeld, maar niet uitsluitend - een voorstelling van artistieke en/of sportieve aard wordt opgevoerd, waaronder &ndash; doch niet beperkt tot - een musical, theater, toneel-, of muziekvoorstelling, een concert, show of een sportevenement; <br/><span class="underline">Evenementhouder:</span> de natuurlijke of rechtspersoon die een Evenement produceert of organiseert en hiervoor verantwoordelijk is; Afnemer: De partij welke een aankoop doet via Yourtickets voor een Evenement; Duurtransactie: een overeenkomst op afstand met betrekking tot een reeks van producten en/of diensten, waarvan de leverings- en/of afnameverplichting in de tijd is gespreid; Herroepingsrecht: de mogelijkheid voor de consument om binnen de bedenktijd af te zien van de koop op afstand; Locatie: de plaats waar het Evenement gehouden wordt.</p>
+          <p>Algemene voorwaarden: de voorwaarden die van toepassing zijn voor Yourtickets. Evenement: de publieke of besloten gebeurtenis waarbij &ndash; bij wijze van voorbeeld, maar niet uitsluitend - een voorstelling van artistieke en/of sportieve aard wordt opgevoerd, waaronder &ndash; doch niet beperkt tot - een musical, theater, toneel-, of muziekvoorstelling, een concert, show of een sportevenement; Evenementhouder: de natuurlijke of rechtspersoon die een Evenement produceert of organiseert en hiervoor verantwoordelijk is; <br/><span class="underline">Afnemer:</span> De partij welke een aankoop doet via Yourtickets voor een Evenement; Duurtransactie: een overeenkomst op afstand met betrekking tot een reeks van producten en/of diensten, waarvan de leverings- en/of afnameverplichting in de tijd is gespreid; <br/><span class="underline">Herroepingsrecht:</span> de mogelijkheid voor de consument om binnen de bedenktijd af te zien van de koop op afstand; Locatie: de plaats waar het Evenement gehouden wordt.</p>
+          <p class="m-top-24">Algemene voorwaarden: de voorwaarden die van toepassing zijn voor Yourtickets. Evenement: de publieke of besloten gebeurtenis waarbij &ndash; bij wijze van voorbeeld, maar niet uitsluitend - een voorstelling van artistieke en/of sportieve aard wordt opgevoerd, waaronder &ndash; doch niet beperkt tot - een musical, theater, toneel-, of muziekvoorstelling, een concert, show of een sportevenement; Evenementhouder: de natuurlijke of rechtspersoon die een Evenement produceert of organiseert en hiervoor verantwoordelijk is; Afnemer: De partij welke een aankoop doet via Yourtickets voor een Evenement; Duurtransactie: een overeenkomst op afstand met betrekking tot een reeks van producten en/of diensten, waarvan de leverings- en/of afnameverplichting in de tijd is gespreid; Herroepingsrecht: de mogelijkheid voor de consument om binnen de bedenktijd af te zien van de koop op afstand; Locatie: de plaats waar het Evenement gehouden wordt.</p>
+        </span>
+
+      </div>
+      <div class="errormessage">
+        Er zijn geen tickets geselecteerd
+      </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700' rel='stylesheet' type='text/css'>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-XdYbMnZ/QjLh6iI4ogqCTaIjrFk87ip+ekIjefZch0Y+PvJ8CDYtEs1ipDmPorQ+" crossorigin="anonymous">
+    <script>
+        var originalText = 'Er zijn geen tickets geselecteerd';
+        $("#orderform").submit(function(e) {
+
+            setErrorMessageText(originalText);
+            if ($("#Terms").is(':checked')){
+
+            }else{
+                setErrorMessageText("Ga akkoord met de algemene voorwaarden");
+                $(".errormessage").addClass('active');
+                e.preventDefault();
+            }
+
+        });
+
+        $('body').Color({
+          primary_color   : '{{cshop.primary_color}}',
+          secondary_color : '{{cshop.secondary_color}}'
+        });
+        $(document).on('click','.button-bottom-right', function() {
+          boxes();
+        });
+        function boxes() {
+          var anyFilled = false;
+
+          var boxes = document.getElementsByTagName('input');
+
+          for(var i = 0; i < boxes.length; i++) {
+              if(boxes[i].value > 0) {
+                  anyFilled = true;
+                  break;
+              }
+          }
+
+          if(!anyFilled){
+            event.preventDefault()
+            $(".errormessage").addClass('active')
+          }
+        }
+        function setErrorMessageText(text){
+            $(".errormessage").html(text);
+        }
+        $(document).on('click','.errormessage', function() {
+          $(".errormessage").removeClass('active');
+            setErrorMessageText(originalText);
+        });
+        $(document).on('click','.js-addNumber', function() {
+          $(".errormessage").removeClass('active');
+            setErrorMessageText(originalText);
+        });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load index %}
+
+{% block content %}
+
+    <article class="p-around-36  m-bottom-18 bg-gray ">
+        <div class="form-contact clear" style="text-align: right">
+            <div style="display:inline-block;margin-top:7px;margin-right:16px; font-size:19px;">Ticket(s) kwijt?</div>
+            <a href="{% url 'lost' %}" class="u-float-right u-inline-block uppercase button white  bg-primary_color-fixed bold uppercase" style="padding:16px; margin-right:0px;">
+                 <span id="js-skipbutton">Klik hier &gt; </span><div class="u-overlay"></div>
+             </a>
+            </div>
+
+      <h2 class="a-center bold xl-large bold m-top-60 m-bottom-12">{% getWord lc "contact-header" "Contact opnemen" %}</h2>
+        {% if not error %}
+      <p class="a-center base m-bottom-24">{% getWord lc "contact-whatisyourquestion" "Wat is je vraag? Wij helpen je graag verder!" %}</p>
+      <form class="form-contact clear" method="post">
+        {% csrf_token %}
+        <textarea name="text_question" id="question" class="w-100 form-textarea p-around-24"
+                  placeholder="{% getWord lc "contact-placeholder-emailmessage" "Omschrijf in dit veld zo duidelijk mogelijk waarmee we je kunnen helpen" %}"></textarea>
+        <input name="name" class="js-required form-input-bigger w-100" type="text" id="name"
+               placeholder="{% getWord lc "contact-placeholder-yourname" "Vul hier je naam in" %}">
+        <input name="email" class="js-required form-input-bigger w-100" type="email" id="email"
+               placeholder="Vul hier je e-mail adres in">
+         <button class="u-float-right m-around-12 u-inline-block uppercase button white button-204 bg-primary_color-fixed bold uppercase" type="submit">
+             <span id="js-skipbutton">{% getWord lc "contact-sendbutton" "verstuur" %}</span><div class="u-overlay"></div>
+         </button>
+       </form>
+       {% else %}
+       <p class="w-100 a-center">{% getWord lc "contact-messagesend" "Je bericht is verstuurd en wij nemen zo snel mogelijk contact met je op." %}</p>
+       {% endif %}
+    </article>
+
+    <div class="wrapper u-overflow-hidden m-top-60">
+        <article class="p-around-12  m-bottom-18 bg-gray ">
+          <h2 class="a-center bold xl-large bold m-top-60">{% getWord lc "contact-contact-data" "Onze contactgegevens" %}</h2>
+          <div class="u-flex-row-around a-center p-bottom-48 p-top-36">
+            <div class="m-top-12">
+              <span class="bold large">Yourtickets</span>
+              <ul>
+                <li class="base p-top-12">Kvk 62950258</li>
+                <li class="base">BTW NL855131718B01</li>
+                <li class="base p-top-12">Sniep 41</li>
+                <li class="base">1112 AC Diemen</li>
+                <li class="base">Nederland</li>
+             </ul>
+            </div>
+            <div class="m-top-12">
+              <span class="bold large">Support</span>
+              <ul>
+                <li class="base p-top-12">Email: Support@yourtickets.nl</li>
+                <li class="base bold p-top-12">Telefoon: +31 6 51433719</li>
+                <li class="base">ma-vr 10:00 - 19:00</li>
+                <li class="base">za-zo 12:00 - 01:00</li>
+             </ul>
+            </div>
+          </div>
+        </article>
+    </div>
+
+{% endblock %}

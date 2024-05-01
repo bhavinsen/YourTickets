@@ -1,0 +1,148 @@
+{% extends "dash/event/edit/edit.html" %}
+{% load static %}
+{% load i18n %}
+{% load index %}
+{% block form %}
+    <script type="text/javascript" src="{% static 'js/plugins/jquery.inputmask.bundle.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/plugins/momentjs.min.js' %}"></script>
+    <div class="remodal" data-remodal-id="remove-event">
+      <button data-remodal-action="close" class="remodal-close"></button>
+        {% getWord lc "dash-edit_event-tickettypes-message_sure_wanna_delete" 'WEET JE ZEKER DAT JE DIT TICKET WILT VERWIJDEREN?' %}
+      <br><br><br>
+      <button data-remodal-action="cancel" style="margin-right:30px;" class="remodal-cancel">{% getWord lc "dash-edit_event-tickettypes-message_no_mistake" 'NEE, FOUTJE' %}</button>
+      <button id="ticket-delete-confirm" data-remodal-action="confirm" class="remodal-confirm">{% getWord lc "dash-edit_event-tickettypes-message_yes" 'JA' %}</button>
+    </div>
+
+
+<form class="dashboard-event-width bg-white" action="{% url 'dashboard_event_tickets' event_id=cur_event.id %}" method="post">
+  {% csrf_token %}
+  <h2 class="normal large bold m-bottom-24"><span class="create-header white">{% getWord lc "dash-edit_event-tickettypes-title" 'Ticketsoorten' %}</span></h2>
+   <fieldset class="u-border a-center bg-white m-bottom-24 u-border-radius">
+   {% for ticket in tickets %}
+   <input value="{{ticket.id}}" type="hidden" name="ticket_id[]">
+      <div id="js-tickets">
+        <div class="m-top-12 js-ticket a-left u-border-bottom">
+          <div class="p-side-12">
+            <span class="small bold uppercase">{% getWord lc "dash-edit_event-tickettypes-ticket_name" 'Ticket Naam' %}</span>
+            <input value="{{ticket.name}}" name="ticket_naam[]" class="js-required m-top-6 form-input w-100 u-break" type="text" id="ticketNaam_0" placeholder="{% getWord lc "dash-edit_event-tickettypes-like_regular_ticket" 'Bijv. Regular Ticket' %}Bijv. Regular Ticket">
+          </div>
+          <div class="u-flex-row p-side-12 cell-H74">
+            <div class="m-right-24 u-flex">
+              <span class="small bold uppercase">{% getWord lc "dash-edit_event-tickettypes-amount" 'Aantal' %}</span>
+              <input value="{{ticket.quantity}}" name="ticket_aantal[]" class="js-required m-top-6 form-input w-100 u-break" type="number" id="ticketAantal_0" placeholder="0">
+            </div>
+            <div class="m-right-24 u-flex">
+              <span class="small bold uppercase">{% getWord lc "dash-edit_event-tickettypes-price" 'Prijs' %}</span>
+              <span class="base small currency">€</span>
+              <input value="{{ticket.price}}" name="ticket_prijs[]" class="js-price js-required m-top-6 euro form-input w-100 u-break" type="text" id="ticketPrijs_0" placeholder="12,50">
+            </div>
+            <div class="u-flex cell-w80">
+              <span class="large cell-lineheigt u-pointer secondary_color-fixed "><i class="js-gear m-right-12 Gear activeGear fa fa-cog" aria-hidden="true"></i>
+                  <a class="remove-event" data-href="{% url 'dashboard_event_tickets_remove' event_id=cur_event.id item_id=ticket.id %}"><i class="fa fa-trash-o js-removeTicket" aria-hidden="true"></i></a></span>
+            </div>
+          </div>
+          <div class="bg-gray p-around-12 js-more" style="display: block;">
+              <div class="ticket-panel-error-container hidden">
+                <div class="hidden startdate-error">Einddatum bevindt zich voor de startdatum.</div>
+            </div>
+            <div class="u-flex-column-to-row">
+              <div class="m-right-24 u-flex a-center p-top-12 m-bottom-6">
+                <span class="base">{% getWord lc "dash-edit_event-tickettypes-startdate_sell" 'Startdatum verkoop' %}</span>
+              </div>
+              <div class="m-right-24 u-flex">
+                <input value="{{ticket.start_date}}" name="ticket_begin_datum[]" class="form-input m-right-6 w-100" type="text" id="ticketBeginDatum_0" placeholder="Begin datum">
+              </div>
+              <div class="m-right-24 u-flex">
+                <input value="{{ticket.start_time}}" name="ticket_begin_tijd[]" class="form-input w-100"  type="time" id="ticketBeginTijd_0" placeholder="{% getWord lc "dash-edit_event-tickettypes-start_time" 'Begin tijd' %}">
+              </div>
+            </div>
+            <div class="u-flex-column-to-row ">
+              <div class="m-right-24 u-flex a-center p-top-12 m-bottom-6">
+                <span class="base">{% getWord lc "dash-edit_event-tickettypes-enddate_sell" 'Einddatum verkoop' %}</span>
+              </div>
+              <div class="m-right-24 u-flex">
+                <input value="{{ticket.end_date}}" name="ticket_eind_datum[]" class="form-input m-right-6 w-100" type="text" id="ticketEindDatum_0" placeholder="Einddatum">
+              </div>
+              <div class="m-right-24 u-flex">
+                <input value="{{ticket.end_time}}" name="ticket_eind_tijd[]" class="form-input w-100"  type="time" id="ticketEindTijd_0" placeholder="{% getWord lc "dash-edit_event-tickettypes-end_time" 'Eindtijd' %}">
+              </div>
+            </div>
+            <div class="base m-top-12 m-bottom-12">{% getWord lc "dash-edit_event-tickettypes-tickets_per_order" 'Aantal tickets per bestelling' %}</div>
+            <div class="u-flex-column-to-row">
+              <div class="u-flex">
+                <span class="base m-right-12">{% getWord lc "dash-edit_event-tickettypes-max" 'Max' %}:</span>
+                <input value="{{ticket.max_sold}}" name="ticket_aantal_max[]" class="form-input"  type="number" id="ticketAantalMax_0" placeholder="10">
+              </div>
+            </div>
+            <div class="base m-top-12 m-bottom-12">{% getWord lc "dash-edit_event-tickettypes-persons_per_ticket" 'Aantal personen per ticket' %}</div>
+            <div class="u-flex-column-to-row">
+              <div class="u-flex">
+                <span class="base m-right-12">{% getWord lc "dash-edit_event-tickettypes-persons_per_tickets_max" 'Aantal' %}:</span>
+                <input value="{{ticket.person_amount}}" name="person_amount[]" class="form-input"  type="number" id="person_amount_0" placeholder="">
+              </div>
+            </div>
+
+
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+      <a href="{% url 'dashboard_event_tickets_add' event_id=cur_event.id %}" class="m-around-24 u-inline-block button-page u-pointer uppercase medium-small white bold bg-primary_color-fixed">
+          <i class="m-right-12 fa fa-plus" aria-hidden="true"></i>{% getWord lc "dash-edit_event-tickettypes-new_ticket" 'Nieuw ticket' %}</a>
+    </fieldset>
+    <button class="u-inline-block m-0 button white button-204 bg-secondary_color-fixed" id="save_button" type="submit">{% getWord lc "dash-edit_event-tickettypes-save_changes" 'Wijzigingen opslaan' %}<div class="u-overlay"></div></button>
+</form>
+
+    <script type="text/javascript">
+        $(function(){
+
+            $('.js-price').priceFormat({
+                prefix: '€ ',
+                centsSeparator: ',',
+                thousandsSeparator: '.',
+                limit: 7,
+                centsLimit: 2
+            });
+
+            $("input[name='ticket_begin_datum[]']").inputmask('dd-mm-yyyy', {placeholder: 'dd-mm-jjjj', clearMaskOnLostFocus:true});
+            $("input[name='ticket_eind_datum[]']").inputmask('dd-mm-yyyy', {placeholder: 'dd-mm-jjjj', clearMaskOnLostFocus:true});
+
+            $('#save_button').click(function(e){
+
+                var hasError = false;
+
+                $('.js-ticket').each(function(){
+
+                    var startDateEl = $(this).find('input[name="ticket_begin_datum[]"]');
+                    var startTimeEl = $(this).find('input[name="ticket_begin_tijd[]"]');
+                    var endDateEl = $(this).find('input[name="ticket_eind_datum[]"]');
+                    var endTimeEl = $(this).find('input[name="ticket_eind_tijd[]"]');
+
+                    var startDate = moment(startDateEl.val() + startTimeEl.val(), "DD-MM-YYYY HH:mm");
+
+                    var endDate = moment(endDateEl.val() + endTimeEl.val(), "DD-MM-YYYY HH:mm");
+
+                    var error_container = $(this).find('.ticket-panel-error-container');
+                    var error_message = $(this).find('.startdate-error');
+
+                    error_container.addClass('hidden');
+                    error_message.addClass('hidden');
+
+                    if(endDate.isBefore(startDate)){
+
+                        error_container.removeClass('hidden');
+                        error_message.removeClass('hidden');
+                        hasError = true;
+                    }
+                });
+
+                if(hasError === true) {
+                    e.preventDefault();
+                }
+            })
+
+        });
+
+    </script>
+
+{% endblock %}

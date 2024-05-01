@@ -1,0 +1,43 @@
+{% extends 'youradmin/base.html' %}
+{% load static %}
+
+{% block content %}
+    <link rel="stylesheet" type="text/css" href="{% static "youradmin/css/pages/translations.css"%}" />
+    {% include 'youradmin/partials/modals/form.html' with modal_id="event_url_add" form=event_url_form title="Create event url" %}
+    {% include 'youradmin/partials/modals/form.html' with modal_id="event_url_edit" mode='edit' title="Edit url" %}
+    {% include "youradmin/partials/modals/confirm.html" with modal_id='event_url_delete' mode='delete' success_message="Url has been removed" message="Are you sure you want to remove this url?" %}
+
+
+
+    <div class="panel panel-default page-event_urls">
+        <div class="panel-heading">
+            <h3 class="panel-title">Event urls
+                <button class="btn btn-primary pull-right"
+                id="button_create_all"
+                data-toggle="modal"
+                data-target="#event_url_add"
+                data-ajax_submit_url="{% url 'youradmin_content_eventurls_create' %}"
+                >Add</button>
+                <div class="clearfix"></div>
+            </h3>
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-12">
+
+                    {% include "youradmin/partials/datatable.html" with table_selector='maintable' datatables_config=datatables_config %}
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+
+    YT.urls = YT.urls || {};
+
+    YT.urls.translations_refresh = '{% url 'youradmin_content_eventurls_getlist' %}';
+
+    </script>
+    <script type="text/javascript" src="{% static 'youradmin/js/pages/event_urls.js' %}"></script>
+
+{% endblock %}

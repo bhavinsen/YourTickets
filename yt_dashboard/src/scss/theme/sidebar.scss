@@ -1,0 +1,121 @@
+//to support theming name, for importing as a theme later on the vue method
+$theme_name: 'light';
+
+
+.theme--#{$theme_name}{
+
+    .v-navigation-drawer {
+
+        background: #242735!important;
+        border-radius: 0px 20px 20px 0px!important;
+
+        .v-list-item{
+            padding:0!important;
+            padding-left:12px!important;
+            margin:20px;
+            margin-bottom:30px;
+            height:45px;
+            border-radius: 4px;
+            &.event_list_item{
+                margin:0;
+                height:20px;
+                min-height:0;
+                padding-left:0!important;
+            }
+        }
+        .v-list-item--active{
+            background-color:#66C5E1;
+        }
+
+
+        .v-list-item__title{
+            color:white!important;
+            font-size:12px!important;
+        }
+        .v-list-item__action{
+            margin-right:10px;
+        }
+
+        .v-list .v-list-item .v-icon{
+            color:white!important;
+        }
+
+        .v-expansion-panel-content__wrap{
+            padding:0!important;
+        }
+        .v-expansion-panels .v-expansion-panel{
+            background-color:transparent!important;
+        }
+        .v-expansion-panel-header{
+
+            color:white;
+            min-height:40px!important;
+            height:40px!important;
+            padding:12px!important;
+            &.active{
+                background: #66C5E1!important;
+            }
+            .v-expansion-panel-header__icon{
+                .v-icon{
+                    color:white;
+                }
+            }
+        }
+        .v-expansion-panel-content{
+            background-color:transparent!important;
+            .v-card__text{
+                //padding:8px!important;
+                //padding-left:20px!important;
+            }
+            .v-card{
+                background-color:#363A4F!important;
+                color:white!important;
+
+                .v-input input{
+                    color:white!important;
+                    border-color:transparent!important;
+                    font-size: 12px;
+                }
+                .v-text-field--outlined fieldset {
+                    border-color: transparent;
+
+                }
+                .v-text-field .v-input__control{
+                    height:32px;
+                }
+
+                .v-text-field .v-input__control .v-input__slot {
+                    min-height: auto !important;
+                    display: flex !important;
+                    align-items: center !important;
+                    padding:0!important;
+                }
+            }
+            .nav_search{
+                color:white!important;
+            }
+        }
+
+    }
+
+    .btn-container{
+        padding:10px;
+    }
+    //add styling for mini variant
+    .v-navigation-drawer--mini-variant{
+        .btn-container {
+            padding: 10px;
+        }
+    }
+
+    //.v-navigation-drawer{
+    //
+    //}
+    //.v-list-item{
+    //    color:white!important;
+    //}
+    //.theme--light.v-list-item:not(.v-list-item--active):not(.v-list-item--disabled){
+    //    color:white!important;
+    //}
+}
+

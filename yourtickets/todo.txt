@@ -1,0 +1,22 @@
+add django.contrib.messages
+en hoe te gebruiken
+
+slotmessages renamen
+bij terugkomst op 1e bestel pagina voeg parameter toe om door te gaan met de order
+b.v. continue. dit als je b.v. geen user extra hebt en wel ingelogd bent
+dit kan later, maar als er verder in het bestel process wordt teruggestuurd naar de 1e
+bestel pagina dan moet de order wel doorgaan
+
+- ben ingelogd
+- ga naar event pagina
+- dan redirect ie naar profiel
+- vul in en kom terug
+======
+
+
+
+
+
+t ssh -i key_pair_yourtickets.pem  ubuntu@ec2-34-252-137-93.eu-west-1.compute.amazonaws.com
+
+l2  ssh -i key_pair_yourtickets.pem ubuntu@ec2-34-251-173-197.eu-west-1.compute.amazonaws.com

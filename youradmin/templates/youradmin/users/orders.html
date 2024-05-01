@@ -1,0 +1,31 @@
+{% extends 'youradmin/base.html' %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{% static "youradmin/css/pages/users.css"%}" />
+{% include "youradmin/partials/modals/confirm.html" with title="Delete order?" modal_id='order_delete' success_message="Order is deleted" message="Are you sure you want to delete the order?" %}
+{% include "youradmin/partials/modals/confirm.html" with title="Send order?" modal_id='order_resend' success_message="Order is send" message="Are you sure you want to send the order?" %}
+
+
+{% include "youradmin/users/modals/tickets_for_order.html" with modal_id='tickets_for_order' width='90%' %}
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title"><a href="{% url 'youradmin_users_index' %}">Users</a> > {{ user.first_name }} {{ user.lastname_name }} > Orders </h3>
+    </div>
+    <div class="panel-body">
+        <div class="pane-header"></div>
+
+        {% include "youradmin/partials/datatable.html" with datatables_config=datatables_config %}
+
+    </div>
+</div>
+        <script>
+{#        YT.urls = YT.urls || {};#}
+{##}
+{#        YT.urls.youradmin_orders_get_tickets = '{% url 'youradmin_orders_get_tickets' order_id='_placeholder' %}';#}
+        </script>
+    <script type="text/javascript" src="{% static 'youradmin/js/pages/orders_per_user.js' %}"></script>
+
+
+{% endblock %}

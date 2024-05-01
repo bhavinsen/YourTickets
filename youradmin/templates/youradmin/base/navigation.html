@@ -1,0 +1,100 @@
+{% load has_group %}
+
+<div class="collapse navbar-collapse navbar-ex1-collapse">
+    <ul class="nav navbar-nav side-nav">
+{#        <li>#}
+{#            <a href="#" data-toggle="collapse" data-target="#submenu-1">#}
+{#                <i class="fa fa-fw fa-search"></i> MENU 1 <i class="glyphicon glyphicon-chevron-down pull-right"></i>#}
+{#            </a>#}
+{#            <ul id="submenu-1" class="collapse">#}
+{#                <li><a href="#"><i class="fa fa-angle-double-right"></i> SUBMENU 1.1</a></li>#}
+{#                <li><a href="#"><i class="fa fa-angle-double-right"></i> SUBMENU 1.2</a></li>#}
+{#                <li><a href="#"><i class="fa fa-angle-double-right"></i> SUBMENU 1.3</a></li>#}
+{#            </ul>#}
+{#        </li>#}
+{#        <li>#}
+{#            <a href="#" data-toggle="collapse" data-target="#submenu-2">#}
+{#                <i class="fa fa-fw fa-star"></i>  MENU 2 <i class="glyphicon glyphicon-chevron-down pull-right"></i>#}
+{#            </a>#}
+{#            <ul id="submenu-2" class="collapse">#}
+{#                <li><a href="#"><i class="fa fa-angle-double-right"></i> SUBMENU 2.1</a></li>#}
+{#                <li><a href="#"><i class="fa fa-angle-double-right"></i> SUBMENU 2.2</a></li>#}
+{#                <li><a href="#"><i class="fa fa-angle-double-right"></i> SUBMENU 2.3</a></li>#}
+{#            </ul>#}
+{#        </li>#}
+        <li>
+            <a href="#" data-toggle="collapse" data-target="#submenu-content">
+                <span class="glyphicon  glyphicon-text-color"></span>
+                Website content
+                <span class="glyphicon glyphicon-chevron-down pull-right"></span>
+            </a>
+            <ul id="submenu-content" class="collapse">
+                <li><a href="{% url 'youradmin_content_eventurls' %}"><i class="fa fa-angle-double-right"></i> Event urls</a></li>
+
+
+            </ul>
+        </li>
+        {% if request.user|has_group:"financial" %}
+        <li>
+            <a href="{% url 'youradmin_financial:events' %}"><span class="glyphicon  glyphicon-euro"></span>  Financial</a>
+        </li>
+        {% endif %}
+        <li>
+            <a href="{% url 'youradmin_guestlist:index' %}"><span class="glyphicon  glyphicon-euro"></span>  Guestlist</a>
+        </li>
+        <li>
+            <a href="{% url 'youradmin_cashflow_index' %}"><span class="glyphicon  glyphicon-euro"></span>  Cashflow</a>
+        </li>
+        <li>
+            <a href="{% url 'youradmin_events:index' %}"><span class="glyphicon  glyphicon-euro"></span>  Events</a>
+        </li>
+{#        <li>#}
+{#            <a href="#" data-toggle="collapse" data-target="#submenu-cashflow">#}
+{#                <span class="glyphicon glyphicon-euro"></span>#}
+{#                Cashflow#}
+{#                <span class="glyphicon glyphicon-chevron-down pull-right"></span>#}
+{#            </a>#}
+{#            <ul id="submenu-cashflow" class="collapse">#}
+{#                <li><a href="{% url 'youradmin_cashflow_index' %}"><i class="fa fa-angle-double-right"></i> cashflow</a></li>#}
+{##}
+{##}
+{#            </ul>#}
+{#        </li>#}
+        <li>
+            <a href="#" data-toggle="collapse" data-target="#submenu-orders">
+                <span class="glyphicon glyphicon-list-alt"></span>
+                Orders
+                <span class="glyphicon glyphicon-chevron-down pull-right"></span>
+            </a>
+            <ul id="submenu-orders" class="collapse">
+                <li><a href="{% url 'youradmin_orders_dashboard' %}"><i class="fa fa-angle-double-right"></i> dashboard</a></li>
+                <li><a href="{% url 'youradmin_orders_list' %}"><i class="fa fa-angle-double-right"></i> list</a></li>
+
+            </ul>
+        </li>
+        <li>
+            <a href="{% url 'youradmin_users_index' %}"><span class="glyphicon glyphicon-user"></span>  Users</a>
+        </li>
+
+        <li>
+            <a href="#" data-toggle="collapse" data-target="#submenu-translations">
+                <span class="glyphicon  glyphicon-text-color"></span>
+                Translations
+                <span class="glyphicon glyphicon-chevron-down pull-right"></span>
+            </a>
+            <ul id="submenu-translations" class="collapse">
+                <li><a href="{% url 'youradmin_translations_languages' %}"><i class="fa fa-angle-double-right"></i> languages</a></li>
+                <li><a href="{% url 'youradmin_translations' %}"><i class="fa fa-angle-double-right"></i> list</a></li>
+
+            </ul>
+        </li>
+
+
+{#        <li>#}
+{#            <a href="sugerencias"><i class="fa fa-fw fa-paper-plane-o"></i> MENU 4</a>#}
+{#        </li>#}
+{#        <li>#}
+{#            <a href="faq"><i class="fa fa-fw fa fa-question-circle"></i> MENU 5</a>#}
+{#        </li>#}
+    </ul>
+</div>

@@ -1,0 +1,70 @@
+{% load static %}
+{% load ga %}
+<!DOCTYPE html>
+<html>
+  <head>
+    
+    <meta charset='utf-8'>
+      <meta name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1'>
+      <title>{% block title %}Yourtickets{% endblock %}</title>
+      <link rel="apple-touch-icon" sizes="180x180" href="{% static 'images/favicon/apple-touch-icon.png' %}">
+      <link rel="icon" type="image/png" href="{% static 'images/favicon/favicon-32x32.png' %}" sizes="32x32">
+      <link rel="icon" type="image/png" href="{% static 'images/favicon/favicon-16x16.png' %}" sizes="16x16">
+      <link rel="manifest" href="{% static 'images/favicon/manifest.json' %}">
+      <link rel="mask-icon" href="{% static 'images/favicon/safari-pinned-tab.svg' %}" color="#dc3547">
+      <meta name="apple-mobile-web-app-title" content="Yourtickets">
+      <meta name="application-name" content="Yourtickets">
+      <meta name="theme-color" content="#232732">
+
+      <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700' rel='stylesheet' type='text/css'>
+      <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-XdYbMnZ/QjLh6iI4ogqCTaIjrFk87ip+ekIjefZch0Y+PvJ8CDYtEs1ipDmPorQ+" crossorigin="anonymous">
+      <link rel='stylesheet' href="{% static 'css/main.css' %}">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+        {% ga section='head' %}
+    <script>
+        (function(h,o,t,j,a,r){
+            h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+            h._hjSettings={hjid:331348,hjsv:5};
+            a=o.getElementsByTagName('head')[0];
+            r=o.createElement('script');r.async=1;
+            r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+            a.appendChild(r);
+        })(window,document,'//static.hotjar.com/c/hotjar-','.js?sv=');
+    </script>
+  </head>
+  <body>
+    {% ga section='body' %}
+    <div class="u-flex-row white shop" style=" background: url({% static 'images/background1.jpg' %}) no-repeat center center fixed; background-size: cover;">
+      <div class="p-around-24 u-flex u-relative">
+       <a class="logo-container" href="{% url 'index' %}"><img class="beta-logo" alt="Yourticket logo" src="{% static 'images/logo_color.png' %}"></a>
+          <h1 class="beta-header m-bottom-24">Reach your community like never before</h1>
+          <p class="m-bottom-18 lineheight-1-2">
+          	Bij Yourtickets draait alles om de groei van al jouw evenementen. Wij verzamelen data over jouw doelgroep en weergeven deze op een overzichtelijke manier. Hierdoor krijg je nog meer inzicht in je doelgroep en kan je jouw evenement nog gerichter promoten.
+          </p>
+          <p class="lineheight-1-2">
+            Veilig en gratis jouw community uitbreiden, tickets verkopen en scannen, was nog nooit zo makkelijk!
+          </p>
+          <h2 class="uppercase m-top-36 xl-large w-100 m-bottom-12">Besloten beta</h2>
+          {% if send %}
+          <div class="u-flex-column beta-form bg-gray dark">
+            <p class="m-bottom-6  xl-large">Bedankt voor uw aanvraag, wij nemen contact met u op.</p>
+            <p>Voor vragen kunt u altijd contact op nemen via support@yourtickets.nl</p>
+          </div>
+          {% else %}
+          <form class="u-flex-column beta-form bg-gray" action="" method="post">
+            {% csrf_token %}
+          	<input class="beta-margin form-input-bigger beta-input w-100" type="email" name="email" id="email" placeholder="Jouw e-mail adres">
+          	<button class="beta-margin w-100 u-inline-block m-0 uppercase button white u-float-right bg-primary_color-fixed bold uppercase" type="submit"><span>Request early access</span><div class="u-overlay"></div></button>
+          </form>
+          {% endif %}
+      </div>
+      <div class="u-flex u-desktop-show beta-image-container u-relative">
+        <img class="beta-image" src="{% static 'images/devices2.png' %}">
+      </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700' rel='stylesheet' type='text/css'>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-XdYbMnZ/QjLh6iI4ogqCTaIjrFk87ip+ekIjefZch0Y+PvJ8CDYtEs1ipDmPorQ+" crossorigin="anonymous">
+  </body>
+</html>

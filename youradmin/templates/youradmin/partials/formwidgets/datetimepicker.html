@@ -1,0 +1,13 @@
+<div class="input-group date" dateid="{{ dateid }}">
+  <input
+    {% for k, attr in input_attrs.items %}
+        {{ k }}="{{ attr }}"
+    {% endfor %}
+          >
+    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
+    </span>
+</div>
+
+<script>
+        $('[dateid="{{ dateid }}"]').datetimepicker({{ config_attrs|safe }});
+</script>

@@ -1,0 +1,161 @@
+{% extends "dash/event/edit/edit.html" %}
+{% load static %}
+{% load i18n %}
+{% load index %}
+{% block form %}
+<link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+
+
+    <script type="text/javascript" src="{% static 'js/plugins/jquery.inputmask.bundle.min.js' %}"></script>
+
+<form class="frm" method="post">
+    {% csrf_token %}
+    <div class="dashboard-event-width bg-white">
+        <h2 class="normal large bold m-bottom-24"><span class="create-header white">
+            {% getWord lc "dash-edit_event-general-title" 'Algemene informatie van jouw evenement' %}
+            </span></h2>
+
+        {% if event_form.non_field_errors or event_form.errors %}
+            <div class="u-flex-column-to-row ticket-panel-error-container">
+            {% for key, errors in event_form.errors.items %}
+                {% for error in errors %}
+                    {{ error }}<br/>
+                {% endfor %}
+
+            {% endfor %}
+            {% for key, errors in event_form.errors.items %}
+                {% for error in errors %}
+                    {% if not key == '__all__' %}
+                    {{ key }}: {{ error }}<br/>
+                    {% endif %}
+                {% endfor %}
+
+            {% endfor %}
+            </div>
+
+        {% endif %}
+
+        <input
+            name="{{event_form.title.html_name}}"
+            value="{{event_form.title.value|default_if_none:''}}"
+            class="js-required form-input-bigger w-100 {{ event_form.title.field.widget.attrs.class }}"
+            type="text" id="Title" placeholder="{% getWord lc "dash-edit_event-general-strong_title" 'Geef het evenement een krachtige titel' %}"
+        >
+
+        <input
+            name="{{event_form.location.html_name}}"
+            value="{{event_form.location.value|default_if_none:''}}"
+            class="form-input-bigger w-100 {{ event_form.location.field.widget.attrs.class }}"
+            type="text" id="Locatie"
+            placeholder="{% getWord lc "dash-edit_event-general-which_location" 'Geef aan op welke locatie het gehouden wordt' %}">
+
+        <div class="u-flex-column-to-row">
+            <div class="m-right-24 u-flex a-center p-top-12 m-bottom-6">
+                <span class="base">{% getWord lc "dash-edit_event-general-startdate" 'Start datum' %}</span>
+            </div>
+            <div class="m-right-24 u-flex">
+
+                <input name="{{event_form.start_date.html_name}}"
+                       value="{{event_form.start_date.value|default_if_none:''}}"
+                       class="form-input m-right-6 w-100 {{ event_form.start_date.field.widget.attrs.class }}" type="text" id="start-date" >
+            </div>
+            <div class="m-right-24 u-flex">
+                <input name="{{event_form.start_time.html_name}}"
+                       value="{{event_form.start_time.value|default_if_none:''}}"
+                       class="form-input w-100 {{ event_form.start_time.field.widget.attrs.class }}" id="start-time" placeholder="{% getWord lc "dash-edit_event-general-starttime" 'Begin tijd' %}">
+            </div>
+        </div>
+        <div class="u-flex-column-to-row">
+            <div class="m-right-24 u-flex a-center p-top-12 m-bottom-6">
+                <span class="base">{% getWord lc "dash-edit_event-general-enddate" 'Eind datum' %}</span>
+            </div>
+            <div class="m-right-24 u-flex">
+                <input name="{{event_form.end_date.html_name}}"
+                       value="{{event_form.end_date.value|default_if_none:''}}"
+                       class="form-input m-right-6 w-100 {{ event_form.end_date.field.widget.attrs.class }}" type="text" id="end-date" >
+            </div>
+            <div class="m-right-24 u-flex">
+                <input name="{{event_form.end_time.html_name}}"
+                       value="{{event_form.end_time.value|default_if_none:''}}"
+                       class="form-input w-100 {{ event_form.end_time.field.widget.attrs.class }}" id="end-time" placeholder="{% getWord lc "dash-edit_event-general-endtime" 'Eind tijd' %}">
+            </div>
+        </div>
+
+        <div id="editor" style="margin-bottom:12px;"></div>
+        <textarea style="display:none" name="{{event_form.description.html_name}}" id="description"
+                  class="w-100 form-textarea p-around-24" placeholder="{% getWord lc "dash-edit_event-general-promotiontext" 'Zet hier een duidelijke omschrijving bij jouw evenement' %}"
+                >{{event_form.description.value|default_if_none:''}}</textarea>
+        <span class="base create-aling-text m-right-12 u-inline-block medium-small">yourtickets.nl/event/</span>
+        <input name="{{event_form.event_url.html_name}}"
+               value="{{event_form.event_url.value|default_if_none:''}}"
+               class="create-eventUrl form-input-bigger {{ event_form.event_url.field.widget.attrs.class }}" type="text" id="eventurl" placeholder="{% getWord lc "dash-edit_event-general-your_event_url" 'Jouw event URL' %}">
+
+
+        <div class="u-flex-column-to-row">
+            <div class="m-right-24 u-flex p-top-12 m-bottom-12">
+                <span class="base create-aling-text m-right-12 u-inline-block medium-small">Show COVID19 info</span>
+                <span style="padding-left:12px" class="">
+                    <input type="checkbox" name="{{ event_form.show_covid19_info.html_name }}" value="true"
+                        id="show_covid19_info"
+                       {% if event_form.show_covid19_info.value %}checked="checked" {% endif %}
+                    >
+                    <label for="show_covid19_info"></label>
+                </span>
+            </div>
+        </div>
+
+        <span class="base create-aling-text m-right-12 u-inline-block medium-small" style="margin-right:47px;">Iframe redirect</span>
+        <input name="iframe_redirect_url"
+               value="{{iframe_redirect_url}}"
+               class="create-eventUrl form-input-bigger {{ event_form.event_url.field.widget.attrs.class }}"
+               type="text"
+               placeholder="De url na afronding van een iframe bestelling">
+        Iframe url: https://{{ request.get_host }}{{ event_url }}?iframe=1<br/><br/>
+        <button class="m-top-12 u-inline-block m-0 button white button-204 bg-secondary_color-fixed" type="submit">{% getWord lc "dash-edit_event-general-save_changes" 'Wijzigingen opslaan' %}<div class="u-overlay"></div></button>
+    </div>
+</form>
+
+    <script>
+    
+
+
+
+    $(function(){
+
+        $("#end-date").inputmask('dd-mm-yyyy', {placeholder: 'dd-mm-jjjj', clearMaskOnLostFocus:true});
+        $("#start-date").inputmask('dd-mm-yyyy', {placeholder: 'dd-mm-jjjj', clearMaskOnLostFocus:true});
+
+        const editor = $('#editor');
+    var quill = new Quill('#editor', {
+        theme: 'snow',
+        placeholder: '{% getWord lc "dash-edit_event-general-promotiontext" 'Zet hier een duidelijke omschrijving bij jouw evenement' %}',
+        modules: {
+            toolbar: [ 
+                ['bold'],
+                [{ 'header': 1 }],               // custom button values
+                // [{ 'list': 'bullet' }],
+            ]
+        }
+      });
+
+    // set html content
+    Quill.prototype.getHTML = function () {
+        return this.container.querySelector('.ql-editor').innerHTML;
+    };
+
+    Quill.prototype.setHTML = function (html) {
+        this.container.querySelector('.ql-editor').innerHTML = html;
+    };    
+    quill.on('text-change', function(delta, oldDelta, source) {
+      if (source == 'user') {
+        $('#description').val(quill.getHTML());
+      }
+    });
+    quill.setHTML(`{{event_form.description.value|default_if_none:'' | safe}}`);
+
+
+    })
+
+    </script>
+
+{% endblock %}

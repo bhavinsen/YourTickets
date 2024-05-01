@@ -1,0 +1,48 @@
+//.theme--light.v-btn {
+//    //color:red;
+//    font-size:30px;
+//    height:100px;
+//}
+.v-btn{
+    text-transform: none;
+    font-size:12px!important;
+    height:32px!important;
+
+    &.primary_btn{
+        background-color: #66C5E1 !important;
+        border-color: #66C5E1 !important;
+        color:white;
+        &.dark{
+            background-color:#363A4F!important;
+            &:focus::before {
+              opacity: 0 !important;
+            }
+        }
+    }
+    &.secondary_btn{
+        background-color:transparent!important;
+        border-color: #66C5E1 !important;
+        color:white;
+        border: 1px solid #66C5E1!important;
+        &.blue{
+            color:#66C5E1;
+        }
+    }
+    &.secondary_btn_error{
+        background-color:transparent!important;
+        border-color: red !important;
+        color:white;
+        border: 1px solid red!important;
+        &.blue{
+            color:#66C5E1;
+        }
+    }
+    &.v-btn--plain{
+        color:white;
+    }
+
+    &.icon-only{
+        padding:0px!important;
+        min-width:54px!important;
+    }
+}

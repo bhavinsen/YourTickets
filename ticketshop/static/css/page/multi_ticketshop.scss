@@ -1,0 +1,132 @@
+@import '../components/utils';
+
+// main style hacks
+.wrapper{
+    position:relative;
+    width:auto;
+    max-width:unset;
+    margin:auto;
+}
+@media (min-width: 1200px) {
+    .container {
+        width:970px;
+    }
+}
+
+.logo-container{
+    margin-left:10px;
+}
+
+.panel{
+    border-radius:0;
+    border:0;
+
+    .header-line{
+        position:absolute;
+        bottom:-1px;
+        left:0px;
+        width:100%;
+        background-color:#f0f2f7;
+        height:1px;
+        margin-top:15px;
+    }
+
+    .panel-body{
+        .header-col{
+            font-size:16px;
+            font-weight:bold;
+            padding-top:14px;
+        }
+    }
+    .ticketshoprow-mobile{
+        display:none;
+    }
+    @include breakpoint(xss) {
+
+		.ticketshoprow-mobile{
+            background-color: #e7e7e7;
+            display:block;
+            margin-top:15px;
+
+            .number{
+                font-size:40px;
+            }
+            .eventname{
+                position:absolute;
+                width:100%;
+                text-align: center;
+                top:5px;
+                left:0px;
+            }
+            .date-text{
+                padding-top:28px;
+            }
+
+            .time{
+                font-size:14px;
+                color:#616161;
+                text-wrap: avoid;
+                white-space: nowrap;
+                position:absolute;
+                bottom:-13px;
+                left:22px;
+                font-weight:normal;
+            }
+        }
+    }
+
+    .ticketshoprow{
+        background-color: #e7e7e7;
+        margin-left:0;
+        margin-right:0;
+        margin-top:15px;
+        border-left:3px solid #e7e7e7;
+        @include breakpoint(xss) {
+		    display:none;
+	    }
+
+        &:hover{
+            border-left:3px solid #55c7e0;
+            .btn{
+                background-color:#dc3547;
+            }
+        }
+        .monthyear{
+            font-weight:bold;
+        }
+    }
+    .number{
+        font-size:50px;
+        font-weight:bold;
+        margin-top:20px;
+        margin-bottom:20px;
+    }
+    .darktext{
+        color:#282b2f;
+    }
+    .eventname{
+        font-weight:bold;
+        font-size:18px;
+    }
+    .smalltext{
+        font-size:10px;
+    }
+    .lighttext{
+        color:#616161;
+    }
+    .btn{
+        margin-top:40px;
+        background-color:#282b2f;
+        color:white;
+        border-radius:0;
+        &:hover{
+            background-color:#dc3547;
+        }
+    }
+    .date-text{
+        padding-top:36px;
+    }
+    .event-text{
+        padding-top:32px;
+    }
+}

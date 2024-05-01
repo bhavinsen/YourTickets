@@ -1,0 +1,61 @@
+$theme_name: "light";
+
+
+.theme--#{$theme_name}{
+    &.v-date-picker-table {
+
+        .v-btn{
+            border-radius: 5px;
+            margin:4px;
+            font-size:12px!important;
+            &.v-btn--active{
+                background-color:#EDF5F7!important;
+                color:#66C5E1!important;
+                &.selected_date{
+                    background-color:#66C5E1!important;
+                    color:white!important;
+                }
+                &.other_date{
+                    border:1px solid #66C5E1!important;
+                }
+            }
+        }
+
+
+    }
+    &.create_event{
+
+        .v-btn{
+            width:24px!important;
+            height:23px!important;
+            margin:0!important;
+
+            &.v-btn--active{
+                background-color:#66C5E1!important;
+                color:white!important;
+            }
+        }
+        .v-date-picker-table{
+            height:190px;
+        }
+        &.v-picker{
+            border:1px solid #D6ECF5!important;
+
+        }
+        .v-date-picker-header{
+            .v-btn--icon{
+                color:#66C5E1;
+            }
+            .v-date-picker-header__value{
+                .accent--text{
+                    button{
+                        color:#66C5E1!important;
+                    }
+
+                }
+
+            }
+
+        }
+    }
+}

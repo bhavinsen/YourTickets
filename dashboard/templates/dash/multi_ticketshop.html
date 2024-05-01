@@ -1,0 +1,153 @@
+{% extends "dash/base.html" %}
+{% load static %}
+{% load index %}
+{% load compress %}
+
+{% block title %}Yourtickets - Dashboard{% endblock %}
+
+{% block content %}
+     <script type="text/javascript" src="{% static 'dashboard/js/multi_ticketshop.js' %}"></script>
+    <div class="remodal" data-remodal-id="create-multi_ticketshop">
+        <button data-remodal-action="close" class="remodal-close"></button>
+        <input name="name" value="" class="js-required form-input-bigger w-100 " type="text" placeholder="Multi ticketshop name">
+        {% csrf_token %}
+        <br><br>
+        <button id="create-shop-button" data-url="{% url 'dashboard_multiticketshop_create' %}" class="btn btn-blue">CREATE</button>
+    </div>
+
+    <div class="remodal" data-remodal-id="remove-shop">
+        <button data-remodal-action="close" class="remodal-close"></button>
+        {% getWord lc "dash-multiticketshop-message_sure_wanna_delete" 'WEET JE ZEKER DAT JE DEZE MULTISHOP WILT VERWIJDEREN?' %}
+        <br><br><br>
+        <button data-remodal-action="cancel" style="margin-right:30px;" class="remodal-cancel">{% getWord lc "dash-multiticketshop-message_no_mistake" 'NEE, FOUTJE' %}</button>
+        <button id="delete-confirm"
+              data-remodal-action="confirm"
+              class="remodal-confirm">{% getWord lc "dash-multiticketshop-message_yes" 'JA' %}</button>
+    </div>
+
+    <div class="remodal" data-remodal-id="request-short-url">
+        <button data-remodal-action="close" class="remodal-close"></button>
+        <div class="pull-left" style="margin-top:20px;margin-right:5px;">
+            {% getWord lc "dash-multiticketshop-create-short-url" 'https://yourtickets.nl/' %}
+        </div>
+
+        <div class="pull-left">
+            <input name="urlname" value="" class="js-required form-input-bigger w-100 pull-left" type="text" placeholder="Url name">
+        </div>
+        <div class="clearfix"></div>
+        {% csrf_token %}
+        <br><br><br>
+        <button data-remodal-action="cancel" style="margin-right:30px;" class="remodal-cancel">{% getWord lc "dash-multiticketshop-cancewl" 'CANCEL' %}</button>
+        <button id="request-confirm"
+            style="background-color:#55c7e0;"
+
+              class="remodal-confirm">{% getWord lc "dash-multiticketshop-message_request" 'SEND REQUEST' %}</button>
+    </div>
+
+    <div class="u-flex u-order-1to2">
+        <header class="dashboard-header white p-tb-24-lr-36">
+            <div class="dashboard-header-left u-relative">
+                <div style="float:right;position:relative;width:100%;margin-left:20px;">
+                    <style type="text/css">
+
+                        .languageselector{
+                            margin-right:20px;
+                        }
+                        @media (max-width: 733px) {
+                            .nav-leftwrapper {
+                                position: relative;
+                                top: 0px;
+                            }
+                        }
+                        .nice-select.right {
+                            float: right;
+                            color: black;
+                        }
+                    </style>
+                    {% include 'base/languageselector.html' %}
+                </div>
+            </div>
+        </header>
+
+        <div class="dashboard-container dashboard-container-padding">
+
+
+            <div class="bg-white m-top-24 p-around-36">
+
+
+
+                    <span class="large bold m-bottom-36 uppercase">
+                        {% getWord lc "dash-multi_ticketshop-title" 'Multi Ticketshops' %}
+                    </span>
+                    <button
+                            id="create_ticketshop"
+                        class="import-file btn btn-blue pull-right">
+                        CREATE MULTI TICKETSHOP</button>
+                    <div class="clearfix"></div>
+
+                    <table style="width:100%;margin-top:20px;" class="table" cellpadding="0" cellspacing="0">
+                        <tr>
+                            <td class="small bold header-td">{% getWord lc "dash-multi_ticketshop-name" 'SHOP NAME' %}</td>
+                            <td class="small bold header-td">{% getWord lc "dash-multi_ticketshop-events" 'EVENTS' %}</td>
+                            <td class="small bold header-td">{% getWord lc "dash-multi_ticketshop-events" 'SHORT URL' %}</td>
+                            <td class="small bold header-td"></td>
+                        </tr>
+
+                        {% for item in multishops %}
+                        <tr>
+                            <td>{{ item.name }}</td>
+                            <td>{{ item.total_events }}</td>
+                            <td>
+                                {% if item.url %}
+                                 {{ item.url }}
+                                {% else %}
+                                     <a href="{% url 'multiticketshop' multiticketshop_id=item.id %}"
+                                        style="padding:13px 0 13px 0; width:150px;border-radius:4px;"
+                                        class="u-inline-block m-0 btn btn-blue bg-secondary_color-fixed">
+                                        Visit Ticketshop<div class="u-overlay"></div></a>&nbsp;
+
+
+                                    <a href="#"
+                                       class="request_short_url"
+                                       style="text-decoration:underline;font-size:12px;"
+                                        data-url="{% url 'dashboard_multiticketshop_request_short' multishop_id=item.id %}">
+                                        Request short url
+
+                                    </a>
+
+                                {% endif %}
+
+                                <div class="u-inline-block hidden message_send" style="color:green;font-size: 12px;">
+                                    <span class="success_message">{% getWord lc "dash-multiticketshop-message_send" 'REQUEST MESSAGE SENT' %}</span>
+                                </div>
+
+                            </td>
+                            <td style="text-align:right">
+                                <a href="{% url 'dashboard_multiticketshop_edit' multishop_id=item.id %}"
+                                        class="u-inline-block m-0 icon edit-button pull-right">
+                                    <img src="{% static 'dashboard/img/edit.png' %}" />
+                                </a>
+                                <a href="#"
+                                   data-href="{% url 'dashboard_multiticketshop_delete' multishop_id=item.id %}"
+                                        class="u-inline-block m-0 icon remove-button pull-right remove-multishop">
+                                    <img src="{% static 'dashboard/img/delete.png' %}">
+                                </a>
+                            </td>
+
+                        </tr>
+                        {% endfor %}
+
+
+
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% compress css %}
+    <link rel='stylesheet' type="text/x-scss" href="{% static 'dashboard/css/pages/multiticketshop.scss' %}">
+    {% endcompress %}
+
+
+
+{% endblock %}

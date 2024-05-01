@@ -1,0 +1,203 @@
+{% extends "dash/event/edit/edit.html" %}
+{% load static %}
+{% load i18n %}
+{% load index %}
+{% block form %}
+
+
+
+<div class="dashboard-event-width bg-white">
+  <div>
+  <h2 class="normal large bold m-bottom-24"><span class="create-header white">{% getWord lc "dash-edit_event-edit_ticketshop-title" 'Ticketshop aanpassen' %}</span></h2>
+</div>
+<form class="u-flex-row" action="{% url 'dashboard_event_ticketshop_design' event_id=cur_event.id %}" method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+  <div class="u-flex p-left-24 create-step4">
+    <span class="base">{% getWord lc "dash-edit_event-edit_ticketshop-header_image" 'Header afbeelding' %}</span>
+    <div class="m-top-12 m-bottom-36">
+      <input name="header_img" id="headerimg" class="addImage" type="file" placeholder="voeg afbeelding toe" accept="image/jpg, image/jpeg, image/png" />
+      <label class="addImage" for="headerimg">
+        <span class="u-inline-block w-100">{% getWord lc "dash-edit_event-edit_ticketshop-change_image" 'AFBEELDING AANPASSEN' %}</span>
+        <span>(formaat 275x725px)</span>
+        <img src="{% if ticketshop.header_img %}{{ticketshop.header_img.url}}{% else %}/{% endif %}" id="js-headerImg" class="w-100 m-top-24 p-side-24 u-border-radius"/>
+      </label>
+    </div>
+    <span class="base">{% getWord lc "dash-edit_event-edit_ticketshop-background_image" 'Achtergrond afbeelding' %}</span>
+    <div class="m-top-12 m-bottom-36">
+      <input name="bg_img" id="backgroundimg" class="addImage" type="file" placeholder="voeg afbeelding toe" accept="image/jpg, image/jpeg, image/png" />
+      <label class="addImage" for="backgroundimg">
+        <span class="u-inline-block w-100">{% getWord lc "dash-edit_event-edit_ticketshop-change_image" 'AFBEELDING AANPASSEN' %}</span>
+        <span>(formaat 1000x1000x)</span>
+        <img src="{% if ticketshop.bg_img %}{{ticketshop.bg_img.url}}{% else %}/{% endif %}" id="js-backgroundImg" class="w-100 m-top-24 p-side-24 u-border-radius"/>
+      </label>
+    </div>
+    <div class="u-flex-row m-bottom-36">
+      <div class="u-flex colorpicker-container">
+        <span class="base">{% getWord lc "dash-edit_event-edit_ticketshop-primary_color" 'Primaire kleur' %}</span>
+        <div id="js-primaryBox" class="m-top-18 colorbox u-pointer">
+         <div class="colorPicker">
+          <div class="u-flex-row">
+           <ul class="p-around-6 colorPicker-blue">
+             <li class="colorPicker-top">#55c7e0</li>
+             <li class="colorPicker-mid">#4379bc</li>
+             <li class="colorPicker-bot">#132955</li>
+           </ul>
+           <ul class="p-around-6 colorPicker-purple">
+             <li class="colorPicker-top">#a139dc</li>
+             <li class="colorPicker-mid">#7800bc</li>
+             <li class="colorPicker-bot">#39055a</li>
+           </ul>
+           <ul class="p-around-6 colorPicker-green">
+             <li class="colorPicker-top">#329c00</li>
+             <li class="colorPicker-mid">#1d6400</li>
+             <li class="colorPicker-bot">#124500</li>
+           </ul>
+          </div>
+          <div class="u-flex-row">
+           <ul class="p-around-6 colorPicker-red">
+             <li class="colorPicker-top">#d2340f</li>
+             <li class="colorPicker-mid">#b31a00</li>
+             <li class="colorPicker-bot">#700c00</li>
+           </ul>
+           <ul class="p-around-6 colorPicker-orange">
+             <li class="colorPicker-top">#e28200</li>
+             <li class="colorPicker-mid">#c16e00</li>
+             <li class="colorPicker-bot">#a95100</li>
+           </ul>
+           <ul class="p-around-6 colorPicker-yellow">
+             <li class="colorPicker-top">#eeb300</li>
+             <li class="colorPicker-mid">#bb8500</li>
+             <li class="colorPicker-bot">#8c5b00</li>
+           </ul>
+          </div>
+         </div>
+        </div>
+       <input name="primColor" id="js-primaryColor" class="colorbox-input base small" type="text" value="{{ticketshop.primary_color}}"></input>
+      </div>
+      <div class="u-flex">
+	      <div class="u-flex colorpicker-container">
+	        <span class="base">{% getWord lc "dash-edit_event-edit_ticketshop-secondary_color" 'Secundaire kleur' %}</span>
+	        <div id="js-secondaryBox" class="m-top-18 colorbox u-pointer">
+	         <div class="colorPicker">
+	          <div class="u-flex-row">
+	           <ul class="p-around-6 colorPicker-blue">
+	             <li class="colorPicker-top">#55c7e0</li>
+	             <li class="colorPicker-mid">#4379bc</li>
+	             <li class="colorPicker-bot">#132955</li>
+	           </ul>
+	           <ul class="p-around-6 colorPicker-purple">
+	             <li class="colorPicker-top">#a139dc</li>
+	             <li class="colorPicker-mid">#7800bc</li>
+	             <li class="colorPicker-bot">#39055a</li>
+	           </ul>
+	           <ul class="p-around-6 colorPicker-green">
+	             <li class="colorPicker-top">#329c00</li>
+	             <li class="colorPicker-mid">#1d6400</li>
+	             <li class="colorPicker-bot">#124500</li>
+	           </ul>
+	          </div>
+	          <div class="u-flex-row">
+	           <ul class="p-around-6 colorPicker-red">
+	             <li class="colorPicker-top">#d2340f</li>
+	             <li class="colorPicker-mid">#b31a00</li>
+	             <li class="colorPicker-bot">#700c00</li>
+	           </ul>
+	           <ul class="p-around-6 colorPicker-orange">
+	             <li class="colorPicker-top">#e28200</li>
+	             <li class="colorPicker-mid">#c16e00</li>
+	             <li class="colorPicker-bot">#a95100</li>
+	           </ul>
+	           <ul class="p-around-6 colorPicker-yellow">
+	             <li class="colorPicker-top">#eeb300</li>
+	             <li class="colorPicker-mid">#bb8500</li>
+	             <li class="colorPicker-bot">#8c5b00</li>
+	           </ul>
+	          </div>
+	         </div>
+	        </div>
+	         <input name="secColor" id="js-secondaryColor" class="colorbox-input base small" type="text" value="{{ticketshop.secondary_color}}"></input>
+	      </div>
+      </div>
+    </div>
+<button class="u-inline-block m-0 button white button-204 bg-secondary_color-fixed" type="submit">{% getWord lc "dash-edit_event-edit_ticketshop-save_changes" 'Wijzigingen opslaan' %}<div class="u-overlay"></div></button>
+</form>
+<script>
+ function primaryColor() {
+  var color = $("#js-primaryColor").val();
+  $("#js-primaryBox").css("background",color);
+  $(".primary_color").css( 'color', color);
+  $(".bg-primary_color").css( 'background', color);
+}
+function secondaryColor() {
+  var color = $("#js-secondaryColor").val();
+  $("#js-secondaryBox").css("background",color );
+  $(".secondary_color").css( 'color', color);
+  $(".bg-secondary_color").css( 'background', color);
+}
+$("#js-primaryColor").on("change keyup paste", function(){
+  primaryColor();
+});
+$("#js-secondaryColor").on("change keyup paste", function(){
+ secondaryColor();
+});
+ $("#js-primaryBox .colorPicker li").click(function() {
+    $('#js-primaryColor').val(this.innerHTML);
+    primaryColor();
+});
+$(document).on('click','#js-primaryBox', function() {
+            $("#js-primaryBox .colorPicker").toggleClass("u-active");
+            $("#js-secondaryBox .colorPicker").removeClass('u-active');
+        });
+        $(document).on('click','#js-secondaryBox', function() {
+            $("#js-secondaryBox .colorPicker").toggleClass("u-active");
+            $("#js-primaryBox .colorPicker").removeClass('u-active');
+        });
+        $("#js-primaryBox .colorPicker li").click(function() {
+            $('#js-primaryColor').val(this.innerHTML);
+            primaryColor();
+        });
+        $("#js-secondaryBox .colorPicker li").click(function() {
+            $('#js-secondaryColor').val(this.innerHTML);
+            secondaryColor();
+        });
+        $(document).click(function(event) {
+              if(!$(event.target).closest('.colorbox').length &&
+                 !$(event.target).is('.colorbox')) {
+                  if($('.colorPicker').hasClass('u-active')) {
+                      $('.colorPicker').removeClass('u-active');
+                  }
+              }
+          })
+        primaryColor();
+        secondaryColor();
+
+         $("#headerimg").on("change", function(){
+            readURL(this);
+          });
+          function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $('#js-headerImg').attr('src', e.target.result);
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+          }
+           $("#backgroundimg").on("change", function(){
+            readURL2(this);
+          });
+          function readURL2(input) {
+              if (input.files && input.files[0]) {
+                  var reader = new FileReader();
+                  reader.onload = function (e) {
+                      $('#js-backgroundImg').attr('src', e.target.result);
+                  }
+                  reader.readAsDataURL(input.files[0]);
+              }
+          }
+</script>
+
+
+
+
+{% endblock %}

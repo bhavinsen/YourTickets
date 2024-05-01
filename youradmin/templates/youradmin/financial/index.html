@@ -1,0 +1,156 @@
+{% extends 'youradmin/base.html' %}
+{% load static %}
+{% load humanize %}
+
+{% block content %}
+    <link rel="stylesheet" type="text/css" href="{% static "youradmin/css/pages/financial.css"%}" />
+<script>
+    YT.urls = YT.urls || {};
+    YT.urls.get_total = '{% url 'youradmin_financial:get_total' %}';
+    YT.urls.mark_event = '{% url 'youradmin_financial:mark_event' event_id='_placeholder' %}'
+</script>
+<script type="text/javascript" src="{% static 'youradmin/js/pages/financial_events.js' %}"></script>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Event list</h3>
+    </div>
+    <div class="panel-body">
+        <div class="pane-header">
+            <div id="search" class="collapse search-container in">
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-horizontal">
+                            <div class="form-group">
+                                <label class="col-md-3" for="firstname">title</label>
+                                <div class="col-md-8">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control input-sm" id="title" placeholder="title">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-3" >date between</label>
+                                <div class="col-md-4">
+                                    <div class="input-group" id="start_date_picker">
+                                        <input type="text" class="form-control input-sm" id="start_date" placeholder="start date">
+                                        <span class="input-group-addon" >
+                                            <span class="glyphicon glyphicon-calendar"></span>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="input-group" id="end_date_picker">
+                                        <input type="text" class="form-control input-sm" id="end_date" placeholder="end date">
+                                        <span class="input-group-addon" >
+                                            <span class="glyphicon glyphicon-calendar"></span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-horizontal">
+                            <div class="form-group">
+                                <label class="col-md-3" for="user_id">event id</label>
+                                <div class="col-md-8">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control input-sm" id="event_id" placeholder="event id">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-horizontal">
+                            <div class="form-group">
+                                <label class="col-md-3" for="user_id">Marked</label>
+                                <div class="col-md-8">
+                                    <div class="input-group">
+                                        <div class="checkbox">
+                                            <input type="checkbox" id="marked" name="marked" value="1">
+                                            <label for="marked"></label>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+
+                    <div class="col-md-12 text-center">
+                        <button class="btn btn-primary" id="button_filter">Filter</button>
+                    </div>
+
+                </div>
+
+            </div>
+            <div style="" class="text-center search-line">
+                <div data-toggle="collapse" class="btn btn-xs btn-primary search-collapse-button" data-target="#search">
+                    <span class="glyphicon glyphicon-search"></span>
+                    Filter
+                    <span class="glyphicon glyphicon-chevron-down"></span>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="panel panel-default">
+{#    <div class="panel-heading">#}
+{#        <h3 class="panel-title">Event list</h3>#}
+{#    </div>#}
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-4">
+                <table class="table" style="width:300px;">
+                    <tr>
+                        <td>Total order amount</td>
+                        <td align="right"><span id="info_total_order_amount">0</span></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Total payout:</td>
+                        <td align="right"><span id="info_total_order_payout">0</span></td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>Still to pay</td>
+                        <td align="right"><span id="info_total_still_to_pay">0</span></td>
+                        <td></td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="col-md-4">
+                <table class="table" style="width:300px;">
+                    <tr>
+                        <td>Total service costs</td>
+                        <td align="right"><span id="info_total_service_costs">0</span></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Total tickets sold</td>
+                        <td align="right"><span id="info_total_tickets_sold">0</span></td>
+                        <td></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+        {% include "youradmin/partials/datatable.html" with datatables_config=datatables_config %}
+
+    </div>
+</div>
+
+
+
+
+{% endblock %}

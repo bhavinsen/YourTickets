@@ -1,0 +1,404 @@
+
+          <form id="eventCreateForm" action="/nl/dashboard/createevent/" method="post" enctype="multipart/form-data">
+            <script>csrftoken</script>
+            <ul class="light-gray uppercase bold u-desktop-show p-around-24 m-top-24 m-bottom-60">
+              <h1 class="dark bold uppercase m-right-24 u-inline-block">Cr�er un �v�nement</h1>
+              <li class="u-inline-block">Informations Ev�nement<span class="line"></span></li>
+              <li class="u-inline-block">Billets<span class="line"></span></li>
+              <li class="primary_color-fixed u-inline-block">Design Magasin de billets</li>
+            </ul>
+            <div class="m-auto create-step3">
+              <h2 class="u-border-bottom normal large bold m-bottom-24"><span class="numberbox white bold bg-secondary_color-fixed m-right-36 create-number">4</span><span class="create-header base">Personnaliser votre Magasin de Billets</span></h2>
+            </div>
+            <div class="u-flex-row">
+              <div class="u-flex p-left-24 create-step4">
+                <span class="base">Image d'en-t�te</span>
+                <div class="m-top-12 m-bottom-36">
+                  <input id="headerimg" class="addImage" type="file" placeholder="voeg afbeelding toe" name="image_header" accept="image/jpg, image/jpeg, image/png" />
+                  <label class="addImage u-textDots-100w" for="headerimg">
+                    <span class="u-inline-block w-100">VOEG AFBEELDING TOE</span>
+                    <span>(Image de Fond 275x725px)</span>
+                  </label>
+                </div>
+                <span class="base">Image de Fond</span>
+                <div class="m-top-12 m-bottom-36">
+                  <input id="backgroundimg" class="addImage" type="file" placeholder="voeg afbeelding toe" name="image_backgr" accept="image/jpg, image/jpeg, image/png" />
+                  <label class="addImage u-textDots-100w" for="backgroundimg">
+                    <span class="u-inline-block w-100">VOEG AFBEELDING TOE</span>
+                    <span>(Image de Fond 1000x1000x)</span>
+                  </label>
+                </div>
+                <div class="u-flex-row m-bottom-36">
+                  <div class="u-flex colorpicker-container">
+                    <span class="base">Couleur Primaire</span>
+                    <div id="js-primaryBox" class="m-top-18 colorbox u-pointer">
+                     <div class="colorPicker">
+                      <div class="u-flex-row">
+                       <ul class="p-around-6 colorPicker-blue">
+                         <li class="colorPicker-top">#55c7e0</li>
+                         <li class="colorPicker-mid">#4379bc</li>
+                         <li class="colorPicker-bot">#132955</li>
+                       </ul>
+                       <ul class="p-around-6 colorPicker-purple">
+                         <li class="colorPicker-top">#a139dc</li>
+                         <li class="colorPicker-mid">#7800bc</li>
+                         <li class="colorPicker-bot">#39055a</li>
+                       </ul>
+                       <ul class="p-around-6 colorPicker-green">
+                         <li class="colorPicker-top">#329c00</li>
+                         <li class="colorPicker-mid">#1d6400</li>
+                         <li class="colorPicker-bot">#124500</li>
+                       </ul>
+                      </div>
+                      <div class="u-flex-row">
+                       <ul class="p-around-6 colorPicker-red">
+                         <li class="colorPicker-top">#d2340f</li>
+                         <li class="colorPicker-mid">#b31a00</li>
+                         <li class="colorPicker-bot">#700c00</li>
+                       </ul>
+                       <ul class="p-around-6 colorPicker-orange">
+                         <li class="colorPicker-top">#e28200</li>
+                         <li class="colorPicker-mid">#c16e00</li>
+                         <li class="colorPicker-bot">#a95100</li>
+                       </ul>
+                       <ul class="p-around-6 colorPicker-yellow">
+                         <li class="colorPicker-top">#eeb300</li>
+                         <li class="colorPicker-mid">#bb8500</li>
+                         <li class="colorPicker-bot">#8c5b00</li>
+                       </ul>
+                      </div>
+                     </div>
+                    </div>
+                   <input name="primColor" id="js-primaryColor" class="colorbox-input base small" type="text" value="#dc3547"></input>
+                  </div>
+                  <div class="u-flex">
+                  <div class="u-flex colorpicker-container">
+                    <span class="base">Couleur Secondaire</span>
+                    <div id="js-secondaryBox" class="m-top-18 colorbox u-pointer">
+                     <div class="colorPicker">
+                      <div class="u-flex-row">
+                       <ul class="p-around-6 colorPicker-blue">
+                         <li class="colorPicker-top">#55c7e0</li>
+                         <li class="colorPicker-mid">#4379bc</li>
+                         <li class="colorPicker-bot">#132955</li>
+                       </ul>
+                       <ul class="p-around-6 colorPicker-purple">
+                         <li class="colorPicker-top">#a139dc</li>
+                         <li class="colorPicker-mid">#7800bc</li>
+                         <li class="colorPicker-bot">#39055a</li>
+                       </ul>
+                       <ul class="p-around-6 colorPicker-green">
+                         <li class="colorPicker-top">#329c00</li>
+                         <li class="colorPicker-mid">#1d6400</li>
+                         <li class="colorPicker-bot">#124500</li>
+                       </ul>
+                      </div>
+                      <div class="u-flex-row">
+                       <ul class="p-around-6 colorPicker-red">
+                         <li class="colorPicker-top">#d2340f</li>
+                         <li class="colorPicker-mid">#b31a00</li>
+                         <li class="colorPicker-bot">#700c00</li>
+                       </ul>
+                       <ul class="p-around-6 colorPicker-orange">
+                         <li class="colorPicker-top">#e28200</li>
+                         <li class="colorPicker-mid">#c16e00</li>
+                         <li class="colorPicker-bot">#a95100</li>
+                       </ul>
+                       <ul class="p-around-6 colorPicker-yellow">
+                         <li class="colorPicker-top">#eeb300</li>
+                         <li class="colorPicker-mid">#bb8500</li>
+                         <li class="colorPicker-bot">#8c5b00</li>
+                       </ul>
+                      </div>
+                     </div>
+                    </div>
+                     <input name="secColor" id="js-secondaryColor" class="colorbox-input base small" type="text" value="#55c7e0"></input>
+                  </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="u-flex u-desktop-show">
+                  <div id="js-backgroundImg" class="shop shopSmall" style=" background: url() no-repeat center center; background-size: cover;">
+                    <div class="shop-wrapper u-overflow-hidden">
+                    <header class="a-center">
+                        <h1 id="js-eventName" class="header white uppercase create-demoheader">Event Name</h1>
+                        <!-- <h2 class="subtext gray uppercase">GLOW IN THE DARK BIRTHDAY BASH</h2> -->
+                    </header>
+                    <article class="ticketshop">
+                      <div class="corners-outer corners-outer-bottom u-border-bottom-dash u-flex-column bg-gray">
+                       <div class="corners-inner corners-inner-top bg-gray">
+                          <div class="content u-flex-row-around">
+                            <div class="infoNav bold"><i class="fa fa-calendar primary_color m-right-12"></i> 04 MAART 16 | 23:00 - 05:00</div>
+                            <div class="infoNav bold"><a><span class="u-textDots"><i class="fa fa-map-marker secondary_color m-right-12"></i> <span id="js-club">CLUB</span> </a></span></div> <!-- in de link moet de naam van de club ingevuld worden achter de palce/ -->
+                          </div>
+                          <img id="js-headerImg" class="headerImg" src="" style="height:202px;">
+                          <div class="shop-description">
+                            <div id="description" class="shop-text u-break">
+                              <p id="js-descriptionSmall">
+                                The info of your event
+                              </p>
+                            </div>
+                            <div class="sectionshadow"></div>
+                            <div class="readmore primary_color">Meer weergeven</div>
+                            <p id="js-artistArea" class="uppercase u-overflow-hidden m-top-24 large bold lineheight-1-3 u-break">
+
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="corners-outer corners-outer-top bg-white">
+                        <div class="tickets corners-inner bg-white">
+                            <fieldset id="js-tickets"  class="p-bottom-12">
+                            </fieldset>
+                            <div class="terms" style="opacity: 0;">
+                              <input type="checkbox" id="Terms" name="Terms" value="Terms">
+                              <label class="primary_color u-noselect u-inline-block" for="Terms"><span class="initial_color p-left-12">J'accepte </label> <span class="primary_color u-pointer u-underline-h js-popup-click">les termes et conditions</span>.
+                            </div>
+
+                            <span class="uppercase button button-bottom-right white bg-primary_color bold">KOOP JE TICKET <i class="m-left-36 fa fa-angle-right bold"></i><div class="u-overlay"></span>
+                            <!-- <input id="bg" type="color" /> -->
+                        </div>
+                      </div>
+                    </article>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="bg-dark-gray">
+              <a href="/fr/dashboard/" class="u-inline-block m-0 uppercase button button-cancel light-gray bold uppercase">Annuler</a>
+              <button id="js-finishshop" class="u-inline-block m-0 uppercase button white u-float-right button-204 bg-primary_color-fixed bold uppercase" type="submit">Billets<i class="m-left-36 fa fa-angle-right bold"></i><div class="u-overlay"></div></button>
+            </div>
+          </form>
+          
+                <script>
+
+                  $(document).on('click','#js-finishshop', function() {
+
+                    var color1 = $("#js-primaryColor").val();
+                    var color2 = $("#js-secondaryColor").val(); 
+                    var Tcolor1 = color1.match(/^#(?:[0-9a-f]{3}){1,2}$/i);
+                    var Tcolor2 = color2.match(/^#(?:[0-9a-f]{3}){1,2}$/i);
+                    var imgVal1 = $('#headerimg').val(); 
+                    var imgVal2 = $('#backgroundimg').val(); 
+                    if(imgVal1==''){
+                      event.preventDefault()
+                      $("label[for='headerimg']").addClass("form-error");
+                      $('html, body').animate({
+                        scrollTop: $("#headerimg").offset().top -100 
+                      }, 200);
+                    } 
+                    else{
+                       $("label[for='headerimg']").removeClass("form-error");
+                    }
+                    if(imgVal2==''){
+                     event.preventDefault()
+                     $("label[for='backgroundimg']").addClass("form-error");
+                     if(imgVal1 !=''){
+                       $('html, body').animate({
+                          scrollTop: $("#backgroundimg").offset().top -100 
+                        }, 200);
+                      }
+                    } 
+                    else{
+                       $("label[for='backgroundimg']").removeClass("form-error");
+                    }
+                    if (!Tcolor1) {
+                     event.preventDefault()
+
+                         $("#js-primaryColor").addClass("form-error");
+                          $('html, body').animate({
+                            scrollTop: $("#js-primaryColor").offset().top -100
+                          }, 200);
+                        
+                    }
+                     if (!Tcolor2) {
+                     event.preventDefault()
+
+                         $("#js-secondaryColor").addClass("form-error");
+                          $('html, body').animate({
+                            scrollTop: $("#js-secondaryColor").offset().top -100 
+                          }, 200);
+                        
+                    }
+                  });
+                   $("#headerimg").on("change", function(){
+                     $('#js-headerImg').css('height', '')
+                      readURL(this);
+                      var file = this.files[0].name;
+                      var dflt = $(this).attr("placeholder");
+                      if($(this).val()!=""){
+                        $(this).next().text(file);
+                      } else {
+                        $(this).next().text(dflt);
+                      }
+                    });
+                    function readURL(input) {
+                      if (input.files && input.files[0]) {
+                          var reader = new FileReader();
+                          reader.onload = function (e) {
+                              $('#js-headerImg').attr('src', e.target.result);
+                          }
+                          reader.readAsDataURL(input.files[0]);
+                      }
+                    }
+                     $("#backgroundimg").on("change", function(){
+                      readURL2(this);
+                      var file = this.files[0].name;
+                      var dflt = $(this).attr("placeholder");
+                      if($(this).val()!=""){
+                        $(this).next().text(file);
+                      } else {
+                        $(this).next().text(dflt);
+                      }
+                    });
+                    function readURL2(input) {
+                        if (input.files && input.files[0]) {
+                            var reader = new FileReader();
+                            reader.onload = function (e) {
+                                $('#js-backgroundImg').css('background-image', 'url(' + e.target.result + ')');
+                            }
+                            reader.readAsDataURL(input.files[0]);
+                        }
+                    }
+                  function primaryColor() {
+                    var color = $("#js-primaryColor").val();
+                    $("#js-primaryBox").css("background",color);
+                    $(".primary_color").css( 'color', color);
+                    $(".bg-primary_color").css( 'background', color);
+                  }
+                  function secondaryColor() {
+                    var color = $("#js-secondaryColor").val();
+                    $("#js-secondaryBox").css("background",color );
+                    $(".secondary_color").css( 'color', color);
+                    $(".bg-secondary_color").css( 'background', color);
+                  }
+                  $("#js-primaryColor").on("change keyup paste", function(){
+                      if ($("#js-primaryColor").val().indexOf("#") == -1) {
+                        $("#js-primaryColor").val("#");
+                      }
+                      else{
+                        primaryColor();
+                      }
+                  });  
+                  $("#js-secondaryColor").on("change keyup paste", function(){
+                      if ($("#js-secondaryColor").val().indexOf("#") == -1) {
+                        $("#js-secondaryColor").val("#");
+                      }
+                      else{
+                        secondaryColor();
+                      }
+                  });   
+                  if (historyVar['title']) {
+                    $('#js-eventName').html(historyVar['title']);
+                  }
+                  if (historyVar['description']) {
+                    $('#js-descriptionSmall').html(historyVar['description']);
+                  }
+                  if (historyVar['locatie']) {
+                    $('#js-club').html(historyVar['locatie']);
+                  }
+                  $(document).on('click','#js-primaryBox', function() {
+                      $("#js-primaryBox .colorPicker").toggleClass("u-active");
+                      $("#js-secondaryBox .colorPicker").removeClass('u-active');
+                  });
+                  $(document).on('click','#js-secondaryBox', function() {
+                      $("#js-secondaryBox .colorPicker").toggleClass("u-active");
+                      $("#js-primaryBox .colorPicker").removeClass('u-active');
+                  });
+                  $("#js-primaryBox .colorPicker li").click(function() {
+                      $('#js-primaryColor').val(this.innerHTML);
+                      primaryColor();
+                  });
+                  $("#js-secondaryBox .colorPicker li").click(function() {
+                      $('#js-secondaryColor').val(this.innerHTML);
+                      secondaryColor();
+                  });
+                  $(document).click(function(event) {
+                        if(!$(event.target).closest('.colorbox').length &&
+                           !$(event.target).is('.colorbox')) {
+                            if($('.colorPicker').hasClass('u-active')) {
+                                $('.colorPicker').removeClass('u-active');
+                            }
+                        }
+                    })
+                  primaryColor();
+                  secondaryColor();
+
+
+        console.log(historyVar);
+        for (var i in historyVar) {
+
+            if (i == 'artiesten') {
+              for (var x = 0; x <= i.length; x++) {
+
+                if (historyVar['artiesten'][0][0][x] != undefined) {
+                  var hiddenField = document.createElement("input");
+                  var hiddenField2 = document.createElement("input");
+
+                  hiddenField.setAttribute("type", "hidden");
+                  hiddenField.setAttribute("name", "artiestenLijstNaam[]");
+                  hiddenField.setAttribute("value", historyVar['artiesten'][0][0][x]);
+                  $('#eventCreateForm').append(hiddenField);
+
+                  hiddenField2.setAttribute("type", "hidden");
+                  hiddenField2.setAttribute("name", "artiestenLijstUrl[]");
+                  hiddenField2.setAttribute("value", historyVar['artiesten'][0][1][x]);
+                  $('#eventCreateForm').append(hiddenField2);
+                }
+
+              }
+            }
+            else if (i == 'tickets') {
+              for (var x = 0; x <= i.length; x++) {
+                  if (historyVar['tickets'][0][0][x] != undefined) {
+                    var hiddenField = document.createElement("input");
+                    hiddenField.setAttribute("type", "hidden");
+                    hiddenField.setAttribute("name", "ticketNaam[]");
+                    hiddenField.setAttribute("value", historyVar['tickets'][0][0][x]);
+                    $('#eventCreateForm').append(hiddenField);
+                    var hiddenField2 = document.createElement("input");
+                    hiddenField2.setAttribute("type", "hidden");
+                    hiddenField2.setAttribute("name", "ticketAantal[]");
+                    hiddenField2.setAttribute("value", historyVar['tickets'][0][1][x]);
+                    $('#eventCreateForm').append(hiddenField2);
+                    var hiddenField3 = document.createElement("input");
+                    hiddenField3.setAttribute("type", "hidden");
+                    hiddenField3.setAttribute("name", "ticketPrijs[]");
+                    hiddenField3.setAttribute("value", historyVar['tickets'][0][2][x]);
+                    $('#eventCreateForm').append(hiddenField3);
+                    var hiddenField4 = document.createElement("input");
+                    hiddenField4.setAttribute("type", "hidden");
+                    hiddenField4.setAttribute("name", "ticketStart[]");
+                    hiddenField4.setAttribute("value", historyVar['tickets'][0][3][x] + " " + historyVar['tickets'][0][4][x]);
+                    $('#eventCreateForm').append(hiddenField4);
+                    var hiddenField5 = document.createElement("input");
+                    hiddenField5.setAttribute("type", "hidden");
+                    hiddenField5.setAttribute("name", "ticketEind[]");
+                    hiddenField5.setAttribute("value", historyVar['tickets'][0][5][x] + " " + historyVar['tickets'][0][6][x]);
+                    $('#eventCreateForm').append(hiddenField5);
+                    var hiddenField6 = document.createElement("input");
+                    hiddenField6.setAttribute("type", "hidden");
+                    hiddenField6.setAttribute("name", "ticketMax[]");
+                    hiddenField6.setAttribute("value", historyVar['tickets'][0][7][x]);
+                    $('#eventCreateForm').append(hiddenField6);
+
+                      var hiddenField6 = document.createElement("input");
+                    hiddenField6.setAttribute("type", "hidden");
+                    hiddenField6.setAttribute("name", "person_amount[]");
+                    hiddenField6.setAttribute("value", historyVar['tickets'][0][9][x]);
+                    $('#eventCreateForm').append(hiddenField6);
+                  }
+              }
+            }
+            else {
+              var hiddenField = document.createElement("input");
+
+              hiddenField.setAttribute("type", "hidden");
+              hiddenField.setAttribute("name", i);
+              hiddenField.setAttribute("value", historyVar[i]);
+              $('#eventCreateForm').append(hiddenField);
+            }
+
+        }
+              </script>

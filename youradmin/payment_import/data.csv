@@ -1,0 +1,518 @@
+Datum,Betaalmethode,Bedrag,ID,Omschrijving,"Naam consument","Rekening consument","BIC consument"
+"2017-04-30 23:19:25",ideal,32.21,tr_3saUub9RUz,"KidFest On Tour, Order nr: 1827","Mw E M Simmons",NL06INGB0751492086,INGBNL2A
+"2017-04-30 23:15:21",ideal,11.70,tr_5xguJcPTft,"KidFest On Tour, Order nr: 1826","Mw R van As",NL56INGB0001395327,INGBNL2A
+"2017-04-30 23:09:13",ideal,32.21,tr_xvewc7UfwW,"KidFest On Tour, Order nr: 1825","Mw R van As",NL56INGB0001395327,INGBNL2A
+"2017-04-30 22:02:04",ideal,51.93,tr_hQrPtmEKdW,"KidFest On Tour, Order nr: 1824","EC MIJNALS",NL77ABNA0497598698,ABNANL2A
+"2017-04-30 21:13:22",ideal,25.97,tr_Q68anDucvx,"KidFest On Tour, Order nr: 1823","AM MARTINA",NL51ABNA0501884432,ABNANL2A
+"2017-04-30 20:48:59",ideal,25.97,tr_yGcBMEb9Rx,"KidFest On Tour, Order nr: 1821","LUCIANO M E",NL39ABNA0422114952,ABNANL2A
+"2017-04-30 19:44:28",ideal,37.67,tr_urHHrkC8Gz,"KidFest On Tour, Order nr: 1820","Hr S S D Soekhai",NL46INGB0006727015,INGBNL2A
+"2017-04-30 19:17:28",ideal,25.97,tr_EA9NpAxPfR,"KidFest On Tour, Order nr: 1818","AI KAMMERON",NL41ABNA0587261005,ABNANL2A
+"2017-04-30 19:12:04",ideal,25.97,tr_ds8djrdwQ3,"KidFest On Tour, Order nr: 1817","KRAK D M",NL46ABNA0839210752,ABNANL2A
+"2017-04-30 19:03:21",ideal,25.97,tr_f4c9qnE8zq,"KidFest On Tour, Order nr: 1815","A ELHAGE",NL21ABNA0424334054,ABNANL2A
+"2017-04-30 18:31:11",ideal,64.41,tr_U46VxFAGjp,"KidFest On Tour, Order nr: 1813","Mw D L Sirvania",NL03INGB0001482126,INGBNL2A
+"2017-04-30 17:44:21",paypal,43.90,tr_xMKzdcr7mk,"KidFest On Tour, Order nr: 1812","Redouan Sulti",,
+"2017-04-30 15:44:57",ideal,32.21,tr_TnfWnnBxtp,"KidFest On Tour, Order nr: 1810","RE DRUIVENTAK",NL93ABNA0585182426,ABNANL2A
+"2017-04-30 14:52:41",mistercash,25.97,tr_wzQPHxH23V,"KidFest On Tour, Order nr: 1809",,,GKCCBEBB
+"2017-04-30 14:40:11",ideal,23.40,tr_GcSTr89azp,"La Vie presents Jonna Fraser, Order nr: 1808","NOA AARTS",NL87ABNA0598926852,ABNANL2A
+"2017-04-30 14:07:14",ideal,32.21,tr_h6rFWt87DM,"KidFest On Tour, Order nr: 1807","TIJTEL R",NL43ABNA0938861816,ABNANL2A
+"2017-04-30 14:02:57",ideal,25.97,tr_Q5u5RbQdkG,"KidFest On Tour, Order nr: 1806","Mw A S Broekhuizen",NL91INGB0752401386,INGBNL2A
+"2017-04-30 13:41:10",ideal,32.21,tr_KsQceuqHz6,"KidFest On Tour, Order nr: 1804","A. MATTE",NL34RABO0143027107,RABONL2U
+"2017-04-30 13:01:22",ideal,25.97,tr_bts4AyRbHe,"KidFest On Tour, Order nr: 1803","Jahmayra Felicia",NL40INGB0666383189,INGBNL2A
+"2017-04-30 12:34:27",ideal,25.97,tr_EwgpRz7Tz4,"KidFest On Tour, Order nr: 1802","MW G Jacott",NL06INGB0009166897,INGBNL2A
+"2017-04-30 12:33:08",ideal,25.97,tr_CkBUUkvbQD,"KidFest On Tour, Order nr: 1801","DOS REIS",NL88SNSB0903741172,SNSBNL2A
+"2017-04-30 10:10:25",ideal,11.70,tr_FbUzhkzmaz,"KidFest On Tour, Order nr: 1800","Mw V L Lopes Ribeiro",NL58INGB0758135165,INGBNL2A
+"2017-04-30 09:50:01",ideal,40.23,tr_6ndRn4yD8C,"KidFest On Tour, Order nr: 1799","Mw V L Lopes Ribeiro",NL58INGB0758135165,INGBNL2A
+"2017-04-30 08:10:07",ideal,32.21,tr_qggNcjQmNT,"KidFest On Tour, Order nr: 1798","L.W. SARIMAN",NL74RABO0108477703,RABONL2U
+"2017-04-30 00:49:17",ideal,32.21,tr_dNVunp93Bx,"KidFest On Tour, Order nr: 1796","VB MISSIEDJAN",NL74ABNA0518226093,ABNANL2A
+"2017-04-29 23:47:00",ideal,64.41,tr_hKD6jeuWTF,"KidFest On Tour, Order nr: 1795","Mw M B Camelia",NL77INGB0008350237,INGBNL2A
+"2017-04-29 22:20:55",ideal,43.90,tr_gJKGWrK4te,"KidFest On Tour, Order nr: 1794","Mw F Gündüz",NL54INGB0682901164,INGBNL2A
+"2017-04-29 19:56:48",ideal,32.21,tr_8v27gKvpau,"KidFest On Tour, Order nr: 1793","Mw S A J Fecunda",NL40INGB0008490971,INGBNL2A
+"2017-04-29 16:37:45",ideal,25.97,tr_vnwRSHdDFx,"KidFest On Tour, Order nr: 1790","A. MATTE",NL34RABO0143027107,RABONL2U
+"2017-04-29 16:33:00",ideal,40.23,tr_GTqFearN7J,"KidFest On Tour, Order nr: 1789","NN LEMA",NL48ABNA0543669467,ABNANL2A
+"2017-04-29 16:09:52",ideal,25.97,tr_2sDsCgznUF,"KidFest On Tour, Order nr: 1788","Mw EI Hooi",NL39INGB0685321584,INGBNL2A
+"2017-04-29 14:24:01",ideal,28.53,tr_w7CwdvGKJc,"KidFest On Tour, Order nr: 1787","Mw A S Lopes Ribeiro",NL91INGB0003253023,INGBNL2A
+"2017-04-29 13:09:00",ideal,37.67,tr_kARBvsQ4cQ,"KidFest On Tour, Order nr: 1786","Mw S Westerduijn",NL63INGB0652450180,INGBNL2A
+"2017-04-29 13:02:46",ideal,32.21,tr_makN4FNjW3,"KidFest On Tour, Order nr: 1785","ISIJK S E",NL70ABNA0862147328,ABNANL2A
+"2017-04-29 12:50:55",ideal,55.60,tr_FCvm6sjUAy,"KidFest On Tour, Order nr: 1784","Hr N Markusse, Mw T Dienaar",NL37INGB0749120169,INGBNL2A
+"2017-04-29 11:47:16",ideal,32.21,tr_FwDWu4qvKJ,"KidFest On Tour, Order nr: 1783","Mw A Debi",NL82INGB0008378568,INGBNL2A
+"2017-04-29 11:10:02",ideal,28.53,tr_Vuwrn5wvvr,"KidFest On Tour, Order nr: 1780","Mw R P Reger",NL93INGB0005219274,INGBNL2A
+"2017-04-29 10:56:45",ideal,41.34,tr_UpBWASkCJp,"KidFest On Tour, Order nr: 1779","R. VAN DER GAAG",NL28RABO0396396550,RABONL2U
+"2017-04-29 10:54:59",ideal,41.34,tr_SEWDDEQCvS,"KidFest On Tour, Order nr: 1778","DEMIR M",NL05ABNA0888274866,ABNANL2A
+"2017-04-29 10:37:10",ideal,32.21,tr_6tryE3MNAd,"KidFest On Tour, Order nr: 1776","Mw P Brumand",NL27INGB0008211360,INGBNL2A
+"2017-04-29 10:17:29",ideal,23.40,tr_UNhA3sTj8a,"KidFest On Tour, Order nr: 1775","A KOENDAN PANDAY",NL79ABNA0891654372,ABNANL2A
+"2017-04-29 10:14:46",ideal,32.21,tr_DpHRSgpWNc,"KidFest On Tour, Order nr: 1774","Hr RR Mungra",NL66INGB0666112673,INGBNL2A
+"2017-04-29 09:44:29",ideal,32.21,tr_U5huBqDp9J,"KidFest On Tour, Order nr: 1773","Mw V Jagessar",NL18INGB0757492290,INGBNL2A
+"2017-04-29 09:37:43",ideal,32.21,tr_RmNSAhmGtb,"KidFest On Tour, Order nr: 1771","Mw M F Bel",NL62INGB0005626456,INGBNL2A
+"2017-04-29 03:04:16",ideal,23.40,tr_TstSNrRdga,"KidFest On Tour, Order nr: 1765","Mw A S Lopes Ribeiro",NL91INGB0003253023,INGBNL2A
+"2017-04-29 01:52:26",ideal,23.40,tr_rSpHNMzP4N,"KidFest On Tour, Order nr: 1763","BOEDJARATH A S",NL56ABNA0834666995,ABNANL2A
+"2017-04-28 23:02:08",ideal,46.80,tr_CvhEmQsddv,"KidFest On Tour, Order nr: 1759","Mw N Boedjarath",NL67INGB0683911961,INGBNL2A
+"2017-04-28 22:33:09",ideal,32.21,tr_MdTAynhCky,"KidFest On Tour, Order nr: 1758","TA LALAI",NL62ABNA0416172415,ABNANL2A
+"2017-04-28 22:11:18",ideal,41.34,tr_jbgM4MjDec,"KidFest On Tour, Order nr: 1757","Mw S Mouktadibillah en/of Hr B Bak",NL92INGB0749251972,INGBNL2A
+"2017-04-28 22:06:02",ideal,32.21,tr_nKBnnSsmt4,"KidFest On Tour, Order nr: 1756","Mw H Tweeboom",NL37INGB0004202946,INGBNL2A
+"2017-04-28 21:45:12",ideal,23.40,tr_53yJk7F5uz,"KidFest On Tour, Order nr: 1754","Mw S C Plet",NL59INGB0004641087,INGBNL2A
+"2017-04-28 21:38:36",ideal,23.40,tr_T9Jv4FgV6M,"KidFest On Tour, Order nr: 1753","J M SNO",NL84ABNA0801084121,ABNANL2A
+"2017-04-28 21:14:36",ideal,23.40,tr_vHRvtTFTAH,"KidFest On Tour, Order nr: 1752","CG BRUINHARD",NL82ABNA0836458893,ABNANL2A
+"2017-04-28 21:18:55",ideal,32.21,tr_9Qmb8tHb7h,"KidFest On Tour, Order nr: 1751","DMSM THOMASA",NL23ABNA0978681452,ABNANL2A
+"2017-04-28 21:03:25",ideal,23.40,tr_NF3j3tUH49,"KidFest On Tour, Order nr: 1750","I VAN SWIETEN",NL67ABNA0807700797,ABNANL2A
+"2017-04-28 21:01:13",ideal,23.40,tr_N5krg42b4P,"KidFest On Tour, Order nr: 1749","Mw S R Roshan",NL67INGB0008627449,INGBNL2A
+"2017-04-28 20:56:46",ideal,11.70,tr_QAWWf6gR4D,"KidFest On Tour, Order nr: 1748","MW S J A Peroti",NL62INGB0756511798,INGBNL2A
+"2017-04-28 20:54:44",ideal,53.38,tr_pHg32bAaCg,"KidFest On Tour, Order nr: 1747","Hr HF van Duren",NL47INGB0006183700,INGBNL2A
+"2017-04-28 20:52:14",ideal,20.84,tr_3C2QnkQEqt,"KidFest On Tour, Order nr: 1746","CJ SNO",NL10ABNA0532250826,ABNANL2A
+"2017-04-28 19:56:45",ideal,29.98,tr_kayNPB6z8S,"KidFest On Tour, Order nr: 1742","MW J Rost",NL22INGB0008870468,INGBNL2A
+"2017-04-28 19:48:19",mistercash,32.21,tr_PrpPR5Q64F,"PNL Showcase, Order nr: 1741",,,GKCCBEBB
+"2017-04-28 19:45:17",mistercash,32.21,tr_zAB9xtvqkW,"PNL Showcase, Order nr: 1740",,,GEBABEBB
+"2017-04-28 19:38:34",mistercash,32.21,tr_HDrFQpdUtF,"PNL Showcase, Order nr: 1739",,,BBRUBEBB
+"2017-04-28 19:33:32",ideal,29.98,tr_be75EgzNAU,"KidFest On Tour, Order nr: 1738","Brooklynn Panneflek",NL68INGB0686929322,INGBNL2A
+"2017-04-28 17:09:14",paypal,20.84,tr_daJkKxyhpz,"KidFest On Tour, Order nr: 1735","Caroline Domacasse",,
+"2017-04-28 17:04:05",ideal,20.84,tr_nMCeV9ugc3,"KidFest On Tour, Order nr: 1733","C KORTLAND",NL88ABNA0620571802,ABNANL2A
+"2017-04-28 16:12:07",mistercash,32.21,tr_c3SyDFqyzd,"PNL Showcase, Order nr: 1732",,,GKCCBEBB
+"2017-04-28 15:50:20",mistercash,32.21,tr_JpNzsB5uKg,"PNL Showcase, Order nr: 1731",,,GKCCBEBB
+"2017-04-28 15:23:58",paypal,96.60,tr_VrmH736yMV,"PNL Showcase, Order nr: 1730","Aron Gentile",,
+"2017-04-28 15:04:35",ideal,64.41,tr_tV5zhWcJJR,"KidFest On Tour, Order nr: 1729","Mw S S Pinto Mendes",NL66INGB0009414913,INGBNL2A
+"2017-04-28 13:39:35",ideal,20.84,tr_pUKCUE6Dp7,"KidFest On Tour, Order nr: 1728","Mw SO Biemans",NL32INGB0704552833,INGBNL2A
+"2017-04-28 13:34:07",creditcard,64.41,tr_aUDEtWgFyn,"PNL Showcase, Order nr: 1726","Rachida Deghali",,
+"2017-04-28 12:50:29",ideal,20.84,tr_QaUGA2tGWm,"KidFest On Tour, Order nr: 1724","Mw D Sanchez",NL95INGB0001259310,INGBNL2A
+"2017-04-28 11:28:08",ideal,20.84,tr_Q7et59jz3A,"KidFest On Tour, Order nr: 1719","K.O.D. SMITH",NL88RABO0104170166,RABONL2U
+"2017-04-28 11:18:42",ideal,41.68,tr_qphBet9Apr,"KidFest On Tour, Order nr: 1718","K R KHOENKOEN",NL68ABNA0479808090,ABNANL2A
+"2017-04-28 10:59:47",ideal,20.84,tr_jdAAxk3kSv,"KidFest On Tour, Order nr: 1717","Mw D Rogers",NL86INGB0008680942,INGBNL2A
+"2017-04-28 10:53:17",ideal,20.84,tr_38KSxj3J6b,"KidFest On Tour, Order nr: 1716","Mw K T Pikeur",NL73INGB0755140699,INGBNL2A
+"2017-04-28 10:49:10",mistercash,64.41,tr_GQ4TzbnsgV,"PNL Showcase, Order nr: 1715",,,GKCCBEBB
+"2017-04-28 10:45:17",mistercash,32.21,tr_fAmMSG3bNt,"PNL Showcase, Order nr: 1714",,,GKCCBEBB
+"2017-04-28 10:44:54",ideal,53.38,tr_j6aNRHMQst,"KidFest On Tour, Order nr: 1713","JA WITTEMAN CJ",NL68ABNA0625225058,ABNANL2A
+"2017-04-28 10:25:13",ideal,32.54,tr_z27P6Gjdpr,"KidFest On Tour, Order nr: 1712","SILVA FORTES I",NL10ABNA0805506810,ABNANL2A
+"2017-04-28 10:24:28",mistercash,64.41,tr_5p7WWa8WdE,"PNL Showcase, Order nr: 1711",,,GEBABEBB
+"2017-04-28 10:18:50",mistercash,161.00,tr_S3eD22VEFB,"PNL Showcase, Order nr: 1710",,,GEBABEBB
+"2017-04-28 10:19:18",creditcard,128.81,tr_gUgA39MRpb,"PNL Showcase, Order nr: 1709","Muhammet Kocak",,
+"2017-04-28 10:16:03",creditcard,32.21,tr_fJ7jqmWUzh,"PNL Showcase, Order nr: 1708","Hoornaert stacey",,
+"2017-04-28 10:16:08",creditcard,32.21,tr_Srz6JJ8tbz,"PNL Showcase, Order nr: 1707","Brendaline bariany",,
+"2017-04-28 10:14:09",creditcard,64.41,tr_rBQBkH8RSx,"PNL Showcase, Order nr: 1705","LYSE VALLAT",,
+"2017-04-28 10:13:58",creditcard,64.41,tr_AwBrJvbGQB,"PNL Showcase, Order nr: 1704","Brendaline goguillon",,
+"2017-04-28 10:18:27",mistercash,64.41,tr_thyrbQBBxs,"PNL Showcase, Order nr: 1702",,,GEBABEBB
+"2017-04-28 09:46:52",ideal,18.28,tr_B4qQHjhWrv,"KidFest On Tour, Order nr: 1701","K VAN T ZANT",NL53ABNA0847806960,ABNANL2A
+"2017-04-28 09:20:47",ideal,27.42,tr_DEPR75vbQD,"KidFest On Tour, Order nr: 1699",KORTLAND,NL70ASNB0708580246,ASNBNL21
+"2017-04-28 08:07:17",ideal,27.42,tr_t5dT77bbNR,"KidFest On Tour, Order nr: 1698","Mw N Horta Varela",NL06INGB0703031953,INGBNL2A
+"2017-04-28 01:28:17",ideal,27.42,tr_Rv8yuJgpjy,"KidFest On Tour, Order nr: 1695","Mw M R Valken",NL58INGB0003857054,INGBNL2A
+"2017-04-28 01:11:52",ideal,18.28,tr_AvhKAVGjrg,"KidFest On Tour, Order nr: 1692","Mw J L Jong Loy",NL23INGB0005252156,INGBNL2A
+"2017-04-27 23:48:27",creditcard,23.40,tr_TctpdFmMbw,"La Vie presents Jonna Fraser, Order nr: 1690","S slegers",,
+"2017-04-27 23:44:00",ideal,54.83,tr_x4ddyJzWrB,"KidFest On Tour, Order nr: 1687","Lashawna Chachmouradian",NL36INGB0754121313,INGBNL2A
+"2017-04-27 22:54:10",ideal,36.55,tr_9xqakwDSkR,"KidFest On Tour, Order nr: 1683","R. DE PENDER",NL08RABO0163886261,RABONL2U
+"2017-04-27 21:56:51",mistercash,32.21,tr_CtgSkpgkp7,"PNL Showcase, Order nr: 1679",,,GKCCBEBB
+"2017-04-27 21:23:45",mistercash,64.41,tr_tDPVKs3ctU,"PNL Showcase, Order nr: 1675",,,GEBABEBB
+"2017-04-27 20:37:51",ideal,36.55,tr_NTJKGAJHeH,"KidFest On Tour, Order nr: 1673","Mw R P Reger",NL93INGB0005219274,INGBNL2A
+"2017-04-27 19:45:49",ideal,27.42,tr_bQtkkPKs5q,"KidFest On Tour, Order nr: 1672","Mw C J M Schenderling",NL32INGB0009025585,INGBNL2A
+"2017-04-27 19:32:58",ideal,27.42,tr_rT6ePAgetH,"KidFest On Tour, Order nr: 1671","Mw G R Carsilia",NL80INGB0009691305,INGBNL2A
+"2017-04-27 18:18:19",ideal,18.28,tr_zvKFvA5ct3,"KidFest On Tour, Order nr: 1669","Mw M R Dossett",NL84INGB0008781664,INGBNL2A
+"2017-04-27 17:21:59",ideal,27.42,tr_WzqysujA5B,"KidFest On Tour, Order nr: 1668","L. LANTANG DE GROOT",NL47RABO0315347082,RABONL2U
+"2017-04-27 16:53:42",ideal,18.28,tr_UH7GQFUccj,"KidFest On Tour, Order nr: 1666","Mw LS Dossett",NL18INGB0003072074,INGBNL2A
+"2017-04-25 19:17:48",ideal,14.27,tr_bMscaxByD3,"La Vie presents Jonna Fraser, Order nr: 1664","Mw M G L Rietvink",NL10INGB0757678092,INGBNL2A
+"2017-04-24 21:01:55",creditcard,21.95,tr_gBNn3DHmRg,"PNL Showcase, Order nr: 1663","Van Bost",,
+"2017-04-24 20:36:54",ideal,28.53,tr_e6Dqh8KvAb,"La Vie presents Jonna Fraser, Order nr: 1662","L VAN HEIJNINGEN",NL44ABNA0437910245,ABNANL2A
+"2017-04-24 20:13:11",creditcard,21.95,tr_rGMqRh8tKF,"PNL Showcase, Order nr: 1660","Tulpinck Patrick",,
+"2017-04-24 19:44:19",paypal,21.95,tr_HTvwWHbFFw,"PNL Showcase, Order nr: 1659","Romain Tricot",,
+"2017-04-24 19:22:11",mistercash,43.90,tr_mn6gj8Bv8J,"PNL Showcase, Order nr: 1658",,,GEBABEBB
+"2017-04-24 14:07:57",mistercash,21.95,tr_JxR7JAq6x6,"PNL Showcase, Order nr: 1656",,,BBRUBEBB
+"2017-04-24 11:05:06",mistercash,43.90,tr_utGVcdBmDs,"PNL Showcase, Order nr: 1654",,,GKCCBEBB
+"2017-04-24 00:13:58",paypal,2.48,tr_VFzdV5czrQ,"Test evenement, Order nr: 1651","Sophia Djender",,
+"2017-04-23 23:44:37",ideal,2.48,tr_CQ7y4AAAvA,"Test evenement, Order nr: 1648","Hr MD Remak",NL58INGB0003284851,INGBNL2A
+"2017-04-23 23:26:20",ideal,2.48,tr_88HKwUERen,"Test evenement, Order nr: 1647","Hr MD Remak",NL58INGB0003284851,INGBNL2A
+"2017-04-23 14:26:46",ideal,31.45,tr_bpzUBn6z87,"KidsFest Indoor Kids Festival, Order nr: 1638","Mw S Ameen",NL58INGB0792556003,INGBNL2A
+"2017-04-23 13:59:42",ideal,31.45,tr_jKEdA9sBQH,"KidsFest Indoor Kids Festival, Order nr: 1637","P SAMUEL",NL84ABNA0535957416,ABNANL2A
+"2017-04-23 13:49:42",ideal,62.90,tr_4DaTQ2hAFx,"KidsFest Indoor Kids Festival, Order nr: 1636","HR S J E Burnet",NL70INGB0754061337,INGBNL2A
+"2017-04-23 13:44:30",ideal,31.45,tr_4xMq9Pq4h2,"KidsFest Indoor Kids Festival, Order nr: 1635","S AKKAS",NL34ABNA0439911729,ABNANL2A
+"2017-04-23 12:19:31",ideal,31.45,tr_acDxHRkJuW,"KidsFest Indoor Kids Festival, Order nr: 1634","LJL CHAKAWRI",NL57ABNA0523184069,ABNANL2A
+"2017-04-23 12:27:27",ideal,31.45,tr_GqRJShxJPD,"KidsFest Indoor Kids Festival, Order nr: 1632","WW PONTOPRAJITNO",NL36ABNA0568729439,ABNANL2A
+"2017-04-23 12:01:37",ideal,16.45,tr_GcUejm5tzq,"KidsFest Indoor Kids Festival, Order nr: 1631","B.M. WIT",NL47RABO0329750127,RABONL2U
+"2017-04-23 11:57:04",ideal,59.35,tr_RWTGRzMAdU,"KidsFest Indoor Kids Festival, Order nr: 1630","Mw N R H Parden",NL56INGB0008254294,INGBNL2A
+"2017-04-23 11:49:13",ideal,11.45,tr_fNF4TcPsq2,"KidsFest Indoor Kids Festival, Order nr: 1629","Mw G F Heyer",NL21INGB0008064319,INGBNL2A
+"2017-04-23 11:48:36",ideal,27.90,tr_tkueFqtaFG,"KidsFest Indoor Kids Festival, Order nr: 1628","C.M.L. PONTJOPRAJITNO",NL50RABO0166297895,RABONL2U
+"2017-04-23 11:23:43",ideal,11.45,tr_pfu8rQq3DQ,"KidsFest Indoor Kids Festival, Order nr: 1627","R.P.W. RUIJTER",NL58RABO0160417708,RABONL2U
+"2017-04-23 11:21:00",ideal,27.90,tr_DN3hPvKMTn,"KidsFest Indoor Kids Festival, Order nr: 1626","S. DE BOER",NL08RABO0352302941,RABONL2U
+"2017-04-23 11:19:19",paypal,47.90,tr_reyvt4U4Uk,"KidsFest Indoor Kids Festival, Order nr: 1625","Kimberly Emanuels",,
+"2017-04-23 11:12:13",ideal,42.90,tr_PysQAdq5Gt,"KidsFest Indoor Kids Festival, Order nr: 1624","I.J. TAY",NL84RABO0140744282,RABONL2U
+"2017-04-23 11:11:11",ideal,31.45,tr_cQpJ2GbTTN,"KidsFest Indoor Kids Festival, Order nr: 1623",NUGTEREN,NL81SNSB0944540856,SNSBNL2A
+"2017-04-23 11:00:30",ideal,11.45,tr_dt8qqevNKy,"KidsFest Indoor Kids Festival, Order nr: 1622","T.D.Q. ADRIANA",NL71RABO0140509097,RABONL2U
+"2017-04-23 10:55:29",ideal,31.45,tr_tx2vHkNF7T,"KidsFest Indoor Kids Festival, Order nr: 1621","Mw SA Hoogland",NL76INGB0007148425,INGBNL2A
+"2017-04-23 10:53:39",ideal,16.45,tr_swcrKdx69b,"KidsFest Indoor Kids Festival, Order nr: 1620","Mw B H G Mahabali",NL47INGB0005102732,INGBNL2A
+"2017-04-23 11:03:46",ideal,55.80,tr_4GmcE5z5js,"KidsFest Indoor Kids Festival, Order nr: 1619","M SOLER INFANTES",NL24ABNA0614275326,ABNANL2A
+"2017-04-23 10:50:42",ideal,39.35,tr_wsAtT5tjFV,"KidsFest Indoor Kids Festival, Order nr: 1618","Mw HH Aydos",NL60INGB0680057404,INGBNL2A
+"2017-04-23 10:48:14",ideal,11.45,tr_j6Pstjjz3C,"KidsFest Indoor Kids Festival, Order nr: 1616","SERENA THEUNISSEN",NL02ABNA0414995430,ABNANL2A
+"2017-04-23 10:46:08",paypal,42.90,tr_aM8JPwGKFq,"KidsFest Indoor Kids Festival, Order nr: 1615","vanessa van haren",,
+"2017-04-23 10:35:05",ideal,55.80,tr_FzUQWTyGaP,"KidsFest Indoor Kids Festival, Order nr: 1613","Z. CEYLAN",NL04RABO0332836568,RABONL2U
+"2017-04-23 10:29:13",ideal,11.45,tr_JvdrCb8PvH,"KidsFest Indoor Kids Festival, Order nr: 1612","Mw R L M Braumuller",NL40INGB0686227352,INGBNL2A
+"2017-04-23 10:26:58",ideal,16.45,tr_Cr8PJJS4RC,"KidsFest Indoor Kids Festival, Order nr: 1611","TG RIJKSEN",NL17ABNA0809209756,ABNANL2A
+"2017-04-23 10:17:52",ideal,27.90,tr_s8be3Q3U8V,"KidsFest Indoor Kids Festival, Order nr: 1610","Mw O Nikolic",NL46INGB0701639962,INGBNL2A
+"2017-04-23 10:14:33",ideal,32.90,tr_e5puvzkGVc,"KidsFest Indoor Kids Festival, Order nr: 1609","CHAYENNE THEUNISSEN",NL10ABNA0414976177,ABNANL2A
+"2017-04-23 10:09:40",ideal,31.45,tr_mTnerjcFqW,"KidsFest Indoor Kids Festival, Order nr: 1608","M.G. DEN HARTOG-TAN EO",NL91RABO0337665796,RABONL2U
+"2017-04-23 10:10:52",ideal,31.45,tr_HzqpfCrRju,"KidsFest Indoor Kids Festival, Order nr: 1607","CAUPAIN G P",NL20ABNA0843281146,ABNANL2A
+"2017-04-23 10:01:44",ideal,16.45,tr_pWfnCK2ae8,"KidsFest Indoor Kids Festival, Order nr: 1606","SAADIA OUGHRIS",NL96ABNA0570902517,ABNANL2A
+"2017-04-23 10:02:22",ideal,44.35,tr_PDdNEmF5HB,"KidsFest Indoor Kids Festival, Order nr: 1605","M. MINNAARD-RUS",NL97RABO0303186747,RABONL2U
+"2017-04-23 09:42:41",ideal,64.35,tr_gQ8EBrRR9K,"KidsFest Indoor Kids Festival, Order nr: 1604","Mw S Manuela",NL30INGB0002338053,INGBNL2A
+"2017-04-23 09:32:44",ideal,42.90,tr_3tHQMa5DgG,"KidsFest Indoor Kids Festival, Order nr: 1603","Mw M M Mansell",NL84INGB0009488794,INGBNL2A
+"2017-04-23 09:07:06",ideal,102.25,tr_TdtSAAMfDr,"KidsFest Indoor Kids Festival, Order nr: 1602","Mw L L de Kater en/of Hr C R M Zijler",NL79INGB0007330052,INGBNL2A
+"2017-04-23 08:58:44",ideal,27.90,tr_7PdvKjCTwf,"KidsFest Indoor Kids Festival, Order nr: 1599","ACJ CORNET",NL54ABNA0459288962,ABNANL2A
+"2017-04-23 08:52:00",paypal,11.45,tr_3vnzeTyscU,"KidsFest Indoor Kids Festival, Order nr: 1598","Bianca Biervliet",,
+"2017-04-23 08:50:46",ideal,27.90,tr_MAjaPM2mVn,"KidsFest Indoor Kids Festival, Order nr: 1597","M. HAHN EO",NL20RABO0141281456,RABONL2U
+"2017-04-23 08:33:53",ideal,27.90,tr_pMexnqPrHv,"KidsFest Indoor Kids Festival, Order nr: 1596","Destiny May Philipse",NL97INGB0757524915,INGBNL2A
+"2017-04-23 08:13:31",ideal,55.80,tr_zm4KcN5Bck,"KidsFest Indoor Kids Festival, Order nr: 1595","K. LANDMAN EO",NL37RABO0346616182,RABONL2U
+"2017-04-23 07:59:46",ideal,27.90,tr_qKpqa3J7k8,"KidsFest Indoor Kids Festival, Order nr: 1593","B BRUNEKREEF",NL45ABNA0400584433,ABNANL2A
+"2017-04-23 07:54:06",ideal,31.45,tr_tKf9wAe36x,"KidsFest Indoor Kids Festival, Order nr: 1592","SAADIA OUGHRIS",NL96ABNA0570902517,ABNANL2A
+"2017-04-23 01:15:58",creditcard,64.35,tr_mwUevSgTEp,"PNL Showcase, Order nr: 1591",broutin,,
+"2017-04-23 00:23:54",ideal,55.80,tr_ddRBy94rWJ,"KidsFest Indoor Kids Festival, Order nr: 1590","MARIAM SULEIMAN",NL16ABNA0581615085,ABNANL2A
+"2017-04-23 00:03:05",mistercash,21.45,tr_DxnmPRAWEF,"PNL Showcase, Order nr: 1588",,,GKCCBEBB
+"2017-04-22 23:55:10",ideal,31.45,tr_zURt64tPHF,"KidsFest Indoor Kids Festival, Order nr: 1586","A GRANADILLO",NL09ABNA0472744836,ABNANL2A
+"2017-04-22 23:14:50",ideal,16.45,tr_pcpASnRDu3,"KidsFest Indoor Kids Festival, Order nr: 1584","HR S J E Burnet",NL70INGB0754061337,INGBNL2A
+"2017-04-22 22:57:32",ideal,32.90,tr_RCbcTSTgG6,"Bitter or Better, Order nr: 1583","J. TIJHAAR",NL25RABO0330668919,RABONL2U
+"2017-04-22 22:52:43",ideal,16.45,tr_BUHDCaVrMw,"KidsFest Indoor Kids Festival, Order nr: 1582","L. OURHRIS",NL87RABO0301695067,RABONL2U
+"2017-04-22 22:50:07",ideal,32.90,tr_MM6DeDa3g7,"Bitter or Better, Order nr: 1581","DJ EMERENCIANA",NL75ABNA0548067058,ABNANL2A
+"2017-04-22 22:30:07",ideal,16.45,tr_VPafazsMGa,"KidsFest Indoor Kids Festival, Order nr: 1579","N Rageh",NL16INGB0008229600,INGBNL2A
+"2017-04-22 22:27:12",ideal,32.90,tr_bHPEynwxQE,"Bitter or Better, Order nr: 1578","VARSHA SHEOTAHUL",NL08ABNA0497026864,ABNANL2A
+"2017-04-22 22:21:49",ideal,16.45,tr_JkjRnBz6up,"KidsFest Indoor Kids Festival, Order nr: 1577","H. OURHRIS",NL50RABO0161198023,RABONL2U
+"2017-04-22 22:12:13",ideal,32.90,tr_b3apTp82b2,"Bitter or Better, Order nr: 1576","Hr F J A Hertstein",NL21INGB0756454239,INGBNL2A
+"2017-04-22 22:07:26",ideal,27.90,tr_TnagEnsWnE,"KidsFest Indoor Kids Festival, Order nr: 1575","A.F. WILLIAMS",NL68RABO0333977009,RABONL2U
+"2017-04-22 22:05:35",ideal,11.45,tr_tuqkDMMHvN,"KidsFest Indoor Kids Festival, Order nr: 1574","Mw ALEA de Almeida",NL35INGB0002390440,INGBNL2A
+"2017-04-22 21:59:19",ideal,39.35,tr_HuVenjcGRE,"KidsFest Indoor Kids Festival, Order nr: 1573","S.D. KOSTER",NL83RABO0153684488,RABONL2U
+"2017-04-22 21:54:20",ideal,26.45,tr_HA9PC7zy4q,"KidsFest Indoor Kids Festival, Order nr: 1570","Hr GG Sedney",NL63INGB0666029792,INGBNL2A
+"2017-04-22 21:34:15",mistercash,21.45,tr_TECTKPkh2y,"PNL Showcase, Order nr: 1568",,,GEBABEBB
+"2017-04-22 21:26:43",ideal,27.90,tr_C6kdWBDGda,"KidsFest Indoor Kids Festival, Order nr: 1566","F HASANIC",NL54ABNA0462207110,ABNANL2A
+"2017-04-22 21:26:51",paypal,27.90,tr_tHc9n6VPdK,"KidsFest Indoor Kids Festival, Order nr: 1565","Shar Westermaat",,
+"2017-04-22 20:34:41",ideal,54.35,tr_NspPBtKvdz,"KidsFest Indoor Kids Festival, Order nr: 1563","M.L. VIERBERGEN",NL04RABO0363239472,RABONL2U
+"2017-04-22 20:24:01",ideal,65.80,tr_4F8way4jHR,"Bitter or Better, Order nr: 1562","OLIVEIRA ROCHA",NL07SNSB0821091840,SNSBNL2A
+"2017-04-22 20:14:15",ideal,42.90,tr_HJ8NrmxRfV,"KidsFest Indoor Kids Festival, Order nr: 1561","R. STUART-BOMMER",NL84RABO0370915097,RABONL2U
+"2017-04-22 20:13:23",ideal,32.90,tr_Nj6T9PTSBr,"Bitter or Better, Order nr: 1560","HARAR COFFEE",NL48RABO0108201139,RABONL2U
+"2017-04-22 20:07:10",ideal,31.45,tr_g2EWUKwtJf,"KidsFest Indoor Kids Festival, Order nr: 1558","M.T. PENGEL-MARTHA",NL55RABO0110173023,RABONL2U
+"2017-04-22 20:15:26",ideal,8.95,tr_RqsEsUwsQ2,"KidsFest Indoor Kids Festival, Order nr: 1557","CS SIMON CJ",NL91ABNA0493916229,ABNANL2A
+"2017-04-22 19:39:16",ideal,8.95,tr_Ar69nc2WNe,"KidsFest Indoor Kids Festival, Order nr: 1556","Mw T O Hupsel",NL92INGB0001275757,INGBNL2A
+"2017-04-22 19:30:47",ideal,8.95,tr_scPshwfgGy,"KidsFest Indoor Kids Festival, Order nr: 1555","Mw K M Zwikker",NL29INGB0002476975,INGBNL2A
+"2017-04-22 19:32:37",ideal,31.85,tr_4UwWTKdW4J,"KidsFest Indoor Kids Festival, Order nr: 1552","RJ OPZITTER CJ",NL98ABNA0892644885,ABNANL2A
+"2017-04-22 19:30:13",ideal,16.45,tr_C7BhUERTvr,"Bitter or Better, Order nr: 1551","N.K. KONINGEN",NL28RABO0119099837,RABONL2U
+"2017-04-22 19:28:12",ideal,22.90,tr_JKaaJ5rbxF,"KidsFest Indoor Kids Festival, Order nr: 1549","S.G. MANTEL",NL12RABO0166855456,RABONL2U
+"2017-04-22 19:21:34",ideal,16.45,tr_UcfWAsu4F4,"Bitter or Better, Order nr: 1548","Hr A K Rampadarath",NL09INGB0749560568,INGBNL2A
+"2017-04-22 19:21:45",ideal,8.95,tr_xhaUrujAKJ,"La Vie presents Jonna Fraser, Order nr: 1547","I HADDOUCHE",NL22ABNA0554525593,ABNANL2A
+"2017-04-22 19:19:02",ideal,31.85,tr_wDP3J6FaWA,"KidsFest Indoor Kids Festival, Order nr: 1546","JALEASHA WAJWAKANA",NL54ABNA0557227631,ABNANL2A
+"2017-04-22 19:12:47",ideal,67.90,tr_dzQQFUwe9x,"Bitter or Better, Order nr: 1544","Mw T Bolukbasi",NL03INGB0748044566,INGBNL2A
+"2017-04-22 19:07:41",ideal,31.85,tr_2dGRRQ6WTy,"KidsFest Indoor Kids Festival, Order nr: 1541","CGM VAN DER PUTTEN",NL32ABNA0626878683,ABNANL2A
+"2017-04-22 18:54:30",ideal,22.90,tr_9r4QBkPpNR,"KidsFest Indoor Kids Festival, Order nr: 1540","Mw K J Jansen",NL93INGB0002084622,INGBNL2A
+"2017-04-22 18:48:10",ideal,32.90,tr_Ndt5tzTxEb,"Bitter or Better, Order nr: 1539","N. TABRIZIAN",NL29RABO0120140144,RABONL2U
+"2017-04-22 18:40:53",ideal,16.45,tr_Qw3CdTw5J7,"Bitter or Better, Order nr: 1538","S GALLOWAY",NL85ABNA0570702119,ABNANL2A
+"2017-04-22 18:46:17",ideal,22.90,tr_yD3FHP3mEd,"KidsFest Indoor Kids Festival, Order nr: 1537","E.C. ARENDS",NL47RABO0119725436,RABONL2U
+"2017-04-22 18:01:28",ideal,16.45,tr_a2CEHbJmDf,"Bitter or Better, Order nr: 1533","N.K. KONINGEN",NL28RABO0119099837,RABONL2U
+"2017-04-22 18:03:22",creditcard,36.85,tr_2GKCKc94wx,"KidsFest Indoor Kids Festival, Order nr: 1532","v.carcamo robles",,
+"2017-04-22 17:52:39",ideal,16.45,tr_R8xrw9taTk,"Bitter or Better, Order nr: 1531","Hr D R B van Oosterhout",NL89INGB0009535749,INGBNL2A
+"2017-04-22 17:48:46",ideal,54.75,tr_cRxf4kNgfw,"KidsFest Indoor Kids Festival, Order nr: 1530","I.R. BURKELS",NL63RABO0346607663,RABONL2U
+"2017-04-22 17:45:29",ideal,22.90,tr_pPpBwqcjhw,"KidsFest Indoor Kids Festival, Order nr: 1529","MDEF SILVA MOREIRA",NL10ABNA0803575831,ABNANL2A
+"2017-04-22 17:43:15",ideal,22.90,tr_QzzSw7GjTF,"KidsFest Indoor Kids Festival, Order nr: 1528","STM SAEZ",NL77ABNA0624026558,ABNANL2A
+"2017-04-22 17:36:27",ideal,16.45,tr_DQ3H8DsFrQ,"Bitter or Better, Order nr: 1527","MJ LUCAS",NL69ABNA0514956119,ABNANL2A
+"2017-04-22 17:34:55",ideal,22.90,tr_6p9M9MNQgT,"KidsFest Indoor Kids Festival, Order nr: 1525","STM SAEZ",NL77ABNA0624026558,ABNANL2A
+"2017-04-22 17:31:08",mistercash,64.35,tr_6h2abKtyvS,"PNL Showcase, Order nr: 1523",,,GEBABEBB
+"2017-04-22 17:21:00",ideal,35.40,tr_65bPN6SUxB,"KidsFest Indoor Kids Festival, Order nr: 1522","D VAN VLIET",NL52ABNA0479820600,ABNANL2A
+"2017-04-22 17:16:36",ideal,13.95,tr_8DMhHS9k2j,"KidsFest Indoor Kids Festival, Order nr: 1521","Mw D Krstonosic",NL11INGB0793397839,INGBNL2A
+"2017-04-22 17:15:46",ideal,13.95,tr_djSwmpUvJG,"KidsFest Indoor Kids Festival, Order nr: 1519","Mw CAB van Beusekom",NL67INGB0755643364,INGBNL2A
+"2017-04-22 16:46:41",ideal,32.90,tr_aRn6r5yfQ3,"Bitter or Better, Order nr: 1518","Mw C E Caffee",NL73INGB0007351985,INGBNL2A
+"2017-04-22 16:36:30",ideal,13.95,tr_9xT7ehk7uS,"KidsFest Indoor Kids Festival, Order nr: 1517","GROOT M DE",NL63ABNA0986200948,ABNANL2A
+"2017-04-22 16:33:12",ideal,22.90,tr_F4pRGtUf5m,"KidsFest Indoor Kids Festival, Order nr: 1516","J.C. URSEM",NL63RABO0326812776,RABONL2U
+"2017-04-22 16:31:59",ideal,22.90,tr_M8FtyJH7NE,"KidsFest Indoor Kids Festival, Order nr: 1515","Hr R Villari",NL84INGB0007889167,INGBNL2A
+"2017-04-22 16:16:16",ideal,40.40,tr_k5rNbmhwmk,"KidsFest Indoor Kids Festival, Order nr: 1514","BERNARDUS D R",NL45ABNA0832809837,ABNANL2A
+"2017-04-22 16:11:34",ideal,40.40,tr_cnkn9SN8kj,"KidsFest Indoor Kids Festival, Order nr: 1513","Z OURHRIS OUHAFID",NL97ABNA0418870810,ABNANL2A
+"2017-04-22 16:02:12",ideal,27.90,tr_uuag7bHrcN,"KidsFest Indoor Kids Festival, Order nr: 1512","Mw M Ghiasi-Raoufi en/of Hr A Ghiasi",NL53INGB0002051877,INGBNL2A
+"2017-04-22 15:56:53",ideal,26.45,tr_zs8xUPn9qG,"KidsFest Indoor Kids Festival, Order nr: 1511","L. OURHRIS",NL87RABO0301695067,RABONL2U
+"2017-04-22 15:54:00",ideal,26.45,tr_dDnkJdf7Je,"KidsFest Indoor Kids Festival, Order nr: 1510","M. FOLSCHE EO",NL65RABO0119996227,RABONL2U
+"2017-04-22 15:50:25",ideal,22.90,tr_wsxmGJry35,"KidsFest Indoor Kids Festival, Order nr: 1509","Mw M Livramento en/of Hr M Hoks",NL10INGB0007899714,INGBNL2A
+"2017-04-22 15:47:38",ideal,13.95,tr_zE44F87cF2,"KidsFest Indoor Kids Festival, Order nr: 1507","Mw K Lawniczak, Hr P Majorczyk",NL10INGB0701631783,INGBNL2A
+"2017-04-22 15:45:06",ideal,16.45,tr_mezGCPEy4A,"Bitter or Better, Order nr: 1506","R. MAHMUD",NL70RABO0344232492,RABONL2U
+"2017-04-22 15:43:59",ideal,13.95,tr_QueB5QKxR7,"KidsFest Indoor Kids Festival, Order nr: 1505","N REMIENS",NL90ABNA0472422502,ABNANL2A
+"2017-04-22 15:40:25",ideal,26.45,tr_smrCbe2HGE,"KidsFest Indoor Kids Festival, Order nr: 1502","SRC BOEDHAI",NL03ABNA0536777748,ABNANL2A
+"2017-04-22 15:32:39",ideal,13.95,tr_cxtwR7MGC5,"KidsFest Indoor Kids Festival, Order nr: 1501","S. VAN SCHAIK",NL94RABO0391749838,RABONL2U
+"2017-04-22 14:35:17",ideal,35.40,tr_rv9ESe5M7F,"KidsFest Indoor Kids Festival, Order nr: 1499","Hr S H R Stern",NL17INGB0009067080,INGBNL2A
+"2017-04-22 14:24:25",ideal,35.40,tr_SW5s3VRFkq,"KidsFest Indoor Kids Festival, Order nr: 1498","Mw R N Abdallah-Al-Rouffi",NL78INGB0702392979,INGBNL2A
+"2017-04-22 14:10:57",ideal,35.40,tr_HxCsDbaWcp,"KidsFest Indoor Kids Festival, Order nr: 1496","A.P. BAIDJNATH-MISIER",NL44RABO0326993053,RABONL2U
+"2017-04-22 13:49:47",ideal,45.80,tr_EpxfVCT2QM,"KidsFest Indoor Kids Festival, Order nr: 1494","Mw E E Willems",NL91INGB0005656974,INGBNL2A
+"2017-04-22 13:40:32",ideal,49.35,tr_TfSNhWtf6R,"KidsFest Indoor Kids Festival, Order nr: 1493","Mw P D Tawiah",NL64INGB0749539402,INGBNL2A
+"2017-04-22 13:40:52",ideal,26.45,tr_F4bNVajSPH,"KidsFest Indoor Kids Festival, Order nr: 1492","MW L S A Solingen",NL61INGB0003786578,INGBNL2A
+"2017-04-22 13:35:06",ideal,22.90,tr_3KGB3ejQBN,"KidsFest Indoor Kids Festival, Order nr: 1491","HR S J E Burnet",NL70INGB0754061337,INGBNL2A
+"2017-04-22 13:21:24",ideal,59.75,tr_MPQr9mGaM9,"KidsFest Indoor Kids Festival, Order nr: 1490","Mw J M E Filemon",NL37INGB0009495363,INGBNL2A
+"2017-04-22 13:17:22",ideal,45.80,tr_EmE2M8w8sW,"KidsFest Indoor Kids Festival, Order nr: 1489","C JOSEPH CJ",NL63ABNA0428451918,ABNANL2A
+"2017-04-22 13:13:15",ideal,26.45,tr_tcQptpa2qA,"KidsFest Indoor Kids Festival, Order nr: 1488","Mw B N S Rodjan",NL38INGB0006490285,INGBNL2A
+"2017-04-22 12:56:19",ideal,16.45,tr_N9s4bHmbEs,"Bitter or Better, Order nr: 1485",WERNER,NL43SNSB0874719097,SNSBNL2A
+"2017-04-22 12:45:39",mistercash,21.45,tr_NtyJxMkF5E,"PNL Showcase, Order nr: 1484",,,GKCCBEBB
+"2017-04-22 12:43:42",mistercash,21.45,tr_bswAt6uQre,"PNL Showcase, Order nr: 1483",,,KREDBEBB
+"2017-04-22 12:41:20",ideal,50.80,tr_CExahdVFzK,"KidsFest Indoor Kids Festival, Order nr: 1482","RIEMSDIJK G D VAN",NL88ABNA0479902984,ABNANL2A
+"2017-04-22 12:31:41",ideal,31.85,tr_dxQVmzPGVc,"KidsFest Indoor Kids Festival, Order nr: 1481","S SEWMAR",NL71ABNA0422168211,ABNANL2A
+"2017-04-22 12:30:21",ideal,27.90,tr_8G5gxTCFzV,"KidsFest Indoor Kids Festival, Order nr: 1480","Mw C Semedo Miranda",NL56INGB0007793932,INGBNL2A
+"2017-04-22 12:17:12",ideal,35.40,tr_k4DJpRbgFu,"KidsFest Indoor Kids Festival, Order nr: 1478","E.M. DE KONING-KLUFT",NL35RABO0326818227,RABONL2U
+"2017-04-22 12:11:25",paypal,51.45,tr_wc39wuAPpE,"Bitter or Better, Order nr: 1476","J Veldhuizen",,
+"2017-04-22 12:04:13",ideal,26.45,tr_UP8b9dp8n9,"KidsFest Indoor Kids Festival, Order nr: 1475","LD KVADSHEIM",NL09ABNA0415668387,ABNANL2A
+"2017-04-22 11:38:43",ideal,26.45,tr_UNpgu8UP3S,"KidsFest Indoor Kids Festival, Order nr: 1474","S.A. BOSHRA",NL91RABO0396476120,RABONL2U
+"2017-04-22 11:36:53",ideal,35.40,tr_bpmD7vSanB,"KidsFest Indoor Kids Festival, Order nr: 1473","S. VAN SCHAIK",NL94RABO0391749838,RABONL2U
+"2017-04-22 11:04:42",ideal,35.40,tr_G3JajzeaWv,"KidsFest Indoor Kids Festival, Order nr: 1472","Hr S Willemse",NL42INGB0006541235,INGBNL2A
+"2017-04-22 11:01:46",ideal,8.95,tr_UzhBaEca3f,"KidsFest Indoor Kids Festival, Order nr: 1471","E S ADRIAANSZ",NL70ABNA0587735783,ABNANL2A
+"2017-04-22 10:51:09",ideal,26.45,tr_VhFsTEGDcN,"KidsFest Indoor Kids Festival, Order nr: 1469","D LITJENS",NL17ABNA0513373918,ABNANL2A
+"2017-04-22 10:56:08",ideal,22.90,tr_gBGrKNMEC7,"KidsFest Indoor Kids Festival, Order nr: 1468","HUGHES J J P",NL98ABNA0842001379,ABNANL2A
+"2017-04-22 10:46:23",ideal,35.40,tr_GSCQgcv8Hq,"KidsFest Indoor Kids Festival, Order nr: 1467","Mw K H Warde",NL70INGB0007107017,INGBNL2A
+"2017-04-22 10:22:17",ideal,16.45,tr_FcD2AV4xjp,"Bitter or Better, Order nr: 1465","C.A. HOVENGA",NL23RABO0346146372,RABONL2U
+"2017-04-22 10:16:03",ideal,26.45,tr_6UCAsE4MPg,"KidsFest Indoor Kids Festival, Order nr: 1464","OULAD HADJ F",NL37ABNA0811888827,ABNANL2A
+"2017-04-22 10:11:06",ideal,22.90,tr_2TnDmm5fjU,"KidsFest Indoor Kids Festival, Order nr: 1462","S E Stefania",NL69INGB0008697350,INGBNL2A
+"2017-04-22 09:51:42",ideal,35.40,tr_Uwh7cDQBqD,"KidsFest Indoor Kids Festival, Order nr: 1460","Mw J van Twuiver",NL81INGB0753610574,INGBNL2A
+"2017-04-22 09:45:42",ideal,22.90,tr_6Rpg44JTuB,"KidsFest Indoor Kids Festival, Order nr: 1459","Mw CAB van Beusekom",NL67INGB0755643364,INGBNL2A
+"2017-04-22 09:41:12",ideal,26.45,tr_jzazHCeVVW,"KidsFest Indoor Kids Festival, Order nr: 1458","A.M. KONING",NL15RABO0393651878,RABONL2U
+"2017-04-22 09:26:16",ideal,22.90,tr_h3D5hqP6Qa,"KidsFest Indoor Kids Festival, Order nr: 1457","KIM KROKKEE CJ",NL40ABNA0622563688,ABNANL2A
+"2017-04-22 09:19:28",ideal,16.45,tr_uajz2reUGH,"Bitter or Better, Order nr: 1456","Mw CD Gallant",NL74INGB0752730231,INGBNL2A
+"2017-04-22 09:13:27",ideal,17.90,tr_xMVKevcq4w,"KidsFest Indoor Kids Festival, Order nr: 1455","SIM PURIEL",NL44ABNA0586645098,ABNANL2A
+"2017-04-22 08:58:35",ideal,26.45,tr_tt8hcgxHB2,"KidsFest Indoor Kids Festival, Order nr: 1451","Mw N A Lopes Furtado",NL89INGB0008011879,INGBNL2A
+"2017-04-22 08:38:07",ideal,13.95,tr_3yD6n9z57r,"KidsFest Indoor Kids Festival, Order nr: 1450","Destiny May Philipse",NL97INGB0757524915,INGBNL2A
+"2017-04-22 08:21:55",ideal,35.40,tr_C8y45gpBgu,"KidsFest Indoor Kids Festival, Order nr: 1449","Destiny May Philipse",NL97INGB0757524915,INGBNL2A
+"2017-04-22 08:04:54",ideal,35.40,tr_KnsFC2MR4t,"KidsFest Indoor Kids Festival, Order nr: 1448","MH BOEREN CJ",NL27ABNA0414270584,ABNANL2A
+"2017-04-22 00:44:46",ideal,8.95,tr_7NDckRKfKw,"KidsFest Indoor Kids Festival, Order nr: 1444","Mw N M Walden",NL79INGB0007640355,INGBNL2A
+"2017-04-22 00:21:32",ideal,32.90,tr_QVBsWngfc5,"Bitter or Better, Order nr: 1442","I.P. VAN DER DEEN",NL46RABO0312071507,RABONL2U
+"2017-04-21 23:52:26",ideal,11.45,tr_kCkEwWAHAC,"Bitter or Better, Order nr: 1441","MW T B F Juliana",NL44INGB0000448726,INGBNL2A
+"2017-04-21 23:50:56",ideal,35.40,tr_mGbN2S7J4z,"KidsFest Indoor Kids Festival, Order nr: 1440","TV FRANS",NL74ABNA0602145449,ABNANL2A
+"2017-04-21 23:47:25",ideal,11.45,tr_edbUsMhfTc,"Bitter or Better, Order nr: 1439","J KLEIJWEGT",NL41ABNA0606264566,ABNANL2A
+"2017-04-21 23:44:37",ideal,34.35,tr_zwFpQCPqv2,"Bitter or Better, Order nr: 1437","Mw GG Solognier",NL30INGB0689393806,INGBNL2A
+"2017-04-21 23:27:25",ideal,35.40,tr_32gAHM757W,"KidsFest Indoor Kids Festival, Order nr: 1435","Hr S Bouwens en/of Mw M Y Lubert",NL27INGB0670998877,INGBNL2A
+"2017-04-21 23:23:25",ideal,8.95,tr_NAGT8QeMd5,"KidsFest Indoor Kids Festival, Order nr: 1434","Hr H Bozkurt",NL32INGB0756197767,INGBNL2A
+"2017-04-21 22:26:01",ideal,65.80,tr_PPM9jSyazG,"Bitter or Better, Order nr: 1433","Hr M Roeleveld",NL70INGB0008391394,INGBNL2A
+"2017-04-21 22:26:12",ideal,32.90,tr_tzcjh8Dgjx,"Bitter or Better, Order nr: 1432","Hr TMT Soeltaansingh",NL42INGB0686749855,INGBNL2A
+"2017-04-21 22:12:46",ideal,8.95,tr_r4PBNaH6TG,"KidsFest Indoor Kids Festival, Order nr: 1431","Mw IB Kerk",NL55INGB0001806722,INGBNL2A
+"2017-04-21 22:06:14",ideal,61.85,tr_DUgQVdhx8r,"KidsFest Indoor Kids Festival, Order nr: 1429","Hr GG Sedney",NL63INGB0666029792,INGBNL2A
+"2017-04-21 22:07:32",ideal,26.45,tr_nPKypK9Tr6,"KidsFest Indoor Kids Festival, Order nr: 1427","Hr J M M Res",NL12INGB0005175239,INGBNL2A
+"2017-04-21 21:21:19",ideal,52.90,tr_QPwq73TQE3,"KidsFest Indoor Kids Festival, Order nr: 1424","WANROOY L VAN",NL05ABNA0806382422,ABNANL2A
+"2017-04-21 21:07:35",ideal,35.40,tr_QsEeRwGRvN,"KidsFest Indoor Kids Festival, Order nr: 1423","E S ADRIAANSZ",NL70ABNA0587735783,ABNANL2A
+"2017-04-21 21:06:52",mistercash,21.45,tr_Eg4abhtSx2,"PNL Showcase, Order nr: 1422",,,GEBABEBB
+"2017-04-21 20:46:48",ideal,8.95,tr_PnMMTyKHkq,"KidsFest Indoor Kids Festival, Order nr: 1421","T. KIKKERT",NL10RABO0330618555,RABONL2U
+"2017-04-21 20:38:56",ideal,26.45,tr_C2vyCqe9jn,"KidsFest Indoor Kids Festival, Order nr: 1420","L DE JESUS DE GRANADILLO",NL81ABNA0550828249,ABNANL2A
+"2017-04-21 20:32:10",ideal,49.35,tr_DQfTQVesDf,"KidsFest Indoor Kids Festival, Order nr: 1419","E. POLAT EO",NL57RABO0151329796,RABONL2U
+"2017-04-21 20:21:11",ideal,8.95,tr_cA2gRTHFyr,"KidsFest Indoor Kids Festival, Order nr: 1418","Mw R Delst",NL76INGB0751730610,INGBNL2A
+"2017-04-21 19:40:52",ideal,45.80,tr_rTbedW5zjz,"KidsFest Indoor Kids Festival, Order nr: 1417","R.A.M. GLAS EO",NL78RABO0396416020,RABONL2U
+"2017-04-21 19:25:27",ideal,26.45,tr_5sJDV9DCqp,"KidsFest Indoor Kids Festival, Order nr: 1415","S Monteiro",NL60INGB0008680925,INGBNL2A
+"2017-04-21 19:19:31",ideal,34.35,tr_774pmJ8jrC,"Bitter or Better, Order nr: 1414","Hr A Gedik",NL35INGB0688372597,INGBNL2A
+"2017-04-21 19:15:36",ideal,52.90,tr_REF74mgmkw,"KidsFest Indoor Kids Festival, Order nr: 1413","Mw C Semedo Miranda",NL56INGB0007793932,INGBNL2A
+"2017-04-21 19:15:51",ideal,52.90,tr_R6nBaBK9Kw,"KidsFest Indoor Kids Festival, Order nr: 1412","J. DA SILVA MIRANDA",NL54RABO0148952380,RABONL2U
+"2017-04-21 19:15:17",ideal,32.90,tr_VcbdznBCcU,"Bitter or Better, Order nr: 1411","Mw VJ Pinas",NL77INGB0001739299,INGBNL2A
+"2017-04-21 19:10:34",ideal,40.40,tr_8dnySERBT9,"KidsFest Indoor Kids Festival, Order nr: 1409","LIMON D M H",NL65ABNA0876158874,ABNANL2A
+"2017-04-21 18:53:22",paypal,21.45,tr_9QaTa8TrVN,"PNL Showcase, Order nr: 1408","wandee duangrayot",,
+"2017-04-21 18:49:13",ideal,26.45,tr_VAjshqFFa5,"KidsFest Indoor Kids Festival, Order nr: 1407","Hr J W van Gellekom e/o Mw S van Gellekom-Hubeek",NL92INGB0004684725,INGBNL2A
+"2017-04-21 18:48:23",creditcard,42.90,tr_FrNTxe3c5R,"PNL Showcase, Order nr: 1406","Juline Deschuyteneer",,
+"2017-04-21 18:42:44",ideal,44.35,tr_3j9z5ST4SE,"KidsFest Indoor Kids Festival, Order nr: 1405","B.M. WIT",NL47RABO0329750127,RABONL2U
+"2017-04-21 18:35:30",ideal,49.35,tr_562v2TjdpW,"KidsFest Indoor Kids Festival, Order nr: 1404","AD NDUWIMANA",NL63ABNA0545344387,ABNANL2A
+"2017-04-21 18:17:11",ideal,13.95,tr_HhEuJV3BVP,"KidsFest Indoor Kids Festival, Order nr: 1402","I. WILTING",NL84RABO0109040317,RABONL2U
+"2017-04-21 17:56:12",ideal,44.35,tr_9xF9v7MTWB,"KidsFest Indoor Kids Festival, Order nr: 1401","G.O. VAN ENGEL-ZEEWIJK",NL55RABO0155502093,RABONL2U
+"2017-04-21 17:18:21",creditcard,13.95,tr_HPh3vvHC9a,"KidsFest Indoor Kids Festival, Order nr: 1399","Anusjka biekman",,
+"2017-04-21 17:15:02",paypal,51.45,tr_b5mhaEHzNN,"Bitter or Better, Order nr: 1398","Tsegewent Tecele",,
+"2017-04-21 17:13:15",ideal,26.45,tr_82FDSTEy6s,"KidsFest Indoor Kids Festival, Order nr: 1397","Mw B H G Mahabali",NL47INGB0005102732,INGBNL2A
+"2017-04-21 16:31:39",ideal,26.45,tr_5naf548BfM,"KidsFest Indoor Kids Festival, Order nr: 1390","SS HAAKMAT",NL02ABNA0580750582,ABNANL2A
+"2017-04-21 16:11:43",ideal,31.85,tr_Gbh5BhEJun,"KidsFest Indoor Kids Festival, Order nr: 1389","MJR VAN BOSSE",NL09ABNA0576789461,ABNANL2A
+"2017-04-21 16:07:07",ideal,26.45,tr_pCT4DBAvn3,"KidsFest Indoor Kids Festival, Order nr: 1388","K.V. KAAGMAN",NL10RABO0329353578,RABONL2U
+"2017-04-21 15:35:42",ideal,22.90,tr_U9hSMHkpqT,"KidsFest Indoor Kids Festival, Order nr: 1387","JEM MEADE",NL41ABNA0420632271,ABNANL2A
+"2017-04-21 15:32:46",mistercash,21.45,tr_zyybTFwJyq,"PNL Showcase, Order nr: 1386",,,BBRUBEBB
+"2017-04-21 15:10:50",ideal,31.85,tr_pqqdpDtMz2,"KidsFest Indoor Kids Festival, Order nr: 1385","I KIRDINLI",NL69ABNA0447244493,ABNANL2A
+"2017-04-21 14:39:54",ideal,11.45,tr_6CtSVuDAcT,"Bitter or Better, Order nr: 1384","Hr DC Wills",NL91INGB0668866829,INGBNL2A
+"2017-04-21 13:52:08",ideal,26.45,tr_ADtVqWB2QN,"KidsFest Indoor Kids Festival, Order nr: 1383","Hr H Bozkurt",NL32INGB0756197767,INGBNL2A
+"2017-04-21 12:16:08",ideal,35.40,tr_ahy2Az9zax,"KidsFest Indoor Kids Festival, Order nr: 1382","J. BOOT",NL31RABO0175831882,RABONL2U
+"2017-04-21 12:03:56",ideal,13.95,tr_CWPj8MJQQr,"KidsFest Indoor Kids Festival, Order nr: 1381","A LOPES CABRAL CJ",NL39ABNA0897351126,ABNANL2A
+"2017-04-21 11:48:27",ideal,40.40,tr_3Exc7sK8gP,"KidsFest Indoor Kids Festival, Order nr: 1380","Mw M Lopes Cabral",NL85INGB0008398399,INGBNL2A
+"2017-04-21 11:24:41",ideal,65.80,tr_gNT4utmGxW,"Bitter or Better, Order nr: 1379",SIMONS,NL37SNSB0967054087,SNSBNL2A
+"2017-04-21 11:16:34",ideal,40.40,tr_6tjnvhf63m,"KidsFest Indoor Kids Festival, Order nr: 1378","A LOPES CABRAL CJ",NL39ABNA0897351126,ABNANL2A
+"2017-04-21 10:53:23",ideal,22.90,tr_eJyBxC5d8j,"KidsFest Indoor Kids Festival, Order nr: 1376","E.N.M.A. REENIS",NL92RABO0130083062,RABONL2U
+"2017-04-21 10:22:56",ideal,13.95,tr_WgAFTUNRnv,"KidsFest Indoor Kids Festival, Order nr: 1375","Mw J Reuvers",NL32INGB0000120209,INGBNL2A
+"2017-04-21 09:48:31",ideal,22.90,tr_spjfUx5G2U,"KidsFest Indoor Kids Festival, Order nr: 1374","A HARTLIEF",NL36ABNA0467693366,ABNANL2A
+"2017-04-21 09:43:17",ideal,22.90,tr_mrPBpA4yp6,"KidsFest Indoor Kids Festival, Order nr: 1373","Naleiah Gosselman",NL69INGB0689650736,INGBNL2A
+"2017-04-21 08:52:05",ideal,8.95,tr_hag7m4NUWQ,"KidsFest Indoor Kids Festival, Order nr: 1371","AD JONES",NL34ABNA0565614029,ABNANL2A
+"2017-04-21 08:48:08",ideal,35.40,tr_uzDcrCDCCe,"KidsFest Indoor Kids Festival, Order nr: 1370","SE LO A NJOE",NL05ABNA0510765513,ABNANL2A
+"2017-04-20 23:03:16",ideal,51.45,tr_rkWxFjAn6q,"Bitter or Better, Order nr: 1368","MW S van der Wal",NL96INGB0008470660,INGBNL2A
+"2017-04-20 23:02:42",ideal,96.60,tr_SqKg42URqK,"KidsFest Indoor Kids Festival, Order nr: 1367","D RIEBOT",NL91ABNA0546340849,ABNANL2A
+"2017-04-20 22:57:37",ideal,26.45,tr_xMy5f6ygsT,"KidsFest Indoor Kids Festival, Order nr: 1366","LOPES SANCHES",NL43SNSB0902005197,SNSBNL2A
+"2017-04-20 22:55:12",ideal,61.85,tr_Eu7AC3jHew,"KidsFest Indoor Kids Festival, Order nr: 1365","Mw L E K Martina",NL23INGB0686726820,INGBNL2A
+"2017-04-20 22:44:30",ideal,35.40,tr_v6FjD6vkQ3,"KidsFest Indoor Kids Festival, Order nr: 1363","Hr M M van der Plas en/of Mw L M Schoen",NL59INGB0007954122,INGBNL2A
+"2017-04-20 22:35:30",ideal,40.40,tr_nNnJA7HTvx,"KidsFest Indoor Kids Festival, Order nr: 1362","N Rageh",NL16INGB0008229600,INGBNL2A
+"2017-04-20 22:25:44",ideal,22.90,tr_JtdB5VFvRF,"KidsFest Indoor Kids Festival, Order nr: 1361","I. WILTING",NL84RABO0109040317,RABONL2U
+"2017-04-20 22:15:18",ideal,49.35,tr_PVebsq6AtN,"KidsFest Indoor Kids Festival, Order nr: 1359","ADE ZEEGELAAR",NL25ABNA0604825471,ABNANL2A
+"2017-04-20 22:14:52",ideal,35.40,tr_TPGEM98EEH,"KidsFest Indoor Kids Festival, Order nr: 1358","B.G. RIETVELD EO",NL35RABO0357902653,RABONL2U
+"2017-04-20 22:10:58",ideal,8.95,tr_fusKeh8d82,"KidsFest Indoor Kids Festival, Order nr: 1357","J.R. SENDAR CJ",NL67ABNA0482108851,ABNANL2A
+"2017-04-20 21:12:59",ideal,22.90,tr_NsWuRvF9hm,"KidsFest Indoor Kids Festival, Order nr: 1356","BAK A H I",NL26ABNA0814125360,ABNANL2A
+"2017-04-20 21:11:55",ideal,26.45,tr_v8TNrsJcuP,"KidsFest Indoor Kids Festival, Order nr: 1355","AD JONES",NL34ABNA0565614029,ABNANL2A
+"2017-04-20 21:00:40",ideal,8.95,tr_RMz4bHAs7H,"KidsFest Indoor Kids Festival, Order nr: 1354","Mw S R Carolina Gil",NL86INGB0007645564,INGBNL2A
+"2017-04-20 20:33:19",mistercash,21.45,tr_tzgcr5rFn9,"PNL Showcase, Order nr: 1351",,,GKCCBEBB
+"2017-04-20 20:27:47",ideal,22.90,tr_nstpaBrPD8,"KidsFest Indoor Kids Festival, Order nr: 1349","J DIEKE",NL95ABNA0434699403,ABNANL2A
+"2017-04-20 20:26:55",ideal,45.80,tr_FJtqarmhV6,"KidsFest Indoor Kids Festival, Order nr: 1348","R PAAP",NL56ABNA0448896540,ABNANL2A
+"2017-04-20 20:15:17",ideal,22.90,tr_rzD7hd36w8,"KidsFest Indoor Kids Festival, Order nr: 1347","Mw K Lawniczak, Hr P Majorczyk",NL10INGB0701631783,INGBNL2A
+"2017-04-20 20:00:05",ideal,26.45,tr_6p5nAtzNsd,"KidsFest Indoor Kids Festival, Order nr: 1346","Hr A Jakhari en/of Mw W K J Vrind",NL15INGB0755346025,INGBNL2A
+"2017-04-20 19:44:23",ideal,51.45,tr_BhDK2DH8ne,"Bitter or Better, Order nr: 1345","J. DUINKERKEN",NL18RABO0102048096,RABONL2U
+"2017-04-20 19:33:03",ideal,26.45,tr_sQvrnBJQCu,"KidsFest Indoor Kids Festival, Order nr: 1344","D. OUDHUIS",NL63RABO0326835377,RABONL2U
+"2017-04-20 19:24:12",ideal,35.40,tr_NkJtuWbksC,"KidsFest Indoor Kids Festival, Order nr: 1343","NUNES S L H",NL65ABNA0801642019,ABNANL2A
+"2017-04-20 18:47:15",ideal,22.90,tr_KSfEjWCQu4,"KidsFest Indoor Kids Festival, Order nr: 1342","S.J. SLIJKERMAN",NL32RABO0326858148,RABONL2U
+"2017-04-20 18:00:36",ideal,8.95,tr_S8HkGdcTcG,"KidsFest Indoor Kids Festival, Order nr: 1341","Mw S Kensmil",NL88INGB0685624021,INGBNL2A
+"2017-04-20 17:48:13",ideal,22.90,tr_7N4gkPPcRw,"KidsFest Indoor Kids Festival, Order nr: 1340","Mw E Mensch",NL42INGB0006629990,INGBNL2A
+"2017-04-20 17:35:22",ideal,40.40,tr_dGcgqNcztU,"KidsFest Indoor Kids Festival, Order nr: 1339","J.F. VAN WIJK",NL10RABO0141236531,RABONL2U
+"2017-04-20 17:37:08",ideal,52.90,tr_8RUM8RCh8B,"KidsFest Indoor Kids Festival, Order nr: 1338","S JAKHARI CJ",NL57ABNA0605783934,ABNANL2A
+"2017-04-20 16:53:47",ideal,49.35,tr_Chd7HKdFsd,"KidsFest Indoor Kids Festival, Order nr: 1337","L.M. SIMON",NL53RABO0146646320,RABONL2U
+"2017-04-20 16:42:16",ideal,31.85,tr_kf2CtPNCVH,"KidsFest Indoor Kids Festival, Order nr: 1336","Mej D Ullrich",NL22INGB0002749768,INGBNL2A
+"2017-04-20 14:49:14",ideal,49.35,tr_CQe6zzQepP,"KidsFest Indoor Kids Festival, Order nr: 1333","JM MEYER",NL47ABNA0598488162,ABNANL2A
+"2017-04-20 14:25:52",ideal,31.85,tr_G3WhvFfPBC,"KidsFest Indoor Kids Festival, Order nr: 1331","N GJEORGJIEV",NL77ABNA0450541282,ABNANL2A
+"2017-04-20 14:07:30",ideal,31.85,tr_C9d74SseSC,"KidsFest Indoor Kids Festival, Order nr: 1330","Mw K de Vries",NL83INGB0007547745,INGBNL2A
+"2017-04-20 13:53:01",ideal,35.40,tr_QjeCrb3chv,"KidsFest Indoor Kids Festival, Order nr: 1329","Mw K el Younoussi",NL45INGB0001165926,INGBNL2A
+"2017-04-20 13:28:03",ideal,22.90,tr_J7bEMbmhMG,"KidsFest Indoor Kids Festival, Order nr: 1327","R. KOSTER",NL35RABO0302986588,RABONL2U
+"2017-04-20 13:12:16",ideal,26.45,tr_z4sfEQCCmp,"KidsFest Indoor Kids Festival, Order nr: 1326","K WHITE CJ",NL08ABNA0560470878,ABNANL2A
+"2017-04-20 12:37:29",ideal,197.15,tr_uvH7RmtkBt,"KidsFest Indoor Kids Festival, Order nr: 1325","G. VAN EMPEL",NL21RABO0170434982,RABONL2U
+"2017-04-20 12:27:07",ideal,17.90,tr_dRjJqEu3re,"La Vie presents Jonna Fraser, Order nr: 1323","C.H.W. HEIJMANS",NL08RABO0142052531,RABONL2U
+"2017-04-20 11:55:26",ideal,26.45,tr_ytAxS87NfN,"KidsFest Indoor Kids Festival, Order nr: 1322","FARIES F A",NL02ABNA0800431332,ABNANL2A
+"2017-04-20 10:45:53",ideal,49.35,tr_5NPFW5Qknx,"KidsFest Indoor Kids Festival, Order nr: 1321","Mw C N P Mangoendikromo",NL60INGB0001350053,INGBNL2A
+"2017-04-20 10:34:43",creditcard,26.45,tr_Qz2bscMNNh,"KidsFest Indoor Kids Festival, Order nr: 1320","A.M. Koning",,
+"2017-04-20 09:28:22",creditcard,42.90,tr_bJtQpuwnPh,"PNL Showcase, Order nr: 1319","Mohamed Achik Mamouni",,
+"2017-04-20 09:00:36",ideal,26.45,tr_HcB9qHmNaD,"KidsFest Indoor Kids Festival, Order nr: 1318","Mw S J E Esajas",NL28INGB0758626428,INGBNL2A
+"2017-04-20 08:56:27",ideal,31.85,tr_hDJD5BB6JC,"KidsFest Indoor Kids Festival, Order nr: 1317","Mw N A de Bie",NL38INGB0008205051,INGBNL2A
+"2017-04-20 08:16:38",ideal,54.75,tr_vuFByQ3b9r,"KidsFest Indoor Kids Festival, Order nr: 1316","Mw S Winnips",NL15INGB0686641604,INGBNL2A
+"2017-04-20 08:11:07",ideal,26.45,tr_HVKsyHSRtK,"KidsFest Indoor Kids Festival, Order nr: 1315","Mw H C F Carolus",NL55INGB0008410676,INGBNL2A
+"2017-04-20 07:44:12",ideal,22.90,tr_Nj3wwcHQSD,"KidsFest Indoor Kids Festival, Order nr: 1314","Mw T S Druiventak",NL15INGB0001405959,INGBNL2A
+"2017-04-19 23:15:22",ideal,35.40,tr_JKFju4ezJc,"KidsFest Indoor Kids Festival, Order nr: 1313","Mw E Hammoud",NL47INGB0000918249,INGBNL2A
+"2017-04-19 22:58:15",ideal,22.90,tr_WdUeFFv8zm,"KidsFest Indoor Kids Festival, Order nr: 1312","Mw V de Maria",NL25INGB0689458886,INGBNL2A
+"2017-04-19 22:55:01",ideal,31.85,tr_qj9nwDgFr4,"KidsFest Indoor Kids Festival, Order nr: 1311","DOESBURG V J CJ",NL05ABNA0230127053,ABNANL2A
+"2017-04-19 22:24:05",ideal,26.45,tr_NQFGBk2z6s,"KidsFest Indoor Kids Festival, Order nr: 1310","R NELISSE",NL87ABNA0614910900,ABNANL2A
+"2017-04-19 21:46:21",ideal,35.40,tr_CbTQavhdWk,"KidsFest Indoor Kids Festival, Order nr: 1309","N HEERE",NL06ABNA0607456841,ABNANL2A
+"2017-04-19 21:44:05",ideal,22.90,tr_dCgEWEJTbC,"KidsFest Indoor Kids Festival, Order nr: 1307","Mw C E D de Ruiter",NL39INGB0009478158,INGBNL2A
+"2017-04-19 21:00:12",ideal,26.45,tr_vKgqTRd2Pk,"KidsFest Indoor Kids Festival, Order nr: 1306","Mw E Leijdekkers",NL77INGB0006500156,INGBNL2A
+"2017-04-19 21:00:51",creditcard,26.45,tr_Eg838wV9Bs,"KidsFest Indoor Kids Festival, Order nr: 1305",R.L.Pipe,,
+"2017-04-19 20:55:20",ideal,22.90,tr_r8BdeJj4Mj,"KidsFest Indoor Kids Festival, Order nr: 1304","S YAGCI",NL08ABNA0589300733,ABNANL2A
+"2017-04-19 18:42:24",ideal,49.35,tr_yT3Cm9ENep,"KidsFest Indoor Kids Festival, Order nr: 1301","T KALFS",NL71ABNA0491592663,ABNANL2A
+"2017-04-19 18:24:53",ideal,102.65,tr_Ka46fU84Ax,"KidsFest Indoor Kids Festival, Order nr: 1300","S. BEN-HUR",NL67RABO0334459893,RABONL2U
+"2017-04-19 17:42:40",ideal,49.35,tr_7W2N6xvRyR,"KidsFest Indoor Kids Festival, Order nr: 1299","Mw T J J Hagenstein",NL11INGB0009292422,INGBNL2A
+"2017-04-19 17:38:18",ideal,26.45,tr_rwvsMB6hdq,"KidsFest Indoor Kids Festival, Order nr: 1298","YM ELLIS",NL39ABNA0529082187,ABNANL2A
+"2017-04-19 17:15:50",ideal,40.80,tr_bRrKJPNH22,"KidsFest Indoor Kids Festival, Order nr: 1296","Mw R Delst",NL76INGB0751730610,INGBNL2A
+"2017-04-19 14:52:15",ideal,49.35,tr_bJJDhyVMGu,"KidsFest Indoor Kids Festival, Order nr: 1295","Shurelys Valerius",NL14INGB0757718663,INGBNL2A
+"2017-04-19 14:31:15",ideal,35.40,tr_6v3TeasVJV,"KidsFest Indoor Kids Festival, Order nr: 1294","W BROUWER",NL32ABNA0456626611,ABNANL2A
+"2017-04-19 13:33:42",ideal,26.45,tr_M23uTTHcwN,"KidsFest Indoor Kids Festival, Order nr: 1293","Mw C Bekkers",NL86INGB0673496147,INGBNL2A
+"2017-04-19 13:12:48",ideal,26.45,tr_y6JssAPrVk,"KidsFest Indoor Kids Festival, Order nr: 1291","L.G. OOSTDIJK",NL97RABO0149889208,RABONL2U
+"2017-04-19 13:05:47",mistercash,42.90,tr_xWAQW35Bpb,"PNL Showcase, Order nr: 1290",,,GKCCBEBB
+"2017-04-19 12:52:39",ideal,22.90,tr_DeqKV63zFN,"KidsFest Indoor Kids Festival, Order nr: 1289","A HARTLIEF",NL36ABNA0467693366,ABNANL2A
+"2017-04-19 07:42:33",ideal,35.40,tr_nzPV5jVJqu,"KidsFest Indoor Kids Festival, Order nr: 1281","BBSA BOUT",NL12ABNA0840446756,ABNANL2A
+"2017-04-19 00:21:20",ideal,26.45,tr_CnqMByTkad,"KidsFest Indoor Kids Festival, Order nr: 1280","EL HUNTE",NL70ABNA0403278643,ABNANL2A
+"2017-04-18 22:27:01",ideal,40.40,tr_8muQW4AnFA,"KidsFest Indoor Kids Festival, Order nr: 1275","Mw B N S Rodjan",NL38INGB0006490285,INGBNL2A
+"2017-04-18 21:40:52",ideal,26.45,tr_hFSwUhbqke,"KidsFest Indoor Kids Festival, Order nr: 1274","PJM TROMP CJ",NL45ABNA0524944156,ABNANL2A
+"2017-04-18 21:25:03",ideal,26.85,tr_mnfgcPcb4H,"La Vie presents Jonna Fraser, Order nr: 1273","F.H.J. WINDSTRA",NL65RABO0137478828,RABONL2U
+"2017-04-18 21:19:13",ideal,22.90,tr_cNcb8gKD9d,"KidsFest Indoor Kids Festival, Order nr: 1272","Hr R Banarsi en/of Mw A Oepasie",NL27INGB0001780260,INGBNL2A
+"2017-04-18 20:04:06",mistercash,42.90,tr_7PjeaejjTE,"PNL Showcase, Order nr: 1271",,,GEBABEBB
+"2017-04-18 19:27:53",mistercash,42.90,tr_S863SUTGx2,"PNL Showcase, Order nr: 1270",,,GKCCBEBB
+"2017-04-18 19:04:00",ideal,22.90,tr_pw9S2Wm8aR,"KidsFest Indoor Kids Festival, Order nr: 1266","Mw R C Ganicius",NL14INGB0003336277,INGBNL2A
+"2017-04-18 19:00:45",ideal,52.90,tr_KrcQvkrUyE,"KidsFest Indoor Kids Festival, Order nr: 1264","Mw N M Walden",NL81INGB0757092098,INGBNL2A
+"2017-04-18 18:52:42",ideal,35.40,tr_x2RUyvftyQ,"KidsFest Indoor Kids Festival, Order nr: 1263","M.F. JONCZY EO",NL94RABO0130298948,RABONL2U
+"2017-04-18 17:41:35",ideal,17.90,tr_Cbc6RjUGkT,"KidsFest Indoor Kids Festival, Order nr: 1260","K.W.J. KOLLOF",NL55RABO0161751415,RABONL2U
+"2017-04-18 17:40:06",ideal,35.40,tr_6vQD37Tw7a,"KidsFest Indoor Kids Festival, Order nr: 1259","Mw M B Mulbah",NL42INGB0677001452,INGBNL2A
+"2017-04-18 14:33:10",ideal,35.40,tr_2cfkdUadxt,"KidsFest Indoor Kids Festival, Order nr: 1257","C PINA",NL43ABNA0454133901,ABNANL2A
+"2017-04-18 14:30:33",ideal,16.45,tr_vgrFjCRdtx,"Bitter or Better, Order nr: 1256","K KLEIN",NL61ABNA0459761129,ABNANL2A
+"2017-04-18 14:23:45",ideal,26.45,tr_SCN3UrQ22H,"KidsFest Indoor Kids Festival, Order nr: 1255","Mw L I Burnett",NL98INGB0007279270,INGBNL2A
+"2017-04-18 09:13:42",ideal,13.95,tr_fDAcd5PPSQ,"KidsFest Indoor Kids Festival, Order nr: 1250","DHJ BENN",NL48ABNA0444878653,ABNANL2A
+"2017-04-18 06:44:20",ideal,22.90,tr_bexjJ8jnNT,"KidsFest Indoor Kids Festival, Order nr: 1249","A.F. MOL",NL09RABO0180762788,RABONL2U
+"2017-04-18 00:55:49",creditcard,42.90,tr_6wtNxDjCBt,"PNL Showcase, Order nr: 1246","Amhal imane",,
+"2017-04-17 19:17:25",creditcard,45.80,tr_k3utfVPs93,"KidsFest Indoor Kids Festival, Order nr: 1241","VJ Bisphan",,
+"2017-04-17 14:37:38",ideal,11.45,tr_Dnk7VEhCKm,"Bitter or Better, Order nr: 1239","Mw M S de Rooij",NL20INGB0003464597,INGBNL2A
+"2017-04-17 13:25:21",mistercash,21.45,tr_w3Vc3T6abJ,"PNL Showcase, Order nr: 1238",,,GEBABEBB
+"2017-04-17 13:21:27",mistercash,107.25,tr_4wUJjT6uwQ,"PNL Showcase, Order nr: 1237",,,GEBABEBB
+"2017-04-17 11:17:25",ideal,105.55,tr_TFU3Tcurbv,"KidsFest Indoor Kids Festival, Order nr: 1236","M.C. TUINMAN",NL19RABO0122023676,RABONL2U
+"2017-04-16 20:35:38",ideal,45.80,tr_TQQCysue4z,"KidsFest Indoor Kids Festival, Order nr: 1232","E.C. ARENDS",NL47RABO0119725436,RABONL2U
+"2017-04-16 19:34:05",ideal,8.95,tr_kh3rfCKyAv,"KidsFest Indoor Kids Festival, Order nr: 1231","Mw C G Heijne",NL62INGB0008274071,INGBNL2A
+"2017-04-16 19:15:39",ideal,45.80,tr_7NBVTeuAvw,"KidsFest Indoor Kids Festival, Order nr: 1228","I Boosten",NL60INGB0008125503,INGBNL2A
+"2017-04-16 18:27:59",paypal,45.80,tr_quAfKMa3BU,"KidsFest Indoor Kids Festival, Order nr: 1227","Cindy De Wit",,
+"2017-04-16 14:14:30",ideal,67.90,tr_U2exaxQx36,"Bitter or Better, Order nr: 1225","J.M.R. VROOMEN",NL20RABO0151725640,RABONL2U
+"2017-04-16 08:59:01",ideal,50.80,tr_7nspKEWNV2,"KidsFest Indoor Kids Festival, Order nr: 1220","Mw L I Burnett",NL98INGB0007279270,INGBNL2A
+"2017-04-16 02:05:44",creditcard,42.90,tr_r2knd8tjft,"PNL Showcase, Order nr: 1219","Erkan kurt",,
+"2017-04-16 01:52:52",creditcard,85.80,tr_aMUSyGvNyA,"PNL Showcase, Order nr: 1218","Erkan kurt",,
+"2017-04-15 21:33:53",mistercash,21.45,tr_hDKUcVA9WF,"PNL Showcase, Order nr: 1215",,,GEBABEBB
+"2017-04-15 18:39:27",ideal,51.45,tr_M2PwwxCvCq,"Bitter or Better, Order nr: 1214","MW Q N S Netteb",NL17INGB0008572671,INGBNL2A
+"2017-04-15 18:37:22",ideal,22.90,tr_PufSaTvCv2,"KidsFest Indoor Kids Festival, Order nr: 1213","L RUBIO RIJSDIJK",NL92ABNA0584621299,ABNANL2A
+"2017-04-15 18:17:03",creditcard,42.90,tr_d79EKpPvyh,"PNL Showcase, Order nr: 1212","Pierre Moussiaux",,
+"2017-04-15 18:16:38",mistercash,21.45,tr_jKrbkgrx6a,"PNL Showcase, Order nr: 1211",,,BBRUBEBB
+"2017-04-15 18:13:54",mistercash,21.45,tr_4xFbwjJcKD,"PNL Showcase, Order nr: 1209",,,BBRUBEBB
+"2017-04-15 11:25:06",ideal,45.80,tr_qCSP2JUrvP,"KidsFest Indoor Kids Festival, Order nr: 1207","B VAN LEEUWEN",NL60ABNA0618305416,ABNANL2A
+"2017-04-14 23:36:42",mistercash,42.90,tr_SnEbsPey5h,"PNL Showcase, Order nr: 1205",,,GKCCBEBB
+"2017-04-14 22:42:26",ideal,73.70,tr_DPuphJbaMh,"KidsFest Indoor Kids Festival, Order nr: 1204","FA BANKS",NL30ABNA0556276299,ABNANL2A
+"2017-04-14 17:34:29",paypal,21.45,tr_pmnwtnhUu9,"PNL Showcase, Order nr: 1203","wandee duangrayot",,
+"2017-04-14 15:58:31",mistercash,21.45,tr_pCwgn82KAF,"PNL Showcase, Order nr: 1201",,,GEBABEBB
+"2017-04-14 11:38:42",ideal,16.45,tr_3sEqvhbpJz,"Bitter or Better, Order nr: 1200","RSD JAGROEP",NL87ABNA0434953881,ABNANL2A
+"2017-04-14 11:04:25",ideal,16.45,tr_3sQKFfW9Ar,"Bitter or Better, Order nr: 1198","H B PIROE",NL21ABNA0471633194,ABNANL2A
+"2017-04-14 01:51:25",mistercash,42.90,tr_rUStqJaWVE,"PNL Showcase, Order nr: 1196",,,KREDBEBB
+"2017-04-13 17:24:50",ideal,31.85,tr_ECqjaajHMp,"KidsFest Indoor Kids Festival, Order nr: 1195","RE ALBERTUS",NL04ABNA0568591887,ABNANL2A
+"2017-04-13 15:35:45",paypal,45.80,tr_EpGhHTGMfm,"KidsFest Indoor Kids Festival, Order nr: 1193","Eugene Margaret",,
+"2017-04-13 15:20:06",mistercash,107.25,tr_AMGkE8KN5a,"PNL Showcase, Order nr: 1192",,,BBRUBEBB
+"2017-04-13 12:42:39",ideal,36.85,tr_8Q55pcyAFy,"KidsFest Indoor Kids Festival, Order nr: 1190","S.C.M. PEPERKAMP",NL37RABO0141225181,RABONL2U
+"2017-04-12 19:41:35",ideal,45.80,tr_E9zfGeMN4c,"KidsFest Indoor Kids Festival, Order nr: 1188","Mw P A Koster",NL37INGB0007694073,INGBNL2A
+"2017-04-12 16:58:00",ideal,73.70,tr_E55VTDBjr4,"KidsFest Indoor Kids Festival, Order nr: 1187","HR S J E Burnet",NL70INGB0754061337,INGBNL2A
+"2017-04-12 12:43:01",ideal,13.95,tr_gjeRj3uMau,"Bitter or Better, Order nr: 1185","A.C. BERENDS",NL80RABO0305575775,RABONL2U
+"2017-04-12 09:39:44",ideal,8.95,tr_UhzJVgN4nD,"La Vie presents Jonna Fraser, Order nr: 1184","I HADDOUCHE",NL22ABNA0554525593,ABNANL2A
+"2017-04-11 21:54:43",mistercash,64.35,tr_yybrVmSWuW,"PNL Showcase, Order nr: 1183",,,GKCCBEBB
+"2017-04-11 20:42:06",mistercash,42.90,tr_E9EmW56ajb,"PNL Showcase, Order nr: 1182",,,GKCCBEBB
+"2017-04-11 16:09:51",ideal,45.80,tr_um69pug7N6,"KidsFest Indoor Kids Festival, Order nr: 1177","SAADIA OUGHRIS",NL96ABNA0570902517,ABNANL2A
+"2017-04-11 15:33:51",ideal,8.95,tr_CKJy4Kwgzx,"KidsFest Indoor Kids Festival, Order nr: 1176","Mw M S I Andrea",NL32INGB0008777071,INGBNL2A
+"2017-04-11 15:31:02",ideal,36.85,tr_f4rc4kEbTG,"KidsFest Indoor Kids Festival, Order nr: 1175","Mw M S I Andrea",NL32INGB0008777071,INGBNL2A
+"2017-04-11 14:31:31",creditcard,42.90,tr_wc5En3jSEV,"PNL Showcase, Order nr: 1172","renders eduardo",,
+"2017-04-11 12:51:00",ideal,11.45,tr_vhm9wmN4UQ,"Bitter or Better, Order nr: 1171","TM MOLLE",NL57ABNA0618793380,ABNANL2A
+"2017-04-11 11:49:15",ideal,22.90,tr_MunvThwSBM,"KidsFest Indoor Kids Festival, Order nr: 1170","Mw J Hanson",NL71INGB0003267060,INGBNL2A
+"2017-04-11 11:14:46",ideal,50.80,tr_PqwJGBEhfe,"KidsFest Indoor Kids Festival, Order nr: 1169","Mw T Moslih-Zwaan",NL41INGB0792405668,INGBNL2A
+"2017-04-10 22:56:55",ideal,1.48,tr_Dr4NVHm57K,"Streetview, Order nr: 1165","Hr MD Remak",NL58INGB0003284851,INGBNL2A
+"2017-04-10 21:24:15",ideal,28.52,tr_dQdhwDV9b6,"Bitter or Better, Order nr: 1163","IMAMDI S M",NL38ABNA0448070618,ABNANL2A
+"2017-04-10 21:03:47",paypal,21.95,tr_cryTyrCsV3,"PNL Showcase, Order nr: 1162","wandee duangrayot",,
+"2017-04-10 13:41:15",ideal,9.14,tr_W7jy83Qxn8,"KidsFest Indoor Kids Festival, Order nr: 1161","T.N.V. ADRIANA",NL09RABO0182411400,RABONL2U
+"2017-04-09 21:45:05",paypal,43.90,tr_KqfDDfDt77,"PNL Showcase, Order nr: 1160","fathia levavasseur",,
+"2017-04-09 21:44:34",ideal,46.80,tr_QkdQanvMG7,"KidsFest Indoor Kids Festival, Order nr: 1159","DHJ BENN",NL48ABNA0444878653,ABNANL2A
+"2017-04-09 17:38:22",ideal,9.14,tr_8MyJ2ssd6N,"KidsFest Indoor Kids Festival, Order nr: 1158",BOUMANN,NL24SNSB0853500495,SNSBNL2A
+"2017-04-09 14:57:41",mistercash,87.80,tr_TUpnAStVBw,"PNL Showcase, Order nr: 1156",,,GKCCBEBB
+"2017-04-09 10:48:57",ideal,37.66,tr_bVffT24tPM,"KidsFest Indoor Kids Festival, Order nr: 1153","Mw KRV Melaan",NL40INGB0652052215,INGBNL2A
+"2017-04-08 15:19:26",creditcard,65.85,tr_7RDNnvdSQG,"PNL Showcase, Order nr: 1151","De Wilde",,
+"2017-04-08 14:21:53",creditcard,65.85,tr_UnxSqRKn3w,"PNL Showcase, Order nr: 1150","Souad Mkharef",,
+"2017-04-08 13:30:03",ideal,14.26,tr_Jdgt9saUV9,"KidsFest Indoor Kids Festival, Order nr: 1148",SCHOUW,NL60SNSB0902654985,SNSBNL2A
+"2017-04-08 07:43:25",ideal,18.27,tr_PmUJhkFfwQ,"KidsFest Indoor Kids Festival, Order nr: 1147","Mw ESC Leissius",NL76INGB0700814728,INGBNL2A
+"2017-04-08 07:42:16",ideal,42.79,tr_UVbEAyVKK6,"KidsFest Indoor Kids Festival, Order nr: 1146","NRE LEISSIUS",NL57ABNA0609317741,ABNANL2A
+"2017-04-08 01:10:52",ideal,14.26,tr_QKzCzKaPtR,"KidsFest Indoor Kids Festival, Order nr: 1145","Mw N A Izquierdo",NL73INGB0689946902,INGBNL2A
+"2017-04-07 22:01:20",mistercash,43.90,tr_35h3rbGKpP,"PNL Showcase, Order nr: 1144",,,BBRUBEBB
+"2017-04-07 20:50:50",mistercash,43.90,tr_nC2xxfF2m8,"PNL Showcase, Order nr: 1143",,,GEBABEBB
+"2017-04-07 20:02:58",mistercash,43.90,tr_yzbK4DF3kz,"PNL Showcase, Order nr: 1142",,,BBRUBEBB
+"2017-04-07 19:44:09",creditcard,43.90,tr_f4kaQ8URad,"PNL Showcase, Order nr: 1141","Emmanuel Solovieff",,
+"2017-04-07 18:25:04",ideal,46.80,tr_FWmcxVFBz8,"KidsFest Indoor Kids Festival, Order nr: 1139","Mw L de Haas",NL29INGB0002013509,INGBNL2A
+"2017-04-07 17:29:12",ideal,23.40,tr_aPfUD7A7Q9,"KidsFest Indoor Kids Festival, Order nr: 1138","MW L K Windster",NL40INGB0002003805,INGBNL2A
+"2017-04-07 10:30:50",mistercash,21.95,tr_VB5gqAVDU3,"PNL Showcase, Order nr: 1135",,,GEBABEBB
+"2017-04-06 21:03:01",ideal,84.46,tr_cGkwrQpjTy,"KidsFest Indoor Kids Festival, Order nr: 1132","Mw I P Blauw",NL03INGB0009415756,INGBNL2A
+"2017-04-06 19:19:16",creditcard,21.95,tr_hzTt3zgwgu,"PNL Showcase, Order nr: 1131",Durmush,,
+"2017-04-06 19:05:50",creditcard,65.85,tr_hBsHzyScH9,"PNL Showcase, Order nr: 1130","Soner Durmush",,
+"2017-04-06 18:15:44",ideal,84.46,tr_hbzjvW5nMs,"KidsFest Indoor Kids Festival, Order nr: 1128","A DUBOIS",NL84ABNA0581467973,ABNANL2A
+"2017-04-06 18:18:06",mistercash,21.95,tr_cebjnyCFru,"PNL Showcase, Order nr: 1127",,,KREDBEBB
+"2017-04-06 14:14:15",ideal,37.66,tr_Nnt7b9QNHe,"KidsFest Indoor Kids Festival, Order nr: 1125","D.S.S. DE WIT",NL50RABO0326819800,RABONL2U
+"2017-04-06 12:39:22",ideal,37.66,tr_fxusDh6wKH,"KidsFest Indoor Kids Festival, Order nr: 1124","F.J.H. JORIS EO",NL91RABO0161442986,RABONL2U
+"2017-04-06 10:36:17",creditcard,65.85,tr_dWk63nuMMW,"PNL Showcase, Order nr: 1123","ELENA POLLARINI",,
+"2017-04-06 10:22:36",ideal,37.66,tr_ACTGt5aMeJ,"KidsFest Indoor Kids Festival, Order nr: 1122","Mw PC Koningverdraag",NL97INGB0651263549,INGBNL2A
+"2017-04-06 09:57:21",ideal,23.40,tr_pSgJ2rBqzV,"KidsFest Indoor Kids Festival, Order nr: 1121","A. DE BOER EO",NL61RABO0396466087,RABONL2U
+"2017-04-06 09:25:24",ideal,23.40,tr_bndsJ8MUQT,"KidsFest Indoor Kids Festival, Order nr: 1120","BOER D",NL55ABNA0830865098,ABNANL2A
+"2017-04-06 08:39:22",paypal,43.90,tr_PDcbrveD8R,"PNL Showcase, Order nr: 1119","Hafça Farhat",,
+"2017-04-05 18:38:55",creditcard,43.90,tr_cSdbRpdnKQ,"PNL Showcase, Order nr: 1117","Iannuzzi julie",,
+"2017-04-05 18:36:07",mistercash,21.95,tr_qm8UGrBgWm,"PNL Showcase, Order nr: 1116",,,GKCCBEBB
+"2017-04-05 16:47:23",paypal,21.95,tr_gTc37hMQuG,"PNL Showcase, Order nr: 1114","Veronique Turecki",,
+"2017-04-05 16:40:45",creditcard,43.90,tr_UNmqCJWkNf,"PNL Showcase, Order nr: 1113","Latour Emma",,
+"2017-04-05 12:43:23",ideal,16.82,tr_sDjjgbUEmJ,"La Puissance, Order nr: 1111","MW Y Dijksteel",NL03INGB0008598434,INGBNL2A
+"2017-04-05 12:35:52",ideal,11.70,tr_sMHB7HuacS,"Bitter or Better, Order nr: 1109","Hr J S Feller",NL02INGB0756437121,INGBNL2A
+"2017-04-05 10:29:59",ideal,23.40,tr_45TUy7e9GJ,"KidsFest Indoor Kids Festival, Order nr: 1107","LDJ VANDEVENNE",NL14ABNA0505771209,ABNANL2A
+"2017-04-05 09:30:08",ideal,37.66,tr_ERgFf3dfC9,"KidsFest Indoor Kids Festival, Order nr: 1105","N. DESSERJERE",NL03RABO0311580394,RABONL2U
+"2017-04-04 23:40:01",ideal,11.70,tr_9WKpn9z9Az,"Bitter or Better, Order nr: 1104","Hr J S Feller",NL02INGB0756437121,INGBNL2A
+"2017-04-04 19:50:14",creditcard,43.90,tr_4tHRmy5e6h,"PNL Showcase, Order nr: 1100","M MARTINS AMERICO",,
+"2017-04-04 19:41:44",paypal,87.80,tr_FGpBh5F9Mr,"PNL Showcase, Order nr: 1099","Joakim Jaumain",,
+"2017-04-04 19:03:58",mistercash,43.90,tr_VsrnkRjtnt,"PNL Showcase, Order nr: 1094",,,GEBABEBB
+"2017-04-04 17:19:45",ideal,23.40,tr_8DjmS5zgqn,"KidsFest Indoor Kids Festival, Order nr: 1091",DALL,NL46ASNB0709268602,ASNBNL21
+"2017-04-04 15:14:13",mistercash,43.90,tr_QuMd2ax6H3,"PNL Showcase, Order nr: 1089",,,GKCCBEBB
+"2017-04-04 14:02:35",mistercash,21.95,tr_cV6m57PC8v,"PNL - Showcase -, Order nr: 1088",,,BBRUBEBB
+"2017-04-04 13:37:45",ideal,32.54,tr_gjyf9SW5zJ,"KidsFest Indoor Kids Festival, Order nr: 1087","Mw N A Izquierdo",NL73INGB0689946902,INGBNL2A
+"2017-04-04 13:10:37",mistercash,43.90,tr_w2wBr56Tcq,"PNL - Showcase -, Order nr: 1086",,,BBRUBEBB
+"2017-04-04 12:55:48",creditcard,43.90,tr_8aUBNHg87C,"PNL - Showcase -, Order nr: 1084","Garet Marie",,
+"2017-04-04 11:25:22",paypal,21.95,tr_xKGQP4nHCw,"PNL - Showcase -, Order nr: 1081","Pedro López Aránega",,
+"2017-04-04 11:24:34",ideal,75.32,tr_5kswspea9q,"KidsFest Indoor Kids Festival, Order nr: 1080","Ambresio Brewster",NL04INGB0652821782,INGBNL2A
+"2017-04-04 10:12:24",mistercash,43.90,tr_RgmF8RyzPm,"PNL - Showcase -, Order nr: 1077",,,GEBABEBB
+"2017-04-04 07:20:35",ideal,89.59,tr_9dBkkmz4hb,"KidsFest Indoor Kids Festival, Order nr: 1076","Mw N A Izquierdo",NL73INGB0689946902,INGBNL2A
+"2017-04-04 04:02:59",paypal,43.90,tr_fHqkwwvbnb,"PNL - Showcase -, Order nr: 1075","Ilias El Jaouani",,
+"2017-04-03 22:36:23",ideal,11.70,tr_TJgsWuuWH9,"Bitter or Better, Order nr: 1073","MW C P Content",NL60INGB0003988162,INGBNL2A
+"2017-04-03 16:11:41",ideal,23.40,tr_34CDaWmafS,"KidsFest Indoor Kids Festival, Order nr: 1071","C G Adriaans",NL84INGB0008934148,INGBNL2A
+"2017-04-03 14:11:40",ideal,9.14,tr_NcKejTTNj2,"KidsFest Indoor Kids Festival, Order nr: 1070","J.A.A. KONING",NL92RABO0365198064,RABONL2U
+"2017-04-03 08:58:47",ideal,61.06,tr_wgjfWzyPpe,"KidsFest Indoor Kids Festival, Order nr: 1064","Mw BE Margaret",NL52INGB0004227508,INGBNL2A
+"2017-04-03 08:57:24",ideal,37.66,tr_kuwdbnHwFB,"KidsFest Indoor Kids Festival, Order nr: 1063","J.A.A. KONING",NL92RABO0365198064,RABONL2U
+"2017-04-02 23:30:58",ideal,1.46,tr_AUKvnQRRAK,"Streetview, Order nr: 1061","Hr MD Remak",NL58INGB0003284851,INGBNL2A
+"2017-04-02 23:24:19",ideal,1.46,tr_F5UT4nKz2J,"Streetview, Order nr: 1060","Hr MD Remak",NL58INGB0003284851,INGBNL2A
+"2017-04-02 23:15:43",ideal,1.46,tr_yAaCHVTs78,"Streetview, Order nr: 1059","Hr MD Remak",NL58INGB0003284851,INGBNL2A
+"2017-04-02 22:21:46",ideal,1.46,tr_cAAcQtfj9H,"Streetview, Order nr: 1058","Hr MD Remak",NL58INGB0003284851,INGBNL2A
+"2017-04-02 12:45:15",ideal,1.46,tr_29wWT9wVF5,"Streetview, Order nr: 1057","Hr MD Remak",NL58INGB0003284851,INGBNL2A
+"2017-04-02 10:57:13",ideal,9.14,tr_hKaNc2RSgA,"KidsFest Indoor Kids Festival, Order nr: 1056","M.L. NGUYEN",NL51RABO0326996613,RABONL2U
+"2017-04-02 10:52:21",ideal,84.46,tr_TaevazFEyK,"KidsFest Indoor Kids Festival, Order nr: 1055","M.L. NGUYEN",NL51RABO0326996613,RABONL2U
+"2017-04-02 09:10:50",ideal,14.26,tr_GvUR8vuaeJ,"Bitter or Better, Order nr: 1054","Hr K Cantorun",NL09INGB0003029653,INGBNL2A
+"2017-04-01 00:29:48",ideal,1.46,tr_CpcRDP5auj,"Streetview, Order nr: 1049","Hr MD Remak",NL58INGB0003284851,INGBNL2A

@@ -1,0 +1,120 @@
+{% extends 'youradmin/base.html' %}
+{% load static %}
+{% load humanize %}
+
+{% block content %}
+    <link rel="stylesheet" type="text/css" href="{% static "youradmin/css/pages/financial.css"%}" />
+    <script>
+        YT.urls = YT.urls || {};
+
+        YT.urls.update_totals = '{% url 'youradmin_events:update_totals' %}';
+    </script>
+
+    <script type="text/javascript" src="{% static 'youradmin/js/pages/events.js' %}"></script>
+
+<!-- 
+<script type="text/javascript">
+
+    $(function(){
+        var tablee = $('#maintable').on('draw.dt', function(type){
+    
+    
+    
+            tablee.rows().every( function ( rowIdx, tableLoop, rowLoop ) {
+                var data = this.data();
+    
+    
+                // ... do something with data(), or this.node(), etc
+            } );
+    
+        }).DataTable();
+    
+    
+        
+    
+        $('#button_update_totals').click(function(){
+    
+            $.ajax({
+                url: YT.urls['update_totals'],
+                type: 'POST',
+                data: {
+
+                    'from_event_id': 0,
+                    'to_event_id': 9999
+    
+                }
+            })
+            .done(function (msg) {
+                if (msg.success === true) {
+                    
+                } else {
+                    
+                }
+            });
+            location.reload(); 
+        });
+    
+
+    
+    
+    
+    
+   
+});
+</script>
+-->
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Event list</h3>
+    </div>
+    <div class="panel-body">
+        <div class="pane-header">
+            <div id="search" class="collapse search-container in">
+
+                <div class="row">
+                    <div class="col-md-6">
+                            <div class="form-group">
+
+                            </div>
+
+                    </div>
+                    <div class="col-md-6">         
+                    </div>
+                </div>
+
+               
+                <div class="row">
+
+                    <div class="col-md-12 ">
+                        <button class="btn btn-primary" id="button_update_totals">Update Totals</button>
+                    </div>
+
+                </div>
+
+            </div>
+            <div style="" class="text-center search-line">
+                <div data-toggle="collapse" class="btn btn-xs btn-primary search-collapse-button" data-target="#search">
+                    <span class="glyphicon glyphicon-search"></span>
+                    Options
+                    <span class="glyphicon glyphicon-chevron-down"></span>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="panel panel-default">
+
+    
+</div>
+
+
+
+        {% include "youradmin/partials/datatable.html" with datatables_config=datatables_config %}
+
+    </div>
+</div>
+
+
+
+
+{% endblock %}

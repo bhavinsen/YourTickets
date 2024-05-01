@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load index %}
+
+{% block background %}{{cshop.bg_img.url}}{% endblock %}
+
+{% block wrapper_class %}shop-wrapper{% endblock %}
+
+{% block content %}
+
+    <header class="a-center">
+            <h1 class="header white uppercase">{{event.title}}</h1>
+    </header>
+    <article class="ticketshop">
+      <div class="corners-outer corners-outer-bottom u-border-bottom-dash u-flex-column bg-gray">
+       <div class="corners-inner corners-inner-top bg-gray">
+          <div class="content u-flex-row-around bg-gray">
+            <div class="infoNav bold"><i class="fa fa-calendar primary_color m-right-12"></i>{{event.start_date|date:"d-m-Y"}}</div>
+            <div class="infoNav bold">
+                <span class="u-textDots"><i class="fa fa-map-marker secondary_color m-right-12"></i>{{event.location}}</span>
+            </div>
+          </div>
+{#          <ul class="light-gray uppercase bold large-scale a-center m-top-24 u-desktop-show">#}
+{#                <li class="u-inline-block">{% getWord lc "shop-confirm-jouwgegevens" %}<span class="line"></span></li>#}
+{#                <li class="u-inline-block">{% getWord lc "shop-confirm-betaling" %}<span class="line"></span></li>#}
+{#                <li class="primary_color u-inline-block">{% getWord lc "shop-confirm-happiness" %}</li>#}
+{#          </ul>#}
+          <h2 class="a-center m-top-30 uppercase large bold light-gray">{% getWord lc "shop-confirm-title" %}</h2>
+          <p class="base a-center m-auto share-text m-top-30 p-bottom-24">
+              {% getWord lc "shop-confirm-text1" %}
+          </p>
+{#          <div class="a-center w-100">#}
+{#             {% for item in tickets_gen %}#}
+{#               <div class="m-bottom-12"><a class="button-l bg-primary_color uppercase medium u-noselect" target="_blank" href='{{item.0}}'>Ticket {{ forloop.counter }}</a></div>#}
+{#             {% endfor %}#}
+{#          </div>#}
+        </div>
+
+
+      </div>
+      <div class="corners-outer corners-outer-top bg-white">
+        <div class="thankyou corners-inner bg-white p-bottom-48">
+          <p class="base a-center m-auto share-text m-top-30 m-bottom-24">{% getWord lc "shop-confirm-sharetext" %}</p>
+          <input value="{{ hostname }}{{url}}" readonly="readonly" class="copy js-autoselect m-auto m-top-12 u-block share-url u-border-radius"/>
+          <div id="copymessage" class="w-100 a-center gray small m-top-12"></div>
+      </div>
+      </div>
+    </article>
+    <div class="w-100 a-center">
+      <a class="base uppercase p-around-24 medium-small" href="{% url 'contact' %}">Contact</a>
+    </div>
+    <script type="text/javascript" src="{% static 'js/color.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/clipboard.js/1.5.12/clipboard.min.js"></script>
+      <script>
+      var clipboard = new Clipboard('.copy');
+
+       clipboard.on('success', function(e) {
+         $( "#copymessage" ).append( "Je hebt de link gekopieerd" );
+       });
+
+       clipboard.on('error', function(e) {
+         $( "#copymessage" ).append( "kopiëren is helaas niet gelukt probeer het handmatig" );
+       });
+       $('body').Color({
+         primary_color   : '{{cshop.primary_color}}',
+         secondary_color : '{{cshop.secondary_color}}'
+       });
+       var links = [
+       {% for item in tickets_gen %}
+         '{{item.0}}',
+       {% endfor %}
+         ];
+
+     function downloadAll(urls) {
+       var link = document.createElement('a');
+
+       document.body.appendChild(link);
+       link.setAttribute('download', 'Ticket voor {{event.title}}');
+        link.style.display = 'none';
+
+       for (var i = 0; i < urls.length; i++) {
+         link.setAttribute('href', urls[i]);
+         link.click();
+       }
+
+       document.body.removeChild(link);
+     }
+   </script>
+
+{% endblock %}

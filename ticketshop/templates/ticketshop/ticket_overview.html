@@ -1,0 +1,257 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load index %}
+
+{% block background %}{{ cshop.bg_img.url }}{% endblock %}
+
+{% block wrapper_class %}shop-wrapper{% endblock %}
+
+{% block content %}
+    <link rel='stylesheet' href="{% static 'css/components/messages.css' %}">
+    <link rel='stylesheet' href="{% static 'css/page/confirm_shop.css' %}">
+    <script type="text/javascript" src="{% static 'js/plugins/jquery.inputmask.bundle.min.js' %}"></script>
+    <script src="{% static 'js/page/confirm_shop.js' %}"></script>
+
+    <header class="a-center">
+        <h1 class="header white uppercase">{{cur_event.title}}</h1>
+    </header>
+    <article class="ticketshop">
+        <div class="corners-outer corners-outer-bottom u-border-bottom-dash u-flex-column bg-white">
+            <div class="corners-inner corners-inner-top bg-white">
+                <div class="tickets corners-inner bg-white">
+                    <fieldset class="p-around-24">
+                        <ul class="light-gray uppercase bold large-scale a-center u-desktop-show m-top-24 m-bottom-48">
+                            <li class="primary_color  u-inline-block">{% getWord lc "shop-confirm-jouwgegevens" %}<span class="line"></span></li>
+                            <li class="u-inline-block">
+                                {% if cur_event.id == 672 %}
+                                    Bestelling
+                                {% else %}
+                                    {% getWord lc "shop-confirm-betaling" %}
+                                {% endif %}
+                                <span class="line"></span></li>
+                            <li class="u-inline-block">{% getWord lc "shop-confirm-happiness" %}</li>
+                        </ul>
+                        <div class="table u-border-box">
+                            <div class="u-flex-row u-border-bottom p-bottom-6">
+                                <span class="cell-70 u-flex small bold">{% getWord lc "shop-base-ticket" %}</span>
+                                <span class="cell-10 small bold">{% getWord lc "shop-base-aantal" %}</span>
+                                <span class="cell-20 small bold">{% getWord lc "shop-base-price" %}</span>
+                            </div>
+                            {% load humanize %}
+                            {% for ticket in tickets %}
+
+                                <div class="u-flex-row p-top-bottom-24 u-border-bottom">
+                                    <span class="cell-70 u-flex u-break">{{ticket.name}}</span>
+                                    <span class="cell-10">{{ ticket.amount }}</span>
+                                    <span class="cell-20 uppercase">
+                                        {% if ticket.price > 0 %}
+                                            €{{ ticket.price|floatformat:2|intcomma }}
+                                        {% else %}
+                                            {% getWord lc "shop-base-free" %}
+                                        {% endif %}
+                                    </span>
+                                </div>
+
+                            {% endfor %}
+                            <div class="u-flex-row p-top-24">
+                                <span class="cell-70 u-flex">{% getWord lc "shop-confirm-ticketfee" %}</span>
+                                <span class="cell-10"></span>
+                                <span class="cell-20 uppercase">€{{trans_fee|floatformat:2|intcomma }}</span>
+                            </div>
+                            <div class="u-flex-row p-top-bottom-18">
+                                <span class="cell-70 u-flex bold">{% getWord lc "shop-confirm-total" %}</span>
+                                <span class="cell-10"></span>
+                                <span class="cell-20 uppercase bold">€{{ total_price|floatformat:2|intcomma }}</span>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+        <div class="corners-outer corners-outer-top bg-gray">
+            <div class="tickets corners-inner bg-gray">
+                {% if not user.is_authenticated %}
+                    {% include 'ticketshop/ticket_overview/login.html' %}
+                    {% include 'ticketshop/ticket_overview/profile.html' %}
+                {% endif %}
+
+
+                <form id="form" method="post">
+                    <input type="hidden" name="action_type" value="save">
+                    {% csrf_token %}
+
+
+                    {% if user.is_authenticated %}
+                        {% include 'ticketshop/ticket_overview/authenticated.html' %}
+
+                        <div class="large m-bottom-36 light-gray">
+                            <input type="radio" id="hide_alternative" {% if send_to == 'me' %}checked="checked"{% endif %} name="send_to" value="me">
+                            {% getWord lc "shop-confirm-i_receive_tickets" %}
+                            <br/>
+                            <input type="radio" id="show_alternative" {% if send_to == 'others' %}checked="checked"{% endif %} name="send_to" value="others">
+                            {% getWord lc "shop-confirm-send_tickets_to" %}
+                        </div>
+                        <div class="large m-bottom-36 uppercase light-gray">
+
+                        </div>
+
+                        <div style="text-align:center;">
+{#                            <div class="button white bg-secondary_color bold uppercase" id="show_alternative" style="margin-bottom:20px;">Klik hier!</div>#}
+
+                        </div>
+                        <div class="ticket-panel-group hidden">
+
+                            {% for ticket in tickets_form_list %}
+
+                                <div class="ticket-panel">
+                                    <div class="ticket-panel-button">
+                                        {{ ticket.name }}
+                                        <img src="{% static 'images/icons/caret.png' %}">
+                                    </div>
+                                    <div class="ticket-panel-body {% if not ticket.some_has_changed %}hidden{% endif %}">
+                                        <div class="ticket-panel-body-content">
+
+                                            {% for form in ticket.forms %}
+
+                                                <div class="u-flex-column-to-row ticket-panel-body-subheader">Persoon {{ forloop.counter }} </div>
+                                                {% if form.has_change and not form.is_valid %}
+                                                    <div class="u-flex-column-to-row ticket-panel-error-container">
+                                                    {% for key, errors in form.errors.items %}
+                                                        {% for error in errors %}
+                                                            {{ key }}: {{ error }}
+                                                        {% endfor %}
+
+                                                    {% endfor %}
+                                                    </div>
+
+                                                {% endif %}
+                                                <div class="u-flex-column-to-row">
+                                                    <div class="u-flex p-right-24-dt">
+                                                        <input value="{{form.email.value|default_if_none:''}}"
+                                                               name="{{form.email.html_name}}"
+                                                               class="form-input w-100 {{ form.email.field.widget.attrs.class }}"
+                                                               type="email"
+                                                               placeholder="{% getWord lc "login-form-email" %}">
+                                                        <input value="{{form.first_name.value|default_if_none:''}}"
+                                                               name="{{form.first_name.html_name}}"
+                                                               class="form-input w-100 {{ form.first_name.field.widget.attrs.class }}"
+                                                               type="text"
+                                                               placeholder="{% getWord lc "register-form-firstname" %}">
+                                                    </div>
+                                                    <div class="u-flex">
+                                                        <label class="checkbox m-right-12 shop-disabled {{ form.gender.field.widget.attrs.class }}">{% getWord lc "shop-form-genderm" %}
+                                                        <input {% if form.gender.value == 'M' %}checked=true {% endif %}
+                                                                class="u-float-right"
+                                                                type="radio"
+                                                                name="{{ form.gender.html_name }}" value="M"></label>
+                                                        <label class="checkbox shop-disabled {{ form.gender.field.widget.attrs.class }}">{% getWord lc "shop-form-genderf" %}
+                                                        <input {% if form.gender.value == 'F' %}checked=true {% endif %}
+                                                                class="u-float-right"
+                                                                type="radio"
+                                                                name="{{ form.gender.html_name }}" value="F"></label>
+                                                        {% if cur_event.id == 672 or cur_event.id == 879 or cur_event.id == 878 %}
+                                                            <label style="width:100%" class="checkbox w-100 shop-disabled {{ form.gender.field.widget.attrs.class }}">
+                                                                
+                                                                    Non-binair
+                                                                
+                                                                
+                                                            <input {% if form.gender.value == 'X' %}checked=true {% endif %}
+                                                                    class="u-float-right"
+                                                                    type="radio"
+                                                                    name="{{ form.gender.html_name }}" value="X"></label>
+                                                        {% endif %}
+
+                                                        <input value="{{form.last_name.value|default_if_none:''}}"
+                                                            name="{{form.last_name.html_name}}"
+                                                            class="form-input w-100 {{ form.last_name.field.widget.attrs.class }}"
+                                                            type="text"
+                                                            placeholder="{% getWord lc "register-form-lastname" %}">
+                                                    </div>
+                                                </div>
+                                            {% endfor %}
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            {% endfor %}
+
+                        </div>
+
+                    {% endif %}
+                    <div class="terms">
+                        &nbsp;
+                    </div>
+
+                    {% if user.is_authenticated %}
+                        <button id="submit_button" class="uppercase button button-bottom-right white bg-primary_color bold uppercase" type="submit">
+                            {% if cur_event.id == 672 %}
+                                Bestel
+                            {% else %}
+                                {% getWord lc "shop-form-buttonsubmit" %}
+                            {% endif %}
+                            <i class="m-left-36 fa fa-angle-right bold"></i>
+                           <div class="u-overlay"></div>
+                        </button>
+                        {% if request.session.comes_from_iframe %}
+                        <script>
+
+                                function serializeObject(serializedFormArray) {
+                                    var o = {};
+                                    var a = serializedFormArray;
+                                    $.each(a, function() {
+                                        if (o[this.name]) {
+                                            if (!o[this.name].push) {
+                                                o[this.name] = [o[this.name]];
+                                            }
+                                            o[this.name].push(this.value || '');
+                                        } else {
+                                            o[this.name] = this.value || '';
+                                        }
+                                    });
+                                    return o;
+                                }
+
+                            $('#submit_button').click(function(e){
+                                e.preventDefault();
+                                console.log(serializeObject($('#form').serializeArray()));
+{#                                window.location('')#}
+                                $.ajax({
+                                    type: "POST",
+                                    //url: "bin/process.php",
+                                    data: serializeObject($('#form').serializeArray()),
+                                    success: function(e) {
+                                        top.location = e.url;
+                                    }
+                                  });
+                            });
+                        </script>
+                        {% endif %}
+                    {% endif %}
+                </form>
+            </div>
+        </div>
+    </article>
+    <div class="w-100 a-center">
+        <a class="base uppercase p-around-24 medium-small" href="{% url 'contact' %}">Contact</a>
+    </div>
+
+{#    <script src="{% static 'js/main.js' %}"></script>#}
+    <script>
+    $(function(){
+        $('body').Color({
+          primary_color   : '{{cshop.primary_color}}',
+          secondary_color : '{{cshop.secondary_color}}'
+        });
+    });
+
+    </script>
+    {% if request.session.comes_from_iframe %}
+        <style>
+            .shop-wrapper{
+                width:100%;
+            }
+        </style>
+    {% endif %}
+
+{% endblock %}

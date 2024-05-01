@@ -1,0 +1,15 @@
+.dataTable .button-icon{
+    cursor:pointer;
+}
+
+.dataTable .delete-button{
+    color:red;
+}
+
+.dataTable .row_not_payed{
+    background-color:#f2dede !important;
+}
+
+.dataTable .row_payed{
+    background-color:#E2EFDA !important;
+}

@@ -1,0 +1,100 @@
+
+
+          <form action="/yourtickets/create4.html">
+            <ul class="light-gray uppercase bold u-desktop-show p-around-24 m-top-24 m-bottom-60">
+              <h1 class="dark bold uppercase m-right-24 u-inline-block">Créer un événement</h1>
+              <li class="u-inline-block">Informations Evénement<span class="line"></span></li>
+              <li class="primary_color-fixed u-inline-block">Billets<span class="line"></span></li>
+              <li class="u-inline-block">Design Magasin de billets</li>
+            </ul>
+             <div class="m-auto create-step2">
+              <h2 class="u-border-bottom normal large bold m-bottom-24"><span class="numberbox white bold bg-secondary_color-fixed m-right-36 create-number">3</span><span class="create-header base">Ajouter des billets</span></h2>
+               <fieldset class="u-border a-center bg-white m-bottom-60 u-border-radius">
+                  <div id="js-tickets">
+                    <div class="m-top-12 js-ticket a-left u-border-bottom">
+                      <div class="p-side-12">
+                        <span class="small bold uppercase">Nom du billet</span>
+                        <input name="ticket_naam[]" class="m-top-6 form-input w-100 u-break js-required" type="text" id="ticketNaam_1" placeholder="Par exemple: Achat Anticipé">
+                      </div>
+                      <div class="u-flex-row p-side-12 cell-H74">
+                        <div class="m-right-24 u-flex">
+                          <span class="small bold uppercase">Montant</span>
+                          <input name="ticket_aantal[]" class="m-top-6 form-input w-100 u-break js-required" type="number" id="Aantal_1" placeholder="0">
+                        </div>
+                        <div class="m-right-24 u-flex">
+                          <span class="small bold uppercase">Prix</span> <span class="base small currency">&euro;</span>
+                          <!-- <span class="base small currency">€</span> -->
+                          <input name="ticket_prijs[]" class="js-price m-top-6 euro form-input w-100 u-break js-required" type="text" id="ticketPrijs_0" placeholder="12,50">
+                        </div>
+                        <div class="u-flex cell-w80">
+                          <span class="large cell-lineheigt u-pointer secondary_color-fixed "><i class="js-gear m-right-12 Gear activeGear fa fa-cog" aria-hidden="true"></i><i class="fa fa-trash-o js-removeTicket" aria-hidden="true"></i></span>
+                        </div>
+                      </div>
+                      <div class="bg-gray p-around-12 js-more" style="display: block;">
+                        <div class="ticket-panel-error-container hidden">
+                            <div class="hidden startdate-error">Einddatum bevindt zich voor de startdatum.</div>
+                        </div>
+                        <div class="u-flex-column-to-row">
+                          <div class="m-right-24 u-flex a-center p-top-12 m-bottom-6">
+                            <span class="base">Date de démarrage de la vente des billets</span>
+                          </div>
+                          <div class="m-right-24 u-flex">
+                            <input value="2016-08-01" name="ticket_begin_datum[]" class="form-input m-right-6 w-100 ticket_start_date" id="ticketStartDatum_0" placeholder="Begin datum">
+                          </div>
+                          <div class="m-right-24 u-flex">
+                            <input value="00:00" name="ticket_begin_tijd[]" class="form-input w-100 ticket_start_time"  type="time" id="" placeholder="Begin tijd">
+                          </div>
+                        </div>
+                         <div class="u-flex-column-to-row ">
+                          <div class="m-right-24 u-flex a-center p-top-12 m-bottom-6">
+                            <span class="base">Date de fin de la vente des billets</span>
+                          </div>
+                          <div class="m-right-24 u-flex">
+                            <input value="2016-08-01" name="ticket_eind_datum[]" class="form-input m-right-6 w-100 ticket_end_date" id="ticketEindDatum_0" placeholder="Einddatum">
+                          </div>
+                          <div class="m-right-24 u-flex">
+                            <input value="00:00" name="ticket_eind_tijd[]" class="form-input w-100 ticket_end_time"  type="time" id="ticketEindTijd_0" placeholder="Eindtijd">
+                          </div>
+                        </div>
+                        <div class="base m-top-12 m-bottom-12">Nombre de billets par commande</div>
+                        <div class="u-flex-column-to-row">
+                          <div class="u-flex">
+                            <input value="10" name="ticket_aanal_max[]" class="form-input"  type="number" id="" placeholder="10">
+                          </div>
+                        </div>
+                        <div class="base m-top-12 m-bottom-12">Personen per ticket</div>
+                        <div class="u-flex-column-to-row">
+                          <div class="u-flex">
+                            <input value="1" name="person_amount[]" class="form-input"  type="number" id="" placeholder="1">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div id="js-addTickets" class="m-around-24 u-inline-block button-page u-pointer uppercase medium-small white bold bg-primary_color-fixed"><i class="m-right-12 fa fa-plus" aria-hidden="true"></i>Nouveau Billet</div>
+                </fieldset>
+            </div>
+            <div class="bg-dark-gray">
+              <a href="/fr/dashboard/" class="u-inline-block m-0 uppercase button button-cancel light-gray bold uppercase">Annuler</a>
+              <span id="js-next-3" class="u-inline-block m-0 uppercase button white u-float-right button-204 bg-primary_color-fixed bold uppercase" type="submit">Design<i class="m-left-36 fa fa-angle-right bold"></i><div class="u-overlay"></div></span>
+            </div>
+          </form>
+
+      <script>
+        d = new Date();
+        var month = d.getMonth()+1;
+        var day = d.getDate();
+        var date = d.getFullYear() + '-' +
+            ((''+month).length<2 ? '0' : '') + month + '-' +
+            ((''+day).length<2 ? '0' : '') + day;
+         $('#ticketEindTijd_0').val(historyVar['start-time']);
+         $('#ticketEindDatum_0').val(historyVar['start-date']);
+         $('#ticketStartDatum_0').val(date);
+           $('.js-price').priceFormat({
+            prefix: '€ ',
+            centsSeparator: ',',
+            thousandsSeparator: '.',
+            limit: 7,
+            centsLimit: 2
+        });
+      </script>

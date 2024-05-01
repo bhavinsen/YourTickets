@@ -1,0 +1,23 @@
+{% extends "dash/event/edit/edit.html" %}
+{% load static %}
+{% load i18n %}
+{% load index %}
+{% block form %}
+
+<form action="{% url 'dashboard_event_bank' event_id=cur_event.id %}" method="post">
+  {% csrf_token %}
+  <div class="dashboard-event-width bg-white">
+    <h2 class="normal large bold m-bottom-24"><span class="create-header white">{% getWord lc "dash-edit_event-bank-title" 'Bankgegevens' %}</span></h2>
+
+		<input name="rek_nr" value="{{bank.rekening_number}}" class="form-input-bigger w-100" type="text" id="iban" placeholder="{% getWord lc "dash-edit_event-bank-nr" 'Bankrekeningnummer  (IBAN)' %}">
+		<input name="rek_houder" value="{{bank.rekening_houder}}" class="form-input-bigger w-100" type="text" id="Rekeninghouder" placeholder="{% getWord lc "dash-edit_event-bank-nr_holder" 'Rekeninghouder' %}">
+		<input name="fact_adres" value="{{bank.factuur_adress}}" class="form-input-bigger w-100" type="text" id="plaats" placeholder="{% getWord lc "dash-edit_event-bank-city" 'Plaats' %}">
+    <input name="kvk" value="{{bank.kvk_number}}" class="form-input-bigger w-100" type="text" id="plaats" placeholder="{% getWord lc "dash-edit_event-bank-coc_nr" 'KvK-nummer' %}">
+    <input name="btw" value="{{bank.btw_nr}}" class="form-input-bigger w-100" type="text" id="plaats" placeholder="{% getWord lc "dash-edit_event-bank-tax_nr" 'BTW-nummer' %}">
+
+    <button class="m-top-12 u-inline-block m-0 button white button-204 bg-secondary_color-fixed" type="submit">{% getWord lc "dash-edit_event-bank-save_changes" 'Wijzigingen opslaan' %}<div class="u-overlay"></div></button>
+  </div>
+</form>
+
+
+{% endblock %}

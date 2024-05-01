@@ -1,0 +1,10 @@
+{% load static %}
+
+<script type="text/javascript" src="{% static 'yourtickets/js/t.js' %}"></script>
+<script>
+
+$(function(){
+    t('{% url 'track_url' %}', '{% if cur_event %}{{ cur_event.id }}{% endif %}')
+})
+
+</script>

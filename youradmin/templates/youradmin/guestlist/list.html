@@ -1,0 +1,47 @@
+{% extends 'youradmin/base.html' %}
+{% load static %}
+
+{% block content %}
+{% include "youradmin/partials/modals/confirm.html" with modal_id='send_mail' mode='delete' success_message="Mail send" title='Send mail' message="Are you sure you want to send the mail?" %}
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Guestlist tickets</h3>
+    </div>
+    <div class="panel-body">
+        <div class="pane-header">
+            <div class="row">
+                <div class="col-md-2">
+                    <button class="btn btn-primary" id="start_sending">Start sending</button>
+                </div>
+                <div class="col-md-2">
+                    <button class="btn btn-primary" id="stop_sending">Stop sending</button>
+                </div>
+                <div class="col-md-4">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">Total send</div>
+                        <div class="panel-body" id="info_total_send">0</div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">Total errors</div>
+                        <div class="panel-body" id="info_total_errors">0</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body">
+        {% include "youradmin/partials/datatable.html" with datatables_config=datatables_config %}
+        </div>
+    </div>
+</div>
+
+
+
+    <script>
+        YT.urls = YT.urls || {};
+
+        YT.urls.guestlist_send = '{% url 'youradmin_guestlist:send' id='_placeholder_id' %}';
+    </script>
+    <script type="text/javascript" src="{% static 'youradmin/js/pages/guestlist.js' %}"></script>
+{% endblock %}

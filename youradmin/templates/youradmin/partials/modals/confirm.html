@@ -1,0 +1,108 @@
+{% extends 'youradmin/partials/modals/template.html' %}
+
+{% block modal_title %}
+    {{ title }}
+{% endblock %}
+
+{% block modal_content %}
+    <div class="usernotifications">
+        <div class="alert alert-danger hidden">
+            <h4 class="error_title">&nbsp;</h4>
+            <span class="error_message"></span>
+        </div>
+    </div>
+    {{ message }}
+    <div id='{{ modal_id }}-message-details'></div>
+{% endblock %}
+
+{% block buttons %}
+    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+    <button
+        id="{{ modal_id }}-ok-btn"
+        type="button"
+        data-modalid="{{ modal_id }}"
+        class="btn btn-primary"
+        >Ok</button>
+
+    <script>
+        (function() {
+            var buttonTrigger;
+            var url;
+            var ajax_http_method = 'GET';
+            // All destructive operations should be via POST. Thus eventually all
+            // forms should set mode='delete' on the appropriate modals in the templates.
+            if ('{{ mode }}' == 'delete') {
+                ajax_http_method = 'POST'
+            }
+
+            $('#{{ modal_id }}').on('show.bs.modal', function (e) {
+
+                buttonTrigger = $(e.relatedTarget);
+
+                YT.hideAllNotifications();
+
+                /**
+                 * if url is not set thru python
+                 * try to load it from btn attribute data-ajax_submit_url
+                 * @type {string}
+                 */
+                url = '{{ ajax_submit_url }}';
+                success_url_redirect = '{{ success_url_redirect }}';
+
+                if(buttonTrigger.data('ajax_submit_url') !== undefined){
+                    url = buttonTrigger.data('ajax_submit_url');
+                }
+
+
+                message_request_url = '{{ message_request_url }}';
+                if(buttonTrigger.data('message_request_url') != ''){
+                    message_request_url = buttonTrigger.data('message_request_url');
+                }
+
+                if (message_request_url) {
+                    YT.showLoader($('#{{ modal_id }}').find('.modal-body'));
+                    $('#{{ modal_id }}-ok-btn').get(0).disabled = true;
+                    $.ajax({
+                        url: message_request_url,
+                        type: ajax_http_method,
+                    }).done(function (msg) {
+                        YT.hideLoader($('#{{ modal_id }}').find('.modal-body'));
+                        $('#{{ modal_id }}-message-details').html(msg.message)
+                        $('#{{ modal_id }}-ok-btn').get(0).disabled = false;
+                    });
+                }
+
+            });
+
+            $('#{{ modal_id }} button.btn-primary').click(function () {
+
+                YT.showLoader($('#{{ modal_id }}').find('.modal-body'));
+
+                $.ajax({
+                    url: url,
+                    type: ajax_http_method,
+                }).done(function (msg) {
+                    YT.hideLoader($('#{{ modal_id }}').find('.modal-body'));
+
+                    if (msg.success === true) {
+                        if(msg.redirect == true){
+                            document.location = success_url_redirect;
+                        }
+                        YT.showSuccess('', '{{ success_message }}');
+                        $('#{{ modal_id }}').modal('hide');
+
+                        YT.publish('{{ modal_id }}_confirm_success',msg);
+                    } else {
+                        var panel = $('#{{ modal_id }}').find('.modal-body .alert-danger');
+                        YT.showError('', msg.error, panel);
+                    }
+                });
+
+            });
+        })();
+    </script>
+
+
+{% endblock %}
+
+

@@ -1,0 +1,23 @@
+.remodal{
+    color:#7b7d85;
+}
+
+.remodal-close:before{
+    font-size:45px;
+
+    color:white;
+}
+
+.remodal-close{
+    left:auto;
+    right:-10px;
+    top:-50px;
+
+}
+
+.remodal-cancel{
+    background:#aeaeae;
+}
+.remodal-confirm{
+    background:#dc3547;
+}

@@ -1,0 +1,112 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load index %}
+
+{% block background %}{{cshop.bg_img.url}}{% endblock %}
+
+{% block wrapper_class %}shop-wrapper{% endblock %}
+
+{% block content %}
+    {% if cur_event.id == 123 %}
+
+        <script>
+        !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+        n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+        document,'script','//connect.facebook.net/en_US/fbevents.js');
+
+        fbq('init', '1446391025387624');
+        fbq('track', 'PageView');
+
+        fbq('track', 'Purchase', {
+            value: 0.00,
+            currency: 'EUR'
+        });
+        </script>
+
+        <img height="1" width="1" border="0" alt="" style="display:none"
+             src="https://www.facebook.com/tr?id=1446391025387624&ev=Purchase&cd[value]=0.00&cd[currency]=EUR" />
+        <img src="https://www.facebook.com/tr?id=1446391025387624&ev=PageView&noscript=1"/>
+
+    {% endif %}
+    <header class="a-center">
+            <h1 class="header white uppercase">{{cur_event.title}}</h1>
+    </header>
+    <article class="ticketshop">
+      <div class="corners-outer corners-outer-bottom u-border-bottom-dash u-flex-column bg-gray">
+       <div class="corners-inner corners-inner-top bg-gray">
+          <div class="content u-flex-row-around bg-gray">
+            <div class="infoNav bold"><i class="fa fa-calendar primary_color m-right-12"></i>{{event_date}}</div>
+            <div class="infoNav bold">
+                <a href="https://www.google.nl/maps/place/{{cur_event.location}}" target="_blank">
+                    <span class="u-textDots"><i class="fa fa-map-marker secondary_color m-right-12"></i>{{cur_event.location}}</span>
+                </a>
+            </div>
+          </div>
+          <ul class="light-gray uppercase bold large-scale a-center m-top-24 u-desktop-show">
+                <li class="u-inline-block">{% getWord lc "shop-confirm-jouwgegevens" %}<span class="line"></span></li>
+                <li class="u-inline-block">{% getWord lc "shop-confirm-betaling" %}<span class="line"></span></li>
+                <li class="primary_color u-inline-block">{% getWord lc "shop-confirm-happiness" %}</li>
+          </ul>
+          <h2 class="a-center m-top-30 uppercase large bold light-gray">{% getWord lc "shop-confirm-title" %}</h2>
+          <p class="base a-center m-auto share-text m-top-30 p-bottom-24">{% getWord lc "shop-confirm-text1" %}</p>
+          <div class="a-center w-100">
+             {% for item in tickets_gen %}
+               <div class="m-bottom-12"><a class="button-l bg-primary_color uppercase medium u-noselect" target="_blank" href='{{item.0}}'>Ticket {{ forloop.counter }}</a></div>
+             {% endfor %}
+          </div>
+        </div>
+
+
+      </div>
+      <div class="corners-outer corners-outer-top bg-white">
+        <div class="thankyou corners-inner bg-white p-bottom-48">
+          <p class="base a-center m-auto share-text m-top-30 m-bottom-24">{% getWord lc "shop-confirm-sharetext" %}</p>
+          <input value="{{ hostname }}{{url}}" readonly="readonly" class="copy js-autoselect m-auto m-top-12 u-block share-url u-border-radius"/>
+          <div id="copymessage" class="w-100 a-center gray small m-top-12"></div>
+      </div>
+      </div>
+    </article>
+    <div class="w-100 a-center">
+      <a class="base uppercase p-around-24 medium-small" href="{% url 'contact' %}">Contact</a>
+    </div>
+    <script type="text/javascript" src="{% static 'js/color.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/clipboard.js/1.5.12/clipboard.min.js"></script>
+      <script>
+      var clipboard = new Clipboard('.copy');
+
+       clipboard.on('success', function(e) {
+         $( "#copymessage" ).append( "Je hebt de link gekopieerd" );
+       });
+
+       clipboard.on('error', function(e) {
+         $( "#copymessage" ).append( "kopiëren is helaas niet gelukt probeer het handmatig" );
+       });
+       $('body').Color({
+         primary_color   : '{{cshop.primary_color}}',
+         secondary_color : '{{cshop.secondary_color}}'
+       });
+       var links = [
+       {% for item in tickets_gen %}
+         '{{item.0}}',
+       {% endfor %}
+         ];
+
+     function downloadAll(urls) {
+       var link = document.createElement('a');
+
+       document.body.appendChild(link);
+       link.setAttribute('download', 'Ticket voor {{cur_event.title}}');
+        link.style.display = 'none';
+
+       for (var i = 0; i < urls.length; i++) {
+         link.setAttribute('href', urls[i]);
+         link.click();
+       }
+
+       document.body.removeChild(link);
+     }
+   </script>
+
+{% endblock %}

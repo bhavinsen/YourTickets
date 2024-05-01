@@ -1,0 +1,135 @@
+{% extends "dash/base.html" %}
+{% load static %}
+{% load index %}
+{% load compress %}
+
+{% block title %}Yourtickets - Dashboard{% endblock %}
+
+{% block content %}
+
+    <div class="remodal" data-remodal-id="create-multi_ticketshop">
+        <button data-remodal-action="close" class="remodal-close"></button>
+        <input name="name" value="" class="js-required form-input-bigger w-100 " type="text" placeholder="Multi ticketshop name">
+        {% csrf_token %}
+        <br><br>
+        <button id="create-shop-button" data-url="{% url 'dashboard_multiticketshop_create' %}" class="btn btn-blue">CREATE</button>
+    </div>
+
+    <div class="u-flex u-order-1to2">
+        <header class="dashboard-header white p-tb-24-lr-36">
+            <div class="dashboard-header-left u-relative">
+                <div style="float:right;position:relative;width:100%;margin-left:20px;">
+                    <style type="text/css">
+
+                        .languageselector{
+                            margin-right:20px;
+                        }
+                        @media (max-width: 733px) {
+                            .nav-leftwrapper {
+                                position: relative;
+                                top: 0px;
+                            }
+                        }
+                        .nice-select.right {
+                            float: right;
+                            color: black;
+                        }
+                    </style>
+                    {% include 'base/languageselector.html' %}
+                </div>
+            </div>
+        </header>
+
+        <div class="dashboard-container dashboard-container-padding">
+
+
+            <div class="bg-white">
+
+                <div class="large m-bottom-36" style="background-color:#55c7e0;width:100%;padding:20px;color:white;margin-bottom:10px;">
+                    {% getWord lc "dash-multi_ticketshop-edit-title" 'Multi Ticketshop' %}
+                    -
+                    "{{ multishop.name }}"
+                </div>
+                <div style="padding:40px;">
+
+                    <span class="base create-aling-text m-right-12 u-inline-block medium-small">Gebruik deze multishop in een iframe</span>
+                    <span style="padding-left:12px" class="">
+                        <input type="checkbox" name="use_in_iframe" value="true"
+                            id="use_in_iframe"
+                           {% if multishop.use_in_iframe %}checked="checked" {% endif %}
+                        >
+                        <label for="use_in_iframe"></label>
+                    </span>
+
+                </div>
+                <div style="padding:40px;">
+
+                    <div class="u-flex-column-to-row">
+                        <div class="u-flex bg-white m-right-30-desk" style="position:relative;">
+                            <div class="input-group">
+                                <input name="name" value="" id="sourceFilter" class="js-required form-input-bigger w-100 " type="text" placeholder="Search for all your events">
+                                <span class="input-group-addon"><span class="glyphicon glyphicon-search"></span></span>
+                            </div>
+                            <br>
+                            <div class="filter-list" id="dragContainer">
+                                <ul class="list-group" id="sourceList"></ul>
+
+                            </div>
+                            <img style="position:absolute;right:-35px;top:150px;width:30px;" src="{% static 'dashboard/img/arrow_right.png' %}">
+                        </div>
+                        <div class="u-flex bg-white m-left-12-desk">
+
+                            <div class="input-group">
+                                <input name="name" value="" id="destinationFilter" class="js-required form-input-bigger w-100 " type="text" placeholder="Search for events in the multishop">
+                                <span class="input-group-addon"><span class="glyphicon glyphicon-search"></span></span>
+                            </div>
+                            <br>
+                            <div class="filter-list" id="dropContainer">
+                                <ul class="list-group" id="destinationList"></ul>
+                            </div>
+
+                        </div>
+
+
+
+
+                    </div>
+                    <a href="#"
+                       id="save-shop"
+                           data-url="{% url 'dashboard_multiticketshop_update' multishop_id=multishop.pk %}"
+                                style="padding:13px 0 13px 0; width:150px;border-radius:4px;margin-top:20px;"
+                                class="m-0 btn btn-blue bg-secondary_color-fixed pull-right">
+                                Opslaan<div class="u-overlay"></div></a>&nbsp;
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% compress css %}
+    <link rel='stylesheet' type="text/x-scss" href="{% static 'dashboard/css/pages/multiticketshop.scss' %}">
+    {% endcompress %}
+
+        <script type="text/javascript" src="{% static 'youradmin/js/lib/jquery.cookie.js' %}"></script>
+
+        <script type="text/javascript" src="{% static 'youradmin/js/main.js' %}"></script>
+        <script type="text/javascript" src="{% static 'dashboard/plugins/dot.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'dashboard/plugins/sortable.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'dashboard/plugins/jquery.filterList.js' %}"></script>
+        <script>
+
+        YT.urls = YT.urls || {};
+        YT.urls.more_apps_delete = '{% url 'dashboard_multiticketshop_edit_event_delete' multishop_id=multishop.pk linked_event_id='_placeholder' %}';
+        YT.urls.more_apps_add = '{% url 'dashboard_multiticketshop_edit_event_add' multishop_id=multishop.pk event_id='_placeholder' position='_position' %}';
+
+
+        YT.urls.game_more_apps_list = '{% url 'dashboard_multiticketshop_edit_event_list' multishop_id=multishop.pk list_type='_placeholder' %}';
+
+        YT.urls.more_apps_position = '{% url 'dashboard_multiticketshop_edit_event_position' multishop_id=multishop.pk linked_event_id='_placeholder_event_id' position='_placeholder_position' %}';
+        YT.urls.move_image = '{% static 'dashboard/img/move.png' %}'
+        YT.urls.delete_image = '{% static 'dashboard/img/delete.png' %}'
+        </script>
+
+        <script type="text/javascript" src="{% static 'dashboard/js/multi_ticketshop_edit.js' %}"></script>
+
+
+{% endblock %}

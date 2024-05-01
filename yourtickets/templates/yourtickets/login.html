@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load index %}
+
+{% block content %}
+    <div class="popup-overlay popup-overlay-fixed"></div>
+    <div class="popup-login">
+        <div class="u-flex-column-to-row">
+            <div class="bg-jet p-around-36 white u-flex-2 lineheight-1-2 u-order-2to1">
+                <img class="m-top-60 m-bottom-60" src="{% static 'images/logo_2.svg' %}">
+                <p class="m-bottom-24">{% getWord lc "login-left-1" %}</p>
+                <p class="m-bottom-24">{% getWord lc "login-left-2" %}</p>
+
+            </div>
+            <form class="bg-gray u-flex-4 clear u-order-1to2" name="loginForm" action="{% url 'login' %}" method="post">
+                {% csrf_token %}
+                <div class="p-around-36 popup-container-input">
+                    <h1 class="m-top-60 m-bottom-36 w-100 a-center light-gray bold uppercase">{% getWord lc "login-title" %}</h1>
+                    {% if error %}
+                        <p class="error-text">{{ error }}</p>
+                    {% endif %}
+                    <input class="form-input-bigger w-100" name="username" type="text" id="email" placeholder="{% getWord lc "login-form-email" %}">
+                    <input class="form-input-bigger w-100" name="password" type="password" id="password" placeholder="{% getWord lc "login-form-password" %}">
+                    <a class="base underline" href="{% url 'reset_password' %}">{% getWord lc "login-form-passwordforgot" %}</a>
+                </div>
+                <div class="bg-dark-gray m-top-90">
+                    <a href="{% url 'register' %}" class="u-inline-block m-0 a-center uppercase popup-button-back-m100 light-gray bold uppercase">{% getWord lc "login-register" %}</a>
+                    <button class="popup-button-m100 u-inline-block m-0 uppercase button white u-float-right bg-primary_color-fixed bold uppercase" type="submit">
+                        <span>{% getWord lc "login-submitbutton" %}</span>
+                        <i class="m-left-36 fa fa-angle-right bold"></i>
+                        <div class="u-overlay"></div>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

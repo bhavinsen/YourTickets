@@ -1,0 +1,84 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+      <meta name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1'>
+      <title>{% block title %}Yourtickets{% endblock %}</title>
+      <link rel="apple-touch-icon" sizes="180x180" href="{% static 'images/favicon/apple-touch-icon.png' %}">
+      <link rel="icon" type="image/png" href="{% static 'images/favicon/favicon-32x32.png' %}" sizes="32x32">
+      <link rel="icon" type="image/png" href="{% static 'images/favicon/favicon-16x16.png' %}" sizes="16x16">
+      <link rel="manifest" href="{% static 'images/favicon/manifest.json' %}">
+      <link rel="mask-icon" href="{% static 'images/favicon/safari-pinned-tab.svg' %}" color="#dc3547">
+      <meta name="apple-mobile-web-app-title" content="Yourtickets">
+      <meta name="application-name" content="Yourtickets">
+      <meta name="theme-color" content="#232732">
+
+      <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700' rel='stylesheet' type='text/css'>
+      <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-XdYbMnZ/QjLh6iI4ogqCTaIjrFk87ip+ekIjefZch0Y+PvJ8CDYtEs1ipDmPorQ+" crossorigin="anonymous">
+      <link rel='stylesheet' href='{% static 'css/main.css' %}'>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+    <script>
+        (function(h,o,t,j,a,r){
+            h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+            h._hjSettings={hjid:331348,hjsv:5};
+            a=o.getElementsByTagName('head')[0];
+            r=o.createElement('script');r.async=1;
+            r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+            a.appendChild(r);
+        })(window,document,'//static.hotjar.com/c/hotjar-','.js?sv=');
+    </script>
+
+  </head>
+  <body>
+    <div class="shop" style=" background: url({{cshop.bg_img.url}}) no-repeat center center fixed; background-size: cover;">
+      <div class="nav">
+        <a class="logo-container" href="{{url}}"><img class="logo" src="{% static 'images/logo_color.png' %}"></a>
+
+      </div>
+      <div class="shop-wrapper u-overflow-hidden">
+        <header class="a-center">
+            <h1 class="header white uppercase">{{cur_event.title}}</h1>
+            <!-- <h2 class="subtext gray uppercase">GLOW IN THE DARK BIRTHDAY BASH</h2> -->
+        </header>
+        <article class="ticketshop">
+          <div class="corners-outer corners-outer-bottom u-border-bottom-dash u-flex-column bg-white">
+           <div class="corners-inner corners-inner-top bg-white">
+              <div class="content u-flex-row-around bg-gray">
+                <div class="infoNav bold"><i class="fa fa-calendar primary_color m-right-12"></i>{{event_date}}</div>
+                <div class="infoNav bold"><a href="https://www.google.nl/maps/place/{{cur_event.location}}" target="_blank"><span class="u-textDots"><i class="fa fa-map-marker secondary_color m-right-12"></i>{{cur_event.location}}</a></span></div> <!-- in de link moet de naam van de club ingevuld worden achter de palce/ -->
+              </div>
+              <ul class="light-gray uppercase bold large-scale a-center m-top-24 u-desktop-show">
+                <li class="u-inline-block">Uw gegevens<span class="line"></span></li>
+                <li class="u-inline-block">betaling<span class="line"></span></li>
+                <li class="primary_color u-inline-block">Status</li>
+              </ul>
+              <h2 class="a-center m-top-30 uppercase large bold light-gray">{{error_title}}</h2>
+              <p class="base a-center m-auto share-text m-top-30 p-bottom-24">{{error_text|safe}}</p>
+            </div>
+          </div>
+          <div class="corners-outer corners-outer-top bg-white">
+            <div class="thankyou corners-inner bg-white p-bottom-48">
+              <div class="a-center">
+                <a href="http://{{shop_url}}" class="button-l bg-primary_color uppercase medium u-noselect">
+                  Probeer opnieuw
+                </a>
+              </div>
+            </div>
+          </div>
+        </article>
+        <div class="w-100 a-center">
+          <a class="base uppercase p-around-24 medium-small" href="{% url 'contact' %}">Contact</a>
+        </div>
+      </div>
+    </div>
+    <script src="{% static 'js/main.js' %}"></script>
+    <script>
+    $('body').Color({
+      primary_color   : '{{cshop.primary_color}}',
+      secondary_color : '{{cshop.secondary_color}}'
+    });
+    </script>
+  </body>
+</html>

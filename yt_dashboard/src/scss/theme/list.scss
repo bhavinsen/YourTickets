@@ -1,0 +1,51 @@
+$theme_name: "light";
+
+
+.theme--#{$theme_name}{
+
+    .item-small-custom{
+        //padding-bottom:4px!important;
+        //margin-bottom:4px!important;
+        background: #EDF5F7!important;
+        border-radius: 4px!important;
+        border:0px!important;
+        margin-bottom:4px;
+        font-size:12px;
+    }
+
+    .stats-dropdown-event-list{
+        padding:0;
+        padding-top:4px;
+        min-height:40px;
+    }
+
+    .v-list{
+        &.btn-list-popup{
+            .v-list-item{
+                padding-left:8px;
+                &.item-small-custom{
+                    background: #D6ECF5!important;
+                }
+            }
+            .v-list-item--active::before{
+                display:none;
+            }
+        }
+    }
+
+    .item-small-custom-list-left {
+        background: #EDF5F7;
+        border-radius: 4px 0px 0px 4px;
+        //border-bottom:0px!important;
+        //margin:12px!important;
+        //padding: 10px!important;
+    }
+    .right {
+        background: #EDF5F7;
+        border-radius: 0px 4px 4px 0px;
+        //border-bottom:0px!important;
+        //margin:12px!important;
+        //padding: 10px!important;
+        color:#66C5E1;
+    }
+}

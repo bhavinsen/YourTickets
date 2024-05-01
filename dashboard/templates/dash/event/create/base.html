@@ -1,0 +1,69 @@
+{% load static %}
+{% load index %}
+{% load ga %}
+<!DOCTYPE html>
+<html>
+  <head>
+    {% ga section='head' %}
+    {% ga section='body' %}
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1'>
+    <title>{% block title %}Yourtickets{% endblock %}</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'images/favicon/apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" href="{% static 'images/favicon/favicon-32x32.png' %}" sizes="32x32">
+    <link rel="icon" type="image/png" href="{% static 'images/favicon/favicon-16x16.png' %}" sizes="16x16">
+    <link rel="manifest" href="{% static 'images/favicon/manifest.json' %}">
+    <link rel="mask-icon" href="{% static 'images/favicon/safari-pinned-tab.svg' %}" color="#dc3547">
+    <meta name="apple-mobile-web-app-title" content="Yourtickets">
+    <meta name="application-name" content="Yourtickets">
+    <meta name="theme-color" content="#232732">
+
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700' rel='stylesheet' type='text/css'>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-XdYbMnZ/QjLh6iI4ogqCTaIjrFk87ip+ekIjefZch0Y+PvJ8CDYtEs1ipDmPorQ+" crossorigin="anonymous">
+    <link rel='stylesheet' href="{% static 'css/main.css' %}">
+    <link rel='stylesheet' href="{% static 'css/plugins/datepicker.css' %}">
+  <link rel='stylesheet' href="{% static 'plugins/dropdown/niceselect.css' %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+      <script src="{% static 'js/plugins/datepicker.js' %}"></script>
+    <script src="{% static 'plugins/dropdown/jquery.nice-select.min.js' %}"></script>
+    <script>
+        (function(h,o,t,j,a,r){
+            h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+            h._hjSettings={hjid:331348,hjsv:5};
+            a=o.getElementsByTagName('head')[0];
+            r=o.createElement('script');r.async=1;
+            r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+            a.appendChild(r);
+        })(window,document,'//static.hotjar.com/c/hotjar-','.js?sv=');
+    </script>
+  </head>
+  <body>
+    <div class="shop" style=" background: url({% static 'images/background4.jpg' %}) no-repeat center center fixed; background-size: cover;">
+      <div class="nav">
+        <a class="logo-container" href="{% url 'index' %}"><img class="logo" src="{% static 'images/logo_color.png' %}"></a>
+		{% include 'base/languageselector.html' %}
+
+      </div>
+      <div class="wrapper u-overflow-hidden bg-gray">
+        <article>
+              {% block content %}{% endblock %}
+        </article>
+        <script>
+		{% with "html/"|add:lc|add:"/create_three.html" as link %}
+          var createthree_url = "{% static link %}";
+		{% endwith %}
+		
+		{% with "html/"|add:lc|add:"/create_four.html" as link %}
+          var createfour_url = "{% static link %}";
+		{% endwith %}
+          var loading_gif = "{% static 'images/loading.gif' %}";
+          var csrftoken = '{% csrf_token %}';
+        </script>
+
+      <div class="popup-loading"><img class='loaderGif' src="{% static 'images/loading.gif' %}"><span class='loaderText large primary_color-fixed'>Loading</span></div>
+
+      </div>
+      <script src="{% static 'js/main.js' %}"></script>
+    <script src="{% static 'js/eventcreate.js' %}"></script>
+  </body>
+</html>

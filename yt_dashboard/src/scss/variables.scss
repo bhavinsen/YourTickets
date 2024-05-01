@@ -1,0 +1,30 @@
+$app-bar-elevation: 10;
+
+@import url('https://fonts.cdnfonts.com/css/circular-std-book');
+
+
+//body, html {
+//    font-family: 'Circular Std Book', sans-serif;
+//    font-family: 'Circular Std Book Italic', sans-serif;
+//    font-family: 'Circular Std Medium', sans-serif;
+//    font-family: 'Circular Std Medium Italic', sans-serif;
+//    font-family: 'Circular Std Bold', sans-serif;
+//    font-family: 'Circular Std Bold Italic', sans-serif;
+//    font-family: 'Circular Std Black', sans-serif;
+//    font-family: 'Circular Std Black Italic', sans-serif;
+//}
+
+//@font-face {
+//  font-family: 'Circular Std Black', sans-serif;
+//    //src: url('./assets/fonts/CircularStd-Black.ttf');
+//    font-size:12px!important;
+//  font-weight: 800!important;
+//  font-style: normal;
+//}
+$font-size-root: 12px;
+$grid-gutter: 16px;
+$body-font-family: 'Circular Std Book', sans-serif;
+
+//$date-picker-table-font-size: 10px;
+//$date-picker-table-date-button-width: 20px;
+//$date-picker-table-date-button-height: 20px;

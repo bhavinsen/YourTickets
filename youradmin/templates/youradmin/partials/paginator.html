@@ -1,0 +1,24 @@
+<ul class="pagination pagination-sm pull-right" style="margin:7px 0;">
+    {% if pagination.has_previous %}
+        <li><a href="?page={{ pagination.previous_page_number }}&{{ pagination.args }}">&laquo;</a></li>
+    {% endif %}
+
+    {% if pagination.show_first %}
+        <li><a href="?page=1&{{ pagination.args }}">1</a></li>
+        <li style="pointer-events: none; cursor: default;"><a>...</a></li>
+    {% endif %}
+
+    {% for page in pagination.page_range %}
+        <li {% if page == pagination.number %}class="active"{% endif %}><a
+                href="?page={{ page }}&{{ pagination.args }}">{{ page }}</a></li>
+    {% endfor %}
+
+    {% if pagination.show_last %}
+        <li style="pointer-events: none; cursor: default;"><a>...</a></li>
+        <li><a href="?page={{ pagination.num_pages }}&{{ pagination.args }}">{{ pagination.num_pages }}</a></li>
+    {% endif %}
+
+    {% if pagination.has_next %}
+        <li><a href="?page={{ pagination.next_page_number }}&{{ pagination.args }}">&raquo;</a></li>
+    {% endif %}
+</ul>

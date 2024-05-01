@@ -1,0 +1,7 @@
+User-agent: *
+Disallow: /youradmin
+Disallow: /dashboard/*
+
+User-agent: Googlebot
+Disallow: /youradmin
+Disallow: dashboard/*

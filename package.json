@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "@syncfusion/ej2-vue-charts": "^22.2.12"
+  }
+}

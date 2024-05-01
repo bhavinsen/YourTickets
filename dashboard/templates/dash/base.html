@@ -1,0 +1,156 @@
+{% load static %}
+{% load index %}
+{% load i18n %}
+{% load ga %}
+{% load activeurl2 %}
+{% load compress %}
+<!DOCTYPE html>
+<html>
+  <head>
+    {% ga section='head' %}
+    {% ga section='body' %}
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1'>
+    <title>Ticketverkoop en marketing dashboard voor al jouw events, workshops en festivals | yourtickets.nl</title>
+    <meta name="description" content="Verkoop makkelijk tickets voor al jouw evenementen, festivals en workshop via jouw Yourtickets dashboard voor event organisatoren.">
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1'>
+    <title>{% block title %}Yourtickets - Dashboard{% endblock %}</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'images/favicon/apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" href="{% static 'images/favicon/favicon-32x32.png' %}" sizes="32x32">
+    <link rel="icon" type="image/png" href="{% static 'images/favicon/favicon-16x16.png' %}" sizes="16x16">
+    <link rel="manifest" href="{% static 'images/favicon/manifest.json' %}">
+    <link rel="mask-icon" href="{% static 'images/favicon/safari-pinned-tab.svg' %}" color="#dc3547">
+    <meta name="apple-mobile-web-app-title" content="Yourtickets">
+    <meta name="application-name" content="Yourtickets">
+    <meta name="theme-color" content="#232732">
+
+    <link rel='stylesheet' href="{% static 'css/main.css' %}">
+
+    <link rel='stylesheet' href="{% static 'plugins/remodal.css' %}">
+    <link rel='stylesheet' href="{% static 'plugins/remodal-default-theme.css' %}">
+    <link rel='stylesheet' href="{% static 'plugins/remodal-yt-theme.css' %}">
+    <link rel='stylesheet' href="{% static 'dashboard/plugins/onoff/on-off-switch.css' %}">
+    {% compress css %}
+    <link rel='stylesheet' type="text/x-scss" href="{% static 'dashboard/css/main.scss' %}">
+    {% endcompress %}
+
+    <link rel='stylesheet' href="{% static 'dashboard/css/pages/statistics.css' %}">
+
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700' rel='stylesheet' type='text/css'>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-XdYbMnZ/QjLh6iI4ogqCTaIjrFk87ip+ekIjefZch0Y+PvJ8CDYtEs1ipDmPorQ+" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+    <script type="text/javascript" src="{% static 'plugins/remodal.min.js' %}"></script>
+    <script src="{% static 'dashboard/plugins/onoff/on-off-switch.js' %}"></script>
+    <script src="{% static 'plugins/dropdown/jquery.nice-select.min.js' %}"></script>
+    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+  <link rel='stylesheet' href="{% static 'plugins/dropdown/niceselect.css' %}">
+      <script src="{% static 'dashboard/js/main.js' %}"></script>
+  </head>
+  <body class="bg-gray">
+    <div class="u-flex-column-to-row mh-100">
+      <aside class="dashboard-event-container bg-jet white u-order-2to1">
+        <div class="u-flex">
+          <div class="p-around-24 a-center">
+            <a href="{% url 'dashboard_index' %}"><img class="dashboard-logo" src="{% static 'images/logo_color.png' %}"></a>
+              <br>
+
+              <a href="{% if dashboard_url %}{{ dashboard_url }}{% else %}{% url 'yt_dashboard:yt_dashboard_main' %}{% endif %}">Ga naar het nieuwe dashboard ></a>
+          </div>
+          <div class="bg-oil p-around-24 a-center">
+
+            <p>{{username_full}}</p>
+              <script>
+                  $.ajax({
+                    url: '{% url 'dashboard_gettoken' %}',
+                    success: function (response) {
+                        if(response.token) {
+                            localStorage.t = response.token;
+                        }
+                    }});
+              </script>
+          </div>
+          <div class="dashboard-events u-flex">
+            <ul>
+                <li>
+                    <a href="{% url 'dashboard_multiticketshop' %}"
+                       class="dasboard-aside-event {% activeurl2 'dashboard_multiticketshop' class_name='dasboard-aside-event--active' %}  w-100 u-block u-text-decoration-none m-top-6">
+                        <p class="u-inline-block u-vertical-top u-textDots-165 m-around-12">
+                            {% getWord lc "dash-menu-multitickets" "Multi Ticketshops"  %}
+                        </p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#"
+                       class="dasboard-aside-event w-100 u-block u-text-decoration-none m-top-6">
+                        <p class="u-inline-block u-vertical-top u-textDots-165 m-around-12">
+                            Shared events
+                        </p>
+                    </a>
+                </li>
+                {% if shared_events|length > 0 %}
+
+                  {% for event in shared_events %}
+                    <li>
+                    <a href="{% url 'dashboard_statistics' event_id=event.event.id %}" class="dasboard-aside-event{% if cur_event.id == event.id %} dasboard-aside-event--active{% endif %} w-100 u-block u-text-decoration-none m-top-6">
+
+
+                      <p class="u-inline-block u-vertical-top u-textDots-165 m-around-12">{{event.event.title}}</p>
+                    </a>
+                  </li>
+                  {% endfor %}
+
+
+                {% endif %}
+                <li>
+                    <a href="{% url 'dashboard_index' %}"
+                       class="dasboard-aside-event w-100 u-block u-text-decoration-none m-top-6">
+                        <p class="u-inline-block u-vertical-top u-textDots-165 m-around-12">
+                            {% getWord lc "dash-menu-events" %}
+                        </p>
+                    </a>
+                </li>
+
+              {% if event_list|length > 0 %}
+
+                  {% for event in event_list %}
+                    <li>
+                    <a href="{% url 'dashboard_statistics' event_id=event.id %}" class="dasboard-aside-event{% if cur_event.id == event.id %} dasboard-aside-event--active{% endif %} w-100 u-block u-text-decoration-none m-top-6">
+
+
+                      <p class="u-inline-block u-vertical-top u-textDots-165 m-around-12">{{event.title}}</p>
+                    </a>
+                  </li>
+                  {% endfor %}
+              {% else %}
+
+            <div class="a-center">
+             <a href="{% url 'event_new' %}" class="u-inline-block m-top-24 uppercase button white bg-primary_color-fixed bold uppercase"><i class="normal m-right-24 fa fa-plus" aria-hidden="true"></i>{% getWord lc "dash-menu-newevent" %}<div class="u-overlay"></div></a>
+            </div>
+            {% endif %}
+
+            </ul>
+          </div>
+        </div>
+        <div class="a-center p-around-24 m-top-36">
+
+          {% if event_list|length > 0 %}
+         <a href="{% url 'event_new' %}" class="u-inline-block w-100 m-bottom-24 uppercase button white bg-primary_color-fixed bold uppercase button-24"><i class="normal m-right-24 fa fa-plus" aria-hidden="true"></i>{% getWord lc "dash-menu-newevent" %}<div class="u-overlay"></div></a>
+         {% endif %}
+
+          <a class="base uppercase p-around-24 medium-small" href="{% url 'contact' %}">Contact</a>
+          <a class="base uppercase p-around-24 medium-small" href="{% url 'logout' %}">{% getWord lc "dash-menu-logout" %}</a>
+        </div>
+      </aside>
+              {% block content %}{% endblock %}
+        <script>
+          var loading_gif = "{% static 'images/loading.gif' %}";
+          var csrftoken = '{% csrf_token %}';
+        </script>
+    </div>
+      <script src="{% static 'js/main.js' %}"></script>
+        <script src="{% static 'js/eventcreate.js' %}"></script>
+  </body>
+</html>

@@ -1,0 +1,32 @@
+.panel.panel-default .panel-body .pane-header {
+
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+}
+
+.panel.panel-default .panel-body .pane-header .search-line {
+    border-bottom: 1px solid #2e6da4;
+    height:1px;
+}
+
+.panel.panel-default .panel-body .pane-header .search-line .search-collapse-button{
+    border:1px solid #2e6da4;
+    display:inline-block;
+    color:white;
+    background-color:#337ab7;
+    padding:3px;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    position:relative;
+    /*top:26px;*/
+}
+
+.panel.panel-default .panel-body .pane-header .search-container{
+    border: 1px solid #2e6da4;
+    padding: 20px;
+}
+
+.table .glyphicon{
+    font-size:16px;
+    margin-right:5px;
+}

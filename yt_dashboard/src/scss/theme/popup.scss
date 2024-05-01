@@ -1,0 +1,43 @@
+$theme_name: "light";
+
+
+
+.v-dialog {
+    position:relative;
+
+    .v-card__title, .v-toolbar__title{
+        color: #66C5E1!important;
+        font-weight: 700!important;
+        //padding:34px 24px 0px 24px!important;
+    }
+    //@TODO this one can be converted to a variable, dialog font size
+    .v-card__text{
+        font-size:12px;
+        padding-left:40px!important;
+        padding-right:40px!important;
+        .v-divider{
+            margin-top:0px;
+            margin-bottom:12px;
+        }
+    }
+    .v-card__actions{
+        padding-bottom:16px!important;
+    }
+
+    .close_button{
+        width:20px;
+        position: absolute;
+        right: -10px;
+        top: -15px;
+    }
+    .close_button_mobile{
+        width:34px;
+        position: absolute;
+        right: 10px;
+        top: 10px;
+    }
+
+
+
+}
+

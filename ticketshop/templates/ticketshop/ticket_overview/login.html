@@ -1,0 +1,33 @@
+{% load index %}
+<form action="" method="post">
+    {% csrf_token %}
+    <input type="hidden" name="action_type" value="login">
+
+    <fieldset class="m-bottom-36 p-bottom-36 u-border-bottom">
+     <legend class="large bold m-bottom-12 uppercase light-gray">{% getWord lc "register-buttonlogin" %}</legend>
+      <div class="u-flex-column-to-row">
+       <div class="u-flex u-order-2to1 p-right-24-dt p-top-12">
+
+       <!--  alle ID's hier mag je gewoon andere namen geven -->
+        <input name="username" class="form-input w-100" type="text" id="email" placeholder="{% getWord lc "login-form-email" %}">
+        <input name="password" class="form-input w-100" type="password" id="wachtwoord" placeholder="{% getWord lc "login-form-password" %}">
+       </div>
+       <div class="u-flex u-order-1to2 p-top-12">
+
+        <button class="button-l uppercase medium u-noselect w-100 bg-primary_color" type="submit">
+          {% getWord lc "login-submitbutton" %}
+        </button>
+           {% if error_messages_login %}
+
+                    <div class="messages error" style="margin:0;margin-top:15px;">
+                        {% for message in error_messages_login %}
+                            {{message}}<br>
+                        {% endfor %}
+                    </div>
+
+            {% endif %}
+       <a style="display:inline-block;margin-top:5px;" class="base underline" href="{% url 'reset_password' %}">{% getWord lc "login-form-passwordforgot" %}</a>
+       </div>
+      </div>
+    </fieldset>
+</form>

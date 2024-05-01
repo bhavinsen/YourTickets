@@ -1,0 +1,68 @@
+{% extends 'youradmin/base.html' %}
+{% load static %}
+
+{% block content %}
+{#<link rel="stylesheet" type="text/css" href="{% static "youradmin/css/pages/users.css"%}" />#}
+
+{% include "youradmin/partials/modals/confirm.html" with title="Delete user?" modal_id='user_delete' success_message="User is deleted" message="Are you sure you want to delete the user?" %}
+{% include "youradmin/partials/modals/form.html" with form=orderform title="Send order?" modal_id='order_resend' success_message="Order is send" message="Are you sure you want to send the order?" %}
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Orders</h3>
+    </div>
+    <div class="panel-body">
+        <div class="pane-header">
+
+            <div id="search" class="collapse search-container in">
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-horizontal">
+                            <div class="form-group">
+                                <label class="col-md-3" for="user_id">id</label>
+                                <div class="col-md-8">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control input-sm" id="id" placeholder="id">
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-horizontal">
+                            <div class="form-group">
+                                <label class="col-md-3" for="lastname">Email</label>
+                                <div class="col-md-8">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control input-sm" id="email" placeholder="email">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div style="" class="text-center search-line">
+                <div data-toggle="collapse" class="btn btn-xs btn-primary search-collapse-button" data-target="#search">
+                    <span class="glyphicon glyphicon-search"></span>
+                    search
+                    <span class="glyphicon glyphicon-chevron-down"></span>
+                </div>
+            </div>
+
+
+        </div>
+
+
+
+        {% include "youradmin/partials/datatable.html" with datatables_config=datatables_config %}
+
+    </div>
+</div>
+<script type="text/javascript" src="{% static 'youradmin/js/pages/orders.js' %}"></script>
+
+
+{% endblock %}

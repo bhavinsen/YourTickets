@@ -1,0 +1,11 @@
+$theme_name: "light";
+
+
+.theme--#{$theme_name}{
+    &.v-divider {
+        border-color:#D6ECF5!important;
+        &.grey{
+            border-color:#E5E5E5!important;
+        }
+    }
+}

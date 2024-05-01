@@ -1,0 +1,38 @@
+{% extends "dash/dash.html" %}
+{% load static %}
+{% load i18n %}
+{% load index %}
+{% load activeurl %}
+{% block main %}
+
+<ul class="dashboard-event-nav base uppercase">
+    <li>
+        <a href="{% url 'dashboard_event_general' event_id=cur_event.id %}" class="{% activeurl 'dashboard_event_general' cls='dashboard-event-active' %}">
+            {% getWord lc "dash-edit_event-nav-general_info" 'Algemene informatie' %}
+        </a>
+    </li>
+    <li>
+        <a href="{% url 'dashboard_event_tickets' event_id=cur_event.id %}" class="{% activeurl 'dashboard_event_tickets' cls='dashboard-event-active' %}">
+            {% getWord lc "dash-edit_event-nav-ticket_types" 'Ticketsoorten' %}
+        </a>
+    </li>
+    <li>
+        <a href="{% url 'dashboard_event_lineup' event_id=cur_event.id %}" class="{% activeurl 'dashboard_event_lineup' cls='dashboard-event-active' %}">
+            {% getWord lc "dash-edit_event-nav-lineup" 'Line-up' %}
+        </a>
+    </li>
+    <li>
+        <a href="{% url 'dashboard_event_ticketshop_design' event_id=cur_event.id %}" class="{% activeurl 'dashboard_event_ticketshop_design' cls='dashboard-event-active' %}">
+            {% getWord lc "dash-edit_event-nav-ticketshop_design" 'Ticketshop design' %}
+        </a>
+    </li>
+    <li>
+        <a href="{% url 'dashboard_event_bank' event_id=cur_event.id %}" class="{% activeurl 'dashboard_event_bank' cls='dashboard-event-active' %}">
+            {% getWord lc "dash-edit_event-nav-bank_info" 'Bankgegevens' %}
+        </a>
+    </li>
+</ul>
+{% block form %}{% endblock %}
+
+
+{% endblock %}

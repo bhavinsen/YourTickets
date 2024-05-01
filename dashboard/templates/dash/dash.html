@@ -1,0 +1,147 @@
+{% extends "dash/base.html" %}
+{% load static %}
+{% load index %}
+{% load i18n %}
+{% load activeurl %}
+{% load activeurl2 %}
+
+{% block title %}Yourtickets - Dashboard{% endblock %}
+
+{% block content %}
+
+    <div class="remodal" data-remodal-id="remove_event">
+      <button data-remodal-action="close" class="remodal-close"></button>
+        {% getWord lc "dash-edit_event-event-message_sure_wanna_delete" 'WEET JE ZEKER DAT JE DIT EVENT WILT VERWIJDEREN?' %}
+      <br><br><br>
+      <button data-remodal-action="cancel" style="margin-right:30px;" class="remodal-cancel">{% getWord lc "dash-edit_event-event-message_no_mistake" 'NEE, FOUTJE' %}</button>
+      <button id="event-delete-confirm"
+              data-url="{% url 'dashboard_event_delete' event_id=cur_event.pk %}"
+              data-redirect="{% url 'dashboard_index' %}"
+              data-remodal-action="confirm"
+              class="remodal-confirm">{% getWord lc "dash-edit_event-event-message_yes" 'JA' %}</button>
+    </div>
+
+<div class="u-flex u-order-1to2">
+  <header class="dashboard-header white p-tb-24-lr-36" style=" background: url(
+    {% if ticketshop.bg_img %}{{ ticketshop.bg_img.url }}{% else %}/{% endif %}) no-repeat center center fixed; background-size: cover;">
+
+    <div class="dashboard-header-left u-relative">
+            <h1 class="dashboard-eventname xl-large uppercase m-bottom-6">{{cur_event.title}}</h1>
+            <div class="infoNav bold u-inline-block uppercase medium-small u-vertical-top"><i class="fa fa-calendar primary_color m-right-12"></i> {{event_date}}</div>
+            <div class="infoNav bold u-textDots u-inline-block uppercase medium-small u-vertical-top"><i class="fa fa-map-marker secondary_color m-right-12"></i> {{cur_event.location}}</div>
+          </div>
+            <div style="float:right;position:relative;width:100%;margin-left:20px;">
+
+                <div class="u-dropdown dasboard-eventstate-dropdown" style="float:right;">
+
+                    {% if cur_event.event_public %}
+                        <span>Live</span>
+                        <div class="u-dropdown-content">
+                            <span class="m-bottom-12 u-inline-block">
+                                <a href="{% url 'dashboard_event_changelive' event_id=cur_event.id %}">Verbergen</a>
+                            </span>
+                            <span class="m-bottom-12 u-inline-block">
+                                <a id="remove_event" href="#">{% getWord lc "dash-remove-event-navigation" 'Verwijder' %}</a>
+                            </span>
+                        </div>
+                    {% else %}
+                        <span>Verborgen</span>
+                        <div class="u-dropdown-content">
+                            <span class="m-bottom-12 u-inline-block">
+                                <a href="{% url 'dashboard_event_changelive' event_id=cur_event.id %}">Live zetten</a>
+                            </span>
+                            <span class="m-bottom-12 u-inline-block">
+                                <a id="remove_event" href="#">{% getWord lc "dash-remove-event-navigation" 'Verwijder' %}</a>
+                            </span>
+                        </div>
+                    {% endif %}
+
+              </div>
+            <style type="text/css">
+
+                .languageselector{
+                    margin-right:20px;
+                }
+                @media (max-width: 733px) {
+                    .nav-leftwrapper {
+                        position: relative;
+                        top: 0px;
+                    }
+                }
+                .nice-select.right {
+                    float: right;
+                    color: black;
+                }
+            </style>
+            {% include 'base/languageselector.html' %}
+        </div>
+
+
+  </header>
+  <nav class="w-100 u-shadow base uppercase bold bg-white">
+    <ul class="dashboard-menu">
+      <li id="js-page-1" class="p-tb-24-lr-18 m-left-18-desk u-inline-block
+        {% activeurl 'dashboard_statistics' cls='dashboard-active' %}"
+        style="padding-left:0px;padding-right:0px;margin-left:32px;margin-right:20px;"
+      >
+
+          <a href="{% url 'dashboard_statistics' event_id=cur_event.id %}">
+              <img class="submenu" src="{% static 'dashboard/img/submenu/stats.png' %}">
+              {% getWord lc "dash-menu-statistics" %}
+          </a>
+      </li>
+       {% if not event_is_shared_event %}
+      <li id="js-page-2" class="p-tb-24-lr-18 u-inline-block
+        {% activeurl 'dashboard_visitors' cls='dashboard-active' %}"
+        style="padding-left:0px;padding-right:0px;margin-left:20px;margin-right:20px;"
+      >
+          <a href="{% url 'dashboard_visitors' event_id=cur_event.id %}">
+              <img class="submenu" src="{% static 'dashboard/img/submenu/ticket.png' %}">
+              {% getWord lc "dash-menu-visitors" %}
+          </a>
+      </li>
+      <li id="js-page-3" class="p-tb-24-lr-18 u-inline-block
+        {% activeurl 'dashboard_event_general' 'dashboard_event_tickets' 'dashboard_event_lineup' 'dashboard_event_ticketshop_design' 'dashboard_event_bank' cls='dashboard-active' %}"
+        style="padding-left:0px;padding-right:0px;margin-left:20px;margin-right:20px;"
+      >
+          <a href="{% url 'dashboard_event_general' event_id=cur_event.id %}">
+              <img class="submenu" src="{% static 'dashboard/img/submenu/aanpassen.png' %}">
+              {% getWord lc "dash-menu-edit-event" 'Evenement Aanpassen' %}
+          </a>
+      </li>
+        <li id="js-page-4" class="p-tb-24-lr-18 u-inline-block
+        {% activeurl2 'dashboard_event:sales_channels:index' class_name='dashboard-active' %}"
+        style="padding-left:0px;padding-right:0px;margin-left:20px;margin-right:20px;"
+        >
+          <a href="{% url 'dashboard_event:sales_channels:index' event_id=cur_event.id %}">
+              <img class="submenu" src="{% static 'dashboard/img/submenu/sales_channels.png' %}">
+              {% getWord lc "dash-menu-sales_channels" 'Sales channels' %}
+          </a>
+      </li>
+        <li class="p-tb-24-lr-18 u-inline-block"
+        style="padding-left:0px;padding-right:0px;margin-left:20px;margin-right:20px;"
+      >
+          <a href="{% url 'dashboard_event:share_event:index' event_id=cur_event.id %}">
+            <img class="submenu" src="{% static 'dashboard/img/submenu/share.png' %}">
+          {% getWord lc "dash-menu-share-event" 'Deel event' %}
+          </a>
+      </li>
+        {% endif %}
+      <li class="p-tb-24-lr-18 u-inline-block"
+        style="padding-left:0px;padding-right:0px;margin-left:20px;margin-right:20px;"
+      >
+          <a href="{{event_url}}">
+            <img class="submenu" src="{% static 'dashboard/img/submenu/visit_shop.png' %}">
+          {% getWord lc "dash-menu-visit-ticketshop" 'Ticketshop Bezoeken' %}
+          </a>
+      </li>
+
+    </ul>
+  </nav>
+
+  <div id="js-dashboard-container" class="dashboard-container container">
+        {% block main %}{% endblock %}
+  </div>
+</div>
+
+{% endblock %}

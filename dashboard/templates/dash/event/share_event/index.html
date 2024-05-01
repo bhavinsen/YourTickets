@@ -1,0 +1,106 @@
+{% extends "dash/dash.html" %}
+{% load static %}
+{% load humanize %}
+{% load index %}
+{% load compress %}
+
+{% block main %}
+    <div class="u-flex u-order-1to2">
+
+        <div class="remodal" data-remodal-id="remove-channel">
+            <button data-remodal-action="close" class="remodal-close"></button>
+            {% getWord lc "dash-share_event-message_sure_wanna_delete" 'WEET JE ZEKER DAT JE DIT EVENT NIET MEER WILT DELEN MET DE GEBRUIKER?' %}
+            <br><br><br>
+            <button data-remodal-action="cancel" style="margin-right:30px;" class="remodal-cancel">{% getWord lc "dash-share_event-message_no_mistake" 'NEE, FOUTJE' %}</button>
+            <button id="delete-confirm"
+                  data-remodal-action="confirm"
+                  class="remodal-confirm">{% getWord lc "dash-share_event-message_yes" 'JA' %}</button>
+        </div>
+
+        <div class="remodal" data-remodal-id="create-channel" data-url="{% url 'dashboard_event:share_event:create' event_id=cur_event.id %}">
+            {% csrf_token %}
+            <button data-remodal-action="close" class="remodal-close"></button>
+            <div class="row">
+                <div class="col-md-9">
+                    <input
+                        style="width:100%;"
+                        name="{{form.user_email.html_name}}"
+                        value="{{form.user_email.value|default_if_none:''}}"
+                        class="form-input-bigger {{ form.user_email.field.widget.attrs.class }}"
+                        type="text"
+                        placeholder="{% getWord lc "dash-share_event-email" 'Email van de gebruiker' %}"
+                    >
+
+                </div>
+                <div class="col-md-3">
+                    <button id="create-confirm"
+                          data-remodal-action="confirm"
+                          class="btn btn-xl btn-blue space pull-right">{% getWord lc "dash-share_event-message_create" 'DEEL' %}</button>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="dashboard-container dashboard-container-padding">
+
+            {% if not users and not temp_users %}
+                <div style="text-align:center;padding-top:200px;">
+                    <div style="font-size:14px;font-weight:bold;">{% getWord lc "dash-share_event-no_users" 'DIT EVENT IS NOG MET NIEMAND GEDEELD' %}</div><br/>
+                    <div class="btn btn-blue create-channel">Deel event</div>
+                </div>
+            {% else %}
+                <div class="panel">
+                    <div class="panel-heading">
+                        <div class="title">{% getWord lc "dash-share_event-title" 'DEEL EVENT' %}</div>
+
+                        <div class="btn btn-white pull-right create-channel">DEEL EVENT</div>
+
+                    </div>
+                    <div class="panel-body">
+
+                        <table style="width:100%;margin-top:20px;" class="table" cellpadding="0" cellspacing="0">
+                            <tr>
+                                <td class="small bold header-td">{% getWord lc "dash-share_event-user" 'GEBRUIKER' %}</td>
+                                <td class="small bold header-td"></td>
+                            </tr>
+                            {% for user in users %}
+                                <tr>
+                                    <td>{{ user.user.username }}</td>
+
+                                    <td style="text-align:right">
+                                        <a href="#"
+                                           data-href="{% url 'dashboard_event:share_event:delete' event_id=cur_event.id id=user.pk type='normal' %}"
+                                                class="u-inline-block m-0 icon remove-button pull-right remove-channel">
+                                            <img src="{% static 'dashboard/img/delete.png' %}">
+                                        </a>
+
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                            {% for user in temp_users %}
+                                <tr>
+                                    <td>{{ user.user_email }}</td>
+
+                                    <td style="text-align:right">
+                                        <a href="#"
+                                           data-href="{% url 'dashboard_event:share_event:delete' event_id=cur_event.id id=user.pk type='temp' %}"
+                                                class="u-inline-block m-0 icon remove-button pull-right remove-channel">
+                                            <img src="{% static 'dashboard/img/delete.png' %}">
+                                        </a>
+
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </table>
+
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+    <script type="text/javascript" src="{% static 'dashboard/js/share_event.js' %}"></script>
+    {% compress css %}
+    <link rel='stylesheet' type="text/x-scss" href="{% static 'dashboard/css/pages/sales_channels.scss' %}">
+    {% endcompress %}
+
+{% endblock %}

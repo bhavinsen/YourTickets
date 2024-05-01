@@ -1,0 +1,39 @@
+.btn{
+    color: white;
+    border-radius:4px;
+    border:0;
+    padding:10px;
+    cursor:pointer;
+    text-align:center;
+    font-size:14px;
+    display:inline-block;
+    position:relative;
+    height:44px;
+    line-height: 24px;
+
+    &.btn-xl{
+        height:60px;
+        line-height: 28px;
+    }
+
+    &.space{
+        padding-left:46px;
+        padding-right:46px;
+    }
+
+    &.btn-blue{
+        background-color: #55c7e0;
+        color:white;
+    }
+    &.btn-grey{
+        background-color:grey;
+    }
+    &.btn-white{
+        background-color:#ffffff;
+        color:#a7a9ad;
+    }
+    &.btn-white-border{
+        border: 1px solid #999999;
+    }
+}
+

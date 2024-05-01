@@ -1,0 +1,107 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load index %}
+
+{% block content %}
+    <div class="popup-overlay popup-overlay-fixed"></div>
+    <div class="popup-login">
+        <div class="u-flex-column-to-row">
+            <div class="bg-jet p-around-24 white u-flex-2 lineheight-1-2 u-order-2to1">
+                <img class="m-top-60 m-bottom-60" src="{% static 'images/logo_2.svg' %}">
+                <p class="m-bottom-24">{% getWord lc "register-left-title" %}</p>
+                <p class="m-bottom-24">{% getWord lc "register-left-1" %}</p>
+                <p class="m-bottom-24">{% getWord lc "register-left-2" %}</p>
+            </div>
+
+            {% if activation_mail_send %}
+                <form class="bg-gray u-flex-3 clear u-order-1to2" name="registerForm" action="{% url 'register' %}" method="post">
+                    <div class="p-around-36 popup-container-input">
+                        <h1 class="m-top-60 m-bottom-36 w-100 a-center light-gray bold uppercase">Er is een activatie email gestuurd naar {{ email }}</h1>
+                    </div>
+
+                    
+                </form>
+            {% else %}
+            <form class="bg-gray u-flex-3 clear u-order-1to2" id="registerForm" name="registerForm" action="{% url 'register' %}" method="post">
+                <div class="p-around-36 popup-container-input">
+                {% csrf_token %}
+                  <h1 class="m-top-60 m-bottom-36 w-100 a-center light-gray bold uppercase">{% getWord lc "register-title" %}</h1>
+                {% if error %}
+                    <p class="error-text">{{ error }}</p>
+                {% endif %}
+
+                    <input value="{{ register_form.username.value|default_if_none:'' }}" class="form-input-bigger w-100" type="email" id="email" name="{{ register_form.username.html_name }}" placeholder="{% getWord lc "login-form-email" %}">
+                    <input class="form-input-bigger w-100" type="password" id="password" name="{{ register_form.password.html_name }}" placeholder="{% getWord lc "login-form-password" %}">
+                    <input value="{{ register_form.first_name.value|default_if_none:'' }}" class="form-input-bigger w-100" type="text" id="first_name" name="{{ register_form.first_name.html_name }}" placeholder="{% getWord lc "register-form-firstname" %}">
+                    <input value="{{ register_form.last_name.value|default_if_none:'' }}" class="form-input-bigger w-100" type="text" id="last_name" name="{{ register_form.last_name.html_name }}" placeholder="{% getWord lc "register-form-lastname" %}">
+
+                    <div>
+                        <br/>
+                    <input type="checkbox" id="Terms" name="Terms" value="Terms">
+                    <label class="primary_color u-noselect u-inline-block" for="Terms">
+                      <span class="initial_color p-left-12">
+                        {% getWord lc "shop-base-akkoordalgvw" %}
+                        <span data-template="#algemene_voorwaarden" style="color:#dc3547;" class="primary_color u-pointer u-underline-h js-popup-click">{% getWord lc "shop-base-algvw" %}</span>
+                      </span>
+                    </label>
+                </div>
+                </div>
+
+                <div class="bg-dark-gray m-top-36">
+                     <a href="{% url 'login' %}" class="u-inline-block m-0 uppercase popup-button-back-m100 light-gray bold uppercase">{% getWord lc "register-buttonlogin" %}</a>
+                <button class="popup-button-m100 u-inline-block m-0 uppercase button white u-float-right bg-primary_color-fixed bold uppercase" type="submit"><span>{% getWord lc "register-buttonsubmit" %}</span><i class="m-left-36 fa fa-angle-right bold"></i><div class="u-overlay"></div></button>
+              </div>
+            </form>
+        {% endif %}
+        </div>
+    </div>
+
+    <script type="text/javascript" src="{% static 'js/color.js' %}"></script>
+    <script type="text/javascript">
+
+        $(function(){
+
+            function setErrorMessageText(text){
+                $(".errormessage").html(text);
+            }
+
+            $("#registerForm").submit(function(e) {
+
+
+
+                if ($("#Terms").is(':checked')){
+
+                }else{
+                    setErrorMessageText($('#message_akkoordvoorwaarden').html());
+                    $(".errormessage").addClass('active');
+                    e.preventDefault();
+                }
+
+            });
+
+        })
+
+    </script>
+
+
+{% endblock %}
+
+{% block outside_wrapper %}
+    <div class="popup-overlay js-overlay js-popup-overlay js-popup xxl-large">
+      <i class="fa fa-times white m-top-12 m-right-12 u-float-right u-pointer" aria-hidden="true"></i>
+    </div>
+    <div id="algemene_voorwaarden" class="popup-container js-popup">
+        {% include 'ticketshop/organizer_voorwaarden.html' %}
+    </div>
+
+    <div id="message_noticketselected" style="display:none;">
+        {% getWord lc "shop-ticket-noticketselected" %}
+    </div>
+    <div id="message_akkoordvoorwaarden" style="display:none;">
+        {% getWord lc "shop-base-akkoordalgvwmessage" %}
+
+    </div>
+    <div class="errormessage" style="z-index:1000;">
+        {% getWord lc "shop-ticket-noticketselected" %}
+    </div>
+{% endblock %}

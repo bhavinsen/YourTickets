@@ -1,0 +1,119 @@
+{% extends 'youradmin/base.html' %}
+{% load static %}
+
+{% block content %}
+    <link rel="stylesheet" type="text/css" href="{% static "youradmin/css/pages/translations.css"%}" />
+    {% include 'youradmin/partials/modals/form.html' with modal_id="translation_left_add" form=translation_form title="Create translation" %}
+    {% include 'youradmin/partials/modals/form.html' with modal_id="translation_right_add" form=translation_form title="Create translation" %}
+    {% include 'youradmin/partials/modals/form.html' with modal_id="translation_edit" mode='edit' title="Edit translation" %}
+    {% include "youradmin/partials/modals/confirm.html" with modal_id='translation_delete' mode='delete' success_message="Translation has been removed" message="Are you sure you want to remove this translation?" %}
+
+
+    {% include 'youradmin/partials/modals/form.html' with modal_id="translations_add" form=translations_form title="Create translation" %}
+    <div class="panel panel-default page-translations">
+        <div class="panel-heading">
+            <h3 class="panel-title">Translations
+            <button class="btn btn-primary pull-right"
+                id="button_create_all"
+                data-toggle="modal"
+                data-target="#translations_add"
+                data-ajax_submit_url="{% url 'youradmin_translations_languages_create_all' %}"
+                >Add all in 1</button>
+                <div class="clearfix"></div>
+            </h3>
+        </div>
+        <div class="panel-body">
+            {% if double_rows %}
+                <div class="row">
+                    <div class="col-md-12">
+                        Double keys:
+                        <ul>
+                            {% for row in double_rows %}
+                            <li>{{ row.name }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            {% endif %}
+            <div class="row">
+                <div class="col-md-11" id="leftcolumn">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <select class="selectpicker languageselector" name="language_id">
+                                {% for language in languages %}
+                                    <option value="{{ language.id }}">{{ language.language_code }}</option>
+                                {% endfor %}
+                            </select>
+                            <button class="btn btn-primary pull-right"
+                                    id="button_left_add"
+                                    data-toggle="modal"
+                                    data-target="#translation_left_add"
+                                    data-ajax_submit_url="{% url 'youradmin_translations_create' language_id=languages.0.id %}"
+                                    data-ajax_submit_url_placeholder="{% url 'youradmin_translations_create' language_id='_placeholder' %}"
+                                    >Add</button>
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-4 text-center">
+                                    Key: <input type="text" name="key" value="" placeholder="key">
+                                </div>
+                                <div class="col-md-4 text-center">
+                                    Value: <input type="text" name="value" value="" placeholder="value">
+                                </div>
+
+                            </div>
+
+                            {% include "youradmin/partials/datatable.html" with table_selector='table_left' datatables_config=datatables_config %}
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-1" id="midselection"><button class="btn btn-xs btn-primary" id="changemode">open</button></div>
+                <div class="col-md-6 hidden" id="rightcolumn">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+
+                            <select class="selectpicker languageselector" name="language_id">
+                                {% for language in languages %}
+                                    <option value="{{ language.id }}">{{ language.language_code }}</option>
+                                {% endfor %}
+                            </select>
+                            <button class="btn btn-primary pull-right"
+                                    id="button_right_add"
+                                    data-toggle="modal"
+                                    data-target="#translation_right_add"
+                                    data-ajax_submit_url="{% url 'youradmin_translations_create' language_id=languages.0.id %}"
+                                    data-ajax_submit_url_placeholder="{% url 'youradmin_translations_create' language_id='_placeholder' %}"
+                                    >Add</button>
+
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-4 text-center">
+                                    Key: <input type="text" name="key" value="" placeholder="key">
+                                </div>
+                                <div class="col-md-4 text-center">
+                                    Value: <input type="text" name="value" value="" placeholder="value">
+                                </div>
+
+                            </div>
+
+                            {% include "youradmin/partials/datatable.html" with table_selector='table_right' datatables_config=datatables_config %}
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <script type="text/javascript">
+
+    YT.urls = YT.urls || {};
+
+    YT.urls.translations_refresh = '{% url 'youradmin_translations_getlist' language_id='_placeholder' %}';
+
+    </script>
+    <script type="text/javascript" src="{% static 'youradmin/js/pages/translations.js' %}"></script>
+
+{% endblock %}

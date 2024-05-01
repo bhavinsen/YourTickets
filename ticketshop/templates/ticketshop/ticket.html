@@ -1,0 +1,248 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load index %}
+
+{% block background %}{{ cshop.bg_img.url }}{% endblock %}
+
+{% block wrapper_class %}shop-wrapper{% endblock %}
+
+{% block content %}
+
+    <header class="a-center">
+        <h1 class="header white uppercase">{{ cur_event.title }}</h1>
+    </header>
+
+    {% if cur_event.id == 123 %}
+        <script>
+        !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+        n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+        document,'script','//connect.facebook.net/en_US/fbevents.js');
+
+        fbq('init', '1446391025387624');
+        fbq('track', 'PageView');
+
+        </script>
+
+        <img src="https://www.facebook.com/tr?id=1446391025387624&ev=PageView&noscript=1"/>
+
+    {% endif %}
+
+    <article class="ticketshop">
+        <div class="corners-outer corners-outer-bottom u-border-bottom-dash u-flex-column bg-gray">
+            <div class="corners-inner corners-inner-top bg-gray">
+                <div class="content u-flex-row-around">
+                    <div class="infoNav bold uppercase"><i
+                            class="fa fa-calendar primary_color m-right-12"></i>{{ event_date }}</div>
+                    <div class="infoNav bold uppercase">
+{#                        <a href="https://www.google.nl/maps/place/{{ cur_event.location }}" target="_blank">#}
+                            <span class="u-textDots">
+                                <i class="fa fa-map-marker secondary_color m-right-12"></i>
+                                {{ cur_event.location }}
+                            </span>
+{#                        </a>#}
+                    </div>
+                </div>
+                <img class="headerImg" src="{{ cshop.header_img.url }}">
+
+                <div class="shop-description">
+                    <div id="description" class="shop-text u-break">
+                        <p>
+                            {{ cur_event.description | safe }}
+
+                        </p>
+                    </div>
+                    <div class="sectionshadow js-readmore"></div>
+                    <div class="readmore primary_color js-readmore">{% getWord lc "shop-base-readmore" %}</div>
+                    <p class="uppercase u-overflow-hidden m-top-24 large bold lineheight-1-3 u-break">{% getWord lc "shop-base-lineup" %}
+                        {% for artist in lineup %}
+                            <span class="primary_color">{{ artist.artist }}</span>
+                            {% if not forloop.last %}
+                                <span class="primary_color p-right-3 p-left-3">/</span>
+                            {% endif %}
+                        {% endfor %}
+
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="corners-outer corners-outer-top bg-white">
+            <div class="tickets corners-inner bg-white">
+                <form id="orderform" method="post">
+                    {% csrf_token %}
+                    <fieldset class="p-bottom-12">
+                        <legend class="large bold m-bottom-36">{% getWord lc "shop-base-ticketsale" %}</legend>
+                        <div class="table u-border-box">
+                            <div class="u-flex-row u-border-bottom p-bottom-6">
+                                <span class="cell-70 u-flex small bold">{% getWord lc "shop-base-ticket" %}</span>
+                                <span class="cell-10 small bold">{% getWord lc "shop-base-price" %}</span>
+                                <span class="cell-20 small bold">{% getWord lc "shop-base-aantal" %}</span>
+                            </div>
+
+                            {% load humanize %}
+                            {% for ticket in tickets %}
+                                {% if not ticket.not_available %}
+                                <div class="u-flex-row p-top-bottom-24 u-border-bottom">
+                                    <span class="cell-70 u-flex u-break">{{ ticket.name }}</span>
+                                    <span class="cell-10">{% if ticket.price_or != 0 %}€
+                                        {{ ticket.price_new|floatformat:2|intcomma }}{% else %}
+                                        {% getWord lc "shop-base-free" %}{% endif %}</span>
+                                        <span class="cell-20">
+                                            <div class="u-addNumber u-flex-row">
+                                                {% if ticket.max_sold == 0 %}
+                                                    <input type="hidden" name="quantity[]" value="0">
+                                                    <span class="cell-20 uppercase small">{% getWord lc "shop-base-soldout" %}</span>
+                                                {% elif ticket.old == True %}
+                                                    <input type="hidden" name="quantity[]" value="0">
+                                                    <span class="cell-20 uppercase small">{% getWord lc "shop-base-soldout" %}</span>
+                                                {% else %}
+                                                    <span class="u-flex u-addNumber-box js-addNumber u-noselect">-</span>
+
+                                                    <input max="{{ ticket.max_sold }}" class="u-addNumber-input u-flex u-noselect"
+                                                           type="text" name="quantity[]" value="0">
+                                                    <span class="u-flex u-addNumber-box js-addNumber u-noselect">+</span>
+
+                                                {% endif %}
+                                            <input type="hidden" name="ticketref[]" value="{{ ticket.pk }}">
+                                            </div>
+                                        </span>
+                                    </span>
+                                </div>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    </fieldset>
+
+                    <div class="terms m-top-36" style="margin-bottom:10px;">
+                        <div style="padding-bottom:20px;">
+                            <input type="checkbox" id="email_allowed" name="email_allowed" value="email_allowed">
+                            <label class="primary_color u-noselect u-inline-block" for="email_allowed">
+                              <span class="initial_color p-left-12">
+                                  {% getWord lc "shop-ticket-keepmeinformed" %}
+                              </span>
+                            </label>
+                        </div>
+                        <div style="padding-bottom:20px;">
+                            <input type="checkbox" id="Terms" name="Terms" value="Terms">
+                            <label class="primary_color u-noselect u-inline-block" for="Terms">
+                              <span class="initial_color p-left-12">
+                                {% getWord lc "shop-base-akkoordalgvw" %}
+                                <span class="primary_color u-pointer u-underline-h js-popup-click" data-lang="{% if language == 'fr' %}en{% else %}{{ language }}{% endif %}">{% getWord lc "shop-base-algvw" %}</span>
+                              </span>
+                            </label>
+                        </div>
+                        {% if cur_event.show_covid19_info %}
+                        <div>
+                            <input type="checkbox" id="show_covid19_info" name="show_covid19_info" value="true">
+                            <label class="primary_color u-noselect u-inline-block" for="show_covid19_info">
+                              <span class="initial_color p-left-12">
+                                {% getWord lc "shop-base-show_covid19_info" %}
+                                <span class="primary_color u-pointer u-underline-h js-popup-click"
+                                    data-lang="{% if language == 'fr' %}en{% else %}{{ language }}{% endif %}"
+                                      data-template="#message_akkoord_corona"
+                                >{% getWord lc "shop-base-show_covid19_info_link" %}</span>
+                              </span>
+                            </label>
+                        </div>
+                        {% endif %}
+                    </div>
+
+                    <button id="subbtn" class="uppercase button button-bottom-right white bg-primary_color bold"
+                            type="submit">
+                            {% if cur_event.id == 672 %}
+                                Bestel je ticket
+                            {% else %}
+                                {% getWord lc "shop-base-buttonbuy" %} 
+                            {% endif %}
+                            
+                            <i class="m-left-36 fa fa-angle-right bold"></i>
+
+                        <div class="u-overlay"></div>
+                    </button>
+                    <!-- <input id="bg" type="color" /> -->
+                </form>
+            </div>
+        </div>
+    </article>
+    <div class="w-100 a-center">
+      <a class="base uppercase p-around-24 medium-small" href="{% url 'contact' %}">Contact</a>
+    </div>
+
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700' rel='stylesheet' type='text/css'>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-XdYbMnZ/QjLh6iI4ogqCTaIjrFk87ip+ekIjefZch0Y+PvJ8CDYtEs1ipDmPorQ+" crossorigin="anonymous">
+
+    <script type="text/javascript" src="{% static 'js/color.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/page/ticket.js' %}"></script>
+    <script type="text/javascript">
+        $('body').Color({
+          primary_color   : '{{cshop.primary_color}}',
+          secondary_color : '{{cshop.secondary_color}}'
+        });
+
+    </script>
+    {% if request.session.comes_from_iframe %}
+        <style>
+            .shop-wrapper{
+                width:100%;
+                max-width:none;
+            }
+        </style>
+    {% endif %}
+    {% if some_tickets_soldout %}
+        <script type="text/javascript">
+            $(function(){
+                $(".errormessage").html($('#message_soldout').html());
+                $(".errormessage").addClass('active');
+            });
+            $('#subbtn').click(function(){
+                $(".errormessage").removeClass('active');
+                $(".errormessage").html($('#message_noticketselected').html());
+            })
+
+       </script>
+    {% endif %}
+{% endblock %}
+
+{% block outside_wrapper %}
+    <div class="popup-overlay js-overlay js-popup-overlay xxl-large">
+      <i class="fa fa-times white m-top-12 m-right-12 u-float-right u-pointer" aria-hidden="true"></i>
+    </div>
+    <div class="popup-container js-popup" data-lang="nl">
+        {% include 'ticketshop/customer_voorwaarden.html' %}
+    </div>
+    <div class="popup-container js-popup" data-lang="en">
+        {% include 'ticketshop/customer_voorwaarden_en.html' %}
+    </div>
+
+    <div id="message_noticketselected" style="display:none;">
+        {% getWord lc "shop-ticket-noticketselected" %}
+    </div>
+    <div id="message_akkoordvoorwaarden" style="display:none;">
+        {% getWord lc "shop-base-akkoordalgvwmessage" %}
+    </div>
+    <div id="message_soldout" style="display:none;">
+        Een van de geselecteerde tickets is niet langer beschikbaar. Plaats je bestelling opnieuw.
+    </div>
+    <div id="message_covid" style="display:none;">
+        {% getWord lc "shop-base-akkoordcovidmessage" %}
+    </div>
+    <div class="popup-container js-popup" id="message_akkoord_corona">
+        Had je een of meerdere klachten in de afgelopen 24 uur?:<br>
+        - hoesten<br>
+        - neusverkoudheid<br>
+        - koorts vanaf 38 graden<br>
+        - benauwdheidsklachten<br><br>
+
+        Heb je op dit moment een huisgenoot met koorts en/of benauwdheidsklachten?<br><br>
+        Heb je het nieuwe coronavirus gehad en is dit de afgelopen 7 dagen vastgesteld (in een lab)?<br><br>
+        Heb je een huisgenoot/gezinslid met het nieuwe coronavirus en heb je in de afgelopen 14 dagen
+        contact met hem/haar gehad terwijl hij/zij nog klachten had?<br><br>
+        Ben je in thuisisolatie omdat je direct contact hebt gehad met iemand waarbij het nieuwe coronavirus is vastgesteld?<br><br>
+
+    </div>
+    <div class="errormessage">
+        {% getWord lc "shop-ticket-noticketselected" %}
+    </div>
+{% endblock %}
+

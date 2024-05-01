@@ -1,0 +1,504 @@
+{% load static %}
+{% load index %}
+{% load ga %}
+<!DOCTYPE html>
+<html>
+    <head>
+        {% include 'yourtickets2/base/head.html' %}
+    </head>
+    <body data-spy="scroll" data-target="#navbar-collapse">
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar bar1"></span>
+                        <span class="icon-bar bar2"></span>
+                        <span class="icon-bar bar3"></span>
+                    </button>
+                    <a class="navbar-brand" href="#" data-button="Homepg-menu-logo" ><img src="{% static 'images/logo_color.png' %}"></a>
+                </div>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav navbar-middle">
+                        <li><a href="#section-features" data-button="Homepg-menu-functions">{% getWord lc "hp-nav-features" "Features" %}</a></li>
+                        <li><a href="#section-pricing" data-button="Homepg-menu-prices"> {% getWord lc "hp-nav-pricing" "Pricing" %}</a></li>
+{#                        <li><a href="#section-support"> {% getWord lc "hp-nav-support" "Support" %}</a></li>#}
+                        <li><a href="{% url 'contact' %}" data-button="Homepg-menu-contact"> {% getWord lc "hp-nav-contact" "Contact" %}</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="active"><a href="{% url 'register' %}" data-button="Homepg-menu-register" >{% getWord lc "hp-nav-register" "Register" %}</a></li>
+                        <li><a href="{% url 'dashboard_index' %}" class="btn btn-primary btn-sm" data-button="Homepg-menu-login">{% getWord lc "hp-nav-login" "Login" %}</a></li>
+                    </ul>
+                </div>
+          </div>
+        </div>
+        <div>
+            <div class="container-fluid">
+                <div class="row header">
+                    <div class="image"></div>
+                    <div class="image-overlay"></div>
+                    <div class="col-xs-12 text-center header-container">
+                        <div class="header-text">
+                            <span style="font-weight:bold;">{% getWord lc "hp-header-pretext" "Sell tickets" %}</span>
+                            {% getWord lc "hp-header-posttext" ", automatically collect data from all your<br> visitors and expand your community" %}
+
+                            <br>
+                            <a href="{% url 'register' %}" class="btn btn-primary btn-lg" data-button="Homepg-header-startselling">{% getWord lc "hp-header-btntext" "Start ticketsales" %}</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row whatis">
+                    <div class="col-xs-12 col-md-1" ></div>
+                    <div class="col-xs-12 col-md-4 text-sm-center textpart" >
+                        <span class="header-title">
+                            {% getWord lc "hp-whatis-header" "What<br><nobr>is Yourtickets?</nobr>" %}
+                        </span>
+                        <br>
+                        <span class="smalltext">
+                            {% getWord lc "hp-whatis-text" "Yourtickets is a community insight platform for event organizers that focuses on the strategic growth of events. The system supports organizers free of charge in understanding better and expanding their communities." %}
+                        </span>
+                    </div>
+                    <div class="col-xs-12 col-md-7" style="overflow:hidden;padding-right:0px;">
+                        <img style="width:100%;" src="{% static 'yourtickets/img/what_is.png' %}">
+                    </div>
+                </div>
+                <div id="section-features"></div>
+                <div class="row">
+                    <div class="devider"></div>
+                </div>
+                <div class="row process" >
+                    <div class="col-md-12 text-center">
+                        <span class="header-title">{% getWord lc "hp-process-header" "The process" %}</span>
+                    </div>
+                </div>
+
+                <div class="row process sm-hide">
+                    <div class="col-sm-1"></div>
+                    <div class="col-sm-2">
+                        <div class="cardlink active" data-frame="#process-1">
+                            <div class="number">1</div>
+                            <div class="cardtext">{% getWord lc "hp-process-1-header" "Create event" %}</div>
+                            <div class="info-text">
+                                {% getWord lc "hp-process-1-text" "With Yourtickets you have your<br>personalized ticketshop online<br>within three minutes." %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                        <div class="cardlink" data-frame="#process-2">
+                            <div class="number">2</div>
+                            <div class="cardtext">{% getWord lc "hp-process-2-header" "Collect Data" %}</div>
+                            <div class="info-text">
+                                {% getWord lc "hp-process-2-text" "Within Yourtickets you can<br>sell much more than just tickets." %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                        <div class="cardlink" data-frame="#process-3">
+                            <div class="number">3</div>
+                            <div class="cardtext">{% getWord lc "hp-process-3-header" "Manage guestlist" %}</div>
+                            <div class="info-text">
+                                {% getWord lc "hp-process-3-text" "With Yourtickets you can easily<br>place visitors on the guest list." %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                        <div class="cardlink" data-frame="#process-4">
+                            <div class="number">4</div>
+                            <div class="cardtext">{% getWord lc "hp-process-4-header" "Scan application" %}</div>
+                            <div class="info-text">
+                                {% getWord lc "hp-process-4-text" "With the Scan app from<br>Yourtickets you can scan tickets<br>easily." %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                        <div class="cardlink" data-frame="#process-5">
+                            <div class="number">5</div>
+                            <div class="cardtext">{% getWord lc "hp-process-5-header" "Payment" %}</div>
+                            <div class="info-text">
+                                {% getWord lc "hp-process-5-text" "Yourtickets has a partnership with<br>Mollie Payments." %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-1"></div>
+
+                </div>
+                <div class="row process subframe" id="process-1" >
+                    <div class="col-xs-12 col-md-1"></div>
+                    <div class="col-xs-12 col-md-4" data-button="Homepg-create-event">
+                        <div class="step text-sm-center">{% getWord lc "hp-process-1-step" "STEP ONE" %}</div>
+                        <div class="header-title sub-title text-sm-center">{% getWord lc "hp-process-1-header" "Create event" %}</div>
+                        <div class="smalltext text-sm-center">
+                            {% getWord lc "hp-process-1-body" "With Yourtickets you have your personalized..." %}
+                            <br/>
+                            <a href="{% url 'register' %}" data-button="Homepg-create-event-startselling" class="btn btn-primary btn-lg sm-hide">{% getWord lc "hp-process-btntext" "See the YT in action" %}</a>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-md-7 text-sm-center" style="padding-left:0;">
+                        <img src="{% static 'yourtickets/img/process-step1.png' %}">
+                        <a href="{% url 'register' %}" class="btn btn-primary btn-lg sm-show-inline">{% getWord lc "hp-process-btntext" "See the YT in action" %}</a>
+                    </div>
+                </div>
+                <div class="row process subframe" id="process-2">
+                    <div class="col-xs-12 col-md-1"></div>
+                    <div class="col-xs-12 col-md-4" data-button="Homepg-collect-data">
+                        <div class="step text-sm-center">{% getWord lc "hp-process-2-step" "STEP TWO" %}</div>
+                        <div class="header-title sub-title text-sm-center">{% getWord lc "hp-process-2-header" "Collect Data" %}</div>
+                        <div class="smalltext text-sm-center">
+                             {% getWord lc "hp-process-2-body" "Within Yourtickets you can sell much more than jus...." %}
+                            <br>
+                            <a href="{% url 'register' %}" data-button="Homepg-collect-data-startselling" class="btn btn-primary btn-lg sm-hide">{% getWord lc "hp-process-btntext" "See the YT in action" %}</a>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-md-7">
+                        <img src="{% static 'yourtickets/img/process-step2.png' %}">
+                    </div>
+                </div>
+                <div class="row process subframe" id="process-3">
+                    <div class="col-xs-12 col-md-1"></div>
+                    <div class="col-xs-12 col-md-4" data-button="Homepg-guestlist">
+                        <div class="step text-sm-center">{% getWord lc "hp-process-3-step" "STEP THREE" %}</div>
+                        <div class="header-title sub-title text-sm-center">{% getWord lc "hp-process-3-header" "Manage guestlist" %}</div>
+                        <div class="smalltext text-sm-center">
+                            {% getWord lc "hp-process-3-body" "With Yourtickets you can easily place visitors on  the ...." %}
+                            <br>
+                            <a href="{% url 'register' %}" data-button="Homepg-guestlist-startselling" class="btn btn-primary btn-lg sm-hide">{% getWord lc "hp-process-btntext" "See the YT in action" %}</a>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-md-7">
+                        <img src="{% static 'yourtickets/img/process-step3.png' %}">
+                    </div>
+                </div>
+                <div class="row process subframe" id="process-4">
+                    <div class="col-xs-12 col-md-1"></div>
+                    <div class="col-xs-12 col-md-4" data-button="Homepg-scantickets">
+                        <div class="step text-sm-center">{% getWord lc "hp-process-4-step" "STEP FOUR" %}</div>
+                        <div class="header-title sub-title text-sm-center">{% getWord lc "hp-process-4-header" "Scan application" %}</div>
+                        <div class="smalltext text-sm-center">
+                            {% getWord lc "hp-process-4-body" "With the Scan app from Yourtickets you can scan tickets ea...." %}
+                            <br>
+                            <a href="{% url 'register' %}" data-button="Homepg-scantickets-startselling" class="btn btn-primary btn-lg sm-hide">{% getWord lc "hp-process-btntext" "See the YT in action" %}</a>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-md-7">
+                        <img src="{% static 'yourtickets/img/process-step4.png' %}">
+                    </div>
+                </div>
+                <div class="row process subframe" id="process-5">
+                    <div class="col-xs-12 col-md-1"></div>
+                    <div class="col-xs-12 col-md-4" data-button="Homepg-payout">
+                        <div class="step text-sm-center">{% getWord lc "hp-process-5-step" "STEP FIVE" %}</div>
+                        <div class="header-title sub-title text-sm-center">{% getWord lc "hp-process-5-header" "Payment" %}</div>
+                        <div class="smalltext text-sm-center">
+                            {% getWord lc "hp-process-5-body" "Yourtickets has a partnership with Mollie Payments....." %}
+                            <br>
+                            <a href="{% url 'register' %}" data-button="Homepg-payout-startselling" class="btn btn-primary btn-lg">{% getWord lc "hp-process-btntext" "See the YT in action" %}</a>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-md-7">
+                        <img src="{% static 'yourtickets/img/process-step5.png' %}">
+                    </div>
+                </div>
+                <div id="section-pricing"></div>
+                <div class="row calculate desktop">
+                    <div class="col-md-12 topcontainer">
+                        <div class="header-title text-center">
+                            {% getWord lc "hp-calculate-header" "Calculate service costs" %}
+                        </div>
+                        <div class="subtext text-center">
+                            {% getWord lc "hp-calculate-body" "The services from Yourtickets are free to use for event organizers..." %}
+                        </div>
+
+                        <div class="col-md-1"></div>
+                        <div class="col-md-10 text-center">
+                            <div class="topticket">
+                                <div class="row">
+                                    <div class="cut">
+                                        <img src="{% static 'yourtickets/img/top_cut.png' %}">
+                                    </div>
+                                    <div class="col-md-6" style="padding-top:50px;">{% getWord lc "hp-calculate-ticketprice" "Ticket price" %}</div>
+
+                                    <div class="col-md-6" style="padding-top:50px;padding-bottom:20px;">{% getWord lc "hp-calculate-servicecosts"  "Service cost" %}</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-1"></div>
+
+                    </div>
+                </div>
+                <div class="row calculate desktop">
+                    <div class="col-md-12">
+                        <div class="col-md-1"></div>
+                        <div class="col-md-10 text-center">
+                            <div class="bottomticket">
+                                <div class="row" style="padding-bottom:80px;">
+                                    <div class="cut" style="left:50%;">
+                                            <img src="{% static 'yourtickets/img/bottom_cut.png' %}">
+                                        </div>
+                                    <div class="col-md-6" style="padding-top:50px;">
+                                         <div class="special-input text-center">
+                                            {% getWord lc "hp-calculate-enterticketprice" "Enter ticket price" %}
+                                            <input type="number" data-button="Homepg-calculatecosts" class="input_ticket_price">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="ticketprice">&euro;<span class="ticketprice-calculated">0.00</span></div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-md-1"></div>
+                    </div>
+                </div>
+                <div class="row calculate mobile">
+                    <div class="col-md-12 topcontainer">
+                        <div class="header-title text-center">
+                            {% getWord lc "hp-calculate-header" "Calculate service costs" %}
+                        </div>
+                        <div class="subtext text-center">
+                            {% getWord lc "hp-calculate-body" "The services from Yourtickets are free to use for event organizers..." %}
+                        </div>
+
+                        <div class="col-md-1"></div>
+                        <div class="col-md-10 text-center">
+                            <div class="topticket">
+                                <div class="row">
+                                    <div class="col-md-12" style="padding-top:50px;">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-1"></div>
+
+                    </div>
+                </div>
+                <div class="row calculate mobile">
+                    <div class="col-md-1"></div>
+                    <div class="col-md-10">
+                        <div class="bottomticket text-center">
+                            <div style="position:relative;top:-20px;">{% getWord lc "hp-calculate-ticketprice" "Ticket price" %}</div>
+                            <div class="special-input">
+                                {% getWord lc "hp-calculate-enterticketprice" "Enter ticket price" %}
+
+                                <input type="number" data-button="Homepg-calculatecosts" class="input_ticket_price">
+                            </div>
+
+                            <div class="cut">
+                                <img class="left" src="{% static 'yourtickets/img/cut_left.png' %}">
+                                <img class="right" src="{% static 'yourtickets/img/cut_right.png' %}">
+                            </div>
+                            <div style="margin-bottom:10px;">{% getWord lc "hp-calculate-servicecosts"  "Service cost" %}</div>
+                            <div class="ticketprice">&euro;<span class="ticketprice-calculated">0.00</span></div>
+                        </div>
+                    </div>
+                    <div class="col-md-1"></div>
+                </div>
+                <div class="row whyyourtickets" style="margin-top:112px;">
+                    <div class="col-md-12">
+                        <div class="header-title text-center">
+                            {% getWord lc "hp-why-header" "Why Yourtickets?" %}
+                        </div>
+                        <div class="subheader text-center">
+                            {% getWord lc "hp-why-subheader" "This is only a few benefits of Yourtickets" %}
+                            </div>
+                    </div>
+                </div>
+                <div class="row whyyourtickets navi">
+
+                    <div class="col-md-1"></div>
+                    <div class="col-md-10">
+                        <div class="row">
+                            <div class="col-md-3">
+
+                                <div class="navlink active" data-frame="#why-1" data-button="Homepg-nocontract">
+                                    <div class="icon"><img src="{% static 'yourtickets/img/icon1.png' %}"></div>
+                                    <div class="text">
+                                        {% getWord lc "hp-why-nav1-title" "Not stuck<br/>with contracts" %}
+                                    </div>
+                                    <div class="stripe"></div>
+                                </div>
+
+                            </div>
+                            <div class="col-md-3">
+                                <div class="navlink" data-frame="#why-2" data-button="Homepg-compact-business">
+                                    <div class="icon"><img src="{% static 'yourtickets/img/icon2.png' %}"></div>
+                                    <div class="text">
+                                        {% getWord lc "hp-why-nav2-title" "Compact<br/>business" %}
+                                    </div>
+                                    <div class="stripe"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="navlink" data-frame="#why-3" data-button="Homepg-fastpayout">
+                                    <div class="icon"><img src="{% static 'yourtickets/img/icon3.png' %}"></div>
+                                    <div class="text">
+                                        {% getWord lc "hp-why-nav3-title" "Fast<br/>payout" %}
+                                    </div>
+                                    <div class="stripe"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="navlink" data-frame="#why-4" data-button="Homepg-accessible">
+                                    <div class="icon"><img src="{% static 'yourtickets/img/icon4.png' %}"></div>
+                                    <div class="text">
+                                        {% getWord lc "hp-why-nav4-title" "Fast access<br/>to dashboard" %}
+                                    </div>
+                                    <div class="stripe"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-1"></div>
+                </div>
+
+                <div class="row whyyourtickets">
+                    <div class="col-md-1"></div>
+                    <div class="col-md-10 subframe">
+
+                        <div class="row" id="why-1">
+                            <div class="col-md-5">
+                                <div class="header-icon"></div>
+                                <div class="header-title sub-title">
+{#                                    <img src="{% static 'yourtickets/img/icon1.png' %}">#}
+                                    <div class="text">
+                                        {% getWord lc "hp-why-nav1-title" "Not stuck<br/>with contracts" %}
+                                    </div>
+                                </div>
+                                <div class="smalltext">
+                                    <span class="text">
+                                        {% getWord lc "hp-why-nav1-body" "At Yourtickets you are not stuck with those annoying co" %}
+                                    </span>
+                                    <br>
+                                    <div class="text-sm-center">
+                                        <a href="{% url 'register' %}" data-button="Homepg-nocontract-startselling" class="btn btn-primary btn-lg sm-hide">{% getWord lc "hp-why-nav1-btn" "Start ticketsales" %}</a>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                            <div class="col-xs-12 col-md-7 text-sm-center">
+                                <img class="bigimage" src="{% static 'yourtickets/img/why-1.png' %}">
+                                <a href="{% url 'register' %}" data-button="Homepg-nocontract-startselling" class="btn btn-primary btn-lg sm-show-inline">{% getWord lc "hp-why-nav1-btn" "Start ticketsales" %}</a>
+                            </div>
+                        </div>
+
+                        <div class="row" id="why-2">
+                            <div class="col-md-5">
+                                <div class="header-title sub-title">
+{#                                    <img src="{% static 'yourtickets/img/icon2.png' %}">#}
+                                    <div class="text">{% getWord lc "hp-why-nav2-title" "Compact<br/>business" %}</div>
+                                </div>
+                                <div class="smalltext">
+                                    <span class="text">
+                                        {% getWord lc "hp-why-nav2-body" "Yourtickets is a small and young company with young emplo..." %}
+                                    </span>
+                                    <br>
+                                    <div class="text-sm-center">
+                                        <a href="{% url 'register' %}" data-button="Homepg-compact-business-startselling" class="btn btn-primary btn-lg sm-hide">{% getWord lc "hp-why-nav1-btn" "Start ticketsales" %}</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-md-7">
+                                <img class="bigimage" src="{% static 'yourtickets/img/why-2.jpg' %}">
+                            </div>
+                        </div>
+
+                        <div class="row" id="why-3">
+                            <div class="col-md-5">
+                                <div class="header-title sub-title">
+{#                                    <img src="{% static 'yourtickets/img/icon3.png' %}">#}
+                                    <div class="text">{% getWord lc "hp-why-nav3-title" "Fast<br/>payout" %}</div>
+                                </div>
+                                <div class="smalltext">
+                                    <span class="text">
+                                        {% getWord lc "hp-why-nav3-body" "Do you always find it so annoyingly long waiting for your ..." %}
+                                    </span>
+                                    <br>
+                                    <div class="text-sm-center">
+                                        <a href="{% url 'register' %}" data-button="Homepg-fastpayout-startselling" class="btn btn-primary btn-lg sm-hide">{% getWord lc "hp-why-nav1-btn" "Start ticketsales" %}</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-md-7">
+                                <img class="bigimage" src="{% static 'yourtickets/img/why-3.jpg' %}">
+                            </div>
+                        </div>
+                        <div class="row" id="why-4">
+                            <div class="col-md-5">
+                                <div class="header-title sub-title">
+{#                                    <img src="{% static 'yourtickets/img/icon4.png' %}">#}
+                                    <div class="text">
+                                        {% getWord lc "hp-why-nav4-title" "Fast access<br/>to dashboard" %}
+                                    </div>
+                                </div>
+                                <div class="smalltext">
+                                    <span class="text">
+                                        {% getWord lc "hp-why-nav4-body" "From your dashboard you always have full con..." %}
+                                    </span>
+                                    <br>
+                                    <div class="text-sm-center">
+                                        <a href="{% url 'register' %}" data-button="Homepg-accessible-startselling" class="btn btn-primary btn-lg">{% getWord lc "hp-why-nav1-btn" "Start ticketsales" %}</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-md-7">
+                                <img class="bigimage" src="{% static 'yourtickets/img/why-4.png' %}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-1"></div>
+                </div>
+                <div class="row whyyourtickets" style="margin-bottom:30px;">
+                    <div class="col-md-1"></div>
+                    <div class="col-md-11 arrowcontainer">
+                        &nbsp;
+                        <br><br>
+                        <div class="arrows">
+                            <img class="left" style="display:none;" src="{% static 'yourtickets/img/arrow_left.png' %}">
+                            <img class="right enabled" style="display:none;" style="margin-left:20px;" src="{% static 'yourtickets/img/arrow_right.png' %}">
+                        </div>
+
+                    </div>
+                </div>
+                <div class="row footer">
+                    <div class="container ">
+                        <div class="col-md-2 col-sm-12 text-sm-center">
+                            <img class="logo" src="{% static 'images/logo_white.png' %}"><br>
+{#                            <div class="brandtext">Best event organizer</div>#}
+                        </div>
+                        <div class="col-md-2 col-xs-4">
+
+                            <div class="navlink"><a href="{% url 'index' %}">{% getWord lc "hp-footer-home" "Home" %}</a></div>
+                            <div class="navlink" style="display:none;">About</div>
+                            <div class="navlink" style="display:none;">Help</div>
+
+                        </div>
+                        <div class="col-md-2 col-xs-4">
+                            <div class="navlink" style="display:none;">Blog</div>
+                            <div class="navlink"><a href="#section-pricing">{% getWord lc "hp-footer-pricing" "Pricing" %}</a></div>
+                            <div class="navlink"></div>
+                        </div>
+                        <div class="col-md-2 col-xs-4">
+                            <div class="navlink"><a href="{% url 'contact' %}">{% getWord lc "hp-footer-contact" "Contact" %}</a></div>
+                            <div class="navlink" style="display:none;">Faq</div>
+                            <div class="navlink" style="display:none;">Terms</div>
+                            <div class="navlink" style="display:none;">Privacy</div>
+                        </div>
+                    </div>
+                    <div class="container copyright">
+                        <div class="col-md-12 text-center">
+                            {% now "Y" %} Yourtickets. All rights reserved
+                        </div>
+                    </div>
+                </div>
+                {% block content %}
+
+                {% endblock %}
+            </div>
+        </div>
+    {% include 'yourtickets2/base/end_body.html' %}
+    </body>
+</html>

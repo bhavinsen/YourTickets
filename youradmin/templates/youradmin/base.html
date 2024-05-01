@@ -1,0 +1,105 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    {% include 'youradmin/base/head.html' %}
+</head>
+<body>
+    {% block body %}
+        <div id="throbber" style="display:none; min-height:120px;"></div>
+        <div id="noty-holder"></div>
+        <div id="wrapper">
+            <!-- Navigation -->
+            <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="{% url 'index' %}">
+                        <img class="logo" src="{% static 'images/logo_color.png' %}">
+                    </a>
+                </div>
+                <!-- Top Menu Items -->
+                <ul class="nav navbar-right top-nav">
+{#                    <li><a href="#" data-placement="bottom" data-toggle="tooltip" href="#" data-original-title="Stats"><i class="fa fa-bar-chart-o"></i>#}
+{#                        </a>#}
+{#                    </li>#}
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{request.user.username}} <b class="fa fa-angle-down"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="{% url 'youradmin_logout' %}"><i class="fa fa-fw fa-power-off"></i> Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+                {% include 'youradmin/base/navigation.html' %}
+                <!-- /.navbar-collapse -->
+            </nav>
+
+            <div id="page-wrapper">
+                <div class="container-fluid">
+
+                    <div class="row">
+                        <div class="col-md-12 usernotifications">
+                            {% for tag, messages in slotmessages.items %}
+                                 {% for message in messages %}
+                                     {% if tag == 'success' %}
+                                         <div class="alert alert-success">
+                                            <h4 >Success</h4>
+                                            <span >{{ message.message }}</span>
+                                        </div>
+                                     {% elif tag == 'warning' %}
+                                         <div class="alert alert-warning">
+                                            <h4>Warning</h4>
+                                            <span>{{ message.message }}</span>
+                                        </div>
+                                     {% elif tag == 'danger' %}
+                                         <div class="alert alert-danger">
+                                            <h4>Error</h4>
+                                            <span>{{ message.message }}</span>
+                                        </div>
+                                     {% endif %}
+
+                                {% endfor %}
+                            {% endfor %}
+
+                            <div id="error" class="alert alert-danger hidden">
+                                <h4 class="error_title"></h4>
+                                <span class="error_message"></span>
+                            </div>
+                            <div id="warning" class="alert alert-warning hidden">
+                                <h4 class="warning_title"></h4>
+                                <span class="warning_message"></span>
+                            </div>
+                            <div id="success" class="alert alert-success hidden">
+                                <h4 class="success_title"></h4>
+                                <span class="success_message"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row" id="main" >
+                        {% block content %}
+
+                            {% include 'youradmin/dashboard/index.html' %}
+
+                        {% endblock %}
+                    </div>
+                    <!-- /.row -->
+                </div>
+                <!-- /.container-fluid -->
+            </div>
+            <!-- /#page-wrapper -->
+        </div><!-- /#wrapper -->
+
+
+
+
+
+    {% endblock %}
+</body>
+</html>

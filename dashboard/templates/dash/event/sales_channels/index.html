@@ -1,0 +1,107 @@
+{% extends "dash/dash.html" %}
+{% load static %}
+{% load humanize %}
+{% load index %}
+{% load compress %}
+
+{% block main %}
+    <div class="u-flex u-order-1to2">
+
+        <div class="remodal" data-remodal-id="remove-channel">
+            <button data-remodal-action="close" class="remodal-close"></button>
+            {% getWord lc "dash-sales_channels-message_sure_wanna_delete" 'WEET JE ZEKER DAT JE DIT CHANNEL WILT VERWIJDEREN?' %}
+            <br><br><br>
+            <button data-remodal-action="cancel" style="margin-right:30px;" class="remodal-cancel">{% getWord lc "dash-sales_channels-message_no_mistake" 'NEE, FOUTJE' %}</button>
+            <button id="delete-confirm"
+                  data-remodal-action="confirm"
+                  class="remodal-confirm">{% getWord lc "dash-sales_channels-message_yes" 'JA' %}</button>
+        </div>
+
+        <div class="remodal" data-remodal-id="create-channel" data-url="{% url 'dashboard_event:sales_channels:create' event_id=cur_event.id %}">
+            {% csrf_token %}
+            <button data-remodal-action="close" class="remodal-close"></button>
+            <div class="row">
+                <div class="col-md-9">
+                    <input
+                        style="width:100%;"
+                        name="{{form.name.html_name}}"
+                        value="{{form.name.value|default_if_none:''}}"
+                        class="form-input-bigger {{ form.name.field.widget.attrs.class }}"
+                        type="text"
+                        placeholder="{% getWord lc "dash-sales_channels_edit-name" 'Naam van het channel' %}"
+                    >
+
+                </div>
+                <div class="col-md-3">
+                    <button id="create-confirm"
+                          data-remodal-action="confirm"
+                          class="btn btn-xl btn-blue space pull-right">{% getWord lc "dash-sales_channels-message_create" 'CREATE' %}</button>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="dashboard-container dashboard-container-padding">
+
+            {% if not channels %}
+                <div style="text-align:center;padding-top:200px;">
+                    <div style="font-size:14px;font-weight:bold;">{% getWord lc "dash-sales_channels-no_channels" 'ER ZIJN NOG GEEN CHANNELS AANGEMAAKT' %}</div><br/>
+                    <div class="btn btn-blue create-channel">CREATE SALES CHANNEL</div>
+                </div>
+            {% else %}
+                <div class="panel">
+                    <div class="panel-heading">
+                        <div class="title">{% getWord lc "dash-sales_channels-title" 'SALES CHANNELS' %}</div>
+
+                        <div class="btn btn-white pull-right create-channel">CREATE SALES CHANNEL</div>
+
+                    </div>
+                    <div class="panel-body">
+
+                        <table style="width:100%;margin-top:20px;" class="table" cellpadding="0" cellspacing="0">
+                            <tr>
+                                <td class="small bold header-td">{% getWord lc "dash-sales_channels-channel_name" 'CHANNEL NAME' %}</td>
+                                <td class="small bold header-td" style="text-align:right;">{% getWord lc "dash-sales_channels-revenue" 'REVENUE' %}</td>
+                                <td class="small bold header-td"></td>
+                            </tr>
+                            {% for item in channels %}
+                                <tr>
+                                    <td>{{ item.name }}</td>
+                                    <td style="text-align:right;">€{{ item.total|floatformat:2|intcomma }}</td>
+                                    <td style="text-align:right">
+                                        <a href="#"
+                                            class="btn btn-blue pull-right copyurl space" data-content="{{ hostname }}{{ event_url }}{{ item.url_name }}/">
+                                            COPY URL
+                                        </a>
+
+                                        <a href="{% url 'dashboard_event:sales_channels:edit' event_id=cur_event.id channel_id=item.id %}"
+                                                class="u-inline-block m-0 icon edit-button pull-right">
+                                            <img src="{% static 'dashboard/img/edit.png' %}" />
+                                        </a>
+                                        <a href="#"
+                                           data-href="{% url 'dashboard_event:sales_channels:delete' event_id=cur_event.id channel_id=item.id %}"
+                                                class="u-inline-block m-0 icon remove-button pull-right remove-channel">
+                                            <img src="{% static 'dashboard/img/delete.png' %}">
+                                        </a>
+
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                            <tr>
+                                <td class="footer"></td>
+                                <td class="footer">TOTAL: € {{ total|floatformat:2|intcomma }}</td>
+                                <td class="footer"></td>
+                            </tr>
+                        </table>
+
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+    <script type="text/javascript" src="{% static 'dashboard/js/sales_channels.js' %}"></script>
+    {% compress css %}
+    <link rel='stylesheet' type="text/x-scss" href="{% static 'dashboard/css/pages/sales_channels.scss' %}">
+    {% endcompress %}
+
+{% endblock %}

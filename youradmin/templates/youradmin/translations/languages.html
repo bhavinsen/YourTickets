@@ -1,0 +1,31 @@
+{% extends 'youradmin/base.html' %}
+{% load static %}
+
+{% block content %}
+    <link rel="stylesheet" type="text/css" href="{% static "youradmin/css/pages/translations.css"%}" />
+
+    {% include 'youradmin/partials/modals/form.html' with modal_id="language_add" form=language_form title="Create language" ajax_submit_url=language_form_url %}
+    {% include 'youradmin/partials/modals/form.html' with mode="edit" modal_id="language_edit" title="Edit language" %}
+    {% include "youradmin/partials/modals/confirm.html" with modal_id='language_delete' mode='delete' success_message="Language has been removed" message="Are you sure you want to remove this language?" %}
+
+    <div class="panel panel-default page-translations">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-md-6">
+                    <h3 class="panel-title" style="width:200px;">Languages</h3>
+                </div>
+                <div class="col-md-6">
+                    <button class="btn btn-xs btn-primary pull-right" data-toggle="modal" data-target="#language_add">Add language</button>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="panel-body">
+            {% include "youradmin/partials/datatable.html" with table_selector="language_table" datatables_config=datatables_config %}
+        </div>
+    </div>
+
+    <script type="text/javascript" src="{% static 'youradmin/js/pages/languages.js' %}"></script>
+
+{% endblock %}

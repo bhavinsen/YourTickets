@@ -1,0 +1,76 @@
+FROM python:3.10-alpine as base
+RUN apk update 
+RUN apk add curl openssl-dev npm nodejs
+
+COPY . /app
+WORKDIR /app/
+
+RUN cd yt_dashboard && \
+    NODE_OPTIONS=--openssl-legacy-provider npm install && \
+    NODE_OPTIONS=--openssl-legacy-provider npm run build && \
+    npm cache clean --force
+
+
+FROM surnet/alpine-wkhtmltopdf:3.16.2-0.12.6-full as wkhtmltopdf
+
+FROM python:3.10-alpine3.16
+ARG DB_NAME
+ARG DB_USER
+ARG DB_PASSWORD
+ARG DB_HOST
+ARG DB_PORT
+ARG ENVIRONMENT
+
+ENV DB_NAME=$DB_NAME
+ENV DB_USER=$DB_USER
+ENV DB_PASSWORD=$DB_PASSWORD
+ENV DB_HOST=$DB_HOST
+ENV DB_PORT=$DB_PORT
+ENV ENVIRONMENT=$ENVIRONMENT
+
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
+ENV CRYPTOGRAPHY_DONT_BUILD_RUST 1
+
+# RUN apk update \
+#     # && apk add --virtual  \
+#     && apk add --no-cache build-deps gcc python3-dev musl-dev xvfb musl-dev libffi-dev openssl-dev curl \
+#     zlib-dev jpeg-dev bash wkhtmltopdf freetype-dev libjpeg-turbo-dev libpng-dev \
+#     && pip install --no-cache-dir -r requirements.txt \
+#     && rm -rf /var/lib/apt/lists/* \
+#     && apk del build-deps
+
+# gcc musl-dev python3-dev libffi-dev openssl-dev cargo
+RUN apk update && apk add --no-cache gcc xvfb musl-dev libffi-dev openssl-dev \
+    zlib-dev jpeg-dev bash  curl build-base freetype-dev libjpeg-turbo-dev libpng-dev \
+    && rm -rf /var/lib/apt/lists/*
+RUN apk add npm nodejs
+
+# Copy wkhtmltopdf files from docker-wkhtmltopdf image
+COPY --from=wkhtmltopdf /bin/wkhtmltopdf /bin/wkhtmltopdf
+COPY --from=wkhtmltopdf /bin/wkhtmltoimage /bin/wkhtmltoimage
+COPY --from=wkhtmltopdf /bin/libwkhtmltox* /bin/
+
+ENV PATH="$PATH:/app"
+WORKDIR /app/
+COPY requirements.txt /app/
+RUN pip install --no-cache-dir  -r requirements.txt
+# this doesnt change anything
+# RUN apk del build-base linux-headers pcre-dev openssl-dev
+
+COPY . /app
+COPY --from=base /app/yt_dashboard/static/yt_dashboard /app/yt_dashboard/static/yt_dashboard
+# dit is niet meer nodig of wel?
+# COPY yt_dashboard/package.json /app/
+
+
+#RUN cd yt_dashboard && npm install && npm run build
+
+
+
+# RUN rm -rf /static
+# RUN rm -rf yt_dashboard/node_modules
+
+EXPOSE 8000
+COPY start.sh /
+CMD [ "start.sh" ]

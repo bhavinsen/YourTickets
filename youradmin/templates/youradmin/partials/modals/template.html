@@ -1,0 +1,27 @@
+<div id="{{ modal_id }}" class="modal fade">
+    <div class="modal-dialog {{ modal_size }}">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">{% block modal_title %}{% endblock %}</h4>
+            </div>
+            <div class="modal-body">
+                {% block modal_content %}{% endblock %}
+            </div>
+            <div class="modal-footer">
+                {% block buttons %}{% endblock %}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% block modal_logic %}
+    <script>
+        (function() {
+            {% if width %}
+                $('#{{ modal_id }}').find('.modal-dialog').css('width', '{{ width }}');
+            {% endif %}
+        })();
+    </script>
+{% endblock %}

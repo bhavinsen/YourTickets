@@ -1,0 +1,129 @@
+{% load static %}
+
+{{ current_text }}<img id="{{ domId }}" src="{% static 'images/translation.png' %}" style="width:16px;height:16px;cursor:pointer;">
+<link rel='stylesheet' href="{% static 'plugins/remodal.css' %}">
+<link rel='stylesheet' href="{% static 'plugins/remodal-default-theme.css' %}">
+<link rel='stylesheet' href="{% static 'plugins/remodal-yt-theme.css' %}">
+<script src="{% static 'plugins/remodal.min.js' %}"></script>
+
+<style>
+    .translation-helper td{
+        padding:5px;
+        border:1px solid black;
+    }
+    .translation-helper input{
+        width:100%;
+        border:1px solid black;
+        background-color:#cccccc;
+    }
+    .translation-helper .saved{
+        color:green;
+        font-size:20px;
+    }
+    .translation-helper .error{
+        color:red;
+        font-size:20px;
+    }
+</style>
+
+<div class="remodal translation-helper" data-remodal-id="window-{{ domId }}">
+    <div class="saved" style="display:none;">Saved</div>
+    <div class="error" style="display:none;">ERROR</div>
+    <div>
+        <table style="border:1px solid black;width:100%;" cellpadding="5">
+            <tr>
+                <td style="background-color:#888b8d;font-size:20px;font-weight: bold;color:white;" colspan="2">KEY: {{ translations.0.name }}</td>
+            </tr>
+            {% for translation in translations %}
+                <tr>
+                    <td>{{ translation.language }}</td>
+                    <td><input class="input" type="text"
+                               name="{{ translation.language }}_text"
+                               data-languageid="{{ translation.language.id }}"
+                               data-id="{{ translation.pk }}"
+                               value="{{ translation.text }}"></td>
+                </tr>
+            {% endfor %}
+            {% if not translations %}
+
+                {% for language in languages %}
+                    <tr>
+                        <td>{{ language }}</td>
+                        <td>
+                            <input class="input" type="text"
+                                   name="{{ language }}_text"
+                                   data-languageid="{{ language.id }}"
+                                   data-id="0"
+                                   data-translation_key="{{ translation_key }}"
+                                   value="{{ translation.text }}">
+
+                        </td>
+                    </tr>
+                {% endfor %}
+            {% endif %}
+            <tr>
+                <td style="border:1px solid black;background-color:#888b8d;font-size:20px;font-weight: bold;color:white;" colspan="2">
+                    <input type="submit" id="submit-{{ domId }}" value="Save">
+                </td>
+            </tr>
+        </table>
+
+    </div>
+</div>
+
+
+<script>
+
+    $(function(){
+        $('#{{ domId }}').click(function(){
+
+            var $success = $('[data-remodal-id=window-{{ domId }}]').find('.saved');
+            var $error = $('[data-remodal-id=window-{{ domId }}]').find('.error');
+            console.log($success)
+            $success.hide();
+            $error.hide();
+
+            var inst = $('[data-remodal-id=window-{{ domId }}]').remodal();
+            inst.open();
+        });
+        $('#submit-{{ domId }}').click(function(){
+
+
+            var data = [];
+            var $inputs = $(this).closest('.translation-helper').find('input[type="text"]');
+            var $success = $(this).closest('.translation-helper').find('.saved');
+            var $error = $(this).closest('.translation-helper').find('.error');
+
+            $success.hide();
+            $error.hide();
+
+            $inputs.each(function(index){
+                var $el = $(this);
+                data.push({
+                    'id':$el.data('id'),
+                    'value': $el.val(),
+                    'languageid': $el.data('languageid'),
+                    'translation_key': $el.data('translation_key')
+                });
+            });
+
+            $.ajax({
+                url: '{% url 'youradmin_translations_helper_save' %}',
+                type: 'POST',
+                data: {'data':JSON.stringify(data)},
+            }).done(function(msg){
+                if (msg.success === true) {
+                    $success.show();
+                } else {
+                    $error.show();
+
+                }
+            });
+
+        })
+
+    })
+
+</script>
+
+

@@ -1,0 +1,108 @@
+{% extends "dash/base.html" %}
+{% load static %}
+
+
+{% block title %}Yourtickets - Dashboard{% endblock %}
+
+{% block content %}
+
+
+<div class="u-flex u-order-1to2">
+  <header class="dashboard-header white p-tb-24-lr-36" style=" background: url({% static 'images/bg2.jpg' %}) no-repeat center center fixed; background-size: cover;">
+
+              <div class="a-center">
+               <a href="{% url 'event_new' %}" class="u-inline-block m-top-24 uppercase button white bg-primary_color-fixed bold uppercase"><i class="normal m-right-24 fa fa-plus" aria-hidden="true"></i>Start jouw kaartverkoop<div class="u-overlay"></div></a>
+              </div>
+
+
+            </header>
+            <nav class="w-100 u-shadow base uppercase bold">
+              <ul class="dashboard-menu">
+                <li id="js-page-1" class="p-tb-24-lr-18 m-left-18 u-inline-block"><a href="">Statistieken</a></li>
+                <li id="js-page-2" class="p-tb-24-lr-18 u-inline-block"><a href="">Bezoekers</a></li>
+                <li id="js-page-3" class="p-tb-24-lr-18 u-inline-block"><a href="">Evenement Aanpassen</a></li>
+                <li class="p-tb-24-lr-18 u-inline-block"><a href="">Ticketshop Bezoeken</a></li>
+              </ul>
+            </nav>
+            <div id="js-dashboard-container" class="dashboard-container p-around-36">
+              <div class="u-opacity-3">
+                <div class="u-flex-column-to-row">
+                  <div class="u-flex bg-white p-top-bottom-36 a-center m-right-36-desk bold">
+                    <span class="xl-large primary_color-fixed"><i class="fa fa-ticket" aria-hidden="true"></i></span>
+                    <p class="m-top-12 xl-large">0<span class="base"> / 0</span><p/>
+                     <p class="normal uppercase base medium-small m-top-12">tickets sold</p>
+                  </div>
+                  <div class="u-flex bg-white p-top-bottom-36 a-center m-right-36-desk bold">
+                    <span class="xl-large secondary_color-fixed"><i class="fa fa-ticket" aria-hidden="true"></i></span>
+                    <p class="m-top-12 xl-large">0<p/>
+                     <p class="normal uppercase base medium-small m-top-12">sold today</p>
+                  </div>
+                  <div class="u-flex bg-white p-top-bottom-36 a-center m-right-36-desk  bold">
+                    <span class="xl-large secondary_color-fixed"><i class="fa fa-money" aria-hidden="true"></i></span>
+                    <p class="m-top-12 xl-large">€0<p/>
+                     <p class="normal uppercase base medium-small m-top-12">Inkomsten</p>
+                  </div>
+                  <div class="u-flex bg-white p-top-bottom-36 a-center bold">
+                    <span class="xl-large primary_color-fixed"><i class="fa fa-eye" aria-hidden="true"></i></span>
+                    <p class="m-top-12 xl-large ">0<p/>
+                    <p class="normal uppercase base medium-small m-top-12">Event pageviews</p>
+                  </div>
+                </div>
+                <div class="p-around-12 w-100 bg-white m-top-24">
+                    <img src="{% static 'images/grafiek.png' %}" alt="grafiek" class="w-100"/>
+                </div>
+                <div class="u-flex-column-to-row">
+                    <div class="u-flex m-top-24 p-around-36 bg-white m-right-12-desk">
+                        <fieldset>
+                         <div class="large bold m-bottom-36 uppercase">Financieel overzicht</div>
+                         <div class="table u-border-box">
+                           <div class="u-flex-row u-border-bottom p-bottom-6">
+                             <span class="u-flex small bold">Ticket</span>
+                             <span class="u-flex small bold">Prijs</span>
+                             <span class="u-flex small bold">Aantal</span>
+                             <span class="u-flex small bold">Totaal</span>
+                           </div>
+                           <div class="u-flex-row p-top-bottom-24">
+                             <span class="u-flex u-break">Early bird</span>
+                             <span class="u-flex u-break">€0</span>
+                             <span class="u-flex u-break">0<span class="base">/0</span></span>
+                             <span class="u-flex u-break">0</span>
+                           </div>
+                           <div class="u-flex-row p-top-bottom-24 u-border-bottom">
+                             <span class="u-flex u-break">Regular</span>
+                             <span class="u-flex u-break">€0</span>
+                             <span class="u-flex u-break">0<span class="base">/0</span></span>
+                             <span class="u-flex u-break">€0</span>
+                           </div>
+                           <div class="u-flex-row p-top-bottom-24">
+                             <span class="u-flex u-break">Totaal</span>
+                             <span class="u-flex u-break"> </span>
+                             <span class="u-flex u-break">0<span class="base">/0</span></span>
+                             <span class="u-flex u-break">€0</span>
+                           </div>
+                         </div>
+                        </fieldset>
+                    </div>
+                    <div class="u-flex m-top-24 p-around-36 bg-white  m-left-12-desk">
+                        <div class="large bold m-bottom-36 uppercase">Doelgroep</div>
+                        <div class="u-flex-row">
+                            <div class="u-flex a-center bold">
+                                <span class="xl-large primary_color-fixed"><i class="fa fa-user" aria-hidden="true"></i></span>
+                                <p class="m-top-12 xl-large">0</span><p/>
+                                <p class="normal uppercase base medium-small m-top-12">Mannen</p>
+                            </div>
+                            <div class="u-flex ">
+                                <canvas id="chart-doelgroep" class="u-noselect" width="200" height="200"></canvas>
+                            </div>
+                            <div class="u-flex a-center bold">
+                                <span class="xl-large secondary_color-fixed"><i class="fa fa-user" aria-hidden="true"></i></span>
+                                <p class="m-top-12 xl-large">0</span><p/>
+                                <p class="normal uppercase base medium-small m-top-12">Vrouwen</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+              </div>
+            </div>
+
+{% endblock %}

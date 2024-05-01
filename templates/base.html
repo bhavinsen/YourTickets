@@ -1,0 +1,29 @@
+{% load static %}
+{% load index %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        {% include 'base/head.html' %}
+        {% block add_header %}{% endblock %}
+    </head>
+    <body>
+        <div class="shop" style="background: url({% block background %}{% static 'images/bg.jpg' %}{% endblock %}) no-repeat center center fixed; background-size: cover;">
+
+            {% include 'base/topbar.html' %}
+
+            <div class="{% block wrapper_class %}wrapper{% endblock %} u-overflow-hidden">
+
+                {% block content %}{% endblock %}
+
+            </div>
+            <div class="popup-loading"><img class='loaderGif' src="{% static 'images/loading.gif' %}">
+                <span class='loaderText large primary_color-fixed'>Loading</span>
+            </div>
+            {% block outside_wrapper %}
+            {% endblock %}
+        </div>
+        <script src="{% static 'js/main.js' %}"></script>
+        {% include 'yourtickets2/base/end_body.html' %}
+    </body>
+</html>

@@ -1,0 +1,313 @@
+{% load static %}
+{#<script type="text/javascript" src="{% static 'js/lib/jquery.dragsort.js' %}"></script>#}
+<table style="width:100%;" id="{% firstof table_selector "maintable" %}" class="table table-striped table-condensed table-super-small table-bordered {% firstof table_selector "maintable" %} {{ cls }}"></table>
+<script>
+    var datatables_config = {{ datatables_config|safe }};
+
+    var config = {
+        serverSide: true,
+        ordering:true,
+        searching:true,
+        lengthChange: false,
+        rowId: 'id',
+        order: [[2, 'desc']],
+        columns: [],
+        ajax:{
+            type: "POST",
+            data: function(data){
+                var search = {};
+                if(data.hasOwnProperty('columns')){
+                    for (var i = 0; i < data.columns.length; i++) {
+                        var col = data.columns[i];
+                        if (col['search']['value'] != '') {
+                            search[i + ''] = col['search']['value'];
+                        }
+
+                    }
+
+                    data.search = search;
+                    delete data.columns;
+                }
+            }
+        },
+        "initComplete": function(settings, json){
+            if(datatables_config.dragSort){
+                function call_callback(){
+                    window[config.dragSort.callback].call(this);
+                }
+                /**
+                 * start the drag handler
+                 */
+                $('#{% firstof table_selector "maintable" %} tbody').dragsort({ dragSelector: "tr td div.glyphicon-move", dragEnd: call_callback, dragBetween: false});
+
+            }
+        }
+    };
+
+    var comparator_functions = {
+        '!=': function(a, b) {return a != b},
+        '==': function(a, b) {return a == b},
+        '>=': function(a, b) {return a >= b},
+        '<=': function(a, b) {return a <= b},
+        '<': function(a, b) {return a < b},
+        '>': function(a, b) {return a > b}
+    };
+
+    function nodeToString ( node ) {
+       var tmpNode = document.createElement( "div" );
+       tmpNode.appendChild( node.cloneNode( true ) );
+       var str = tmpNode.innerHTML;
+       tmpNode = node = null;
+       return str;
+    }
+
+    {% verbatim %}
+    var collapsable_detail_view_template_string = '' +
+        '<tr><td colspan="'+datatables_config.columns.length+'" style="padding:20px;background-color:#5d6b79">' +
+            '<table class="table table-striped table-condensed table-super-small table-bordered">' +
+                '{{ for(var column in it.columns) { }}' +
+                "<tr><td>{{=column}}</td><td>{{=it.columns[column]}}</td></tr>" +
+                "{{ } }}" +
+            "</table>" +
+        "</td></tr>";
+    {% endverbatim %}
+
+    var collapsable_detail_view_template = '';
+
+    function generate_collapsable_detail_view_template(){
+        collapsable_detail_view_template = doT.template(collapsable_detail_view_template_string)
+    }
+
+    function generateRow(tr,data){
+
+        if(collapsable_detail_view_template == ''){
+            generate_collapsable_detail_view_template();
+        }
+
+        tr.after(collapsable_detail_view_template({columns:data}));
+    }
+
+{#    'urlbuild': {#}
+{#        '_placeholder1': 'user_id',#}
+{#        '_placeholder2': [#}
+{#            'fields',#}
+{#            'pk'#}
+{#        ]#}
+{#        # 'fields': {'pk': '_placeholder2'}#}
+{#        # 'order_id': 'pk'#}
+{#    }#}
+
+    function buildUrl(url, urlBuild, row){
+
+        for(var placeholderString in urlBuild){
+            var segmentValue = urlBuild[placeholderString];
+            var lastKey;
+            if(segmentValue instanceof Array){
+                var rowStepper = row;
+                for(var i=0;i<segmentValue.length;i++){
+                    var seg = segmentValue[i];
+                    if(i == 0){
+                        rowStepper = rowStepper[seg];
+                        lastKey = seg;
+                    }else{
+                        rowStepper = rowStepper[lastKey][seg];
+                    }
+                }
+                url = url.replace(placeholderString, rowStepper)
+
+            }else{
+                url = url.replace(placeholderString, row[segmentValue])
+            }
+
+        }
+
+        return url;
+
+    }
+
+    $.extend(true, config, datatables_config);
+
+    var columns = [];
+    for(var key in config.columns){
+        var column = config.columns[key];
+        if(column.render){
+            column.caller = column.render;
+            column.render = function(data, type, row, meta) {
+                return window[this.caller].call(this,data, type, row, meta);
+            }.bind(column)
+
+        }
+
+        if(column.collapsable_detail_view){
+
+            var detail_view_columns = column.collapsable_detail_view.columns | [];
+
+            column.render = function(data, type, row, meta){
+                return '<div class="button-icon glyphicon glyphicon-chevron-down collapsable_detail_view_button">';
+            };
+
+            $('#{% firstof table_selector "maintable" %}').on( 'click', 'tr .collapsable_detail_view_button', function () {
+
+                var button = $(this);
+                var tr = $(this).closest('tr');
+                var row = $('#{% firstof table_selector "maintable" %}').DataTable().row( tr );
+
+                if(!button.hasClass('collapsed')) {
+
+                    var rowdata = row.data();
+                    var data = rowdata;
+
+                    if(detail_view_columns.length > 0){
+                        data = {};
+                        for(var i=0; i<detail_view_columns.length;i++){
+                            var col = detail_view_columns[i];
+                            data[col] = rowdata[col];
+                        }
+                    }
+                    /**
+                     * filter out null
+                     */
+                    for(var col in data){
+                        var value = data[col];
+
+                        if(value === null){
+                            value = '';
+                        }
+
+                        data[col] = value;
+                    }
+
+                    generateRow(tr, data);
+                    button.removeClass('glyphicon-chevron-down');
+                    button.addClass('glyphicon-chevron-up');
+                    button.addClass('collapsed');
+                }else{
+                    tr.next().remove();
+                    button.addClass('glyphicon-chevron-down');
+                    button.removeClass('glyphicon-chevron-up');
+                    button.removeClass('collapsed')
+                }
+
+            });
+        }
+
+        // if the column has a types key
+        // loop over the types and add custom renderers
+        if(column.predefined_render) {
+            column.render = function(data, type, row, meta) {
+                if (this.predefined_render.type == 'show_active') {
+                    var active_property = this.predefined_render.action_id_property || 'active';
+                    var active = row[active_property]
+                    if (active) {
+                        html = '<div class="glyphicon glyphicon-ok" style="margin-left:3px; color:#00ff00"></div>'
+                    } else {
+                        html = '<div class="glyphicon glyphicon-remove" style="margin-left:3px; color:#ff0000"></div>'
+                    }
+                    return html;
+                }
+            }.bind(column)
+        }
+
+        if(column.types){
+
+            column.render = function(data, type, row, meta){
+                var returnString = '';
+
+                types_loop:
+                for(var typeName in this.types){
+                    var config = this.types[typeName];
+                    var action_id_property = config.action_id_property || 'id';
+
+
+                    if (config.hasOwnProperty('actions')) {
+                        for (var i in config.actions) {
+                            var action = config.actions[i];
+                            if (action.action === 'show') {
+                                if (!comparator_functions[action.comparator](row[action.data], action.value)) {
+                                    continue types_loop;
+                                }
+                            }
+                        }
+                    }
+                    var button_html;
+                    if(typeName == 'edit'){
+                        var url_edit = config.url.replace('_placeholder', row[action_id_property]);
+                        var icon = config.iconCls || 'glyphicon-pencil';
+                        button_html = '<div data-toggle="modal" data-ajax_submit_url="'+url_edit+'" data-target="#'+config.modal_id+'" class="button-icon glyphicon edit-button '+icon+'"></div>';
+                    // delete is used for everything for a modal
+                    }else if(typeName == 'delete'){
+                        iconCls = 'glyphicon-remove';
+                        if(config.hasOwnProperty('iconCls')){
+                            iconCls = config['iconCls'];
+                        }
+
+                        color = 'red';
+
+                        if(config.hasOwnProperty('color')){
+                            color = config['color']
+                        }
+
+                        additionalStyle = ';color:'+color+';';
+
+                        var url_delete = config.url.replace('_placeholder', row[action_id_property]);
+                        button_html = '<div data-toggle="modal" style="'+additionalStyle+'" data-ajax_submit_url="'+url_delete+'" data-target="#'+config.modal_id+'" class="button-icon glyphicon '+iconCls+' "></div>';
+                    }else if(typeName == 'linkbutton') {
+                        var url = config.url.replace('_placeholder', row.id);
+                        button_html = '<a href="' + url + '" class="btn btn-primary btn-xs plainbutton">' + config.text + '</a>';
+                    }else if(typeName == "linkicon"){
+                        if(config.hasOwnProperty('urlbuild')){
+                             var url_linkicon = buildUrl(config.url, config.urlbuild, row);
+                        }else{
+                            var url_linkicon = config.url.replace('_placeholder', row[action_id_property]);
+                        }
+
+                        button_html = '<a href="' + url_linkicon + '"><div class="button-icon glyphicon '+config.iconCls+'"></div></a>';
+                    }else if(typeName == 'move'){
+                        button_html = '<div class="button-icon glyphicon glyphicon-move move-button"></div>';
+                    }else if(typeName == 'setactive'){
+                        var action_active_property = config.action_active_property || 'active'
+                        if (row[action_active_property]) {
+                            icon_type = 'glyphicon-remove-circle'
+                        } else {
+                            icon_type = 'glyphicon-ok-circle'
+                        }
+                        var new_active_value = row[action_active_property] ? 0 : 1
+                        var url_setactive = config.url.replace('_placeholder', row[action_id_property]);
+                        url_setactive = url_setactive.replace('_active', new_active_value);
+                        button_html = '<div data-toggle="modal" data-ajax_submit_url="'+url_setactive+'" data-target="#'+config.modal_id+'" class="button-icon glyphicon ' + icon_type + ' setactive-button"></div>';
+                    }
+                    if (config.customize) {
+                        button_html = window[config.customize].call(this, data, type, meta, $(button_html));
+                    }
+                    if (config.hover) {
+                        var button_object = $(button_html);
+                        button_object.attr('title', config.hover);
+                        button_html = nodeToString(button_object[0]);
+                    }
+                    returnString += button_html;
+                }
+
+                return returnString;
+
+
+            }.bind(column);
+
+        }
+
+        columns.push(column);
+    }
+    if (config.highlight_row) {
+        config.createdRow = function(row, data, index) {
+            var highlight_config = config.highlight_row;
+            if (comparator_functions[highlight_config.comparator](data[highlight_config.data], highlight_config.value)) {
+                $(row).css('background-color', '#5cb85c');
+            }
+        };
+    }
+
+
+    config.columns = columns;
+
+    var dataTable = $('#{% firstof table_selector "maintable" %}').DataTable(config);
+
+</script>

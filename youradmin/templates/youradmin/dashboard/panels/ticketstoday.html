@@ -1,0 +1,28 @@
+{% load static %}
+
+<div class="panel panel-primary" id="panel_soldtickets">
+    <div class="panel-heading">
+        <h3 class="panel-title">Tickets sold today</h3>
+    </div>
+    <div class="panel-body">
+        <div class="usernotifications">
+            <div class="alert alert-danger hidden">
+                <h4 class="error_title"></h4>
+                <span class="error_message"></span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12"><div style="font-size:30px;text-align: center" id="dashboard_soldtickets_total"></div></div>
+        </div>
+
+    </div>
+</div>
+
+
+
+<script>
+    YT.urls = YT.urls || {};
+    YT.urls.dashboard_panel_soldtickets = '{% url 'youradmin_dashboard_soldtickets' %}';
+</script>
+
+<script type="text/javascript" src="{% static 'youradmin/js/pages/dashboard/soldtickets.js' %}"></script>

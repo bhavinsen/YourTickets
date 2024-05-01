@@ -1,0 +1,22 @@
+<div class="selectpicker-container">
+    <select id="id_{{ name }}" name="{{ name }}" class="selectpicker show-tick"
+            data-style="btn-primary btn-sm"
+            data-live-search="true" data-width="100%"
+    {% for k, attr in attrs.items %}
+        {{ k }}="{{ attr }}"
+    {% endfor %}
+    >
+    {% for choice, name in choices %}
+        <option value="{{ choice }}" {% if choice == value %}selected="selected"{% endif %}>
+            {{ name }}
+        </option>
+    {% endfor %}
+    </select>
+</div>
+<script>
+
+    $('#id_{{ name }}').selectpicker('refresh')
+        .on('change', function() {
+            $(this).selectpicker('refresh');
+        });
+</script>

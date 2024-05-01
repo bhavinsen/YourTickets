@@ -1,0 +1,78 @@
+{% load is_hidden %}
+{% load is_checkbox %}
+{% load is_imagefield %}
+{% load is_radioselect %}
+<div class="form-horizontal">
+
+    {{ form.non_field_errors }}
+
+    {% for field in form %}
+
+        {% if field|is_hidden == True %}
+            {{ field }}
+        {% else %}
+            <div class="form-group form-group-sm">
+                <label for="{{ field.id_for_label }}" class="col-md-3 control-label {% if field.field.required == True %}input-required{% endif %}">{{ field.label }}</label>
+                <div class="col-md-8">
+                    <div class="input-group">
+
+                        {% if field|is_checkbox == True %}
+                            <div class="checkbox">
+                                {{ field }}
+                                <label for="{{ field.id_for_label }}"></label>
+                            </div>
+                        {% elif field|is_radioselect %}
+                            {% for radio in field %}
+                                <div class="radio">
+                                    {{ radio.tag }}
+                                    <label for="{{ radio.id_for_label }}">{{ radio.choice_label }}</label>
+                                </div>
+                            {% endfor %}
+                        {% elif field|is_imagefield %}
+
+                            {% if field.value %}
+                                <a href="{{field.value}}" style="width:200px;" target="_blank" class="tile game-tile">
+                                  <div class="cover-container">
+                                    <div class="cover">
+                                        <img src="{{field.value}}" />
+                                    </div>
+                                  </div>
+                                  <div class="details">
+                                      <input type="file" id="{{field.id_for_label}}" name="{{field.html_name}}">
+                                      <span class="paragraph-end"></span>
+                                  </div>
+
+                                </a>
+                            {% else %}
+                                <input type="file" id="{{field.id_for_label}}" name="{{field.html_name}}">
+                            {% endif %}
+
+                        {% else %}
+                            {{ field }}
+                        {% endif %}
+
+                    </div>
+                    <div class="errormessage_container">
+                        {{ field.errors }}
+                    </div>
+
+                    <div class="helptext_container help-block">
+                        {{ field.help_text|safe }}
+                    </div>
+
+                </div>
+                <div class="col-md-1">
+
+                </div>
+            </div>
+        {% endif %}
+    {% endfor %}
+
+    {% if button %}
+    <div class="form-group form-group-sm">
+        <div class="col-md-offset-2 col-md-9 text-right">
+            <button class="btn btn-primary">{{ buttonText }}</button>
+        </div>
+    </div>
+    {% endif %}
+</div>

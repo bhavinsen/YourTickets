@@ -1,0 +1,33 @@
+{% load index %}
+<fieldset class="m-bottom-36 p-bottom-36 u-border-bottom">
+ <legend class="large bold m-bottom-36 uppercase light-gray">{% getWord lc "shop-confirm-jouwgegevens" %}</legend>
+  <div class="u-flex-column-to-row" style="margin-bottom:15px;">
+   <div class="u-flex p-right-24-dt">
+  <!--  alle ID's hier mag je gewoon andere namen geven -->
+    <input disabled value="{{user.email}}" class="form-input w-100" type="email" id="email_new" placeholder="{% getWord lc "login-form-email" %}">
+    <input disabled value="{{user.first_name}}" class="form-input w-100" type="text" id="voornaam" placeholder="{% getWord lc "register-form-firstname" %}">
+    <input disabled value="{{user.last_name}}" class="form-input w-100" type="text" id="achternaam" placeholder="{% getWord lc "register-form-lastname" %}">
+   </div>
+   <div class="u-flex">
+     <label class="checkbox m-right-12 shop-disabled">{% getWord lc "shop-form-genderm" %}<input disabled {% if user_extra.sex == 'M' %}checked = true {% endif %} class="u-float-right" type="radio" name="gender" value="male"></label>
+     <label class="checkbox shop-disabled">{% getWord lc "shop-form-genderf" %}<input disabled {% if user_extra.sex == 'F' %}checked = true {% endif %} class="u-float-right" type="radio" name="gender" value="female"></label>
+      {% if cur_event.id == 672 or cur_event.id == 879 or cur_event.id == 878 %}
+        <label class="checkbox form-input w-100 shop-disabled" style="width:100%">
+          
+                Non-binair
+            
+         
+          
+          <input disabled class="" type="radio" {% if user_extra.sex == "X" %}checked="checked"{% endif %} name="gender" value="X"></label>
+      {% endif %}
+     
+     <input disabled value="{{user_extra_bd}}" class="form-input w-100" type="text" id="achternaam" placeholder="Geboortedatum">
+     <input disabled value="{{user_extra.adress}}" class="form-input w-100" type="text" id="postcode" placeholder="{% getWord lc "shop-form-adres" %}">
+  </div>
+  </div>
+
+    {% if user.is_authenticated %}
+        <a href="{% url 'logout' %}" >{% getWord lc "shop-form-logout" %}</a>
+    {% endif %}
+
+</fieldset>

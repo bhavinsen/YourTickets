@@ -1,0 +1,340 @@
+{% extends "dash/dash.html" %}
+{% load static %}
+{% load i18n %}
+{% load humanize %}
+{% load index %}
+{% get_current_language as CURRENT_LANGUAGE_CODE %}
+
+{% block main %}
+<script type="text/javascript" src="{% static 'youradmin/js/lib/jquery.dataTables.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'dashboard/js/visitors.js' %}"></script>
+<script type="text/javascript" src="{% static 'dashboard/plugins/dot.min.js' %}"></script>
+
+<link rel='stylesheet' href="{% static 'dashboard/css/pages/visitors.css' %}">
+{#<a STYLE="border: 2px #CDCDCD solid; margin: 5px; padding: 5px; background:#ABABAB;" href="/{{ CURRENT_LANGUAGE_CODE }}/dashboard/{{cur_id}}/downloadVisitorlog">Download bezoekers lijst (csv bestand)</a>#}
+
+<div class="remodal" data-remodal-id="import-file">
+    <button data-remodal-action="close" class="remodal-close"></button>
+
+    <br>
+    <div id="import-file-errors" style="display:none;">
+        <div style="color:red;">Wrong file uploaded (supported: xlsx, xls)</div>
+        <br/>
+    </div>
+    <div id="import-file-errors-selection" style="display:none;">
+        <div style="color:red;">Selecteer de velden als naam en email</div>
+        <br/>
+    </div>
+
+    <div id="import-file-step1">
+        <form id="import-file-form"
+              method="post"
+              action="{% url 'dashboard_visitors_guestlist_upload' event_id=cur_event.id %}"
+              data-url="{% url 'dashboard_visitors_guestlist_upload' event_id=cur_event.id %}" enctype="multipart/form-data" method="post">
+            {% csrf_token %}
+            <input type="file" name="importfile">
+        </form>
+        <br><br>
+        <button id="import-file-button" class="btn btn-blue">upload</button>
+    </div>
+    <div id="import-file-step2"
+         style="display:none;"
+         data-url="{% url 'dashboard_visitors_guestlist_send' event_id=cur_event.id %}"
+
+    >
+        {% csrf_token %}
+        <div class="u-flex-column-to-row" id="import-file-step2-container">
+            <div class="u-flex bg-white a-center m-right-36-desk" style="border:2px solid #e9e9e9;display:none;">
+                <p class="m-top-12">Select as</p>
+                <select id="select_as_0" name="select_as">
+                    <option value="-">-</option>
+                    <option value="email">email</option>
+                    <option value="name">name</option>
+                </select>
+                <p class="normal uppercase base medium-small m-top-12">
+                    <div class="bold import-file-colname" style="width:100%;background-color:#f5f4f4;padding:8px;text-align:left;">Detected col name</div>
+                    <span class="records"></span>
+                </p>
+            </div>
+            <div class="u-flex bg-white a-center m-right-36-desk" style="border:2px solid #e9e9e9;display:none;">
+                <p class="m-top-12">Select as</p>
+                <select id="select_as_1" name="select_as">
+                    <option value="-">-</option>
+                    <option value="email">email</option>
+                    <option value="name">name</option>
+                </select>
+                <p class="normal uppercase base medium-small m-top-12">
+                    <div class="bold import-file-colname" style="width:100%;background-color:#f5f4f4;padding:8px;text-align:left;">Detected col name</div>
+                    <span class="records"></span>
+                </p>
+            </div>
+            <div class="u-flex bg-white a-center m-right-36-desk" style="border:2px solid #e9e9e9;display:none;">
+                <p class="m-top-12">Select as</p>
+                <select id="select_as_2" name="select_as">
+                    <option value="-">-</option>
+                    <option value="email">email</option>
+                    <option value="name">name</option>
+                </select>
+                <p class="normal uppercase base medium-small m-top-12">
+                    <div class="bold import-file-colname" style="width:100%;background-color:#f5f4f4;padding:8px;text-align:left;">Detected col name</div>
+                    <span class="records"></span>
+                </p>
+            </div>
+        </div>
+        <button id="import-file-sendbutton" class="m-top-12 u-inline-block m-0 button white button-204 bg-secondary_color-fixed">
+                Gastenlijstplekken versturen
+        </button>
+    </div>
+
+</div>
+
+
+<div id="remove_template" style="display:none;">
+    <img class="btn-remove-ticket hidden" data-url="{% url 'dashboard_visitors_ticket_delete' ticket_id='placeholder' %}"
+         style="width:14px;cursor:pointer;" src="{% static 'images/delete.png' %}">
+</div>
+
+<div class="bg-white">
+
+    {% if email_send %}
+        <div class="message message-ok" id="email-send" style="margin-bottom:20px;">
+            {% getWord lc "dash-audience-email_send" 'De email is verzonden.' %}
+
+        </div>
+    {% endif %}
+    <div class="large m-bottom-36" style="background-color:#55c7e0;width:100%;padding:20px;color:white;margin-bottom:10px;">
+        {% getWord lc "dash-audience-visitorregistration" 'Bezoekersregistratie' %}
+
+    </div>
+    <div style="padding:40px;">
+        <table style="width:100%;" class="visitors-table">
+            <tr>
+                <td class="small bold header-td">{% getWord lc "dash-audience-soldtickets" 'ONLINE AFGEREKENDE TICKETS' %}</td>
+                <td class="small bold header-td">{% getWord lc "dash-audience-ticketamount" 'AANTAL TICKETS' %}</td>
+                <td class="small bold header-td">{% getWord lc "dash-audience-ticketprice" 'TICKETPRIJS' %}</td>
+                <td class="small bold header-td">{% getWord lc "dash-audience-total" 'TOTAAL' %}</td>
+                <td class="small bold header-td"></td>
+
+            </tr>
+
+            {% for item in financial_overview %}
+            <tr>
+                <td>{{item.name}}</td>
+                <td>{{item.total_sold}}<span class="base">/{{item.quantity}}</span></td>
+                <td>€{{item.ticket_price|floatformat:2|intcomma }}</td>
+                <td>€{{item.total_price|floatformat:2|intcomma }}</td>
+                <td style="text-align:right">
+                    <button
+                            data-ticket_id="{{ item.id }}"
+                            style="padding:13px 0 13px 0; width:150px;border-radius:5px;margin:5px;"
+                            class="u-inline-block m-0 button white bg-secondary_color-fixed visitors-list">
+                    BEZOEKERSLIJST<div class="u-overlay"></div></button>
+                </td>
+
+            </tr>
+            {% endfor %}
+
+            {% if guest_ticket %}
+                <tr>
+                <td style="font-size:13px;">Gastenlijst</td>
+                    <td>{{ guest_ticket }}</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td style="text-align:right">
+                        <button
+                                data-ticket_id="guest_ticket"
+                                style="padding:13px 0 13px 0; width:150px;border-radius:5px;margin:5px;"
+                                class="u-inline-block m-0 button white bg-secondary_color-fixed visitors-list">
+                        GASTENLIJST<div class="u-overlay"></div></button>
+                    </td>
+
+                </tr>
+            {% endif %}
+            {% if special_guest_ticket %}
+                <tr>
+                    <td style="font-size:13px;">Special guests</td>
+                    <td>{{ special_guest_ticket }}</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td style="text-align:right">
+                        <button
+                                data-ticket_id="special_guest_ticket"
+                                style="padding:13px 0 13px 0; width:150px;border-radius:5px;margin:5px;"
+                                class="u-inline-block m-0 button white bg-secondary_color-fixed visitors-list">
+                        SPECIAL GUESTS<div class="u-overlay"></div></button>
+                    </td>
+
+                </tr>
+            {% endif %}
+            <tr>
+                <td style="font-size:13px;">{% getWord lc "dash-audience-total" 'TOTAAL' %}</td>
+                <td>{{total_tickets_sold}}</td>
+                <td></td>
+                <td>€{{total_price|floatformat:2|intcomma }}</td>
+                <td style="text-align:right">
+                    <button
+                                data-ticket_id="all"
+                                style="padding:13px 0 13px 0; width:150px;border-radius:5px;margin:5px;"
+                                class="u-inline-block m-0 button white bg-secondary_color-fixed visitors-list">
+                        {% getWord lc "dash-audience-total" 'TOTAAL' %}<div class="u-overlay"></div></button>
+                </td>
+            </tr>
+
+        </table>
+    </div>
+</div>
+<br/>
+
+<div class="bg-white" style="margin-top:30px;">
+    <div class="large m-bottom-36" style="background-color:#55c7e0;width:100%;padding:20px;color:white;margin-bottom:10px;">
+        {% getWord lc "dash-audience-add_guestlist_ticket" 'Gastenlijst tickets toevoegen' %}
+    </div>
+    <div class="left_panel" style="float:left;width:47%;padding:40px;">
+        <div class="message message-ok" id="mass-tickets-send-with" style="margin-bottom:20px;display:none;">
+            Lijst geimporteerd.<br>
+            De tickets worden zo snel mogelijk verzonden.
+
+        </div>
+        <form method="post">
+            {% csrf_token %}
+            <input type="hidden" name="type" value="with">
+
+            <div class="panel_header bold" style="margin-bottom:25px;">
+                {% getWord lc "dash-audience-guestlist_with_data" 'Gastenlijst plek (met dataverzameling)' %}
+                of
+                 <button type="button" class="import-file btn btn-white btn-white-border" data-ticket_type="with">importeer</button>
+
+            </div>
+
+            {% if form_with_data.errors %}
+                <div class="u-flex-column-to-row ticket-panel-error-container">
+                {% for key, errors in form_with_data.errors.items %}
+                    {% for error in errors %}
+                        {{ key }}: {{ error }}<br/>
+                    {% endfor %}
+
+                {% endfor %}
+                </div>
+
+            {% endif %}
+
+            <input
+                name="{{form_with_data.name.html_name}}"
+                value="{{form_with_data.name.value|default_if_none:''}}"
+                class="js-required form-input-bigger w-100 {{ form_with_data.name.field.widget.attrs.class }}"
+                type="text" placeholder="{% getWord lc "dash-audience-input_name" 'Naam' %}"
+            >
+            <input
+                name="{{form_with_data.email.html_name}}"
+                value="{{form_with_data.email.value|default_if_none:''}}"
+                class="js-required form-input-bigger w-100 {{ form_with_data.email.field.widget.attrs.class }}"
+                type="text" placeholder="{% getWord lc "dash-audience-input_email" 'Email' %}"
+            >
+            <button class="m-top-12 u-inline-block m-0 button white button-204 bg-secondary_color-fixed" type="submit">
+                {% getWord lc "dash-audience-sendticket" 'Gastenlijst plek versturen' %}
+                <div class="u-overlay"></div></button>
+
+        </form>
+    </div>
+    <div style="width:1px;background-color:grey;float:left;height:340px;"></div>
+    <div class="right_panel" style="float:left;width:47%;padding:40px;">
+        <div class="message message-ok" id="mass-tickets-send-without" style="margin-bottom:20px;display:none;">
+            Lijst geimporteerd.<br>
+            De tickets worden zo snel mogelijk verzonden.
+
+        </div>
+        <form method="post">
+            {% csrf_token %}
+            <input type="hidden" name="type" value="without">
+
+            <div class="panel_header bold" style="margin-bottom:25px;">
+                {% getWord lc "dash-audience-specialguest_without_data" 'Special guest (zonder dataverzameling)' %}
+                of
+                &nbsp;<button type="button" class="import-file btn btn-white btn-white-border" data-ticket_type="without">importeer</button>
+                </div>
+
+            {% if form_without_data.errors %}
+                <div class="u-flex-column-to-row ticket-panel-error-container">
+                {% for key, errors in form_without_data.errors.items %}
+                    {% for error in errors %}
+                        {{ key }}: {{ error }}<br/>
+                    {% endfor %}
+
+                {% endfor %}
+                </div>
+
+            {% endif %}
+
+            <input
+                name="{{form_without_data.name.html_name}}"
+                value="{{form_without_data.name.value|default_if_none:''}}"
+                class="js-required form-input-bigger w-100 {{ form_without_data.name.field.widget.attrs.class }}"
+                type="text" placeholder="{% getWord lc "dash-audience-input_name" 'Naam' %}"
+            >
+            <input
+                name="{{form_without_data.email.html_name}}"
+                value="{{form_without_data.email.value|default_if_none:''}}"
+                class="js-required form-input-bigger w-100 {{ form_without_data.email.field.widget.attrs.class }}"
+                type="text" placeholder="{% getWord lc "dash-audience-input_email" 'Email' %}"
+            >
+            <button class="m-top-12 u-inline-block m-0 button white button-204 bg-secondary_color-fixed" type="submit">
+                {% getWord lc "dash-audience-sendticket" 'Gastenlijst plek versturen' %}<div class="u-overlay"></div></button>
+
+        </form>
+
+    </div>
+    <div class="clearfix"></div>
+</div>
+
+
+
+
+    <script id="modal_template" type="text/x-dot-template">
+        <table style="width:100%;" class="visitors-table">
+            <thead>
+                <tr>
+                    <td style="font-size:13px;" class="small bold header-td">Naam</td>
+                    <td style="font-size:13px;" class="small bold header-td">E-mail</td>
+                    <td style="font-size:13px;" class="small bold header-td">Geslacht</td>
+                    <td style="font-size:13px;" class="small bold header-td">Geboortedatum</td>
+                    <td style="font-size:13px;" class="small bold header-td">Orderdatum</td>
+                    <td style="font-size:13px;" class="small bold header-td">Ticket nummer</td>
+                </tr>
+            </thead>
+            <tbody>
+                {% verbatim %}
+                    {{~it.games :value:index}}
+                        <tr>
+                            <td style="padding:13px 0 13px 0;">Naam</td>
+                            <td>E-mail</td>
+                            <td>Geslacht</td>
+                            <td>Geboortedatum</td>
+                            <td>Orderdatum</td>
+                            <td>Ticket nummer</td>
+                        </tr>
+                    {{~}}
+                {% endverbatim %}
+            </tbody>
+        </table>
+	</script>
+
+    <div class="remodal" data-remodal-id="visitors_per_ticket">
+        <div style="float:left;font-size:20px;">Bezoekers</div>
+
+        <a href="" data-url="{% url 'dashboard_visitors_download_per_ticket' event_id=cur_event.id ticket_id='placeholder' %}"
+                style="padding:13px 0 13px 0; width:150px;border-radius:5px;margin:5px;float:right"
+                class="u-inline-block m-0 button white bg-secondary_color-fixed" id="download_csv">
+                        DOWNLOAD CSV<div class="u-overlay"></div></a>
+        <div class="clearfix"></div>
+        <div class="message message-ok hidden" id="message-ticket-deleted">
+            Ticket is verwijderd
+        </div>
+        <button data-remodal-action="close" class="remodal-close"></button>
+        <div id="visitors-per-ticket-container">
+
+            {% include "youradmin/partials/datatable.html" with table_selector='maintable' cls='row-border compact' datatables_config=datatables_config %}
+
+        </div>
+    </div>
+
+{% endblock %}

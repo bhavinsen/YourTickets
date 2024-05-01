@@ -1,0 +1,54 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Form YourTickets</title>
+
+    <style>
+        html, body {
+            background-color: #242735;
+            font-family: 'Heebo', sans-serif;
+            font-size: 13px;
+            font-weight: 400;
+        }
+
+        .yt_logo{
+            width: 150px;
+            margin: auto;
+            display: block;
+            margin-top: 24px;
+        }
+
+        .succes_check{
+            width: 100px;
+            margin: auto;
+            display: block;
+            margin-top: 120px;
+        }
+
+        .succes_message{
+            color: #ffffff;
+            text-align: center;
+        }
+        
+
+
+    </style>
+</head>
+
+<body>
+
+<img src="{% static 'yourtickets/img/yt_logo.png' %}" alt="" class="yt_logo" >
+<br></br>
+<br></br>
+
+<img src="{% static 'yourtickets/img/check.png' %}" alt="" class="succes_check" >
+
+<h1 class="succes_message"> We've received your registration succesfully!</h1>
+
+</body>
+

@@ -1,0 +1,38 @@
+{% extends "dash/event/edit/edit.html" %}
+{% load static %}
+{% load i18n %}
+{% load index %}
+{% block form %}
+
+<form class="dashboard-event-width bg-white" action="{% url 'dashboard_event_lineup' event_id=cur_event.id %}" method="post">
+  {% csrf_token %}
+<h2 class="white normal large bold m-bottom-24"><span class="create-header">
+    {% getWord lc "dash-edit_event-lineup-title" 'Line-Up' %}
+    </span></h2>
+ <fieldset class="a-center bg-white p-around-12 m-bottom-24 u-border-radius u-border">
+   <div id="js-artist" class="a-left table u-border-box">
+      <div class="u-flex-row p-bottom-6">
+       <span class="cell-10 u-flex small bold uppercase">{% getWord lc "dash-edit_event-lineup-artist" 'Artiest' %}</span>
+       <span class="cell-10 small bold uppercase">{% getWord lc "dash-edit_event-lineup-url" 'URL' %}</span>
+       <span class="cell-w40 small bold uppercase">{% getWord lc "dash-edit_event-lineup-action" 'Actie' %}</span>
+      </div>
+      {% for line in lineup %}
+      <div class="artist js-artist u-desktop-placeholder u-flex-row p-top-12 u-border-top">
+        <input value="{{line.artist}}" name="artiest_naam[]" class="small m-right-24 form-input w-100 cell-10 u-flex u-break" type="text" id="artiestNaam_0" placeholder="Artiest naam">
+        <input value="{{line.id}}" name="artiest_id[]" class="small m-right-24 form-input w-100 cell-10 u-flex u-break" type="hidden" id="artiestNaam_0" placeholder="Artiest naam">
+
+          <a href="{% url 'dashboard_event_lineup_remove' event_id=cur_event.id item_id=line.id %}" class="artist-line js-removeArtist cell-w40 large u-pointer secondary_color-fixed"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+      </div>
+      {% endfor %}
+    </div>
+     <a href="{% url 'dashboard_event_lineup_add' event_id=cur_event.id %}" class="m-around-24 u-inline-block button-page u-pointer uppercase medium-small white bold bg-primary_color-fixed">
+         <i class="m-right-12 fa fa-plus" aria-hidden="true"></i>{% getWord lc "dash-edit_event-lineup-add_artist" 'Voeg artiest toe' %}</a>
+  </fieldset>
+  <button class="u-inline-block m-0 button white button-204 bg-secondary_color-fixed" type="submit">
+      {% getWord lc "dash-edit_event-lineup-save_changes" 'Wijzigingen opslaan' %}
+      <div class="u-overlay"></div></button>
+</form>
+
+
+
+{% endblock %}

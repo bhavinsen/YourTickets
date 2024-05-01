@@ -1,0 +1,56 @@
+MANUAL
+
+=create ubuntu instance in aws
+
+=connect to the instance
+
+= install the software needed on the instance
+- sudo apt update
+- sudo apt install apache2
+- sudo apt install python3-virtualenv
+- sudo apt-get install apache2-utils libexpat1 ssl-cert apache2-dev
+- sudo apt install postgresql postgresql-contrib. (start if needed: 	“sudo systemctl start postgresql.service”)
+-
+
+
+= setup the location where you want to install the git repo
+- create a dir (command: “mkdir /var/yourtickets”), for test i used “/var/yourtickets/“
+- give full access to that folder: “sudo chmod -R a+rwx /var/yourtickets”
+- go into /var/yourtickets and clone the git repo
+
+= create a virtual environment
+- goto /var/yourtickets
+- create the env “virtualenv myenv -p python3”
+- enable the virtual environment “. ./myenv/bin/activate”
+- install mod_wsgi “pip install mod_wsgi”
+- get the wsgi config: “mod_wsgi-express module-config”
+- put the output of that command in /etc/apache2/modules-available/wsgi.load
+
+= enable mods for apache
+- sudo a2enmod ssl
+- sudo a2enmod rewrite
+- sudo a2enmod headers
+- sudo a2enmod wsgi
+
+copy apache_yourtickets.conf to /etc/apache2/sites-enabled/
+
+restart apache: “sudo systemctl restart apache2.service” of “sudo service apache2 restart”
+
+= postgres config
+- change postgres password (google it)
+- create database
+- import database
+
+==postgres db dump
+- sudo -i -u postgres
+- psql
+- pg_dump db > db.sql
+
+== handy copy
+example: scp -i /path/to/your/.pemkey -r /copy/from/path user@server:/copy/to/path
+
+=copy from server
+scp -i "key_pair_yourtickets.pem" ubuntu@ec2-3-248-191-223.eu-west-1.compute.amazonaws.com:/home/ubuntu/main_db.sql main_db.sql
+
+=copy to
+scp -i key_pair_yourtickets.pem main_db.sql ubuntu@ec2-54-228-144-32.eu-west-1.compute.amazonaws.com:/home/ubuntu/main_db.sql

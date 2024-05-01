@@ -1,0 +1,19 @@
+$theme_name: 'light';
+
+
+.theme--#{$theme_name}{
+
+    .v-autocomplete{
+        .v-input__slot{
+            min-height:32px!important;
+            fieldset{
+                border-color:#66C5E1!important;
+            }
+        }
+        input{
+            color:#66C5E1;
+
+        }
+
+    }
+}

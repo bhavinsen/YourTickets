@@ -1,0 +1,44 @@
+$theme_name: "light";
+
+
+.theme--#{$theme_name}{
+    &.v-data-table{
+
+        .v-divider--vertical{
+            height:20px;
+            min-height:auto!important;
+        }
+        .v-data-table__expanded__content{
+            box-shadow:none!important;
+        }
+        &.custom_dense td{
+            //height:32px!important;
+            padding: 0 4px!important;
+            &:first-child{
+                padding-left:0px!important;
+            }
+            &:last-child{
+                padding-right:0px!important;
+            }
+        }
+        tr:hover:not(.v-table__expanded__content) {
+          background: transparent !important;
+        }
+        .v-data-table__wrapper > table > tbody > tr > td{
+            font-size:12px !important;
+            //font-weight: 400!important;
+        }
+        .v-data-table__wrapper > table > thead > tr > th{
+            padding:4px!important;
+            font-size:12px !important;
+            //font-weight: 400;
+            &:first-child{
+                padding-left:0px!important;
+            }
+            &:last-child{
+                padding-right:0px!important;
+            }
+        }
+
+    }
+}

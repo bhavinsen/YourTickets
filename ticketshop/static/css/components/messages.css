@@ -1,0 +1,17 @@
+.messages{
+    margin: initial;
+    border-radius: 3px;
+    text-align: left;
+    outline: none;
+    padding: 13px 24px 13px 24px;
+    color: #000;
+    max-width: 100%;
+    display: inline-block;
+    font-size: 0.9em;
+}
+
+.messages.error{
+    border: 1px solid #d4394a;
+    background-color:#e6949d;
+    color:#801c27;
+}

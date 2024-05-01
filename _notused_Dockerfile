@@ -1,0 +1,15 @@
+FROM tiangolo/uvicorn-gunicorn:python3.8-alpine3.10
+
+RUN apk add gcc musl-dev libffi-dev postgresql-dev zlib-dev jpeg-dev bash openssl-dev wkhtmltopdf curl build-base
+
+COPY . /app
+ADD requirements.txt /app/
+WORKDIR /app/
+
+RUN python -m pip install --upgrade pip
+RUN pip install -r requirements.txt
+
+RUN python setup.py build
+RUN python setup.py install
+
+EXPOSE 80

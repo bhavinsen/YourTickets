@@ -1,0 +1,60 @@
+{% extends "dash/dash.html" %}
+{% load static %}
+{% load index %}
+{% load compress %}
+
+{% block main %}
+
+<form method="post">
+    {% csrf_token %}
+    <div class="dashboard-event-width bg-white">
+        <h2 class="normal large bold m-bottom-24"><span class="create-header white">
+            {% getWord lc "dash-sales_channels_edit-title" 'Sale channel' %}
+            </span></h2>
+
+        {% if form.non_field_errors or form.errors %}
+            <div class="u-flex-column-to-row ticket-panel-error-container">
+            {% for key, errors in form.errors.items %}
+                {% for error in errors %}
+                    {{ error }}<br/>
+                {% endfor %}
+
+            {% endfor %}
+            {% for key, errors in form.errors.items %}
+                {% for error in errors %}
+                    {% if not key == '__all__' %}
+                    {{ key }}: {{ error }}<br/>
+                    {% endif %}
+                {% endfor %}
+
+            {% endfor %}
+            </div>
+
+        {% endif %}
+
+        <input
+            name="{{form.name.html_name}}"
+            value="{{form.name.value|default_if_none:''}}"
+            class="form-input-bigger w-100 {{ form.name.field.widget.attrs.class }}"
+            type="text"
+            placeholder="{% getWord lc "dash-sales_channels_edit-name" 'Naam van de channel' %}"
+        >
+        <input
+                name="{{form.url_name.html_name}}"
+                value="{{form.url_name.value|default_if_none:''}}"
+                class="form-input-bigger w-100 {{ form.url_name.field.widget.attrs.class }}"
+                type="text"
+                placeholder="{% getWord lc "dash-sales_channels_edit-url_name" 'Url naam' %}"
+            >
+
+            {{ form.event }}
+
+        <button class="m-top-12 u-inline-block m-0 button white button-204 bg-secondary_color-fixed" type="submit">{% getWord lc "dash-sales_channels_edit-save_changes" 'Opslaan' %}<div class="u-overlay"></div></button>
+    </div>
+</form>
+
+    {% compress css %}
+    <link rel='stylesheet' type="text/x-scss" href="{% static 'dashboard/css/pages/sales_channels_edit.scss' %}">
+    {% endcompress %}
+
+{% endblock %}

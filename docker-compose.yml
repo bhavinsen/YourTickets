@@ -1,0 +1,26 @@
+version: '3.7'
+
+services:
+#   db:
+# #    restart: allways
+#     image: postgres:13
+#     volumes:
+#       - postgres_data:/var/lib/postgresql/data
+#     environment:
+#       POSTGRES_PASSWORD: postgres
+#       POSTGRES_DB: main_database
+#       POSTGRES_USER: postgres
+#     ports:
+#       - "5432:5432"
+  web:
+    restart: "on-failure"
+    image: yourtickets:latest
+    build:
+      context: ""
+      dockerfile: build/production/Dockerfile
+    ports:
+      - "8000:80"
+    environment:
+      GUNICORN_CMD_ARGS: --reload
+    volumes:
+      - .:/app

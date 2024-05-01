@@ -1,0 +1,18 @@
+{% extends "app/base.html" %}
+
+{% block title %}Yourtickets{% endblock %}
+
+{% block content %}
+
+          <h2 class="a-center bold large bold uppercase m-top-60 m-bottom-60">Evenement aangemaakt</h2>
+          <p class="base a-center m-auto m-top-30">De ticketshop link</p>
+              <input value="{{url}}" readonly="readonly" class="js-autoselect m-auto m-top-12  m-bottom-24 u-block share-url u-border-radius">
+
+
+          <div class="a-center m-bottom-24">
+           <a href="{% url 'dashboard_index' %}"  class="m-around-12 u-inline-block uppercase button white button-204 bg-primary_color-fixed bold uppercase" type="submit"><span>Ga naar je dashboard</span><div class="u-overlay"></div></a>
+           <a href="{{url}}"  class="m-around-12 u-inline-block uppercase button white button-204 bg-secondary_color-fixed bold uppercase" type="submit"><span>Ga naar je ticketshop</span><div class="u-overlay"></div></a>
+          </div>
+
+
+{% endblock %}

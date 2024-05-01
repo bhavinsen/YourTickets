@@ -1,0 +1,67 @@
+@import 'theme/layout';
+@import 'theme/button';
+@import 'theme/sidebar';
+@import 'theme/panel';
+@import 'theme/divider';
+@import 'theme/list';
+@import 'theme/popup';
+@import 'theme/forms';
+@import 'theme/data_table';
+@import 'theme/datepicker';
+@import 'theme/stepper';
+@import 'theme/switch';
+@import 'theme/autocomplete';
+
+.theme--light.v-application{
+    background-color:black;
+    font-size:12px!important;
+}
+
+//@TODO voor datum menu
+//
+.date_menu_container{
+    .v-menu__content{
+        box-shadow:none!important;
+    }
+}
+
+.v-applicaton{
+
+}
+input[type="date"]::-webkit-inner-spin-button,
+input[type="date"]::-webkit-calendar-picker-indicator {
+    display: none;
+    -webkit-appearance: none;
+}
+.scroll-table table td:first-child, .scroll-table table th:first-child{
+    position: sticky;
+    left: 0;
+    background-color:white;
+}
+
+@media #{map-get($display-breakpoints, 'sm-and-down')} {
+    .v-data-table.multishop_table > .v-data-table__wrapper > table > tbody > tr > td,
+    .v-data-table.multishop_table > .v-data-table__wrapper > table > thead > tr > td,
+    .v-data-table.multishop_table > .v-data-table__wrapper > table > tfoot > tr > td{
+
+        padding:0;
+    }
+    //.v-main, .v-main__wrap{
+    //    max-height: 100vh;
+    //    //overflow:scroll;
+    //    overflow-y: scroll;
+    //}
+    //.main-layout-panel{
+    //    //height:100%;
+    //    max-height: 90vh;
+    //    overflow-y:scroll;
+    //}
+}
+
+
+input[type="time"]::-webkit-calendar-picker-indicator { background: none; display:none; }
+//#inspire{
+//    background-color:blue;
+//}
+
+

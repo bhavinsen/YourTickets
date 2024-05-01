@@ -1,0 +1,17 @@
+.flex{
+    &.lg5-custom {
+        width: 20%;
+        max-width: 20%;
+        flex-basis: 20%;
+    }
+    &.lg5-half{
+        width: 50%;
+        max-width: 50%;
+        flex-basis: 50%;
+    }
+    &.lg5-full{
+        width: 100%;
+        max-width: 100%;
+        flex-basis: 100%;
+    }
+}

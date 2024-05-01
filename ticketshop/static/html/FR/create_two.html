@@ -1,0 +1,46 @@
+
+        <form>
+          <ul class="light-gray uppercase bold u-desktop-show p-around-24 m-top-24 m-bottom-60">
+            <h1 class="dark bold uppercase m-right-24 u-inline-block">EVENEMENT AANMAKEN</h1>
+            <li class="u-inline-block">Facebook koppeling<span class="line"></span></li>
+            <li class="primary_color-fixed u-inline-block">Event info<span class="line"></span></li>
+            <li class="u-inline-block">Tickets<span class="line"></span></li>
+            <li class="u-inline-block">Ticketshop design</li>
+          </ul>
+          <div class="m-auto create-step2">
+            <h2 class="u-border-bottom base normal large bold m-bottom-24"><span class="numberbox white bold bg-secondary_color-fixed m-right-36 create-number">2</span><span class="create-header">Basis informatie van jouw evenement</span></h2>
+            <input class="js-required form-input-bigger w-100" type="text" id="Title" placeholder="Geef het evenement een krachtige titel">
+            <input class="form-input-bigger w-100" type="text" id="Locatie" placeholder="Geef aan op welke locatie het gehouden wordt">
+            <span class="u-desktop-show large cell-lineheigt m-right-6"><i class="fa fa-clock-o" aria-hidden="true"></i></span>
+            <input value="2016-08-01" class="form-time m-right-6" type="date" id="start-date" placeholder="Begin datum">
+            <input value="00:00" class="form-time m-right-6" type="time" id="start-time" placeholder="Begin tijd">
+            <span class="form-line"></span>
+            <input value="2016-08-01" class="form-time m-right-6" type="date" id="end-date" placeholder="Eind datum">
+            <input value="00:00" class="form-time" type="time" id="end-time" placeholder="Eind tijd">
+
+            <textarea id="description" class="w-100 form-textarea p-around-24" placeholder="Zet hier een duidelijke omschrijving bij jouw evenement"></textarea>
+            <span class="base create-aling-text m-right-12 u-inline-block medium-small">Yourtickets.nl/event/</span>
+            <!-- class="form-error" -->
+            <input class="create-eventUrl form-input-bigger" type="text" name="eventurl" id="eventurl" placeholder="Jouw event URL">
+          </div>
+           <div class="m-auto create-step2">
+            <h2 class="u-border-bottom base normal large bold m-bottom-24"><span class="numberbox white bold bg-secondary_color-fixed m-right-36 create-number">3</span><span class="create-header">Voeg de line-up van jouw evenement toe</span></h2>
+             <fieldset class="a-center p-bottom-12 bg-white p-around-12 m-bottom-60 u-border-radius u-border">
+               <div id="js-artist" class="a-left table u-border-box">
+                  <div class="u-flex-row p-bottom-6">
+                   <span class="cell-10 u-flex small bold uppercase">Artiest</span>
+                   <span class="cell-w40 small bold uppercase">Actie</span>
+                  </div>
+                  <div class="artist js-artist u-desktop-placeholder u-flex-row p-top-12 u-border-top">
+                   <input class="small m-right-24 form-input w-100 u-flex u-break" type="text" id="artiestNaam_0" name="artiest_naam[]" placeholder="Artiest naam">
+                   <span class="artist-line js-removeArtist cell-w40 large u-pointer secondary_color-fixed"><i class="fa fa-trash-o" aria-hidden="true"></i></span>
+                  </div>
+                </div>
+                 <div id="js-addArtist" class="m-around-24 u-inline-block button-page u-pointer uppercase medium-small white bold bg-primary_color-fixed"><i class="m-right-12 fa fa-plus" aria-hidden="true"></i>Voeg artiest toe</div>
+              </fieldset>
+          </div>
+          <div class="bg-dark-gray">
+            <a href="/fr/dashboard/" class="u-inline-block m-0 uppercase button button-cancel light-gray bold uppercase">Terug</a>
+            <span id="js-next-2" class="u-inline-block m-0 uppercase button white u-float-right button-204 bg-primary_color-fixed bold uppercase" type="submit">Tickets<i class="m-left-36 fa fa-angle-right bold"></i><div class="u-overlay"></div></span>
+          </div>
+        </form>

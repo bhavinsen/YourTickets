@@ -1,0 +1,180 @@
+{% extends 'youradmin/partials/modals/template.html' %}
+{% load formDecorator %}
+{% comment %}
+    blocks used:
+        - modal_title
+        - modal_content
+        - buttons
+
+    template variables used
+        - form
+        - modal_id
+        - ajax_submit_url
+        - title (use the block "modal_title" OR variable title)
+        - mode (if set to edit then the form will be loaded from ajax_submit_url)
+        - success_url_redirect (if ajax response has redirect=true then it will redirect to this url)
+
+    if the model trigger button has data-ajax_submit_url it will be override the python ajax_submit_url
+
+{% endcomment %}
+
+
+
+
+
+{% block modal_title %}{{ title }}{% endblock %}
+
+{% block modal_content %}
+    <div class="usernotifications">
+        <div class="alert alert-danger hidden">
+            <h4 class="error_title"></h4>
+            <span class="error_message"></span>
+        </div>
+        <div class="alert alert-warning hidden">
+            <h4 class="warning_title"></h4>
+            <span class="warning_message"></span>
+        </div>
+    </div>
+    <form action="" onsubmit="return false;">
+        {% if form %}
+            {% formDecorator form %}
+        {% endif %}
+    </form>
+{% endblock %}
+
+{% block buttons %}
+    <button type="button" class="cancel-btn btn btn-default" data-dismiss="modal">{% if cancel_button_name %}{{ cancel_button_name }}{% else %}Cancel{% endif %}</button>
+    <button
+            type="button"
+            data-modalid="{{ modal_id }}"
+            data-url="{{ ajax_submit_url }}"
+            class="btn btn-primary"
+            >{% if save_button_name %}{{ save_button_name }}{% else %}Save{% endif %}</button>
+    <script>
+        (function() {
+            var form = $('#{{ modal_id }}').find('form').first();
+
+            var buttonTrigger;
+            var url;
+            var UI_model;
+            var success_message = 'Saved';
+
+            $('#{{ modal_id }}').on('show.bs.modal', function (e) {
+
+                buttonTrigger = $(e.relatedTarget);
+
+                /**
+                 * this prevents from other code is triggering this show event
+                 * like the calender
+                 **/
+                if(buttonTrigger.length == 0){
+                    return;
+                }
+
+                if('{{ success_message }}' != ''){
+                    success_message = '{{ success_message }}';
+                }
+
+                /**
+                 * if url is not set thru python
+                 * try to load it from btn attribute data-ajax_submit_url
+                 * @type {string}
+                 */
+                url = '{{ ajax_submit_url }}';
+                success_url_redirect = '{{ success_url_redirect }}';
+
+                ajax_submit_url = buttonTrigger.data('ajax_submit_url');
+
+                if( ajax_submit_url != '' && ajax_submit_url != undefined){
+                    url = ajax_submit_url;
+                }
+
+                UI_model = buttonTrigger.data('ui_model');
+
+                {% if mode == 'edit' %}
+                    YT.showLoader($('#{{ modal_id }}').find('.modal-body'));
+
+                    form.load(url, function(){
+                        YT.hideLoader($('#{{ modal_id }}').find('.modal-body'));
+                        $('#{{ modal_id }}').trigger('body.loaded');
+                    });
+                {% endif %}
+
+            });
+
+            $('#{{ modal_id }}').on('hidden.bs.modal', function (e) {
+                form.trigger('reset');
+                YT.cleanFormErrors(form);
+                var panel = $('#{{ modal_id }}').find('.alert-danger');
+                panel.addClass('hidden');
+            });
+
+            $('#{{ modal_id }} .modal-footer button.btn-primary').click(function () {
+
+                YT.publish('{{ modal_id }}_before_click',{btn:this, btnTrigger:buttonTrigger});
+
+                YT.cleanFormErrors(form);
+                YT.showLoader($('#{{ modal_id }}').find('.modal-body'));
+                var disabled = form.find(':input:disabled').removeAttr('disabled');
+
+                var postData = new FormData(form[0]);
+
+                disabled.attr('disabled', true);
+
+                /**
+                 * if url is not set thru python
+                 * try to load it from btn attribute data-ajax_submit_url
+                 * @type {string}
+                 */
+                url = '{{ ajax_submit_url }}';
+                success_url_redirect = '{{ success_url_redirect }}';
+
+                ajax_submit_url = buttonTrigger.data('ajax_submit_url');
+                if( ajax_submit_url != '' && ajax_submit_url != undefined){
+                    url = ajax_submit_url;
+                }
+
+                $.ajax({
+                    url: url,
+                    type: 'POST',
+                    data: postData,
+                    contentType: false,
+                    processData: false,
+                }).done(function (msg) {
+                    YT.hideLoader($('#{{ modal_id }}').find('.modal-body'));
+
+                    if (msg.success === true) {
+                        if(msg.redirect == true){
+                            document.location = success_url_redirect;
+                        }
+                        YT.showSuccess('Saved', success_message);
+                        $('#{{ modal_id }}').modal('hide');
+
+                        YT.publish('{{ modal_id }}_saved',msg);
+
+                    } else {
+                        /**
+                         * multiple errors will be displayed at every form field
+                         */
+                        if(msg.errors){
+                            YT.showFormErrors($('#{{ modal_id }}').find('form').first(), msg.errors);
+                            if (msg.errors.__all__) {
+                                var panel = $('#{{ modal_id }}').find('.alert-danger');
+                                var message = msg.errors.__all__.map(function(error){
+                                    return error.message;
+                                }).join("<br>");
+                                YT.showError('Error', message, panel);
+                            }
+                        } else {
+                            var panel = $('#{{ modal_id }}').find('.alert-danger');
+                            YT.showError('Error', msg.error, panel);
+                        }
+
+                    }
+                });
+
+            });
+        })();
+    </script>
+
+{% endblock %}

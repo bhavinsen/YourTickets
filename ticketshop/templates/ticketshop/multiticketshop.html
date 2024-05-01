@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load index %}
+{% load compress %}
+
+{% block add_header %}
+    <link rel='stylesheet' href="{% static 'yourtickets/css/bootstrap.min.css' %}">
+    <link rel='stylesheet' href="{% static 'yourtickets/css/bootstrap-theme.min.css' %}">
+    {% compress css %}
+    <link rel='stylesheet' type="text/x-scss" href="{% static 'css/page/multi_ticketshop.scss' %}">
+    {% endcompress %}
+    <script src="{% static 'yourtickets/js/bootstrap.min.js' %}"></script>
+{% endblock %}
+{% block background %}
+    {% static 'images/background_multi_ticketshop.png' %}
+
+{% endblock %}
+{% block content %}
+    <div class="container">
+        <div class="panel">
+            <div class="panel-body">
+                <div class="row" style="height:59px;position:relative;">
+                    <div class="col-md-12 header-col">Select Event</div>
+
+                    <div class="header-line"></div>
+                </div>
+                {% for event in events %}
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="row ticketshoprow">
+                            <div class="col-xs-2 col-sm-2 col-md-1 number darktext">{{ event.event.start_date|date:"d" }}</div>
+                            <div class="col-xs-3 date-text">
+                                <div class="darktext monthyear">{{ event.event.start_date|date:"F" }} {{ event.event.start_date|date:"Y" }}</div>
+                                <div class="lighttext">{{ event.event.start_date|date:"H:i" }} - {{ event.event.end_date|date:"H:i" }}</div>
+                            </div>
+                            <div class="col-xs-5 col-sm-5 col-md-6 event-text">
+                                <div class="darktext eventname">{{event.event.title}}</div>
+                                <div class="lighttext" style="padding-top:4px;">
+                                    <i class="fa fa-map-marker" style="font-size:18px;margin-right:5px;position:relative;top:2px;"></i>
+                                    <span style="line-height:12px;">{{event.event.location}}</span>
+                                </div>
+                            </div>
+
+                            <div class="col-xs-2">
+                                <div style="cursor:pointer;" data-url="{% url 'buy_ticket' event_id=event.event.id event_name=event.event.event_url %}{% if multishop.use_in_iframe %}?iframe=1{% endif %}" class="btn pull-right goto_shop">Get tickets</div>
+
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+
+                        <div class="row ticketshoprow-mobile">
+                            <div class="darktext eventname">{{event.event.title}}</div>
+                            <div class="col-xs-2 number darktext">
+                                {{ event.event.start_date|date:"d" }}
+                                <div class="lighttext time">{{ event.event.start_date|date:"H:i" }} - {{ event.event.end_date|date:"H:i" }}</div>
+                            </div>
+                            <div class="col-xs-3 date-text">
+                                <div class="darktext monthyear">{{ event.event.start_date|date:"F" }}<br/>{{ event.event.start_date|date:"Y" }}</div>
+
+                            </div>
+                            <div class="col-xs-4 event-text">
+
+                                <div class="lighttext" style="padding-top:4px;">
+                                    <i class="fa fa-map-marker" style="font-size:18px;margin-right:5px;position:relative;top:2px;"></i>
+                                    <span style="line-height:12px;">{{event.event.location}}</span>
+                                </div>
+                            </div>
+
+                            <div class="col-xs-3">
+                                <div style="cursor:pointer;" data-url="{% url 'buy_ticket' event_id=event.event.id event_name=event.event.event_url %}{% if multishop.use_in_iframe %}?iframe=1{% endif %}" class="btn btn-sm pull-right goto_shop">Get tickets</div>
+
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+    </div>
+    <script>
+        $(function(){
+            $('.goto_shop').click(function(){
+                document.location = $(this).data('url');
+            })
+        })
+
+    </script>
+{% endblock %}

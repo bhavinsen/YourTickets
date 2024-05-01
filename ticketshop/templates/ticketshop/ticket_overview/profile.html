@@ -1,0 +1,69 @@
+{% load index %}
+{% load static %}
+<script src="http://maps.googleapis.com/maps/api/js?libraries=places&types=(cities)&key=AIzaSyD5ZihO8Vrdr7Gfm2kySliDXF4OV-E6t4g"></script>
+<script type="text/javascript" src="{% static 'yourtickets/js/lib/jquery.geocomplete.min.js' %}"></script>
+
+<form action="" method="post" autocomplete="off">
+    {% csrf_token %}
+    <input type="hidden" name="action_type" value="new_user">
+
+    <fieldset class="m-bottom-36 p-bottom-36 u-border-bottom">
+     <legend class="large bold m-bottom-36 uppercase light-gray">{% getWord lc "shop-confirm-vulgegevensin" %}</legend>
+
+        {% if error_messages %}
+        <div class="u-flex-column-to-row">
+            <div class="u-flex p-right-24-dt">
+                <div class="messages error">
+                    {% for message in error_messages %}
+                        {{message}}<br>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        {% endif %}
+
+      <div class="u-flex-column-to-row ">
+       <div class="u-flex p-right-24-dt">
+      <!--  alle ID's hier mag je gewoon andere namen geven -->
+
+        <input name="username" class="form-input w-100" value="{{userExtraFormValues.username}}" type="email" id="email_new" placeholder="{% getWord lc "login-form-email" %}">
+        <input name="password" class="form-input w-100" value="" type="password" id="wachtwoord_new" placeholder="{% getWord lc "login-form-password" %}">
+        <input name="first_name" class="form-input w-100" value="{{userExtraFormValues.first_name}}" type="text" id="voornaam" placeholder="{% getWord lc "register-form-firstname" %}">
+        <input name="last_name" class="form-input w-100" value="{{userExtraFormValues.last_name}}" type="text" id="achternaam" placeholder="{% getWord lc "register-form-lastname" %}">
+       </div>
+       <div class="u-flex">
+         <label class="checkbox m-right-12">{% getWord lc "shop-form-genderm" %}<input class="u-float-right" {% if userExtraFormValues.gender == "M" %}checked="checked"{% endif %} type="radio" name="gender" value="M"></label>
+         <label class="checkbox">{% getWord lc "shop-form-genderf" %}<input class="u-float-right" type="radio" {% if userExtraFormValues.gender == "F" %}checked="checked"{% endif %} name="gender" value="F"></label>
+         {% if cur_event.id == 672 or cur_event.id == 879 or cur_event.id == 878 %}
+         <label class="checkbox form-input w-100" style="width:100%">
+            
+                Non-binair
+            
+            <input class="" type="radio" {% if userExtraFormValues.gender == "X" %}checked="checked"{% endif %} name="gender" value="X"></label>
+         {% endif %}
+         
+         <input name="birth_date" name="" class="form-input w-100" value="{{userExtraFormValues.birth_date}}" type="text" id="birth_date" placeholder="{% getWord lc "shop-form-birthdate" %}">
+         <input name="postcode" autocomplete="nope" class="w-100 form-input" type="text" id="postcode" value="{{userExtraFormValues.postcode}}" placeholder="{% getWord lc "shop-form-adres" %}">
+
+                            <button class="button-l uppercase medium u-noselect w-100 bg-primary_color" type="submit">
+
+          {% getWord lc "register-buttonsubmit" %}
+                            </button>
+      </div>
+      </div>
+    <!-- <script type="text/javascript">
+
+        function getUrlParameter(name) {
+            name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+            var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+            var results = regex.exec(location.search);
+            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+        }
+
+        $("#postcode").geocomplete();
+        $("#postcode").attr('autocomplete','nope')
+
+
+    </script> -->
+    </fieldset>
+</form>

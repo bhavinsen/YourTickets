@@ -1,0 +1,42 @@
+version: '3.7'
+
+volumes:
+  postgres_data:
+
+services:
+  nodejs:
+      container_name: node_server
+      build:
+        context: .
+        dockerfile: build/development/nodejs/Dockerfile
+      command: npm run serve
+      volumes:
+        - .:/app
+      ports:
+        - "8080:8080"
+  db:
+    image: postgres:13
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: main_database
+      POSTGRES_USER: postgres
+    ports:
+      - "5432:5432"
+  web:
+    restart: "on-failure"
+    image: website:latest
+    command: python manage.py runserver 0.0.0.0:8000
+    build:
+      context: ""
+      dockerfile: build/development/Dockerfile
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+      - nodejs
+    environment:
+      GUNICORN_CMD_ARGS: --reload
+    volumes:
+      - .:/app

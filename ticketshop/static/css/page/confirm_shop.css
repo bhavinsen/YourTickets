@@ -1,0 +1,76 @@
+.messages.error{
+    margin:30px;
+    margin-left:0;
+}
+
+.ticket-panel{
+    margin-bottom:15px;
+    border-bottom: 1px dashed #c9c9c9;
+    border-top: 1px dashed #c9c9c9;
+    background-color:white;
+    padding:15px 20px;
+}
+
+.ticket-panel-group{
+    border-bottom:0;
+    border-top:0;
+}
+
+
+
+.ticket-panel-body-subheader{
+    font-weight:bold;
+    color:#7b7d85;
+    border-bottom:1px dashed #c9c9c9;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+}
+.ticket-panel-button{
+    cursor:pointer;
+    width:100%;
+    font-weight: bold;
+    color:#7b7d85;
+    color:#dc3547;
+}
+
+.ticket-panel-body-subcontent{
+    margin-bottom:10px;
+}
+
+.ticket-panel-button img{
+    float:right;
+    margin-top:5px;
+}
+
+.ticket-panel-body{
+    margin-left:10px;
+    margin-right:10px;
+}
+
+.ticket-panel-body-content{
+    padding:20px;
+}
+.hidden{
+    display:none;
+}
+.checkbox{
+    padding-top:11px;
+    padding-bottom:11px;
+}
+
+.ticket-panel-error-container{
+    background-color: #fff0f5;
+    border:1px dashed red;
+    margin-bottom:10px;
+    padding:15px;
+}
+
+input[type="text"].error,input[type="email"].error, label.checkbox.error{
+    background-color: #fff0f5;
+    border:1px solid red;
+}
+
+#show_alternative{
+    padding-top:16px;
+    padding-bottom:19px;
+}

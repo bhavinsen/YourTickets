@@ -1,0 +1,158 @@
+{% extends 'youradmin/base.html' %}
+{% load static %}
+{% load humanize %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <dl class="dl-horizontal">
+                                <dt>Email</dt>
+                                <dd>{{ organizer.email }}</dd>                                
+                                <dt>Rekening nummer</dt>
+                                <dd>{{ account.rekening_number }}</dd>
+
+                                <dt>Op naam van</dt>
+                                <dd>{{ account.rekening_houder }}</dd>
+                            </dl>
+                        </div>
+                        <div class="col-md-6">
+                            <dl class="dl-horizontal">
+                                <dt>Factuur adres</dt>
+                                <dd>{{ account.factuur_adress }}</dd>
+
+                                <dt>BTW nummer</dt>
+                                <dd>{{ account.btw_nr }}</dd>
+
+                                <dt>KVK nummerr</dt>
+                                <dd>{{ account.kvk_number }}</dd>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+
+    {% include 'youradmin/partials/modals/form.html' with modal_id="payment_add" form=form title="Create payment" %}
+    {% include 'youradmin/partials/modals/form.html' with modal_id="payment_edit" mode='edit' title="Edit payment" %}
+    {% include "youradmin/partials/modals/confirm.html" with modal_id='payment_delete' mode='delete' success_message="Payment has been removed" message="Are you sure you want to remove this payment?" %}
+
+    <div class="col-md-4">
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Event financial {{ event.title }}</h3>
+            </div>
+            <div class="panel-body">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-6">Event date</div><div class="col-md-6">{{ event.start_date|date:'j F Y' }}</div>
+                        <div class="col-md-6">Total income</div><div class="col-md-6">&euro; {{ totals.total_orders_amount }}</div>
+                        <div class="col-md-6">Total commission</div><div class="col-md-6">&euro; {{ totals.total_service_costs }}</div>
+                        <div class="col-md-6">Total tickets sold</div><div class="col-md-6">{{ total_tickets_sold }}</div>
+
+
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+
+    </div>
+    <div class="col-md-8">
+
+         <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Payments </h3>
+            </div>
+            <div class="panel-body">
+                <button id="direct-marker" class="btn btn-sm btn-primary" data-current="{{ event.marked }}">Change Marker</button>
+                Currently:
+
+                    <span style="color:green" data-marker="true" class="glyphicon glyphicon-ok {% if not event.marked %}hidden{% endif %}"></span>
+
+                    <span style="color:red" data-marker="false" class="glyphicon glyphicon-ok {% if event.marked %}hidden{% endif %}"></span>
+
+
+                <button class="btn btn-sm btn-primary pull-right"
+                data-toggle="modal"
+                data-target="#payment_add"
+                data-ajax_submit_url="{% url 'youradmin_financial:add_event_payment' event_id=event.id %}"
+                >Add</button>
+                <div class="panel-body">
+                    <table class="table">
+                        <thead>
+                            <td>Date</td>
+                            <td>Type</td>
+                            <td>Amount</td>
+                            <td>Description</td>
+                            <td>action</td>
+                        </thead>
+                        {% for payment in payments %}
+                        <tr>
+                            <td style="white-space: nowrap; width:140px" nowrap>{{ payment.payout_date|date:'j F Y' }}</td>
+                            <td style="white-space: nowrap; width:140px" nowrap>{{ payment.get_type_display }}</td>
+                            <td align="right" style="width:100px;" nowrap>&euro; {{ payment.amount }}</td>
+                            <td style="width:100%;">{{ payment.description }}</td>
+                            <td style="white-space: nowrap; width:100px" nowrap>
+                                <div class="glyphicon glyphicon-pencil"
+                                     style="cursor:pointer"
+                                data-toggle="modal"
+                                data-target="#payment_edit"
+                                data-ajax_submit_url="{% url 'youradmin_financial:edit_event_payment' payment_id=payment.pk %}"
+                                ></div>
+
+
+                                <div class="glyphicon glyphicon-remove"
+                                     style="cursor:pointer"
+                                data-toggle="modal"
+                                data-target="#payment_delete"
+                                data-ajax_submit_url="{% url 'youradmin_financial:delete_event_payment' payment_id=payment.pk %}"
+                                ></div>
+
+                            </td>
+                        </tr>
+                        {% endfor %}
+                        <tr>
+                            <td>Total</td>
+                            <td>&nbsp;</td>
+                            <td align="right">&euro; {{ total_payout }}</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tfoot>
+                            <td>To pay out</td>
+                            <td>&nbsp;</td>
+                            <td align="right">&euro; {{ total_still_to_pay }}</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                        </tfoot>
+                    </table>
+                </div>
+
+
+
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+    <script>
+        YT.urls = YT.urls || {};
+        YT.urls.get_total = '{% url 'youradmin_financial:get_total' %}';
+        YT.urls.mark_event = '{% url 'youradmin_financial:mark_event' event_id=event.id %}'
+    </script>
+    <script type="text/javascript" src="{% static 'youradmin/js/pages/financial_payments.js' %}"></script>
+
+{% endblock %}

@@ -1,0 +1,17 @@
+<div class="input-group date" dateid="{{ attrs.dateid }}">
+  <input
+        {% for k, attr in attrs.items %}
+            {{ k }}="{{ attr }}"
+        {% endfor %}
+    >
+    <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span>
+    </span>
+</div>
+
+<script>
+        $('[dateid="{{ attrs.dateid }}"]').datepicker({
+            format: "yyyy-mm-dd",
+            autoclose: true,
+            todayHighlight: true
+        });
+</script>

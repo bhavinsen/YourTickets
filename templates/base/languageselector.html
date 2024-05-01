@@ -1,0 +1,98 @@
+{% load static %}
+{% load i18n %}
+
+{% get_current_language as CURRENT_LANGUAGE_CODE %}
+{% get_available_languages as LANGUAGES %}
+<div class="nav-leftwrapper medium">
+    <form id="change_language" action="" method="post">
+        {% csrf_token %}
+        <input name="next" type="hidden" value="" />
+        <select id="languageselector" style="display:none;" class="right languageselector">
+            {% for lang_code, lang_name in LANGUAGES %}
+                {% if language.0 == CURRENT_LANGUAGE_CODE %}
+                    <option selected="selected" value="{{ lang_code }}">{{ lang_name }}{{ CURRENT_LANGUAGE_CODE }}</option>
+                {% else %}
+                    <option value="{{ lang_code }}">{{ lang_name }}</option>
+                {% endif %}
+            {% endfor %}
+
+        </select>
+    </form>
+    <script type="text/javascript">
+        var imageUrl = '{% static 'images/languageflags/_placeholder.png' %}';
+        $(function() {
+
+            function showPopup(lang){
+              $(".js-popup[data-lang='"+lang+"']").addClass('active');
+              $(".js-popup-overlay").addClass('active');
+              $("body").addClass('u-noscroll');
+              $('.nav > .nav-leftwrapper').addClass('be-static');
+            }
+            function hidePopup(lang){
+              $(".js-popup[data-lang='"+lang+"']").removeClass('active');
+              $(".js-popup-overlay").removeClass('active');
+              $("body").removeClass('u-noscroll');
+              $('.nav > .nav-leftwrapper').removeClass('be-static');
+            }
+            function hideAllPopups(){
+                $(".js-overlay").trigger('click');
+            }
+
+            $('#languageselector').niceSelect();
+
+            var image = imageUrl.replace('_placeholder', '{{CURRENT_LANGUAGE_CODE}}'.toUpperCase());
+
+
+            $('.languageselector').find('.current').html(
+                    '<span class="big" style="color:black;"><img class="languageselector-image" src="'+image+'">{{ CURRENT_LANGUAGE_CODE }}</span>'+
+                    '<span class="small"><img class="languageselector-image" src="'+image+'"></span>'
+            );
+
+
+            $('.nice-select.languageselector').find('li').each(function(){
+                var image = imageUrl.replace('_placeholder', $(this).data('value').toUpperCase());
+                $(this).html('<img class="languageselector-image" src="'+image+'">'+$(this).data('value'))
+            });
+
+            $('#languageselector').change(function(){
+                $el = $(this);
+                if($el.closest('.nav-leftwrapper').hasClass('be-static')){
+                    var language = $(this).val();
+                    hidePopup(language);
+
+                    if(language == 'fr'){
+                        language = 'en';
+                    }
+                    // remove the current active one
+                    hideAllPopups();
+                    showPopup(language);
+                    $(".js-overlay").data('lang', language);
+                    var _image = imageUrl.replace('_placeholder', language.toUpperCase());
+                    $('.languageselector').find('.current').html(
+                        '<span class="big" style="color:black;"><img class="languageselector-image" src="'+image+'">'+$(this).val()+'</span>'+
+                        '<span class="small"><img class="languageselector-image" src="'+_image+'"></span>'
+                    );
+                }else{
+                    let lang_exp = '^\/';
+                    {% for lang_code, lang_name in LANGUAGES %}
+                    lang_exp += '({{lang_code}})?';
+                    {% endfor %}    
+                    lang_exp += '\/';
+                    re = new RegExp(lang_exp);
+
+                    if (re.test(window.location.pathname)) {
+                        document.location = '/'+$(this).val()+'/'+window.location.pathname.substring(4);
+                    } else {
+                        document.location = '/'+$(this).val()+ window.location.pathname;
+    
+                        
+                       
+                    }
+                }
+
+            })
+
+        });
+
+    </script>
+</div>

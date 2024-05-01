@@ -1,0 +1,147 @@
+﻿{% load static %}
+{% load index %}
+
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <meta charset='utf-8'>
+      <meta name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1'>
+      <title>{% block title %}Yourtickets{% endblock %}</title>
+      <link rel="apple-touch-icon" sizes="180x180" href="{% static 'images/favicon/apple-touch-icon.png' %}">
+      <link rel="icon" type="image/png" href="{% static 'images/favicon/favicon-32x32.png' %}" sizes="32x32">
+      <link rel="icon" type="image/png" href="{% static 'images/favicon/favicon-16x16.png' %}" sizes="16x16">
+      <link rel="manifest" href="{% static 'images/favicon/manifest.json' %}">
+      <link rel="mask-icon" href="{% static 'images/favicon/safari-pinned-tab.svg' %}" color="#dc3547">
+      <meta name="apple-mobile-web-app-title" content="Yourtickets">
+      <meta name="application-name" content="Yourtickets">
+      <meta name="theme-color" content="#232732">
+
+      <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700' rel='stylesheet' type='text/css'>
+      <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-XdYbMnZ/QjLh6iI4ogqCTaIjrFk87ip+ekIjefZch0Y+PvJ8CDYtEs1ipDmPorQ+" crossorigin="anonymous">
+      <link rel='stylesheet' href="{% static 'css/main.css' %}">
+      <link rel='stylesheet' href="{% static 'css/plugins/datepicker.css' %}">
+      <link rel='stylesheet' href="{% static 'css/components/messages.css' %}">
+      <link rel='stylesheet' href="{% static 'css/page/confirm_shop.css' %}">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+      <script src="{% static 'js/plugins/datepicker.js' %}"></script>
+      <script src="{% static 'js/page/confirm_shop.js' %}"></script>
+    <script>
+        (function(h,o,t,j,a,r){
+            h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+            h._hjSettings={hjid:331348,hjsv:5};
+            a=o.getElementsByTagName('head')[0];
+            r=o.createElement('script');r.async=1;
+            r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+            a.appendChild(r);
+        })(window,document,'//static.hotjar.com/c/hotjar-','.js?sv=');
+    </script>
+
+  </head>
+  <body>
+    <div class="shop" style=" background: url({{cshop.bg_img.url}}) no-repeat center center fixed; background-size: cover;">
+      <div class="nav">
+        <a class="logo-container" href="{% url 'index' %}"><img class="logo" src="{% static 'images/beta_logo.svg' %}"></a>
+		{% include 'base/languageselector.html' %}
+      </div>
+      <div class="shop-wrapper u-overflow-hidden">
+        <header class="a-center">
+            <h1 class="header white uppercase">{{cur_event.title}}</h1>
+            <!-- <h2 class="subtext gray uppercase">GLOW IN THE DARK BIRTHDAY BASH</h2> -->
+        </header>
+        <article class="ticketshop">
+          <div class="corners-outer corners-outer-bottom u-border-bottom-dash u-flex-column bg-white">
+            <div class="corners-inner corners-inner-top bg-white">
+              <div class="tickets corners-inner bg-white">
+                <fieldset class="p-around-24">
+                  <ul class="light-gray uppercase bold large-scale a-center u-desktop-show m-top-24 m-bottom-48">
+                    <li class="primary_color  u-inline-block">{% getWord lc "shop-confirm-jouwgegevens" %}<span class="line"></span></li>
+                    <li class="u-inline-block">{% getWord lc "shop-confirm-betaling" %}<span class="line"></span></li>
+                    <li class="u-inline-block">{% getWord lc "shop-confirm-happiness" %}</li>
+                  </ul>
+                    <div class="table u-border-box">
+                       <div class="u-flex-row u-border-bottom p-bottom-6">
+                         <span class="cell-70 u-flex small bold">{% getWord lc "shop-base-ticket" %}</span>
+                         <span class="cell-10 small bold">{% getWord lc "shop-base-aantal" %}</span>
+                         <span class="cell-20 small bold">{% getWord lc "shop-base-price" %}</span>
+                       </div>
+                       {% load humanize %}
+                       {% for ticket in tickets %}
+                       {% if quantity|index:forloop.counter0 != '0' %}
+                       <div class="u-flex-row p-top-bottom-24 u-border-bottom">
+                         <span class="cell-70 u-flex u-break">{{ticket.name}}</span>
+                         <span class="cell-10">{{ quantity|index:forloop.counter0 }}</span>
+                         <span class="cell-20 uppercase">{% if price|index:forloop.counter0 > 0 %}€{{price|index:forloop.counter0|floatformat:2|intcomma }}{% else %}Gratis{% endif %}</span>
+                       </div>
+                       {% endif %}
+                       {% endfor %}
+                       <div class="u-flex-row p-top-24">
+                         <span class="cell-70 u-flex">{% getWord lc "shop-confirm-ticketfee" %}</span>
+                         <span class="cell-10"></span>
+                         <span class="cell-20 uppercase">€{{trans_fee|floatformat:2|intcomma }}</span>
+                       </div>
+                       <div class="u-flex-row p-top-bottom-18">
+                         <span class="cell-70 u-flex bold">{% getWord lc "shop-confirm-total" %}</span>
+                         <span class="cell-10"></span>
+                         <span class="cell-20 uppercase bold">€{{ total_price|floatformat:2|intcomma }}</span>
+                       </div>
+                    </div>
+                  </fieldset>
+              </div>
+            </div>
+          </div>
+          <div class="corners-outer corners-outer-top bg-gray">
+            <div class="tickets corners-inner bg-gray">
+
+                {% if not user.is_authenticated %}
+                    {% include 'ticketshop/ticket_overview/login' %}
+                    {% include 'ticketshop/ticket_overview/profile.html' %}
+                {% endif %}
+
+                  <form action="/ticketshop/buyTickets/" method="post">
+                        {% csrf_token %}
+                        {% if email_allowed %}
+                        <input type="hidden" name="email_allowed" value="true">
+                        {% endif %}
+                    <input type="hidden" name="event_id" value="{{cur_event.id}}">
+                    {% for ticket in tickets %}
+                    {% if quantity|index:forloop.counter0 != '0' %}
+                    <input type="hidden" name="ticket_id[]" value="{{ticket.id}}">
+                    <input type="hidden" name="ticket_quan[]" value="{{ quantity|index:forloop.counter0 }}">
+                    {% endif %}
+                    {% endfor %}
+
+                    {% if user.is_authenticated %}
+                        {% include 'ticketshop/ticket_overview/authenticated.html' %}
+                    {% endif %}
+                    <div class="terms">
+                      {% if user.is_authenticated %}
+                        <a href="{% url 'logout' %}">{% getWord lc "shop-form-logout" %}</a>
+                      {% endif %}
+                    </div>
+
+                      {% if user.is_authenticated %}
+                       <button class="uppercase button button-bottom-right white bg-primary_color bold uppercase" type="submit">
+                           {% getWord lc "shop-form-buttonsubmit" %} <i class="m-left-36 fa fa-angle-right bold"></i>
+                           <div class="u-overlay"></div></button>
+
+                      {% endif %}
+
+                  </form>
+            </div>
+          </div>
+        </article>
+        <div class="w-100 a-center">
+          <a class="base uppercase p-around-24 medium-small" href="{% url 'contact' %}">Contact</a>
+        </div>
+      </div>
+    </div>
+    <script src="{% static 'js/main.js' %}"></script>
+    <script>
+    $('body').Color({
+      primary_color   : '{{cshop.primary_color}}',
+      secondary_color : '{{cshop.secondary_color}}'
+    });
+    </script>
+  </body>
+</html>

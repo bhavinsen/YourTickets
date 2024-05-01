@@ -1,0 +1,26 @@
+#amount_switcher{
+    width:60px;
+    float:right;
+    font-size:14px;
+    height:30px;
+
+}
+
+
+.toggle-dark .toggle-on, .toggle-dark .toggle-select .toggle-inner .active{
+    background:#55c7e0;
+}
+
+.toggle-dark .toggle-on, .toggle-dark .toggle-off, .toggle-dark .toggle-blob{
+    font-size:16px;
+}
+
+.hidden{
+    display:none;
+}
+
+.toggle-dark .toggle-off, .toggle-dark .toggle-select .toggle-on{
+    background:#d4d4d4;
+    color:white;
+}
+

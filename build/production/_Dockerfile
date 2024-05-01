@@ -1,0 +1,39 @@
+FROM node:lts-alpine as build-stage
+WORKDIR /app
+COPY yt_dashboard/ ./
+# RUN rm -rf node_modules
+RUN npm install
+RUN npm audit fix --force
+
+RUN npm run build
+
+FROM tiangolo/uvicorn-gunicorn:python3.8-alpine3.10 as production-stage
+
+# gcc musl-dev python3-dev libffi-dev openssl-dev cargo
+RUN apk update
+RUN apk add gcc xvfb musl-dev libffi-dev openssl-dev zlib-dev jpeg-dev bash openssl-dev wkhtmltopdf curl build-base freetype-dev libjpeg-turbo-dev libpng-dev
+# RUN apk add npm nodejs
+
+# COPY . /app
+ADD requirements.txt /app/
+# COPY yt_dashboard/package.json /app/
+# WORKDIR /app/
+
+COPY --from=build-stage /app/static/yt_dashboard/ /app/static/yt_dashboard/
+
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
+ENV CRYPTOGRAPHY_DONT_BUILD_RUST 1
+
+RUN pip install --upgrade pip
+RUN pip install -r requirements.txt
+
+
+
+# RUN python setup.py build
+# RUN python setup.py install
+
+# ARG DATABASE_URL
+# RUN python manage.py migrate
+
+EXPOSE 80

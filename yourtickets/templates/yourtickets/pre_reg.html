@@ -1,0 +1,155 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Form YourTickets</title>
+
+    <style>
+        html, body {
+            background-color: #242735;
+            font-family: 'Heebo', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+        }
+        .subscribe-form {
+            width: 100%;
+            margin-right: auto;
+            margin-left: auto;
+            text-align: center;
+
+        }
+
+        .subscribe-form__title {
+            font-size: 22px;
+            color: white;
+            margin: 20px 0;
+            border-radius: 4px;
+
+        }
+
+        .subscribe-form__intro-title {
+            color: white;
+            font-size: 14px;
+            max-width:400px;
+            display:block;
+            margin:0 auto;
+            margin-top:20px;
+        }
+
+        .subscribe-form__form-title {
+            color: #ffffff;
+            font-size: 18px;
+
+        }
+
+
+        label, input {
+            display: block;
+            color: #242735;
+            margin: 15px 0;
+        }
+
+        input, select {
+            padding: 5px 10px;
+            border-radius: 4px;
+            border: none;
+        }
+
+        .subscribe-form__checkbox {
+            margin-left: 10px;
+            margin-top:10px;
+        }
+
+        button {
+            border: none;
+            padding: 10px 50px;
+            text-align: center;
+            background: #66C5E1;
+            border-radius: 4px;
+            color: white;
+            font-size: 14px;
+        }
+
+        .checkbox{
+            display: inline-block;
+
+        }
+
+        .image{
+            width: 300px;
+            border-radius: 4px;
+        }
+
+        .input_fields{
+            width: 100%;
+        }
+
+        .input_element{
+            margin: auto;
+            margin-bottom: 12px;
+        }
+        #country {
+            margin-bottom:0px;
+        }
+        .yt_logo{
+            width: 150px;
+            margin: auto;
+            display: block;
+            margin-top: 12px;
+        }
+        .error{
+            border:2px solid red;
+        }
+    </style>
+</head>
+
+<body>
+
+    <img src="{% static 'yourtickets/img/yt_logo.png' %}" alt="" class="yt_logo" >
+    <form action="{% url 'pre_reg' %}" method="post">
+        
+        {% csrf_token %}
+        <div class="subscribe-form">
+
+            <h1 class="subscribe-form__title">
+                Rauw Alejandro Pre-Registration
+            </h1>
+
+            <img src="{% static 'yourtickets/img/image1.jpeg' %}" alt="" class="image" > 
+
+            <p class="subscribe-form__intro-title" style="font-family: 'Heebo', sans-serif;" style="font-size: 12px;" >
+                On September 24th, the Rauw Alejandro spaceship will land at Palais 12 Brussels (Belgium) for an exceptional show, along with the incredible Jabbawockeez as special guests!🪐
+                Pre-register now to secure your tickets for his World Tour. General ticketsale starts on February 1st 2023.
+
+            </p>
+
+            <h2 class="subscribe-form__form-title">
+                Complete the form below for priority access to the available tickets!
+            </h2>
+
+            <div class="input_fields">
+                <input type="text" name="first_name" value="{% if first_name %}{{first_name}}{% endif %}" id="firstName" placeholder="First name" class="input_element {% if post_and_error %} error{% endif %}">
+                <input type="text" name="last_name" value="{% if last_name %}{{last_name}}{% endif %}" id="lastName" placeholder="Last name" class="input_element">
+                <input type="email" name="email" value="{% if email %}{{email}}{% endif %}" id="email" placeholder="Your email" class="input_element {% if post_and_error %} error{% endif %}">
+                <input type="tel" name="phone_number" value="{% if phone_number %}{{phone_number}}{% endif %}" id="phoneNumber" placeholder="Phone number" class="input_element {% if post_and_error %} error{% endif %}">
+                <input type="text" name="country" value="{% if country %}{{country}}{% endif %}" id="country" placeholder="Country" class="input_element {% if post_and_error %} error{% endif %}">
+            </div>
+
+            <div class="subscribe-form__checkbox-container" style="width: 100%; ;">
+                <div class="checkbox"> <input name="notify_me" checked="checked" value="ok" type="checkbox" id="checkbox"> </div>
+                <div class="checkbox"> <label for="checkbox" class="subscribe-form__checkbox" style="color: white;" >Notify me on new events, giveaways and <br>when tickets are available!
+                </label> </div>
+
+                
+            </div>
+            <button>Send</button>
+
+        </div>
+    </form>
+</body>
+
+</html>

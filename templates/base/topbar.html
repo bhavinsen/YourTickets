@@ -1,0 +1,5 @@
+{% load static %}
+<div class="nav">
+    <a class="logo-container" href="{% url 'index' %}"><img class="logo" src="{% static 'images/logo_color.png' %}"></a>
+    {% include 'base/languageselector.html' %}
+</div>
